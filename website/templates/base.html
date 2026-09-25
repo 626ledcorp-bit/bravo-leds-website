@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Bravo LEDs — Automotive LED Lighting{% endblock %}</title>
+  <meta name="description" content="{% block meta %}Plug-and-play LED off-road, fog, turn, brake and interior bulbs. Find bulbs for your exact vehicle. Rosemead, CA.{% endblock %}">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="icon" href="/static/img/favicon-chevron.png">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="/">
+      <img src="/static/img/logo-bravo-led.png" alt="Bravo LEDs" class="logo-img">
+    </a>
+    <nav class="nav">
+      <a href="/shop">Shop All</a>
+      <a href="/shop/led-bulbs">LED Bulbs</a>
+      <a href="/shop/fog">Fog</a>
+      <a href="/shop/turn">Turn</a>
+      <a href="/shop/brake">Brake</a>
+      <a href="/shop/interior">Interior</a>
+      <details class="nav-more">
+        <summary>More ▾</summary>
+        <div class="nav-more-menu">
+          {% for cid, c in categories.items() %}
+          {% if cid not in ["led-bulbs", "fog", "turn", "brake", "interior"] %}
+          <a href="/shop/{{ cid }}">{{ c.name }}</a>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </details>
+      <a href="/contact">Contact</a>
+    </nav>
+    <span class="header-spacer"></span>
+    <a class="cart-btn" href="/cart">🛒 Cart <span class="cart-count">{{ cart_count }}</span></a>
+  </div>
+  <div class="cat-strip">
+    <div class="wrap cat-strip-inner">
+      <a href="/shop">All</a>
+      {% for cid, c in categories.items() %}
+      <a href="/shop/{{ cid }}">{{ c.name }}</a>
+      {% endfor %}
+    </div>
+  </div>
+</header>
+
+<main>
+  {% with _flashes = get_flashed_messages() %}
+  {% if _flashes %}
+  <div class="wrap">
+    {% for m in _flashes %}<div class="flash-ok">{{ m }}</div>{% endfor %}
+  </div>
+  {% endif %}
+  {% endwith %}
+  {% block content %}{% endblock %}
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="logo" href="/">
+          <img src="/static/img/logo-bravo-led.png" alt="Bravo LEDs" class="logo-img">
+        </a>
+        <p>Automotive LED lighting, tested and sold from our Rosemead, CA store. Real counter expertise behind every bulb.</p>
+      </div>
+      <div>
+        <h4>Shop</h4>
+        <ul>
+          {% for cid, c in categories.items() %}
+          <li><a href="/shop/{{ cid }}">{{ c.name }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div>
+        <h4>Help</h4>
+        <ul>
+          <li><a href="/faq">FAQ</a></li>
+          <li><a href="/guides">Install Guides</a></li>
+          <li><a href="/shipping">Shipping Policy</a></li>
+          <li><a href="/returns">Returns &amp; Warranty</a></li>
+          <li><a href="/dot-compliance">DOT Rules &amp; Proper Use</a></li>
+          <li><a href="/privacy">Privacy Policy</a></li>
+          <li><a href="/terms">Terms of Service</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Stay in the Loop</h4>
+        <p class="muted small">Join the list for deals and new products.</p>
+        {% if request.args.get('nl') == 'ok' %}
+        <p class="small"><strong>You're on the list ✓</strong></p>
+        {% else %}
+        <form action="/newsletter" method="post">
+          <input type="hidden" name="next" value="{{ request.path }}">
+          <input type="email" name="email" required placeholder="you@email.com" aria-label="Email address" style="width:100%; margin-bottom:8px">
+          <button class="btn" type="submit" style="width:100%">Join</button>
+        </form>
+        {% endif %}
+      </div>
+      <div>
+        <h4>Visit Us</h4>
+        <ul>
+          <li class="muted small">626 LEDs<br>Rosemead, CA</li>
+          <li class="muted small">Orders ship in 1–2 business days via USPS / UPS</li>
+        </ul>
+      </div>
+    </div>
+    <p class="disclaimer">⚠️ For off-road and fog light use only. Not DOT/SAE approved for on-road use. Check your local laws. <a href="/dot-compliance">Learn more →</a></p>
+    <div class="foot-bottom">
+      <span>© 2026 Bravo LEDs. All rights reserved.</span>
+      <span>Bravo LEDs by 626 LEDs: Automotive Lighting Parts Store — Rosemead, CA</span>
+      <span>Phase 1 preview — online checkout launching soon.</span>
+    </div>
+  </div>
+</footer>
+<script src="/static/js/main.js"></script>
+</body>
+</html>

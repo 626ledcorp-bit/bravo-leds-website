@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% block title %}{{ "New" if is_new else "Edit" }} Landing Page — Admin{% endblock %}
+{% block content %}
+<div class="wrap" style="max-width:760px">
+  <h1>{{ "New" if is_new else "Edit" }} Landing Page</h1>
+  <p><a href="/admin/landing">← Landing Pages</a></p>
+
+  {% if errors %}
+  <div class="flash">
+    <strong>Fix these:</strong>
+    <ul>{% for e in errors %}<li>{{ e }}</li>{% endfor %}</ul>
+  </div>
+  {% endif %}
+
+  <form method="post" class="contact-card">
+    {% if is_new %}
+    <label class="field">Slug (page URL: /go/&lt;slug&gt;)
+      <input type="text" name="slug" value="{{ vals.slug }}" required pattern="[a-z0-9][a-z0-9-]*" placeholder="e.g. premium-led">
+    </label>
+    {% else %}
+    <p class="hint">Slug: <code>/go/{{ page.slug }}</code> (can't be changed)</p>
+    {% endif %}
+
+    <label class="field">Product
+      <select name="product_id" required>
+        {% for p in products %}
+        <option value="{{ p.id }}"{% if vals.product_id == p.id %} selected{% endif %}>{{ p.name }} — {{ "$%.2f"|format(p.price_cents/100) }}</option>
+        {% endfor %}
+      </select>
+    </label>
+
+    <label class="field">Headline
+      <input type="text" name="headline" value="{{ vals.headline }}" required maxlength="200">
+    </label>
+
+    <label class="field">Subhead
+      <textarea name="subhead" rows="2" maxlength="500">{{ vals.subhead }}</textarea>
+    </label>
+
+    <label class="field">Benefit bullets (one per line, max 8)
+      <textarea name="bullets" rows="5">{{ vals.bullets }}</textarea>
+    </label>
+
+    <label class="field">YouTube video URL
+      <input type="text" name="video_url" value="{{ vals.video_url }}" maxlength="500" placeholder="https://www.youtube.com/watch?v=...">
+      <span class="hint">Leave blank or write PLACEHOLDER … to show a labeled placeholder box.</span>
+    </label>
+
+    <label class="field">Testimonial (optional)
+      <textarea name="testimonial_text" rows="3" maxlength="1000">{{ vals.testimonial_text }}</textarea>
+      <span class="hint">Only real customer quotes — never invent testimonials. Leave a PLACEHOLDER note until you have a real one.</span>
+    </label>
+
+    <label class="field">Countdown mode
+      <select name="countdown_mode" id="cd-mode">
+        <option value="evergreen"{% if vals.countdown_mode == "evergreen" %} selected{% endif %}>Evergreen — N minutes per visitor</option>
+        <option value="fixed"{% if vals.countdown_mode == "fixed" %} selected{% endif %}>Fixed — ends at a set date/time</option>
+      </select>
+    </label>
+
+    <div id="cd-evergreen" style="display:{% if vals.countdown_mode == 'fixed' %}none{% else %}block{% endif %}">
+      <label class="field">Minutes per visitor ({{ evergreen_min }}–{{ evergreen_max }})
+        <input type="number" name="countdown_minutes" value="{{ vals.countdown_minutes }}" min="{{ evergreen_min }}" max="{{ evergreen_max }}">
+      </label>
+      <p class="hint"><strong>Honesty note:</strong> the evergreen timer starts when each visitor first opens the page and is stored in <em>their</em> browser. It never resets for the same visitor — this is not a fake urgency loop, and it's documented as such on the site.</p>
+    </div>
+
+    <div id="cd-fixed" style="display:{% if vals.countdown_mode == 'fixed' %}block{% else %}none{% endif %}">
+      <label class="field">End date/time (UTC)
+        <input type="datetime-local" name="countdown_end" value="{{ vals.countdown_end }}">
+      </label>
+      <p class="hint">Enter the time in UTC. A past end time is rejected — the page keeps its previous valid config.</p>
+    </div>
+
+    <label class="field">Default promo code (auto-applied on visit)
+      <select name="default_code">
+        <option value="">— none —</option>
+        {% for c in promos %}
+        <option value="{{ c.code }}"{% if vals.default_code == c.code %} selected{% endif %}>{{ c.code }} ({{ c.kind }}{% if c.kind == "percent" %} {{ c.percent }}%{% else %} {{ "$%.2f"|format(c.amount_cents/100) }}{% endif %})</option>
+        {% endfor %}
+      </select>
+      <span class="hint">A <code>?code=OTHER</code> URL parameter overrides this when it's a valid code.</span>
+    </label>
+
+    <label class="field" style="display:flex;gap:8px;align-items:center">
+      <input type="checkbox" name="published" value="1"{% if vals.published %} checked{% endif %} style="width:auto"> Published (unpublished pages return 404)
+    </label>
+
+    <p style="margin-top:14px"><button class="btn" type="submit">{{ "Create Page" if is_new else "Save Changes" }}</button></p>
+  </form>
+</div>
+<script>
+document.getElementById("cd-mode").addEventListener("change", function (e) {
+  var fixed = e.target.value === "fixed";
+  document.getElementById("cd-fixed").style.display = fixed ? "block" : "none";
+  document.getElementById("cd-evergreen").style.display = fixed ? "none" : "block";
+});
+</script>
+{% endblock %}

@@ -1,0 +1,15 @@
+Drop your SEMA Data export files here on day one:
+
+  aces_*.xml          ACES application data (BaseVehicleID -> part number).
+                      This is the primary input.
+  vcdb_vehicles.csv   BaseVehicleID -> year, make, model, trim mapping
+                      (from your VCdb subscription export, or the vehicle
+                      reference bundled in your SEMA Data download).
+  sema_fitment_*.csv  Optional flat-file fallback. Columns:
+                      vcdb_vehicle_id, year, make, model, trim,
+                      position, part_number, note
+
+Then run:  cd ~/workspace/626leds/website && python3 sema_import.py
+
+Full instructions: website/README.md ("SEMA Data" section).
+Sample synthetic files for pipeline testing only: ../sample_synthetic/

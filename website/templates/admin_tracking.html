@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Tracking Import — Admin — Bravo LEDs{% endblock %}
+{% block content %}
+<div class="wrap">
+  <h1>Tracking Import</h1>
+  <p style="margin-bottom:16px"><a href="/admin/orders">← Orders</a></p>
+  <p class="hint" style="max-width:640px">After buying labels in Pirate Ship, paste tracking numbers here — one <code>order_id tracking_number</code> per line. The carrier is detected automatically (USPS / UPS / FedEx / DHL), the order is marked shipped, and the customer is emailed when that notification is enabled in <a href="/admin/settings">Settings</a>.</p>
+
+  <form method="post" action="/admin/orders/tracking">
+    <label class="field">One <code>order_id tracking_number</code> per line
+      <textarea name="bulk" rows="10" style="width:100%;max-width:640px;font-family:monospace" placeholder="1042 1Z999AA10123456784&#10;1043 9400111899223344556677"></textarea>
+    </label>
+    <p><button class="btn" type="submit">Import tracking</button></p>
+  </form>
+
+  {% if results %}
+  <h2>Results</h2>
+  <table class="admin-table">
+    <tr><th>Order</th><th>Tracking</th><th>Status</th><th>Message</th></tr>
+    {% for oid, tracking, ok, msg in results %}
+    <tr>
+      <td>{% if oid %}<a href="/admin/order/{{ oid }}">{{ oid }}</a>{% else %}—{% endif %}</td>
+      <td><code>{{ tracking or "—" }}</code></td>
+      <td>{% if ok %}<span class="badge">OK</span>{% else %}<span class="badge">Error</span>{% endif %}</td>
+      <td>{{ msg }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% endif %}
+
+  <h2 style="margin-top:24px">Waiting for tracking ({{ unfulfilled|length }})</h2>
+  {% if unfulfilled %}
+  <table class="admin-table">
+    <tr><th>#</th><th>Customer</th><th>Ship to</th></tr>
+    {% for o in unfulfilled %}
+    <tr><td><a href="/admin/order/{{ o.id }}"><strong>{{ o.id }}</strong></a></td>
+        <td>{{ o.customer_name }}</td>
+        <td><span class="hint">{{ o.addr_city }}, {{ o.addr_state }} {{ o.addr_zip }}</span></td></tr>
+    {% endfor %}
+  </table>
+  {% else %}
+  <p class="hint">Nothing waiting.</p>
+  {% endif %}
+</div>
+{% endblock %}

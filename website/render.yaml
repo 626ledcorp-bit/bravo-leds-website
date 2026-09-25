@@ -1,0 +1,44 @@
+# Render deployment for Bravo LEDs (Phase 1 storefront + Phase 2 checkout/orders)
+# In the Render dashboard: New -> Web Service -> point at this repo's
+# `website/` directory, or deploy via render.yaml from the repo root.
+services:
+  - type: web
+    name: bravo-leds-store
+    runtime: docker
+    dockerfilePath: ./website/Dockerfile
+    dockerContext: ./website
+    plan: starter
+    healthCheckPath: /
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: FITMENT_DIR
+        value: /srv/fitment   # mount the crawl volume here when live data lands
+      # --- Phase 2: set these in the Render dashboard (never commit values).
+      # Secrets use sync:false so they are managed only in the dashboard.
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: STRIPE_PUBLISHABLE_KEY
+        sync: false
+      - key: STRIPE_WEBHOOK_SECRET
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: SMTP_HOST
+        sync: false
+      - key: SMTP_PORT
+        sync: false
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASS
+        sync: false
+      - key: SMTP_FROM
+        sync: false
+      # Order-notification recipient. Test default; the owner will swap in a
+      # dedicated orders address later (env var overrides this in code too).
+      - key: ORDER_NOTIFY_EMAIL
+        value: zoltar.works@gmail.com
+    disk:
+      name: fitment-data
+      mountPath: /srv/fitment
+      sizeGB: 1

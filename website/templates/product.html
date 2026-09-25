@@ -1,0 +1,221 @@
+{% extends "base.html" %}
+{% block title %}{{ p.name }} — Bravo LEDs{% endblock %}
+{% block content %}
+<div class="wrap">
+  <p class="small" style="margin:22px 0 0"><a href="/shop">Shop</a> / <a href="/shop/{{ p.category }}">{{ cat_name }}</a></p>
+  <div class="prod-detail">
+    <div class="prod-gallery">
+      {% if p.badge %}<span class="badge">{{ p.badge }}</span>{% endif %}
+      {% set _prim = namespace(src="/static/img/ph-" ~ categories[p.category].icon ~ ".svg") %}
+      {% for im in p.images %}{% if im.primary %}{% set _prim.src = im.src %}{% endif %}{% endfor %}
+      {% if not p.images %}{% set _prim.src = "/static/img/ph-" ~ categories[p.category].icon ~ ".svg" %}{% endif %}
+      <img id="gallery-main" src="{{ _prim.src }}" alt="{{ p.name }}">
+      {% if p.images|length > 1 %}
+      <div class="thumbs">
+        {% for im in p.images %}
+        <button type="button" class="thumb{% if im.primary %} selected{% endif %}" data-src="{{ im.src }}"><img src="{{ im.src }}" alt="{{ p.name }} photo {{ loop.index }}"></button>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+    <div class="prod-info">
+      <div class="tier">{{ p.tier }} Series</div>
+      <h1>{{ p.name }}</h1>
+      {% if p.variations %}
+      {% set _v0 = p.variations[0] %}
+      {% if _v0.on_sale %}
+      <div style="margin-bottom:6px"><span class="badge" style="position:static; background:#e5484d; color:#fff;">Sale</span></div>
+      {% endif %}
+      <div class="price-lg" id="price-display">{{ money(_v0.price_cents) }}{% if _v0.on_sale %} <s class="muted" style="font-size:18px">{{ money(_v0.compare_at_cents) }}</s>{% endif %}</div>
+      {% else %}
+      {% if p.get("sale_price_cents") %}
+      <div style="margin-bottom:6px"><span class="badge" style="position:static; background:#e5484d; color:#fff;">Sale</span></div>
+      <div class="price-lg" id="price-display">{{ money(p.sale_price_cents) }} <s class="muted" style="font-size:18px">{{ money(p.price_cents) }}</s></div>
+      {% else %}
+      <div class="price-lg" id="price-display">{{ money(p.price_cents) }}</div>
+      {% endif %}
+      {% endif %}
+      <div class="warranty-line">✓ {{ p.warranty }}</div>
+      <p class="muted">{{ p.blurb }}</p>
+
+      <form action="/cart/add" method="post" id="add-form">
+        <input type="hidden" name="product_id" value="{{ p.id }}">
+        <input type="hidden" name="variation_id" id="variation-input" value="">
+        <div id="variation-picker"></div>
+
+        <div class="qty-row">
+          <div class="qty">
+            <button type="button" data-qty="-1">−</button>
+            <input id="qty-input" name="qty" value="1" inputmode="numeric" aria-label="Quantity">
+            <button type="button" data-qty="1">+</button>
+          </div>
+          <button class="btn" type="submit">Add to Cart</button>
+        </div>
+      </form>
+      <script>
+      (function(){
+        var VARIATIONS = {{ variation_json|safe }};
+        var picker = document.getElementById("variation-picker");
+        var varInput = document.getElementById("variation-input");
+        if (!VARIATIONS.length) return;
+        var groups = Object.keys(VARIATIONS[0].option_values || {});
+        var state = {};
+        groups.forEach(function(g){ state[g] = Object.values(VARIATIONS[0].option_values)[0]; });
+        // first variation is the default (position order)
+        Object.keys(VARIATIONS[0].option_values).forEach(function(g, gi){
+          state[g] = VARIATIONS[0].option_values[g];
+        });
+        function fmt(c){ return "$" + (c/100).toFixed(2); }
+        function current(){
+          return VARIATIONS.find(function(v){
+            return groups.every(function(g){ return v.option_values[g] === state[g]; });
+          }) || VARIATIONS[0];
+        }
+        function validValues(g){
+          // only values that complete to a real variation given other picks
+          var vals = [];
+          VARIATIONS.forEach(function(v){
+            var ok = groups.every(function(h){ return h === g || v.option_values[h] === state[h]; });
+            if (ok && vals.indexOf(v.option_values[g]) < 0) vals.push(v.option_values[g]);
+          });
+          return vals;
+        }
+        function render(){
+          picker.innerHTML = "";
+          groups.forEach(function(g){
+            var label = document.createElement("div");
+            label.className = "variant-label";
+            label.textContent = g;
+            picker.appendChild(label);
+            var row = document.createElement("div");
+            row.className = "pills";
+            validValues(g).forEach(function(val){
+              var b = document.createElement("button");
+              b.type = "button";
+              b.className = "pill" + (state[g] === val ? " selected" : "");
+              b.textContent = val;
+              b.onclick = function(){ state[g] = val; sync(); };
+              row.appendChild(b);
+            });
+            picker.appendChild(row);
+          });
+          sync();
+        }
+        function sync(){
+          var v = current();
+          varInput.value = v.id;
+          var priceEl = document.getElementById("price-display");
+          if (priceEl){
+            priceEl.innerHTML = v.compare_at_cents
+              ? fmt(v.price_cents) + ' <s class="muted" style="font-size:18px">' + fmt(v.compare_at_cents) + "</s>"
+              : fmt(v.price_cents);
+          }
+          var main = document.getElementById("gallery-main");
+          if (main && v.image_src) main.src = v.image_src;
+          render_pills_selected();
+        }
+        function render_pills_selected(){
+          // re-mark selected pills without full rebuild
+          var rows = picker.querySelectorAll(".pills");
+          groups.forEach(function(g, gi){
+            var btns = rows[gi].querySelectorAll(".pill");
+            btns.forEach(function(b){
+              b.classList.toggle("selected", b.textContent === state[g]);
+            });
+          });
+        }
+        // thumbnails
+        document.querySelectorAll(".thumb").forEach(function(t){
+          t.onclick = function(){
+            document.getElementById("gallery-main").src = t.dataset.src;
+            document.querySelectorAll(".thumb").forEach(function(x){ x.classList.remove("selected"); });
+            t.classList.add("selected");
+          };
+        });
+        render();
+      })();
+      </script>
+
+      {% if disclaimer_required %}
+      <p class="disclaimer">⚠️ For off-road and fog light use only. Not DOT/SAE approved for on-road use. Check your local laws. <a href="/dot-compliance">Learn more →</a></p>
+      {% endif %}
+
+      <ul class="feat-list">
+        {% for f in p.features %}<li>{{ f }}</li>{% endfor %}
+      </ul>
+
+      <div class="trust-row">
+        <div class="trust-box"><strong>🚚 1–2 Days</strong>Fast USPS / UPS shipping</div>
+        <div class="trust-box"><strong>↩️ 30 Days</strong>Easy returns</div>
+        <div class="trust-box"><strong>🏪 Rosemead</strong>Local install help</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+  <div class="section-head"><h2>Customer Reviews</h2></div>
+  {% if review_ctx %}
+    {% if review_ctx.count %}
+    <p class="muted"><strong>{{ review_ctx.avg }}</strong> out of 5 · {{ review_ctx.count }} review{{ "s" if review_ctx.count != 1 else "" }}</p>
+    {% for r in review_ctx.reviews %}
+    <div class="contact-card" style="margin-bottom:12px">
+      <div><strong>{{ r.name }}</strong> <span style="color:#ffa21a">{{ "★" * r.rating }}{{ "☆" * (5 - r.rating) }}</span></div>
+      <p class="small muted">{{ r.created_at[:10] }}</p>
+      <p>{{ r.body }}</p>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p class="muted">Be the first to review.</p>
+    {% endif %}
+    <h3>Write a review</h3>
+    {% if request.args.get('review') == 'thanks' %}
+    <p class="flash">Thanks — your review is awaiting moderation and will appear once approved.</p>
+    {% elif request.args.get('review') == 'error' %}
+    <p class="flash">Please fill in your name, a star rating, and your review text.</p>
+    {% endif %}
+    <form action="/product/{{ p.id }}/review" method="post" style="max-width:560px">
+      <div class="field">
+        <label for="rv-name">Name</label>
+        <input id="rv-name" name="name" required maxlength="80" autocomplete="name">
+      </div>
+      <div class="field">
+        <label for="rv-rating">Rating</label>
+        <select id="rv-rating" name="rating" required>
+          <option value="5">5 — Excellent</option>
+          <option value="4">4 — Good</option>
+          <option value="3">3 — Okay</option>
+          <option value="2">2 — Poor</option>
+          <option value="1">1 — Terrible</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="rv-body">Review</label>
+        <textarea id="rv-body" name="body" rows="4" required maxlength="2000" style="width:100%"></textarea>
+      </div>
+      <button class="btn" type="submit">Submit Review</button>
+    </form>
+  {% endif %}
+
+  {% if related %}
+  <hr class="divider">
+  <div class="section-head"><h2>Pairs well with</h2></div>
+  <div class="prod-grid">
+    {% for r in related %}
+    <a class="prod-card" href="/product/{{ r.id }}">
+      <div class="prod-img">
+        {% if r.badge %}<span class="badge">{{ r.badge }}</span>{% endif %}
+        {% if r.get("sale_price_cents") %}<span class="badge" style="{% if r.badge %}top:44px;{% endif %}background:#e5484d;color:#fff;">Sale</span>{% endif %}
+        <img src="/static/img/ph-{{ categories[r.category].icon }}.svg" alt="{{ r.name }}" loading="lazy">
+      </div>
+      <div class="prod-body">
+        <div class="prod-tier">{{ r.tier }}</div>
+        <h3 class="prod-name">{{ r.name }}</h3>
+        <div class="prod-foot">{% with p=r %}{% include "_card_price.html" %}{% endwith %}</div>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+  {% endif %}
+  <div style="height:40px"></div>
+</div>
+{% endblock %}

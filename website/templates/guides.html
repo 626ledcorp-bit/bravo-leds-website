@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Install Guides — Bravo LEDs{% endblock %}
+{% block content %}
+<div class="wrap"><div class="page-narrow">
+  <h1>Install Guides</h1>
+  <p class="muted">Real-world, step-by-step instructions written from the installs we do at our Rosemead counter. Most LED bulb swaps are plug-and-play and take 15–30 minutes per side with basic hand tools.</p>
+  <p class="disclaimer">⚠️ {{ disclaimer_html|safe }}</p>
+
+  <div class="cat-grid" style="margin-top:22px">
+    {% for slug, g in guides %}
+    <a class="cat-card" href="/guides/{{ slug }}">
+      <div class="icon">🔧</div>
+      <h3>{{ g.title }}</h3>
+      <p>{{ g.blurb }}</p>
+      <p class="small muted">{{ g.difficulty }} · {{ g.time }}</p>
+    </a>
+    {% endfor %}
+  </div>
+
+  <h3 style="margin-top:28px">Before you start any install</h3>
+  <ul>
+    <li>Work with the engine off and the lights switched off. If your owner's manual says so — or you're ever unsure — disconnect the negative battery terminal first.</li>
+    <li>Wear gloves or use a clean cloth. Bare fingers leave oils on LED chips and lenses that create hot spots and shorten bulb life.</li>
+    <li>LEDs are polarity-sensitive: if a new bulb doesn't light, pull it and flip it 180°.</li>
+    <li>Flicker, strobe, or a "bulb out" dash warning after install usually means your car wants a <a href="/shop/accessories">CANbus decoder</a>.</li>
+  </ul>
+</div></div>
+{% endblock %}

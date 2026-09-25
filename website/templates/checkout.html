@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block title %}Checkout — Bravo LEDs{% endblock %}
+{% block content %}
+<div class="wrap">
+  <h1>Checkout</h1>
+
+  {% if error %}
+  <p class="flash">{{ error }}</p>
+  {% endif %}
+
+  <div class="cart-layout">
+    <div>
+      <h2>Your Details</h2>
+      {% if payments_ready %}
+      <form method="post" action="/checkout/create" class="contact-card">
+        <div class="finder-grid">
+          <label class="field">Full name
+            <input type="text" name="name" required autocomplete="name">
+          </label>
+          <label class="field">Email
+            <input type="email" name="email" required autocomplete="email">
+          </label>
+        </div>
+        <label class="field">Street address
+          <input type="text" name="line1" required autocomplete="street-address">
+        </label>
+        <label class="field">Apt / unit (optional)
+          <input type="text" name="line2">
+        </label>
+        <div class="finder-grid">
+          <label class="field">City
+            <input type="text" name="city" required autocomplete="address-level2">
+          </label>
+          <label class="field">State
+            <input type="text" name="state" required maxlength="2" autocomplete="address-level1">
+          </label>
+          <label class="field">ZIP
+            <input type="text" name="zip" required inputmode="numeric" autocomplete="postal-code">
+          </label>
+        </div>
+        <p style="margin-top:18px">
+          <button class="btn btn-block" type="submit">Pay {{ total_str }} Securely →</button>
+        </p>
+        <p class="hint">You'll be taken to Stripe's secure payment page. We never see your card number.</p>
+      </form>
+      {% else %}
+      <div class="contact-card">
+        <p><strong>Online payments aren't turned on yet.</strong></p>
+        <p>Your cart is saved — {{ total_str }} across {{ lines|length }} item{{ "s" if lines|length != 1 }}{% if promo %} (code {{ promo.code }} applied){% endif %}.
+        Visit our Rosemead store or <a href="/contact">contact us</a> to order by phone.</p>
+        <p style="margin-top:18px">
+          <a class="btn" href="/cart">← Back to Cart</a>
+        </p>
+      </div>
+      {% endif %}
+      <p class="disclaimer" style="margin-top:16px">For off-road and fog light use only.
+      Not DOT/SAE approved for on-road use. Check your local laws.
+      <a href="/dot-compliance">Learn more</a>.</p>
+    </div>
+    <aside class="cart-summary">
+      <h2>Order Summary</h2>
+      {% for l in lines %}
+      <div class="cart-line">
+        <div><strong>{{ l.product.name }}</strong><br>
+        <span class="hint">{% if l.variation_label %}{{ l.variation_label }} · {% endif %}× {{ l.qty }}</span></div>
+        <div>{{ l.line_total_str }}</div>
+      </div>
+      {% endfor %}
+      <div class="divider"></div>
+      <div class="cart-line"><div>Subtotal</div><div>{{ subtotal_str }}</div></div>
+      {% if promo %}
+      <div class="cart-line"><div>Promo <strong>{{ promo.code }}</strong></div><div>−{{ discount_str }}</div></div>
+      {% endif %}
+      <div class="cart-line"><div>Shipping</div><div>Calculated at payment</div></div>
+      <div class="cart-line"><div><strong>Total</strong></div><div><strong>{{ total_str }}</strong></div></div>
+      <p class="hint">1-year warranty on all products · 30-day returns on unused items ·
+      ships in 1-2 business days via USPS/UPS.</p>
+    </aside>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Promo Codes — Admin{% endblock %}
+{% block content %}
+<div class="wrap">
+  <h1>Promo Codes</h1>
+  <p><a href="/admin">← Admin Dashboard</a> · <a href="/admin/landing">Landing Pages →</a></p>
+  <p><a class="btn" href="/admin/promos/new">+ New Promo Code</a></p>
+  <p class="hint">Codes apply to the whole cart (percent or fixed amount off). Usage counts once per paid order. Expired, deactivated, or maxed-out codes are rejected automatically.</p>
+
+  {% if promos %}
+  <table class="admin-table">
+    <tr><th>Code</th><th>Discount</th><th>Expires</th><th>Uses</th><th>Status</th><th></th></tr>
+    {% for p in promos %}
+    <tr>
+      <td><code>{{ p.code }}</code></td>
+      <td>{{ p.describe }}</td>
+      <td>{{ (p.expires_at or "")[:16] or "never" }}</td>
+      <td>{{ p.used_count }}{% if p.max_uses %} / {{ p.max_uses }}{% endif %}</td>
+      <td>
+        {% if not p.active %}<span class="badge">off</span>
+        {% elif not p.usable %}<span class="badge" style="background:#e5484d;color:#fff">not usable</span>
+        {% else %}<span class="badge" style="background:#46c46a;color:#131313">live</span>{% endif %}
+      </td>
+      <td style="white-space:nowrap">
+        <a class="btn btn-ghost" href="/admin/promos/{{ p.code }}/edit">Edit</a>
+        <form method="post" action="/admin/promos/{{ p.code }}/delete" style="display:inline"
+              onsubmit="return confirm('Delete code {{ p.code }}? Landing pages using it as their default will lose the auto-apply.')">
+          <button class="btn btn-ghost" type="submit">Delete</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+  <p class="hint">No promo codes yet.</p>
+  {% endif %}
+</div>
+<style>
+.admin-table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.92rem}
+.admin-table th,.admin-table td{border:1px solid var(--border);padding:8px 10px;text-align:left;vertical-align:top}
+.admin-table th{background:var(--panel)}
+</style>
+{% endblock %}

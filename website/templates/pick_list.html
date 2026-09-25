@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Pick List — Bravo LEDs{% endblock %}
+{% block content %}
+<style>
+@media print {
+  header, footer, .no-print { display: none !important; }
+  .wrap { max-width: 100%; }
+}
+</style>
+<div class="wrap">
+  <p class="no-print"><a href="/admin/orders">← Orders</a>
+  <button class="btn" onclick="window.print()">Print</button></p>
+  <h1>Pick List</h1>
+  <p class="hint">{{ lines|length }} line(s) across {{ orders|length }} order(s):
+    {% for o in orders %}#{{ o.id }}{% if not loop.last %}, {% endif %}{% endfor %}</p>
+  <table class="admin-table">
+    <tr><th>✓</th><th>Qty</th><th>Product</th><th>Variation</th><th>SKU</th><th>For orders</th></tr>
+    {% for l in lines %}
+    <tr>
+      <td style="width:40px;border:1px solid #999"></td>
+      <td style="font-size:20px"><strong>{{ l.qty }}</strong></td>
+      <td>{{ l.name }}</td>
+      <td>{{ l.variation_label or "—" }}</td>
+      <td><code>{{ l.sku or "—" }}</code></td>
+      <td class="hint">
+        {% for o in orders %}
+          {% for i in o.line_items %}
+            {% if i.name == l.name and (i.variation_label or "") == l.variation_label %}#{{ o.id }} {% endif %}
+          {% endfor %}
+        {% endfor %}
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% if not lines %}<p class="hint">No unshipped items.</p>{% endif %}
+</div>
+{% endblock %}

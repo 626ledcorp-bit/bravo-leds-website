@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}Square POS Sync — Admin — Bravo LEDs{% endblock %}
+{% block content %}
+<div class="wrap">
+  <h1>Square POS Sync <span class="data-pill">two-way inventory</span></h1>
+  <p style="margin-bottom:16px"><a href="/admin">← Dashboard</a> · <a href="/admin/settings">Settings</a></p>
+
+  <div class="contact-card" style="margin-bottom:16px">
+    <h2>Connection</h2>
+    {% if configured %}
+    <p><span class="badge">connected</span> Environment: <strong>{{ environment }}</strong> · Auto-push on order payment: <strong>{{ "on" if auto_sync else "off" }}</strong></p>
+    {% else %}
+    <p><span class="badge">not configured</span> Add the Square access token and location ID in <a href="/admin/settings">Settings</a> first.</p>
+    {% endif %}
+    <p class="hint">{{ linked }} variation(s) linked to Square · {{ unlinked }} unlinked. The website is the catalog master — push products to Square once, then counts stay aligned both ways.</p>
+    <p>
+      <form method="post" action="/admin/square/test" style="display:inline"><button class="btn btn-ghost" type="submit">Test connection</button></form>
+      <form method="post" action="/admin/square/push-catalog" style="display:inline" onsubmit="return confirm('Push all active products to Square? Existing SKUs are matched, not duplicated.');"><button class="btn" type="submit"{% if not configured %} disabled{% endif %}>Push catalog to Square</button></form>
+      <form method="post" action="/admin/square/pull" style="display:inline"><button class="btn btn-ghost" type="submit"{% if not configured %} disabled{% endif %}>Pull counts from Square</button></form>
+      <form method="post" action="/admin/square/import" style="display:inline" onsubmit="return confirm('Fetch the Square catalog and preview the import? Nothing is written until you confirm.');"><button class="btn btn-ghost" type="submit"{% if not configured %} disabled{% endif %}>Import from Square</button></form>
+    </p>
+  </div>
+
+  <h2>Products</h2>
+  {% if rows %}
+  <table class="admin-table">
+    <tr><th>Product</th><th>SKU</th><th>Square item</th><th>Variations linked</th><th>Last synced</th><th>Actions</th></tr>
+    {% for r in rows %}
+    <tr>
+      <td>{{ r.name }}</td>
+      <td><code>{{ r.sku or "—" }}</code></td>
+      <td>{% if r.item_id %}<code>{{ r.item_id[:12] }}…</code>{% else %}—{% endif %}</td>
+      <td>{{ r.linked }} / {{ r.total }}</td>
+      <td class="hint">{{ r.synced_at[:16] if r.synced_at else "—" }}</td>
+      <td style="white-space:nowrap">
+        <form method="post" action="/admin/square/product/{{ r.id }}/push" style="display:inline"><button class="btn btn-ghost" type="submit"{% if not configured %} disabled{% endif %}>Push</button></form>
+        <form method="post" action="/admin/square/product/{{ r.id }}/pull" style="display:inline"><button class="btn btn-ghost" type="submit"{% if not configured %} disabled{% endif %}>Pull</button></form>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+  <p class="hint">No active products yet.</p>
+  {% endif %}
+
+  <h2 style="margin-top:28px">Sync log</h2>
+  <p class="hint">Last-write-wins: every applied change overwrites with the incoming count and is logged here with old → new. Counts are never driven below 0 — clamps are flagged.</p>
+  {% if log %}
+  <table class="admin-table">
+    <tr><th>Time</th><th>Direction</th><th>SKU</th><th>Old → New</th><th>Result</th><th>Detail</th></tr>
+    {% for e in log %}
+    <tr>
+      <td class="hint">{{ e.created_at[:19] }}</td>
+      <td><code>{{ e.direction }}</code></td>
+      <td><code>{{ e.sku or "—" }}</code></td>
+      <td>{% if e.old_qty is not none or e.new_qty is not none %}{{ e.old_qty if e.old_qty is not none else "—" }} → {{ e.new_qty if e.new_qty is not none else "—" }}{% else %}—{% endif %}</td>
+      <td>{% if e.result == "ok" %}<span class="badge">ok</span>{% elif e.result == "clamped" %}<span class="badge">clamped</span>{% elif e.result == "skipped" %}<span class="badge">skipped</span>{% else %}<span class="badge">error</span>{% endif %}</td>
+      <td class="hint">{{ e.detail or ("Square object " + e.square_object_id[:12] + "…" if e.square_object_id else "") }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+  <p class="hint">No sync activity yet.</p>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="wrap hero-inner">
+    <h1>Brighter Nights Start <span class="glow">Here.</span></h1>
+    <p class="sub">Plug-and-play LED bulbs for off-road, fog lights, turn signals and more — matched to your exact vehicle by people who install them every day.</p>
+
+    <form class="finder" id="fitment-finder">
+      <h2><span class="dot">●</span> Find bulbs for your vehicle</h2>
+      <p class="hint">Pick your ride — we'll show every bulb position and the LEDs that fit.</p>
+      <div class="finder-grid">
+        <div class="field">
+          <label for="ff-year">Year</label>
+          <select id="ff-year" name="year">
+            <option value="">Year</option>
+            {% for y in years %}<option value="{{ y }}">{{ y }}</option>{% endfor %}
+          </select>
+        </div>
+        <div class="field">
+          <label for="ff-make">Make</label>
+          <select id="ff-make" name="make" disabled><option value="">Make</option></select>
+        </div>
+        <div class="field">
+          <label for="ff-model">Model</label>
+          <select id="ff-model" name="model" disabled><option value="">Model</option></select>
+        </div>
+        <div class="field">
+          <label for="ff-trim">Trim</label>
+          <select id="ff-trim" name="trim" disabled><option value="">Trim (optional)</option></select>
+        </div>
+      </div>
+      <button class="btn btn-block" id="ff-go" type="submit" disabled>Find My Bulbs →</button>
+    </form>
+  </div>
+</section>
+
+<section class="trust-strip" style="background:var(--panel);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="wrap" style="display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:center;padding:14px 20px;font-size:13px">
+    <span>🛡️ <strong>1-Year Warranty</strong> on every product</span>
+    <span>🚚 <strong>Ships in 1–2 business days</strong> via USPS &amp; UPS</span>
+    <span>⚠️ <strong>Off-road &amp; fog light use only</strong> — not DOT/SAE approved for on-road use. <a href="/dot-compliance">Learn more →</a></span>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Shop by Category</h2>
+    </div>
+    <div class="cat-grid">
+      {% set icons = {"led-bulbs":"💡","fog":"🌫️","turn":"↔️","brake":"🛑","reverse":"🔙","interior":"✨","pods":"🔦","strips":"🌈","accessories":"🔌"} %}
+      {% for cid, c in categories.items() %}
+      <a class="cat-card" href="/shop/{{ cid }}">
+        <div class="icon">{{ icons.get(cid, "💡") }}</div>
+        <h3>{{ c.name }}</h3>
+        <p>{{ c.tagline }}</p>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Customer Favorites</h2>
+      <a class="more" href="/shop">Shop all →</a>
+    </div>
+    <div class="prod-grid">
+      {% for p in featured %}
+      <a class="prod-card" href="/product/{{ p.id }}">
+        <div class="prod-img">
+          {% if p.badge %}<span class="badge">{{ p.badge }}</span>{% endif %}
+          {% if p.get("sale_price_cents") %}<span class="badge" style="{% if p.badge %}top:44px;{% endif %}background:#e5484d;color:#fff;">Sale</span>{% endif %}
+          <img src="{{ primary_image(p) }}" alt="{{ p.name }}" loading="lazy">
+        </div>
+        <div class="prod-body">
+          <div class="prod-tier">{{ p.tier }}</div>
+          <h3 class="prod-name">{{ p.name }}</h3>
+          <div class="prod-meta">{{ p.warranty }}</div>
+          <div class="prod-foot">
+            {% include "_card_price.html" %}
+          </div>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Customer Reviews</h2>
+    </div>
+    {# Wired to the real review system: home() passes homepage_reviews (list of
+       approved review dicts) once available; until then an honest empty state. #}
+    {% set hreviews = homepage_reviews if homepage_reviews is defined else [] %}
+    {% if hreviews %}
+    <div class="props">
+      {% for r in hreviews[:6] %}
+      <div class="prop">
+        <div style="color:#f5a623;font-size:15px" aria-label="{{ r.rating }} out of 5 stars">{% for i in range(r.rating|int) %}★{% endfor %}{% for i in range(5 - r.rating|int) %}☆{% endfor %}</div>
+        <p style="margin:8px 0"><strong>{{ r.name }}</strong></p>
+        <p class="muted" style="font-size:13px">{{ r.body }}</p>
+        <p class="muted" style="font-size:12px;margin-top:8px"><a href="/product/{{ r.product_id }}">View product →</a></p>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="contact-card" style="text-align:center; padding:36px 24px">
+      <h2>⭐ No reviews yet — be the first</h2>
+      <p class="muted">Every product page lets customers leave a verified review once their order is approved by our team. Grab a set, install them, and tell the next driver how they look.</p>
+      <a class="btn" href="/shop">Shop Best Sellers →</a>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="contact-card" style="text-align:center; padding:36px 24px">
+      <h2>Get deals &amp; new products first</h2>
+      <p class="muted">Join the list for deals and new products.</p>
+      {% if request.args.get('nl') == 'ok' %}
+      <p><strong>You're on the list — welcome aboard.</strong></p>
+      {% else %}
+      <form action="/newsletter" method="post" style="display:flex; gap:10px; max-width:440px; margin:0 auto">
+        <input type="hidden" name="next" value="{{ request.path }}">
+        <input type="email" name="email" required placeholder="you@email.com" aria-label="Email address" style="flex:1">
+        <button class="btn" type="submit">Join</button>
+      </form>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="props">
+      <div class="prop"><div class="icon">🚚</div><h4>Fast Shipping</h4><p>Orders ship in 1–2 business days via USPS &amp; UPS.</p></div>
+      <div class="prop"><div class="icon">↩️</div><h4>30-Day Returns</h4><p>Unused items returnable within 30 days, no hassle.</p></div>
+      <div class="prop"><div class="icon">🛡️</div><h4>Real Warranty</h4><p>1-year warranty on every product.</p></div>
+      <div class="prop"><div class="icon">🏪</div><h4>Local Experts</h4><p>Visit our Rosemead store for in-person help.</p></div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

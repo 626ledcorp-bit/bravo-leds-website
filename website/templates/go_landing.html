@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.headline }} — Bravo LEDs</title>
+  <meta name="description" content="{{ page.subhead }}">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="icon" href="/static/img/favicon-chevron.png">
+  <style>
+    body { padding-bottom: 96px; }
+    .go-header { border-bottom: 1px solid var(--border); padding: 12px 0; }
+    .go-header .wrap { display: flex; align-items: center; justify-content: space-between; }
+    .go-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); font-weight: 800; font-size: 1.05rem; }
+    .go-logo .logo-mark { background: var(--accent, #ffa21a); color: #131313; font-weight: 900; border-radius: 8px; padding: 4px 10px; }
+    .go-logo .logo-img { height: 36px; width: auto; display: block; }
+    .go-cart { text-decoration: none; color: var(--text); font-weight: 600; }
+    .go-hero { display: grid; gap: 26px; padding: 34px 0 10px; }
+    @media (min-width: 900px) { .go-hero { grid-template-columns: 1fr 1fr; gap: 44px; } }
+    .go-hero img { width: 100%; max-width: 480px; border-radius: 14px; border: 1px solid var(--border); background: var(--panel); }
+    .go-badge { display: inline-block; background: #e5484d; color: #fff; font-weight: 700; font-size: .8rem; border-radius: 999px; padding: 4px 12px; margin-bottom: 10px; }
+    .go-code-chip { display: inline-block; background: rgba(255,162,26,.12); border: 1px dashed var(--accent, #ffa21a); color: var(--accent, #ffa21a); font-weight: 700; border-radius: 8px; padding: 6px 12px; margin: 10px 0; }
+    .go-price { font-size: 2rem; font-weight: 800; margin: 8px 0; }
+    .go-price s { font-size: 1.2rem; color: var(--muted); font-weight: 400; }
+    .go-bullets { list-style: none; padding: 0; margin: 18px 0; }
+    .go-bullets li { padding: 8px 0 8px 30px; position: relative; }
+    .go-bullets li::before { content: "✓"; position: absolute; left: 0; color: #46c46a; font-weight: 800; }
+    .go-countdown { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 14px 18px; margin: 18px 0; }
+    .go-countdown .cd-label { font-size: .85rem; color: var(--muted); margin-bottom: 4px; }
+    .go-countdown .cd-time { font-size: 1.7rem; font-weight: 800; letter-spacing: 2px; font-variant-numeric: tabular-nums; }
+    .go-countdown .cd-hint { font-size: .8rem; color: var(--muted); margin-top: 4px; }
+    .go-section { padding: 26px 0; border-top: 1px solid var(--border); margin-top: 26px; }
+    .go-section h2 { margin-top: 0; }
+    .go-video iframe { width: 100%; aspect-ratio: 16/9; border: 0; border-radius: 12px; }
+    .go-video-ph, .go-testimonial-ph { border: 2px dashed var(--border); border-radius: 12px; padding: 28px; text-align: center; color: var(--muted); }
+    .go-testimonial { background: var(--panel); border-left: 4px solid var(--accent, #ffa21a); border-radius: 0 12px 12px 0; padding: 18px 22px; font-style: italic; }
+    .go-install ol { padding-left: 22px; }
+    .go-install li { margin-bottom: 8px; }
+    .go-sticky { position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; background: rgba(19,19,19,.97); border-top: 1px solid var(--border); padding: 12px 0; }
+    .go-sticky .wrap { display: flex; align-items: center; gap: 14px; justify-content: space-between; flex-wrap: wrap; }
+    .go-sticky .price { font-size: 1.4rem; font-weight: 800; }
+    .go-sticky .price s { font-size: 1rem; color: var(--muted); font-weight: 400; }
+    .go-notice { border-radius: 10px; padding: 10px 14px; margin: 14px 0; font-size: .95rem; }
+    .go-notice.ok { background: rgba(70,196,106,.12); border: 1px solid #46c46a; }
+    .go-notice.bad { background: rgba(229,72,77,.12); border: 1px solid #e5484d; }
+    .go-review { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 14px 18px; margin-bottom: 12px; }
+    .stars { color: #ffa21a; }
+  </style>
+</head>
+<body>
+<header class="go-header">
+  <div class="wrap">
+    <a class="go-logo" href="/"><img src="/static/img/logo-bravo-led.png" alt="Bravo LEDs" class="logo-img"></a>
+    <a class="go-cart" href="/cart">🛒 Cart ({{ cart_count }})</a>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+  {% if promo_notice %}
+  <div class="go-notice {{ 'ok' if promo_notice[0] == 'promo-ok' else 'bad' }}">{{ promo_notice[1] }}</div>
+  {% endif %}
+
+  <div class="go-hero">
+    <div>
+      {% if product.get("badge") %}<span class="go-badge">{{ product.badge }}</span>{% endif %}
+      <img src="/static/img/ph-{{ categories[product.category].icon }}.svg" alt="{{ product.name }}">
+    </div>
+    <div>
+      <h1 style="margin-top:0">{{ page.headline }}</h1>
+      <p class="muted" style="font-size:1.05rem">{{ page.subhead }}</p>
+      <div class="go-price">
+        {{ money(unit_price_cents) }}
+        {% if product.get("sale_price_cents") %}<s>{{ money(product.price_cents) }}</s>{% endif %}
+      </div>
+      <div class="warranty-line">✓ {{ product.warranty }}</div>
+      {% if promo %}
+      <div><span class="go-code-chip">Code {{ promo.code }} auto-applied — {{ promo_describe }} ({{ money(promo_discount_cents) }} off)</span></div>
+      {% endif %}
+      <ul class="go-bullets">
+        {% for b in page.bullets %}<li>{{ b }}</li>{% endfor %}
+      </ul>
+
+      <div class="go-countdown"
+           data-cd-mode="{{ countdown.mode }}"
+           {% if countdown.mode == "fixed" %}data-cd-end="{{ countdown.end }}"{% endif %}
+           {% if countdown.mode == "evergreen" %}data-cd-minutes="{{ countdown.minutes }}" data-cd-slug="{{ countdown.slug }}"{% endif %}>
+        <div class="cd-label">⏳ Special offer ends in</div>
+        <div class="cd-time" data-cd-time>--:--:--</div>
+        {% if countdown.mode == "evergreen" %}
+        <div class="cd-hint">Your personal {{ countdown.minutes }}-minute window starts when you first open this page.</div>
+        {% else %}
+        <div class="cd-hint">Offer ends at the time shown — no extensions.</div>
+        {% endif %}
+      </div>
+
+      <form action="/cart/add" method="post" style="margin-top:6px">
+        <input type="hidden" name="product_id" value="{{ product.id }}">
+        <input type="hidden" name="variation_id" value="{{ product.variations[0].id if product.variations else '' }}">
+        <input type="hidden" name="qty" value="1">
+        <button class="btn btn-block" type="submit" style="font-size:1.1rem; padding:14px">Add to Cart — {{ money(unit_price_cents) }}</button>
+      </form>
+      <p class="disclaimer" style="margin-top:12px">{{ disclaimer_html|safe }}</p>
+    </div>
+  </div>
+
+  <div class="go-section go-video">
+    <h2>See it in action</h2>
+    {% if embed_url %}
+    <iframe src="{{ embed_url }}" title="Product video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+    {% else %}
+    <div class="go-video-ph">
+      {% if video_is_placeholder %}🎬 <strong>VIDEO PLACEHOLDER</strong> — the store owner will embed a real install/demo video here.{% else %}🎬 Video coming soon.{% endif %}
+    </div>
+    {% endif %}
+  </div>
+
+  <div class="go-section go-install">
+    <h2>Easy install — about 20 minutes per side</h2>
+    <ol>
+      <li>Unplug the factory connector from the old bulb.</li>
+      <li>Twist the old bulb out, seat the new LED (chips facing 3 and 9 o'clock), and plug it back in.</li>
+      <li>Flip the plug 180° if it doesn't light — LEDs are polarity-sensitive.</li>
+    </ol>
+    <p><a href="/guides/low-beam-bulb-swap">Read the full step-by-step install guide →</a></p>
+  </div>
+
+  <div class="go-section">
+    <h2>Spec highlights</h2>
+    <ul class="go-bullets">
+      {% for f in product.features %}<li>{{ f }}</li>{% endfor %}
+    </ul>
+    <p class="muted">{{ product.blurb }}</p>
+  </div>
+
+  {% if testimonial_text %}
+  <div class="go-section">
+    <h2>What drivers say</h2>
+    {% if testimonial_is_placeholder %}
+    <div class="go-testimonial-ph">💬 <strong>TESTIMONIAL PLACEHOLDER</strong> — a real customer review will go here. We never invent testimonials.</div>
+    {% else %}
+    <div class="go-testimonial">{{ testimonial_text }}</div>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  <div class="go-section">
+    <h2>Customer reviews</h2>
+    {% if reviews.count %}
+    <p class="muted"><strong>{{ reviews.avg }}</strong> out of 5 · {{ reviews.count }} review{{ "s" if reviews.count != 1 else "" }} <span class="stars">{{ "★" * (reviews.avg|round|int) }}{{ "☆" * (5 - (reviews.avg|round|int)) }}</span></p>
+    {% for r in reviews.reviews %}
+    <div class="go-review">
+      <div><strong>{{ r.name }}</strong> <span class="stars">{{ "★" * r.rating }}{{ "☆" * (5 - r.rating) }}</span></div>
+      <p class="small muted">{{ r.created_at[:10] }}</p>
+      <p>{{ r.body }}</p>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p class="muted">No reviews yet — be the first to review this product.</p>
+    {% endif %}
+    <p><a class="btn btn-ghost" href="/product/{{ product.id }}">Write a review on the product page →</a></p>
+  </div>
+
+  <div class="go-section">
+    <p class="disclaimer">{{ disclaimer_html|safe }}</p>
+    <p class="small muted">Bravo LEDs by 626 LEDs: Automotive Lighting Parts Store · Rosemead, CA · 1-year warranty on all products · 30-day returns on unused items · Ships in 1–2 business days.</p>
+  </div>
+  <div style="height:24px"></div>
+</div>
+</main>
+
+<div class="go-sticky">
+  <div class="wrap">
+    <div>
+      <div class="price">{{ money(unit_price_cents) }} {% if product.get("sale_price_cents") %}<s>{{ money(product.price_cents) }}</s>{% endif %}</div>
+      {% if promo %}<div class="small" style="color:var(--accent,#ffa21a)">Code {{ promo.code }}: {{ promo_describe }}</div>{% endif %}
+    </div>
+    <form action="/cart/add" method="post">
+      <input type="hidden" name="product_id" value="{{ product.id }}">
+      <input type="hidden" name="variation_id" value="{{ product.variations[0].id if product.variations else '' }}">
+      <input type="hidden" name="qty" value="1">
+      <button class="btn" type="submit">Add to Cart →</button>
+    </form>
+  </div>
+</div>
+
+<script>
+(function () {
+  var box = document.querySelector("[data-cd-mode]");
+  if (!box) return;
+  var timeEl = box.querySelector("[data-cd-time]");
+  var mode = box.getAttribute("data-cd-mode");
+  var deadline;
+
+  if (mode === "fixed") {
+    deadline = new Date(box.getAttribute("data-cd-end")).getTime();
+  } else {
+    // Evergreen: per-visitor window, stored in THEIR browser. Once it
+    // expires it stays expired — this is deliberately not a reset loop.
+    var minutes = parseInt(box.getAttribute("data-cd-minutes"), 10) || 30;
+    var key = "go_cd_" + box.getAttribute("data-cd-slug");
+    var start = null;
+    try { start = parseInt(localStorage.getItem(key), 10) || null; } catch (e) { start = null; }
+    if (!start || isNaN(start)) {
+      start = Date.now();
+      try { localStorage.setItem(key, String(start)); } catch (e) { /* private mode: page-load fallback below */ }
+    }
+    deadline = start + minutes * 60 * 1000;
+  }
+
+  function pad(n) { return (n < 10 ? "0" : "") + n; }
+  function tick() {
+    var remain = deadline - Date.now();
+    if (isNaN(deadline) || remain <= 0) {
+      timeEl.textContent = "Offer ended";
+      clearInterval(timer);
+      return;
+    }
+    var s = Math.floor(remain / 1000);
+    var d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600),
+        m = Math.floor(s % 3600 / 60), sec = s % 60;
+    timeEl.textContent = (d > 0 ? d + "d " : "") + pad(h) + ":" + pad(m) + ":" + pad(sec);
+  }
+  tick();
+  var timer = setInterval(tick, 1000);
+})();
+</script>
+</body>
+</html>

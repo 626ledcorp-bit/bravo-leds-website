@@ -1,0 +1,15 @@
+{# Shared card price row. Expects `p` in context.
+   With variations, shows the "From $min" range; without, the old
+   product-level sale/regular logic.
+   The "Sale" badge itself is rendered inline in each card's .prod-img. #}
+{% set _pr = variation_price_range(p) %}
+{% if _pr and _pr[0] != _pr[1] %}
+<span class="price">From {{ money(_pr[0]) }}</span>
+{% elif _pr %}
+<span class="price">{{ money(_pr[0]) }}</span>
+{% elif p.get("sale_price_cents") %}
+<span class="price">{{ money(p.sale_price_cents) }}</span>
+<s class="muted small">{{ money(p.price_cents) }}</s>
+{% else %}
+<span class="price">{{ money(p.price_cents) }}</span>
+{% endif %}

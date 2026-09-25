@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}{{ vehicle_label }} LED Bulbs — Bravo LEDs{% endblock %}
+{% block content %}
+<div class="wrap">
+  <div class="vehicle-banner">
+    <div style="font-size:38px">🚗</div>
+    <div>
+      <h1>{{ vehicle_label }}</h1>
+      <p class="sub" style="margin:4px 0 0">Every lighting position, the size it takes, and the LEDs that fit — pick your tier.</p>
+    </div>
+    <span class="header-spacer"></span>
+    {% if fitment_source.source == "live" %}
+    <span class="data-pill live">● Live fitment database · {{ fitment_source.vehicles }} vehicles</span>
+    {% else %}
+    <span class="data-pill seed">● Demo fitment data — full database coming soon</span>
+    {% endif %}
+  </div>
+
+  <p class="disclaimer">⚠️ For off-road and fog light use only. Not DOT/SAE approved for on-road use. Check your local laws. <a href="/dot-compliance">Learn more →</a></p>
+
+  {% for r in rows %}
+  <div class="pos-block">
+    <div class="pos-head">
+      <h3>{{ r.label }}</h3>
+      <span class="size-chip">{{ r.bulb_size_raw }}</span>
+      {% if r.note %}<span class="pos-note">{{ r.note }}</span>{% endif %}
+    </div>
+    {% if r.products %}
+    <div class="pos-prods">
+      {% for p in r.products %}
+      <a class="pos-prod" href="/product/{{ p.id }}">
+        <img src="{{ primary_image(p) }}" alt="{{ p.name }}" loading="lazy">
+        <div style="flex:1">
+          <div class="nm">{{ p.name }}</div>
+          <div class="small muted">{{ p.tier }} · {{ p.warranty }}</div>
+        </div>
+        <div class="pr">{{ money(p.price_cents) }}</div>
+      </a>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="no-match">No catalog match for size {{ r.bulb_size_raw }} yet — <a href="/contact">ask us</a> and we'll find it for you.</div>
+    {% endif %}
+  </div>
+  {% endfor %}
+
+  <div class="flash">
+    💡 Tip: bulbs are sold per pair unless noted. Not sure between tiers? <a href="/contact">Message us</a> with your vehicle and how you drive — we'll recommend the right setup.
+  </div>
+  <div style="height:30px"></div>
+</div>
+{% endblock %}

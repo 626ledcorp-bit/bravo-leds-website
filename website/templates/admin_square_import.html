@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Import from Square — Admin — Bravo LEDs{% endblock %}
+{% block content %}
+<div class="wrap">
+  <h1>Import from Square <span class="data-pill">preview</span></h1>
+  <p style="margin-bottom:16px"><a href="/admin/square">← Square sync</a></p>
+  <p class="hint">Fetched {{ fetched_at[:19] if fetched_at else "—" }}. Nothing has been written yet — confirm below to create the “create” items as <strong>draft</strong> products. Skipped and blocked items are left alone.</p>
+
+  {% set c = plan.counts %}
+  <p><span class="badge">{{ c.create }} to create</span> <span class="badge">{{ c.skip }} skipped</span> <span class="badge">{{ c.error }} blocked</span></p>
+
+  {% if plan["items"] %}
+  <table class="admin-table">
+    <tr><th>Square item</th><th>Website name</th><th>Variations</th><th>Category</th><th>Images</th><th>Status</th></tr>
+    {% for g in plan["items"] %}
+    <tr>
+      <td class="hint">{{ g.raw_name or "—" }}<br><code>{{ g.square_item_id[:12] if g.square_item_id else "—" }}…</code></td>
+      <td>{{ g.name }}</td>
+      <td class="hint">
+        {% for v in g.variations %}
+        {{ v.name or "Standard" }}{% if v.sku %} (<code>{{ v.sku }}</code>){% endif %} — ${{ "%.2f"|format(v.price_cents / 100) }} · qty {{ v.qty }}{% if not loop.last %}<br>{% endif %}
+        {% endfor %}
+      </td>
+      <td class="hint">{% if g.category %}{{ g.category }}{% elif g.category_name %}uncategorized{% else %}—{% endif %}{% if g.category_note %}<br>{{ g.category_note }}{% endif %}</td>
+      <td class="hint">{{ g.images|length }}</td>
+      <td>
+        {% if g.action == "create" %}<span class="badge">create</span>
+        {% elif g.action == "skip" %}<span class="badge">skipped</span>
+        {% else %}<span class="badge">blocked</span>{% endif %}
+        {% if g.reason %}<br><span class="hint">{{ g.reason }}</span>{% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+  <p class="hint">No items in the Square catalog.</p>
+  {% endif %}
+
+  {% if plan.importable %}
+  <form method="post" action="/admin/square/import/confirm" style="margin-top:16px" onsubmit="return confirm('Create {{ c.create }} draft product(s) from Square?');">
+    <input type="hidden" name="token" value="{{ token }}">
+    <button class="btn" type="submit">Confirm import — create {{ c.create }} draft(s)</button>
+  </form>
+  {% else %}
+  <p class="hint" style="margin-top:16px">Nothing to import.</p>
+  {% endif %}
+</div>
+{% endblock %}

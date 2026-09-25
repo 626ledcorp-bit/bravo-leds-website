@@ -1,0 +1,816 @@
+[
+ {
+  "id": "resistor-kit",
+  "name": "Load Resistor Kit for LED Turn Signals",
+  "category": "accessories",
+  "tier": "Accessory",
+  "price_cents": 1200,
+  "warranty": "1-month warranty",
+  "sizes": [
+   "Universal"
+  ],
+  "color_temps": [],
+  "badge": null,
+  "blurb": "Stops hyperflash when upgrading to LED turn signals on older vehicles.",
+  "features": [
+   "50W 6-ohm",
+   "Quick-splice taps included",
+   "Mounts to metal"
+  ],
+  "price": 12.0,
+  "icon": "plug"
+ },
+ {
+  "id": "led-decoder",
+  "name": "LED Decoder \u2014 CANbus Anti-Flicker (Pair)",
+  "category": "accessories",
+  "tier": "Accessory",
+  "price_cents": 1500,
+  "warranty": "3-month warranty",
+  "sizes": [
+   "H11",
+   "9005",
+   "9006",
+   "H7",
+   "9012"
+  ],
+  "color_temps": [],
+  "badge": null,
+  "blurb": "Kills flicker and 'bulb out' warnings on CANbus vehicles. Plugs inline in seconds.",
+  "features": [
+   "Anti-flicker capacitors",
+   "Clears bulb-out errors",
+   "Plug-and-play"
+  ],
+  "price": 15.0,
+  "icon": "plug"
+ },
+ {
+  "id": "basic-led-brake",
+  "name": "Basic LED Brake Light Bulbs",
+  "category": "brake",
+  "tier": "Basic",
+  "price_cents": 2500,
+  "warranty": "1-month warranty",
+  "sizes": [
+   "7440",
+   "7443",
+   "3157",
+   "1157"
+  ],
+  "color_temps": [
+   "Red"
+  ],
+  "badge": null,
+  "blurb": "LEDs light up 0.2s faster than incandescent \u2014 real stopping-distance safety.",
+  "features": [
+   "Instant-on safety",
+   "Deep red output",
+   "1-month warranty"
+  ],
+  "price": 25.0,
+  "icon": "brake"
+ },
+ {
+  "id": "premium-led-brake",
+  "name": "Premium LED Brake Light Bulbs",
+  "category": "brake",
+  "tier": "Premium",
+  "price_cents": 7000,
+  "warranty": "12-month warranty",
+  "sizes": [
+   "7440",
+   "7443",
+   "3157",
+   "1157"
+  ],
+  "color_temps": [
+   "Red"
+  ],
+  "badge": null,
+  "blurb": "Maximum red output for brake housings. Hard to miss, day or night.",
+  "features": [
+   "High-output red",
+   "360\u00b0 illumination",
+   "12-month warranty"
+  ],
+  "price": 70.0,
+  "icon": "brake"
+ },
+ {
+  "id": "strobe-led-brake",
+  "name": "Premium Flash/Strobe LED Brake Light",
+  "category": "brake",
+  "tier": "Premium",
+  "price_cents": 7500,
+  "warranty": "12-month warranty",
+  "sizes": [
+   "7440",
+   "7443",
+   "3157"
+  ],
+  "color_temps": [
+   "Red"
+  ],
+  "badge": "Safety Pick",
+  "blurb": "Flashes 3x then goes solid when you brake. Proven to grab tailgaters' attention.",
+  "features": [
+   "Triple-flash then solid",
+   "Plug-and-play",
+   "12-month warranty"
+  ],
+  "price": 75.0,
+  "icon": "brake"
+ },
+ {
+  "id": "basic-led-fog-kit",
+  "name": "Basic LED Fog Light Kit",
+  "category": "fog",
+  "tier": "Basic",
+  "price_cents": 2500,
+  "warranty": "1-month warranty",
+  "sizes": [
+   "H11",
+   "H8",
+   "H10",
+   "9145",
+   "5202",
+   "880",
+   "881",
+   "H16"
+  ],
+  "color_temps": [
+   "6000K",
+   "8000K",
+   "3000K"
+  ],
+  "badge": null,
+  "blurb": "Affordable LED fog upgrade. 3000K golden yellow available for real foul-weather performance.",
+  "features": [
+   "Plug-and-play",
+   "3000K yellow option",
+   "1-month warranty"
+  ],
+  "price": 25.0,
+  "icon": "fog"
+ },
+ {
+  "id": "plus-led-fog-kit",
+  "name": "Plus LED Fog Light Kit",
+  "category": "fog",
+  "tier": "Plus",
+  "price_cents": 3500,
+  "warranty": "3-month warranty",
+  "sizes": [
+   "H11",
+   "H8",
+   "H10",
+   "9145",
+   "5202",
+   "880",
+   "881",
+   "H16"
+  ],
+  "color_temps": [
+   "6000K",
+   "8000K",
+   "3000K"
+  ],
+  "badge": null,
+  "blurb": "Brighter fog output with better thermal design than Basic.",
+  "features": [
+   "Higher lumen output",
+   "3000K yellow option",
+   "3-month warranty"
+  ],
+  "price": 35.0,
+  "icon": "fog"
+ },
+ {
+  "id": "rav4-fog-upgrade-kit",
+  "name": "Toyota RAV4 Fog Light LED Upgrade Kit (2006\u20132021)",
+  "category": "fog",
+  "tier": "Plus",
+  "price_cents": 4500,
+  "warranty": "12-month warranty",
+  "sizes": [
+   "H11"
+  ],
+  "color_temps": [
+   "6000K",
+   "3000K"
+  ],
+  "badge": "Vehicle Specific",
+  "blurb": "Purpose-built for 2006\u20132021 RAV4 fog housings. Perfect fitment, no guesswork.",
+  "features": [
+   "RAV4-specific fitment",
+   "OEM-style beam",
+   "12-month warranty"
+  ],
+  "price": 45.0,
+  "icon": "fog"
+ },
+ {
+  "id": "premium-led-fog-kit",
+  "name": "Premium LED Fog Light Kit",
+  "category": "fog",
+  "tier": "Premium",
+  "price_cents": 7000,
+  "warranty": "12-month warranty",
+  "sizes": [
+   "H11",
+   "H8",
+   "H10",
+   "9145",
+   "5202",
+   "880",
+   "881",
+   "H16"
+  ],
+  "color_temps": [
+   "6000K",
+   "8000K",
+   "3000K"
+  ],
+  "badge": null,
+  "blurb": "CSP chips in a fog-specific beam. Wide, low, and glare-free.",
+  "features": [
+   "CSP chips",
+   "Fog-specific beam pattern",
+   "12-month warranty"
+  ],
+  "price": 70.0,
+  "icon": "fog"
+ },
+ {
+  "id": "platinum-led-fog-kit",
+  "name": "Platinum LED Fog Light Kit",
+  "category": "fog",
+  "tier": "Platinum",
+  "price_cents": 10000,
+  "warranty": "12-month warranty",
+  "sizes": [
+   "H11",
+   "H8",
+   "H10",
+   "9145",
+   "5202",
+   "880",
+   "881",
+   "H16"
+  ],
+  "color_temps": [
+   "6000K",
+   "8000K",
+   "3000K"
+  ],
+  "badge": null,
+  "blurb": "Maximum fog output we offer. Pairs perfectly with a Platinum headlight kit.",
+  "features": [
+   "Flagship fog output",
+   "3000K yellow option",
+   "12-month warranty"
+  ],
+  "price": 100.0,
+  "icon": "fog"
+ },
+ {
+  "id": "basic-led-headlight-kit",
+  "name": "Basic LED Headlight Kit",
+  "category": "headlight",
+  "tier": "Basic",
+  "price_cents": 2500,
+  "warranty": "1-month warranty",
+  "sizes": [
+   "H11",
+   "H7",
+   "9005",
+   "9006",
+   "9012",
+   "H13",
+   "9004",
+   "9007"
+  ],
+  "color_temps": [
+   "6000K",
+   "8000K"
+  ],
+  "badge": "Best Seller",
+  "blurb": "Our entry LED conversion. Twice the output of stock halogens, plug-and-play install in about 20 minutes.",
+  "features": [
+   "6000LM per pair",
+   "Plug-and-play, no cutting",
+   "Built-in compact driver",
+   "1-month warranty"
+  ],
+  "price": 25.0,
+  "icon": "bulb"
+ },
+ {
+  "id": "plus-led-headlight-kit",
+  "name": "Plus LED Headlight Kit",
+  "category": "headlight",
+  "tier": "Plus",
+  "price_cents": 3500,
+  "warranty": "3-month warranty",
+  "sizes": [
+   "H11",
+   "H7",
+   "9005",
+   "9006",
+   "9012",
+   "H13",
+   "9004",
+   "9007"
+  ],
+  "color_temps": [
+   "6000K",
+   "8000K"
+  ],
+  "badge": null,
+  "blurb": "Step up in brightness and cooling over Basic, with a 3-month warranty for daily drivers.",
+  "features": [
+   "8000LM per pair",
+   "Upgraded heat dissipation",
+   "Plug-and-play install",
+   "3-month warranty"
+  ],
+  "price": 35.0,
+  "icon": "bulb"
+ },
+ {
+  "id": "premium-csp-led-headlight-kit",
+  "name": "Premium CSP Series LED Headlight Kit \u2014 60W",
+  "category": "headlight",
+  "tier": "Premium",
+  "price_cents": 7000,
+  "warranty": "12-month warranty",
+  "sizes": [
+   "H11",
+   "H7",
+   "9005",
+   "9006",
+   "9012",
+   "H13",
+   "9004",
+   "9007"
+  ],
+  "color_temps": [
+   "6000K",
+   "8000K"
+  ],
+  "badge": "Most Popular",
+  "blurb": "CSP chip technology for a razor-sharp beam pattern with no glare. Our most popular headlight upgrade.",
+  "features": [
+   "60W, 12000LM per pair",
+   "CSP LED chips \u2014 precise beam cutoff",
+   "Aviation aluminum + turbo fan",
+   "12-month warranty"
+  ],
+  "price": 70.0,
+  "icon": "bulb"
+ },
+ {
+  "id": "pro-zes-led-headlight-kit",
+  "name": "Pro ZES Series LED Headlight Kit \u2014 60W",
+  "category": "headlight",
+  "tier": "Pro",
+  "price_cents": 8000,
+  "warranty": "12-month warranty",
+  "sizes": [
+   "H11",
+   "H7",
+   "9005",
+   "9006",
+   "9012",
+   "H13",
+   "9004",
+   "9007"
+  ],
+  "color_temps": [
+   "6000K"
+  ],
+  "badge": null,
+  "blurb": "ZES chips tuned for projector housings. Clean cutoff, zero flicker, CANbus friendly on most vehicles.",
+  "features": [
+   "60W ZES chips",
+   "Optimized for projectors",
+   "Anti-flicker driver",
+   "12-month warranty"
+  ],
+  "price": 80.0,
+  "icon": "bulb"
+ },
+ {
+  "id": "ultra-u9-led-headlight-kit",
+  "name": "Ultra U9 Series LED Headlight Kit \u2014 90W",
+  "category": "headlight",
+  "tier": "Ultra",
+  "price_cents": 9000,
+  "warranty": "12-month warranty",
+  "sizes": [
+   "H11",
+   "H7",
+   "9005",
+   "9006",
+   "9012",
+   "H13",
+   "9004",
+   "9007"
+  ],
+  "color_temps": [
+   "6000K",
+   "8000K"
+  ],
+  "badge": "Brightest",
+  "blurb": "90 watts of output for rural roads and dark highways. Serious brightness, still plug-and-play.",
+  "features": [
+   "90W, 18000LM per pair",
+   "Dual ball-bearing fan",
+   "IP68 waterproof",
+   "12-month warranty"
+  ],
+  "price": 90.0,
+  "icon": "bulb"
+ },
+ {
+  "id": "platinum-4070-led-headlight-kit",
+  "name": "Platinum 4070 Series LED Headlight Kit \u2014 130W",
+  "category": "headlight",
+  "tier": "Platinum",
+  "price_cents": 10000,
+  "warranty": "12-month warranty",
+  "sizes": [
+   "H11",
+   "H7",
+   "9005",
+   "9006",
+   "9012",
+   "H13",
+   "9004",
+   "9007"
+  ],
+  "color_temps": [
+   "6000K",
+   "8000K"
+  ],
+  "badge": "Flagship",
+  "blurb": "Our flagship. 130W with 4070 automotive chips \u2014 the brightest street-legal-style upgrade we sell.",
+  "features": [
+   "130W, 26000LM per pair",
+   "4070-series LED chips",
+   "Copper-core thermal design",
+   "12-month warranty"
+  ],
+  "price": 100.0,
+  "icon": "bulb"
+ },
+ {
+  "id": "license-plate-kit",
+  "name": "License Plate LED Kit",
+  "category": "interior",
+  "tier": "Basic",
+  "price_cents": 1200,
+  "warranty": "1-month warranty",
+  "sizes": [
+   "194",
+   "T10"
+  ],
+  "color_temps": [
+   "6000K"
+  ],
+  "badge": null,
+  "blurb": "Clean white plate lighting to match the rest of your LED swap.",
+  "features": [
+   "Pair included",
+   "Error-free",
+   "1-month warranty"
+  ],
+  "price": 12.0,
+  "icon": "dome"
+ },
+ {
+  "id": "interior-t10-kit",
+  "name": "Interior LED Kit \u2014 T10 / 194 / 168 (10-pack)",
+  "category": "interior",
+  "tier": "Plus",
+  "price_cents": 1800,
+  "warranty": "3-month warranty",
+  "sizes": [
+   "T10",
+   "194",
+   "168"
+  ],
+  "color_temps": [
+   "6000K",
+   "8000K"
+  ],
+  "badge": null,
+  "blurb": "Do the whole interior in one shot: dome, map, trunk, glove box and more.",
+  "features": [
+   "10 bulbs",
+   "Fits most interiors",
+   "3-month warranty"
+  ],
+  "price": 18.0,
+  "icon": "dome"
+ },
+ {
+  "id": "festoon-dome-kit",
+  "name": "Festoon Dome / Map LED Kit \u2014 31 / 36 / 42mm",
+  "category": "interior",
+  "tier": "Plus",
+  "price_cents": 2000,
+  "warranty": "3-month warranty",
+  "sizes": [
+   "31mm",
+   "36mm",
+   "42mm"
+  ],
+  "color_temps": [
+   "6000K"
+  ],
+  "badge": null,
+  "blurb": "Rigid festoon replacements for dome and map lights. No hot spots, even glow.",
+  "features": [
+   "Even 360\u00b0 glow",
+   "Multiple lengths",
+   "3-month warranty"
+  ],
+  "price": 20.0,
+  "icon": "dome"
+ },
+ {
+  "id": "led-pod-harness",
+  "name": "LED Pod Wiring Harness",
+  "category": "pods",
+  "tier": "Accessory",
+  "price_cents": 1500,
+  "warranty": "1-month warranty",
+  "sizes": [
+   "Universal"
+  ],
+  "color_temps": [],
+  "badge": null,
+  "blurb": "Relay harness with switch for one or two pods. Fuse-protected, plug-and-play.",
+  "features": [
+   "40A relay",
+   "In-cab switch",
+   "Fuse protected"
+  ],
+  "price": 15.0,
+  "icon": "pod"
+ },
+ {
+  "id": "led-pod-single",
+  "name": "LED Pod \u2014 Single",
+  "category": "pods",
+  "tier": "Pro",
+  "price_cents": 3500,
+  "warranty": "12-month warranty",
+  "sizes": [
+   "Universal"
+  ],
+  "color_temps": [
+   "6000K"
+  ],
+  "badge": null,
+  "blurb": "Compact 3\" cube pod. Ditch lights, bumpers, roof racks \u2014 mounts anywhere.",
+  "features": [
+   "Spot or flood",
+   "IP68 waterproof",
+   "12-month warranty"
+  ],
+  "price": 35.0,
+  "icon": "pod"
+ },
+ {
+  "id": "led-pod-pair",
+  "name": "LED Pod \u2014 Pair",
+  "category": "pods",
+  "tier": "Pro",
+  "price_cents": 6000,
+  "warranty": "12-month warranty",
+  "sizes": [
+   "Universal"
+  ],
+  "color_temps": [
+   "6000K"
+  ],
+  "badge": "Value",
+  "blurb": "A pair of pods at a bundle price. The classic A-pillar ditch light setup.",
+  "features": [
+   "Two pods",
+   "Mounting brackets included",
+   "12-month warranty"
+  ],
+  "price": 60.0,
+  "icon": "pod"
+ },
+ {
+  "id": "basic-led-reverse",
+  "name": "Basic LED Reverse Bulbs",
+  "category": "reverse",
+  "tier": "Basic",
+  "price_cents": 2500,
+  "warranty": "1-month warranty",
+  "sizes": [
+   "921",
+   "7440",
+   "912",
+   "194"
+  ],
+  "color_temps": [
+   "6000K"
+  ],
+  "badge": null,
+  "blurb": "See \u2014 and be seen \u2014 in reverse. Big upgrade for backup cameras at night.",
+  "features": [
+   "Bright white output",
+   "Backup-camera friendly",
+   "1-month warranty"
+  ],
+  "price": 25.0,
+  "icon": "backup"
+ },
+ {
+  "id": "premium-led-reverse",
+  "name": "Premium LED Reverse Bulbs",
+  "category": "reverse",
+  "tier": "Premium",
+  "price_cents": 7000,
+  "warranty": "12-month warranty",
+  "sizes": [
+   "921",
+   "7440",
+   "912",
+   "194"
+  ],
+  "color_temps": [
+   "6000K"
+  ],
+  "badge": null,
+  "blurb": "Flood-pattern reverse LEDs that turn night into day behind you.",
+  "features": [
+   "Flood beam pattern",
+   "6000K white",
+   "12-month warranty"
+  ],
+  "price": 70.0,
+  "icon": "backup"
+ },
+ {
+  "id": "ultra-led-reverse",
+  "name": "Ultra LED Reverse Bulbs",
+  "category": "reverse",
+  "tier": "Ultra",
+  "price_cents": 8500,
+  "warranty": "12-month warranty",
+  "sizes": [
+   "921",
+   "7440",
+   "912",
+   "194"
+  ],
+  "color_temps": [
+   "6000K"
+  ],
+  "badge": "Brightest",
+  "blurb": "The brightest reverse bulbs we make. For trucks, trailers and dark driveways.",
+  "features": [
+   "Maximum reverse output",
+   "Projector lens design",
+   "12-month warranty"
+  ],
+  "price": 85.0,
+  "icon": "backup"
+ },
+ {
+  "id": "strip-kit-small",
+  "name": "Multicolor LED Strip Kit \u2014 Small",
+  "category": "strips",
+  "tier": "Plus",
+  "price_cents": 3000,
+  "warranty": "3-month warranty",
+  "sizes": [
+   "Universal"
+  ],
+  "color_temps": [
+   "RGB"
+  ],
+  "badge": null,
+  "blurb": "Footwells, grilles, interiors \u2014 millions of colors with remote control.",
+  "features": [
+   "Remote + app control",
+   "Music sync mode",
+   "3-month warranty"
+  ],
+  "price": 30.0,
+  "icon": "strip"
+ },
+ {
+  "id": "strip-kit-large",
+  "name": "Multicolor LED Strip Kit \u2014 Large",
+  "category": "strips",
+  "tier": "Plus",
+  "price_cents": 4500,
+  "warranty": "3-month warranty",
+  "sizes": [
+   "Universal"
+  ],
+  "color_temps": [
+   "RGB"
+  ],
+  "badge": null,
+  "blurb": "Full underglow-length kit. Enough strip for a complete install.",
+  "features": [
+   "Extended length",
+   "Remote + app control",
+   "3-month warranty"
+  ],
+  "price": 45.0,
+  "icon": "strip"
+ },
+ {
+  "id": "basic-led-turn-signal",
+  "name": "Basic LED Turn Signal Bulbs",
+  "category": "turn",
+  "tier": "Basic",
+  "price_cents": 2500,
+  "warranty": "1-month warranty",
+  "sizes": [
+   "7440",
+   "7443",
+   "3157",
+   "3156",
+   "1156",
+   "1157"
+  ],
+  "color_temps": [
+   "Amber",
+   "6000K White"
+  ],
+  "badge": null,
+  "blurb": "Crisp instant-on turn signals. Add a resistor kit on older vehicles to prevent hyperflash.",
+  "features": [
+   "Instant on/off",
+   "Amber or white",
+   "1-month warranty"
+  ],
+  "price": 25.0,
+  "icon": "signal"
+ },
+ {
+  "id": "premium-led-turn-signal",
+  "name": "Premium LED Turn Signal Bulbs",
+  "category": "turn",
+  "tier": "Premium",
+  "price_cents": 7000,
+  "warranty": "12-month warranty",
+  "sizes": [
+   "7440",
+   "7443",
+   "3157",
+   "3156",
+   "1156",
+   "1157"
+  ],
+  "color_temps": [
+   "Amber",
+   "6000K White"
+  ],
+  "badge": null,
+  "blurb": "High-output amber with built-in load resistance on most applications.",
+  "features": [
+   "High-output amber",
+   "Built-in CANbus resistance (most apps)",
+   "12-month warranty"
+  ],
+  "price": 70.0,
+  "icon": "signal"
+ },
+ {
+  "id": "switchback-led-turn-signal",
+  "name": "Premium Switchback LED Turn Signal (White/Amber)",
+  "category": "turn",
+  "tier": "Premium",
+  "price_cents": 7500,
+  "warranty": "12-month warranty",
+  "sizes": [
+   "7443",
+   "3157"
+  ],
+  "color_temps": [
+   "Switchback"
+  ],
+  "badge": "Staff Pick",
+  "blurb": "Runs white as a DRL, switches to amber for turns. The clean modern front-end look.",
+  "features": [
+   "White DRL / amber turn",
+   "No hyperflash on most vehicles",
+   "12-month warranty"
+  ],
+  "price": 75.0,
+  "icon": "signal"
+ }
+]

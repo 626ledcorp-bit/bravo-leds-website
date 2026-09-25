@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Order Placed — Bravo LEDs{% endblock %}
+{% block content %}
+<div class="wrap">
+  <div class="soon-box">
+    <div class="big">✅</div>
+    <h1>Thanks — Order Received!</h1>
+    {% if order %}
+    <p>Your payment went through. Order <strong>#{{ order.id }}</strong>
+    ({{ money(order.total_cents) }}) is confirmed — a receipt is on its way to
+    <strong>{{ order.customer_email }}</strong>.</p>
+    {% else %}
+    <p>Your payment went through. A confirmation email is on its way — keep an
+    eye on your inbox.</p>
+    {% endif %}
+    <p class="small">Ships in 1-2 business days via USPS/UPS. 1-year warranty on
+    all products, 30-day returns on unused items.</p>
+    <p style="margin-top:22px">
+      <a class="btn" href="/shop">Keep Shopping</a>
+    </p>
+  </div>
+</div>
+{% endblock %}

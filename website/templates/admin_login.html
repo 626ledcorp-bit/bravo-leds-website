@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Admin Login — Bravo LEDs{% endblock %}
+{% block content %}
+<div class="wrap">
+  <div class="soon-box" style="max-width:420px">
+    <h1>Admin Login</h1>
+    {% if disabled %}
+    <p class="flash">Admin access is not configured (ADMIN_PASSWORD is unset).</p>
+    {% else %}
+    {% if error %}<p class="flash">{{ error }}</p>{% endif %}
+    <form method="post" style="text-align:left">
+      <label class="field">Password
+        <input type="password" name="password" required autofocus autocomplete="current-password">
+      </label>
+      <p style="margin-top:16px"><button class="btn btn-block" type="submit">Log In</button></p>
+    </form>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

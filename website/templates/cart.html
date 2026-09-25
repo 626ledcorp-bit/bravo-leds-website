@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block title %}Your Cart — Bravo LEDs{% endblock %}
+{% block content %}
+<div class="wrap">
+  <div class="page-title"><h1>Your Cart</h1></div>
+  {% if lines %}
+  <div class="cart-layout">
+    <div>
+      {% for l in lines %}
+      <div class="cart-line">
+        <img src="/static/img/ph-{{ categories[l.product.category].icon }}.svg" alt="{{ l.product.name }}">
+        <div>
+          <p class="nm"><a href="/product/{{ l.product.id }}" style="color:var(--text)">{{ l.product.name }}</a></p>
+          <div class="vr">
+            {% if l.variation_label %}<strong>{{ l.variation_label }}</strong> · {% endif %}
+            {{ money(l.product.price_cents) }} each
+          </div>
+          <div class="row">
+            <form action="/cart/update" method="post" style="display:inline">
+              <input type="hidden" name="key" value="{{ l.key }}">
+              <span class="mini-qty">
+                <button type="submit" name="qty" value="{{ l.qty - 1 }}">−</button>
+                <span>{{ l.qty }}</span>
+                <button type="submit" name="qty" value="{{ l.qty + 1 }}">+</button>
+              </span>
+            </form>
+            <form action="/cart/remove" method="post" style="display:inline">
+              <input type="hidden" name="key" value="{{ l.key }}">
+              <button class="link-btn" type="submit">Remove</button>
+            </form>
+            <span class="line-total">{{ l.line_total_str }}</span>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      <p><a href="/shop">← Continue shopping</a></p>
+    </div>
+    <div class="cart-summary">
+      <h3>Order Summary</h3>
+      <div class="sum-row"><span>Subtotal</span><span>{{ subtotal_str }}</span></div>
+      {% if promo %}
+      <div class="sum-row"><span>Promo <strong>{{ promo.code }}</strong></span><span>−{{ discount_str }}</span></div>
+      <form action="/cart/promo" method="post" style="margin-top:6px">
+        <input type="hidden" name="action" value="remove">
+        <button class="link-btn" type="submit">Remove code</button>
+      </form>
+      {% else %}
+      <form action="/cart/promo" method="post" class="promo-form">
+        <input type="text" name="code" placeholder="Promo code" autocomplete="off"
+               style="text-transform:uppercase" aria-label="Promo code">
+        <button class="btn btn-ghost" type="submit">Apply</button>
+      </form>
+      {% if request.args.get("promo") == "invalid" %}
+      <p class="small" style="color:#e5484d">That code isn't valid — it may be expired, deactivated, or used up.</p>
+      {% elif request.args.get("promo") == "applied" %}
+      <p class="small" style="color:#46c46a">Promo code applied.</p>
+      {% elif request.args.get("promo") == "removed" %}
+      <p class="small muted">Promo code removed.</p>
+      {% endif %}
+      {% endif %}
+      <div class="sum-row"><span>Shipping</span><span>Calculated at checkout</span></div>
+      <div class="sum-row total"><span>Total</span><span>{{ total_str }}</span></div>
+      <a class="btn btn-block" href="/checkout" style="margin-top:14px">Proceed to Checkout →</a>
+      <p class="small muted" style="margin-top:10px">Free shipping on orders over {{ free_ship }}.</p>
+    </div>
+<style>
+.promo-form{display:flex;gap:8px;margin:10px 0}
+.promo-form input{flex:1;background:#1b1b1b;color:#eee;border:1px solid var(--border);border-radius:8px;padding:8px 10px}
+.sum-row{display:flex;justify-content:space-between;padding:4px 0}
+</style>
+  </div>
+  {% else %}
+  <div class="empty-cart">
+    <div class="big">🛒</div>
+    <h2>Your cart is empty</h2>
+    <p>Find bulbs for your vehicle or browse the catalog.</p>
+    <p><a class="btn" href="/">Find My Bulbs</a> &nbsp; <a class="btn btn-ghost" href="/shop">Shop All</a></p>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

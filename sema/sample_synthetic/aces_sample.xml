@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ═══════════════════════════════════════════════════════════════════════
+  SYNTHETIC TEST DATA — NOT REAL FITMENT — FOR PIPELINE TESTING ONLY
+  ═══════════════════════════════════════════════════════════════════════
+  This file is FAKE. It exists only to prove the SEMA import pipeline
+  (parse → map → normalize → finder) works end to end. No vehicle or
+  bulb size in here is real. Never ship this to production.
+-->
+<ACES version="3.0">
+  <Header>
+    <CompanyName>SYNTHETIC SAMPLE SUPPLIER (FAKE)</CompanyName>
+    <BrandAAIAID>FAKE</BrandAAIAID>
+    <DocumentTitle>Synthetic ACES sample for importer testing</DocumentTitle>
+  </Header>
+
+  <!-- Vehicle 90001: 2018 DemoMake DemoModel-SYNTHETIC LE -->
+  <App action="A" id="1">
+    <BaseVehicle id="90001"/>
+    <Part>H11ST</Part>
+    <Qty>2</Qty>
+    <Position>Low Beam</Position>
+    <Note>Synthetic sample application</Note>
+  </App>
+  <App action="A" id="2">
+    <BaseVehicle id="90001"/>
+    <Part>9005ST</Part>
+    <Qty>2</Qty>
+    <Position>High Beam</Position>
+  </App>
+  <App action="A" id="3">
+    <BaseVehicle id="90001"/>
+    <Part>7443ST</Part>
+    <Qty>2</Qty>
+    <Qualifiers>Rear Turn Signal</Qualifiers>
+  </App>
+  <!-- Unknown part number: must land in the review table, NOT in fitment -->
+  <App action="A" id="4">
+    <BaseVehicle id="90001"/>
+    <Part>UNKNOWNPART999</Part>
+    <Qty>2</Qty>
+    <Position>License Plate</Position>
+  </App>
+  <!-- Unknown position text: must land in the review table, NOT in fitment -->
+  <App action="A" id="5">
+    <BaseVehicle id="90001"/>
+    <Part>H10ST</Part>
+    <Qty>2</Qty>
+    <Position>Flux Capacitor Array</Position>
+  </App>
+
+  <!-- Vehicle 90002: 2020 DemoMake DemoModel-SYNTHETIC (no trim) -->
+  <App action="A" id="6">
+    <BaseVehicle id="90002"/>
+    <Part>H10ST</Part>
+    <Qty>2</Qty>
+    <Position>Fog Light</Position>
+  </App>
+
+  <!-- BaseVehicle 99999 is NOT in vcdb_sample.csv: must land in review -->
+  <App action="A" id="7">
+    <BaseVehicle id="99999"/>
+    <Part>H11ST</Part>
+    <Qty>2</Qty>
+    <Position>Low Beam</Position>
+  </App>
+
+  <!-- action="D" records are deletes: must be skipped, not imported -->
+  <App action="D" id="8">
+    <BaseVehicle id="90001"/>
+    <Part>H11ST</Part>
+    <Position>Low Beam</Position>
+  </App>
+</ACES>

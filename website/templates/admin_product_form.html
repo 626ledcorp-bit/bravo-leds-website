@@ -1,0 +1,215 @@
+{% extends "base.html" %}
+{% block title %}{% if is_new %}New Product{% else %}Edit {{ p.name }}{% endif %} — Admin{% endblock %}
+{% block content %}
+<div class="wrap admin-form">
+  <p class="small" style="margin:22px 0 0"><a href="/admin#products">← Admin</a></p>
+  <h1>{% if is_new %}New Product{% else %}Edit: {{ p.name }}{% endif %}</h1>
+  {% if not is_new %}<p class="muted small">ID: <code>{{ pid }}</code> · Status: <strong>{{ p.status }}</strong>
+    {% if p.square_catalog_object_id %}· Square item: <code>{{ p.square_catalog_object_id[:12] }}…</code>{% else %}· Square: <em>not linked</em>{% endif %}
+    <a href="/admin/square">sync →</a></p>{% endif %}
+
+  {% if just_saved %}<div class="flash-ok">Saved.</div>{% endif %}
+  {% if errors %}
+  <div class="flash-errors">
+    <strong>Fix {{ errors|length }} problem{{ "s" if errors|length != 1 }}:</strong>
+    <ul>{% for e in errors %}<li>{{ e }}</li>{% endfor %}</ul>
+  </div>
+  {% endif %}
+
+  <form method="post" enctype="multipart/form-data">
+    <h2>Basics</h2>
+    <div class="frow">
+      <label>Product name *<input name="name" value="{{ f.name }}" required maxlength="120">
+      <span class="hint">"Bravo " is added automatically if missing. Never use "headlight" or "off-road" in the name.</span></label>
+    </div>
+    <div class="frow frow-3">
+      <label>Status
+        <select name="status">
+          {% for s in ["active", "draft", "archived"] %}
+          <option value="{{ s }}" {% if f.status == s %}selected{% endif %}>{{ s }}</option>
+          {% endfor %}
+        </select></label>
+      <label>Category
+        <select name="category">
+          {% for key, c in categories.items() %}
+          <option value="{{ key }}" {% if f.category == key %}selected{% endif %}>{{ c.name }}</option>
+          {% endfor %}
+        </select></label>
+      <label>Product type<input name="product_type" value="{{ f.product_type }}" placeholder="e.g. LED Bulb Kit"></label>
+    </div>
+    <div class="frow frow-3">
+      <label>Tier / series<input name="tier" value="{{ f.tier }}" placeholder="e.g. Premium"></label>
+      <label>Badge<input name="badge" value="{{ f.badge }}" placeholder="e.g. Best Seller"></label>
+      <label>Warranty<input name="warranty" value="{{ f.warranty }}"></label>
+    </div>
+    <div class="frow">
+      <label>Short blurb<textarea name="blurb" rows="2" maxlength="300">{{ f.blurb }}</textarea></label>
+    </div>
+    <div class="frow">
+      <label>Full description<textarea name="description" rows="6">{{ f.description }}</textarea>
+      <span class="hint">"off-road" is fine here. Never "headlight".</span></label>
+    </div>
+    <div class="frow">
+      <label>Features (one per line)<textarea name="features" rows="4">{{ f.features }}</textarea></label>
+    </div>
+
+    <h2>Images</h2>
+    <div class="frow">
+      <label>Add photos (PNG/JPG/WebP, max 5 MB each)<input type="file" name="photos" multiple accept=".png,.jpg,.jpeg,.webp"></label>
+    </div>
+    <div class="frow">
+      <label>Add by URL<input name="image_url" value="" placeholder="https://…" inputmode="url"></label>
+    </div>
+    {% if p and p.images %}
+    <table class="admin-table">
+      <tr><th></th><th>Image</th><th>Order</th><th>Primary</th><th>Remove</th></tr>
+      {% for im in p.images %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td><img src="{{ im.src }}" alt="" style="height:48px"><br><input type="hidden" name="imgsrc_{{ loop.index0 }}" value="{{ im.src }}"><span class="small muted">{{ im.src|truncate(60) }}</span></td>
+        <td><input name="imgpos_{{ loop.index0 }}" value="{{ loop.index0 }}" size="3" inputmode="numeric"></td>
+        <td><input type="radio" name="primary_image" value="{{ im.src }}" {% if im.primary %}checked{% endif %}></td>
+        <td><input type="checkbox" name="imgremove_{{ loop.index0 }}"></td>
+      </tr>
+      {% endfor %}
+    </table>
+    {% elif not is_new %}
+    <p class="muted small">No images yet — the category placeholder shows on the storefront.</p>
+    {% endif %}
+
+    <h2>Pricing &amp; inventory</h2>
+    <div class="frow frow-4">
+      <label>Price ($) *<input name="price" value="{{ f.price }}" required inputmode="decimal"></label>
+      <label>Compare-at / sale price ($)<input name="sale_price" value="{{ f.sale_price }}" inputmode="decimal"></label>
+      <label>Cost ($) — internal<input name="cost" id="cost-input" value="{{ f.cost }}" inputmode="decimal"></label>
+      <label>Margin<input id="margin-readout" value="" readonly tabindex="-1"></label>
+    </div>
+    <div class="frow frow-3">
+      <label>Quantity (product-level)<input name="stock" value="{{ f.stock }}" inputmode="numeric"></label>
+      <label>Low-stock threshold<input name="low_threshold" value="{{ f.low_threshold }}" inputmode="numeric"></label>
+      <label class="check"><input type="checkbox" name="taxable" {% if f.taxable %}checked{% endif %}> Taxable</label>
+    </div>
+    <p class="hint">Per-variation inventory is managed in the table below; the product-level quantity applies to untracked variations.</p>
+
+    <h2>Identifiers</h2>
+    <div class="frow frow-3">
+      <label>SKU<input name="sku" value="{{ f.sku }}"></label>
+      <label>MSKU<input name="msku" value="{{ f.msku }}"></label>
+      <label>Barcode / UPC / GTIN / EAN<input name="barcode" value="{{ f.barcode }}"></label>
+    </div>
+    <div class="frow">
+      <label>Vendor / manufacturer<input name="vendor" value="{{ f.vendor }}"></label>
+    </div>
+
+    <h2>Options &amp; variations</h2>
+    <div class="frow">
+      <label>Option groups (one per line: <code>Group: value, value</code>)<textarea name="option_groups" rows="3">{{ groups_text }}</textarea>
+      <span class="hint">Changing groups rebuilds the variation table on save; per-variation data is kept where the option combination still exists.</span></label>
+    </div>
+    {% if variations %}
+    <div style="overflow-x:auto">
+    <table class="admin-table var-table">
+      <tr><th>Variation</th><th>SKU</th><th>MSKU</th><th>Barcode</th><th>Price ($)</th><th>Compare ($)</th><th>Cost ($)</th><th>Qty</th><th>Track</th><th>Oversell</th><th>Low</th><th>Image</th><th>Margin</th></tr>
+      {% for v in variations %}
+      <tr>
+        <td class="nowrap"><strong>{{ v.label }}</strong><input type="hidden" name="v{{ v.i }}_posted" value="1"><input type="hidden" name="v{{ v.i }}_vid" value="{{ v.vid }}"></td>
+        <td><input name="v{{ v.i }}_sku" value="{{ v.sku }}" size="10"></td>
+        <td><input name="v{{ v.i }}_msku" value="{{ v.msku }}" size="10"></td>
+        <td><input name="v{{ v.i }}_barcode" value="{{ v.barcode }}" size="12"></td>
+        <td><input name="v{{ v.i }}_price" value="{{ v.price }}" size="7" inputmode="decimal" class="v-price" data-row="{{ v.i }}"></td>
+        <td><input name="v{{ v.i }}_compare" value="{{ v.compare }}" size="7" inputmode="decimal"></td>
+        <td><input name="v{{ v.i }}_cost" value="{{ v.cost }}" size="7" inputmode="decimal" class="v-cost" data-row="{{ v.i }}"></td>
+        <td><input name="v{{ v.i }}_qty" value="{{ v.qty }}" size="5" inputmode="numeric"></td>
+        <td><input type="checkbox" name="v{{ v.i }}_track" {% if v.track %}checked{% endif %}></td>
+        <td><input type="checkbox" name="v{{ v.i }}_oversell" {% if v.oversell %}checked{% endif %}></td>
+        <td><input name="v{{ v.i }}_low" value="{{ v.low }}" size="4" inputmode="numeric"></td>
+        <td><input name="v{{ v.i }}_image" value="{{ v.image }}" size="14" placeholder="image URL"></td>
+        <td class="nowrap small" id="vmargin-{{ v.i }}">{% if v.margin %}{{ money(v.margin.dollars) }} ({{ v.margin.pct }}%){% else %}—{% endif %}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    </div>
+    {% else %}
+    <p class="muted small">The variation table appears after the first save.</p>
+    {% endif %}
+
+    <h2>Shipping &amp; customs</h2>
+    <div class="frow frow-4">
+      <label>Weight (oz)<input name="weight_oz" value="{{ f.weight_oz }}" inputmode="decimal"></label>
+      <label>Length (in)<input name="length_in" value="{{ f.length_in }}" inputmode="decimal"></label>
+      <label>Width (in)<input name="width_in" value="{{ f.width_in }}" inputmode="decimal"></label>
+      <label>Height (in)<input name="height_in" value="{{ f.height_in }}" inputmode="decimal"></label>
+    </div>
+    <div class="frow frow-2">
+      <label>Country of origin<input name="country_of_origin" value="{{ f.country_of_origin }}"></label>
+      <label>HS code<input name="hs_code" value="{{ f.hs_code }}"></label>
+    </div>
+
+    <h2>SEO</h2>
+    <div class="frow">
+      <label>SEO title<input name="seo_title" value="{{ f.seo_title }}" maxlength="70" placeholder="Falls back to the product name"></label>
+    </div>
+    <div class="frow">
+      <label>Meta description<textarea name="seo_description" rows="2" maxlength="160" placeholder="Falls back to the short blurb">{{ f.seo_description }}</textarea></label>
+    </div>
+
+    <h2>Supplier — internal</h2>
+    <div class="frow frow-2">
+      <label>Supplier name<input name="supplier_name" value="{{ f.supplier_name }}"></label>
+      <label>Supplier SKU<input name="supplier_sku" value="{{ f.supplier_sku }}"></label>
+    </div>
+    <div class="frow">
+      <label>Supplier notes<textarea name="supplier_notes" rows="3">{{ f.supplier_notes }}</textarea></label>
+    </div>
+
+    <h2>Admin</h2>
+    <div class="frow frow-2">
+      <label>Tags (comma-separated)<input name="tags" value="{{ f.tags }}"></label>
+      <label>Fitment positions (comma-separated)<input name="fitment_positions" value="{{ f.fitment_positions }}" placeholder="e.g. Low beam, Fog"></label>
+    </div>
+    <div class="frow">
+      <label>Internal notes<textarea name="notes" rows="3">{{ f.notes }}</textarea></label>
+    </div>
+
+    <div class="form-actions">
+      <button class="btn" type="submit">{% if is_new %}Create product{% else %}Save changes{% endif %}</button>
+      <a class="btn btn-ghost" href="/admin#products">Cancel</a>
+      {% if not is_new %}
+      <button class="btn btn-ghost" type="submit" form="archive-form" onclick="return confirm('Archive this product? It will be hidden from the storefront and the default admin list.')">{% if p.status == "archived" %}Unarchive{% else %}Archive{% endif %}</button>
+      {% endif %}
+    </div>
+  </form>
+  {% if not is_new %}
+  <form id="archive-form" action="/admin/product/{{ pid }}/archive" method="post" style="display:inline">
+    <input type="hidden" name="action" value="{% if p.status == 'archived' %}unarchive{% else %}archive{% endif %}">
+  </form>
+  <form action="/admin/product/{{ pid }}/delete" method="post" style="margin-top:12px" onsubmit="return confirm('Permanently delete this product? This is refused if any order references it.')">
+    <button class="btn btn-danger" type="submit">Delete product</button>
+  </form>
+  {% endif %}
+</div>
+<script>
+(function(){
+  function parse(v){ var n = parseFloat(v); return isNaN(n) ? null : n; }
+  function marginText(price, cost){
+    if (price == null || cost == null || price <= 0) return "—";
+    var d = price - cost, pct = Math.round(d / price * 100);
+    return "$" + d.toFixed(2) + " (" + pct + "%)";
+  }
+  var priceInput = document.querySelector('input[name="price"]');
+  var costInput = document.getElementById("cost-input");
+  var readout = document.getElementById("margin-readout");
+  function updateMain(){
+    readout.value = marginText(parse(priceInput.value), parse(costInput.value));
+  }
+  if (priceInput){ priceInput.addEventListener("input", updateMain); costInput.addEventListener("input", updateMain); updateMain(); }
+  document.querySelectorAll(".v-price").forEach(function(p){
+    var row = p.dataset.row;
+    var c = document.querySelector('.v-cost[data-row="' + row + '"]');
+    var cell = document.getElementById("vmargin-" + row);
+    function upd(){ if (cell) cell.textContent = marginText(parse(p.value), parse(c.value)); }
+    p.addEventListener("input", upd); c.addEventListener("input", upd);
+  });
+})();
+</script>
+{% endblock %}

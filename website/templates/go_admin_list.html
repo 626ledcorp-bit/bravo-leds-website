@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Landing Pages — Admin{% endblock %}
+{% block content %}
+<div class="wrap">
+  <h1>Landing Pages</h1>
+  <p><a href="/admin">← Admin Dashboard</a> · <a href="/admin/promos">Promo Codes →</a></p>
+  <p><a class="btn" href="/admin/landing/new">+ New Landing Page</a></p>
+  <p class="hint">Ad landing pages live at <code>/go/&lt;slug&gt;</code> — slim, distraction-free pages with a countdown timer and an auto-applied promo code.</p>
+
+  {% if pages %}
+  <table class="admin-table">
+    <tr><th>Slug</th><th>Product</th><th>Countdown</th><th>Default code</th><th>Status</th><th></th></tr>
+    {% for p in pages %}
+    <tr>
+      <td><code>/go/{{ p.slug }}</code><br><a href="/go/{{ p.slug }}" target="_blank" rel="noopener">view →</a></td>
+      <td>{{ products.get(p.product_id, {}).get("name", p.product_id) }}</td>
+      <td>
+        {% if p.countdown_mode == "fixed" %}fixed · ends {{ (p.countdown_end or "")[:16] }} UTC
+        {% else %}evergreen · {{ p.countdown_minutes }} min/visitor{% endif %}
+      </td>
+      <td>{% if p.default_code %}<code>{{ p.default_code }}</code>{% else %}—{% endif %}</td>
+      <td>{{ "Published" if p.published else "Draft" }}</td>
+      <td style="white-space:nowrap">
+        <a class="btn btn-ghost" href="/admin/landing/{{ p.slug }}/edit">Edit</a>
+        <form method="post" action="/admin/landing/{{ p.slug }}/delete" style="display:inline"
+              onsubmit="return confirm('Delete /go/{{ p.slug }}?')">
+          <button class="btn btn-ghost" type="submit">Delete</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+  <p class="hint">No landing pages yet.</p>
+  {% endif %}
+</div>
+<style>
+.admin-table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.92rem}
+.admin-table th,.admin-table td{border:1px solid var(--border);padding:8px 10px;text-align:left;vertical-align:top}
+.admin-table th{background:var(--panel)}
+</style>
+{% endblock %}

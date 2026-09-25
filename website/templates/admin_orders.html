@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block title %}Orders — Admin — Bravo LEDs{% endblock %}
+{% block content %}
+<div class="wrap">
+  <h1>Orders <span class="data-pill">fulfillment</span></h1>
+  <p style="margin-bottom:16px">
+    <a href="/admin">Dashboard</a> ·
+    <a href="/admin/orders/tracking">Tracking import</a> ·
+    <a href="/admin/orders/pick-list">Pick list (all unshipped)</a> ·
+    <a href="/admin/settings">Settings</a>
+  </p>
+
+  <form method="get" action="/admin/orders" class="finder-grid" style="grid-template-columns:2fr 1fr 1fr 1fr auto;align-items:end">
+    <label class="field">Search (order #, name, email)
+      <input type="text" name="q" value="{{ q }}" placeholder="e.g. 1042 or john@…">
+    </label>
+    <label class="field">Status
+      <select name="status">
+        <option value="">All</option>
+        {% for st in statuses %}
+        <option value="{{ st }}"{% if status == st %} selected{% endif %}>{{ st|capitalize }}</option>
+        {% endfor %}
+      </select>
+    </label>
+    <label class="field">From
+      <input type="date" name="from" value="{{ date_from }}">
+    </label>
+    <label class="field">To
+      <input type="date" name="to" value="{{ date_to }}">
+    </label>
+    <div><button class="btn" type="submit">Filter</button>
+    {% if q or status or date_from or date_to %} <a class="btn btn-ghost" href="/admin/orders">Clear</a>{% endif %}</div>
+  </form>
+
+  <h2 style="margin-top:24px">Unshipped ({{ unfulfilled|length }}) — ready for Pirate Ship</h2>
+  {% if unfulfilled %}
+  <p class="hint">Select orders, export the CSV, import it in Pirate Ship, buy labels there, then paste tracking numbers back on the <a href="/admin/orders/tracking">tracking import</a> page.</p>
+  <form method="post" action="/admin/orders/export">
+    <table class="admin-table">
+      <tr><th><input type="checkbox" id="sel-all" title="Select all"></th>
+          <th>#</th><th>Date</th><th>Customer</th><th>Ship to</th><th>Items</th><th>Total</th><th></th></tr>
+      {% for o in unfulfilled %}
+      <tr>
+        <td><input type="checkbox" name="order_ids" value="{{ o.id }}" class="order-sel"></td>
+        <td><strong>{{ o.id }}</strong></td>
+        <td class="nowrap">{{ o.created_at[:16] }}</td>
+        <td>{{ o.customer_name }}<br><span class="hint">{{ o.customer_email }}</span></td>
+        <td><span class="hint">{{ o.addr_line1 }}, {{ o.addr_city }}, {{ o.addr_state }} {{ o.addr_zip }}</span></td>
+        <td>{{ o.line_items|sum(attribute="qty") }}</td>
+        <td class="nowrap">{{ money(o.total_cents) }}</td>
+        <td class="nowrap"><a class="btn btn-ghost" href="/admin/order/{{ o.id }}">Detail</a>
+            <a class="btn btn-ghost" href="/admin/order/{{ o.id }}/packing-slip">Slip</a></td>
+      </tr>
+      {% endfor %}
+    </table>
+    <p style="margin-top:10px">
+      <button class="btn" type="submit">Export selected as Pirate Ship CSV</button>
+      <a class="btn btn-ghost" href="/admin/orders/pick-list" id="pick-sel">Pick list for selected</a>
+    </p>
+  </form>
+  <script>
+    document.getElementById("sel-all").addEventListener("change", function(e){
+      document.querySelectorAll(".order-sel").forEach(c => c.checked = e.target.checked);
+    });
+    document.getElementById("pick-sel").addEventListener("click", function(e){
+      e.preventDefault();
+      const ids = [...document.querySelectorAll(".order-sel:checked")].map(c => c.value);
+      if (!ids.length) { alert("Select at least one order first."); return; }
+      location.href = "/admin/orders/pick-list?" + ids.map(id => "ids=" + id).join("&");
+    });
+  </script>
+  {% else %}
+  <p class="hint">Nothing waiting to ship. 🎉</p>
+  {% endif %}
+
+  <h2 style="margin-top:28px">All orders ({{ orders|length }})</h2>
+  <table class="admin-table">
+    <tr><th>#</th><th>Date</th><th>Status</th><th>Customer</th><th>Total</th><th>Tracking</th><th></th></tr>
+    {% for o in orders %}
+    <tr>
+      <td><strong>{{ o.id }}</strong></td>
+      <td class="nowrap">{{ o.created_at[:16] }}</td>
+      <td><span class="badge">{{ o.status }}</span></td>
+      <td>{{ o.customer_name }}<br><span class="hint">{{ o.customer_email }}</span></td>
+      <td class="nowrap">{{ money(o.total_cents) }}</td>
+      <td>{{ o.tracking_number or "—" }}</td>
+      <td class="nowrap"><a class="btn btn-ghost" href="/admin/order/{{ o.id }}">Detail</a>
+          <a class="btn btn-ghost" href="/admin/order/{{ o.id }}/packing-slip">Slip</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% if not orders %}<p class="hint">No orders match.</p>{% endif %}
+</div>
+{% endblock %}

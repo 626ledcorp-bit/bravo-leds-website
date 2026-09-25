@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}{{ title }} — Bravo LEDs{% endblock %}
+{% block content %}
+<div class="wrap">
+  <div class="page-title">
+    <h1>{{ title }}</h1>
+    {% if tagline %}<p>{{ tagline }}</p>{% endif %}
+    {% if active_cat %}<p><a href="/shop">← All categories</a></p>{% endif %}
+  </div>
+  <section class="section" style="padding-top:14px">
+    {% if products %}
+    <div class="prod-grid">
+      {% for p in products %}
+      <a class="prod-card" href="/product/{{ p.id }}">
+        <div class="prod-img">
+          {% if p.badge %}<span class="badge">{{ p.badge }}</span>{% endif %}
+          {% if p.get("sale_price_cents") %}<span class="badge" style="{% if p.badge %}top:44px;{% endif %}background:#e5484d;color:#fff;">Sale</span>{% endif %}
+          <img src="{{ primary_image(p) }}" alt="{{ p.name }}" loading="lazy">
+        </div>
+        <div class="prod-body">
+          <div class="prod-tier">{{ p.tier }}</div>
+          <h3 class="prod-name">{{ p.name }}</h3>
+          <div class="prod-meta">{% if p.variant_groups %}{{ (p.variant_groups[0]["values"]|join(", "))|truncate(48) }} · {% endif %}{{ p.warranty }}</div>
+          <div class="prod-foot">
+            {% include "_card_price.html" %}
+          </div>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p class="muted">No products in this category yet.</p>
+    {% endif %}
+  </section>
+
+  {% if content_bundles %}
+  <section class="section" style="padding-top:14px">
+    <div class="section-head"><h2>Bundle &amp; Save</h2></div>
+    <div class="prod-grid">
+      {% for b in content_bundles %}
+      <div class="prod-card">
+        <div class="prod-body">
+          <div class="prod-tier">Bundle</div>
+          <h3 class="prod-name">{{ b.name }}</h3>
+          <p class="muted small">{{ b.blurb }}</p>
+          <ul class="small muted" style="margin:0 0 6px 18px">
+            {% for bp in b.products %}<li>{{ bp.name }}</li>{% endfor %}
+          </ul>
+          <div class="prod-foot">
+            <span>
+              <span class="price">{{ money(b.price_cents) }}</span>
+              {% if b.savings_cents %}<s class="muted small">{{ money(b.regular_total_cents) }}</s>{% endif %}
+            </span>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}FAQ — Bravo LEDs{% endblock %}
+{% block content %}
+<div class="wrap"><div class="page-narrow">
+  <h1>Frequently Asked Questions</h1>
+  <p class="muted">Straight answers from the counter at our Rosemead store. Still stuck? <a href="/contact">Contact us</a>.</p>
+
+  <h3>What warranty do your bulbs carry?</h3>
+  <p>Every product we sell — Basic through Platinum — carries a <strong>1-year warranty</strong> against manufacturer defects: flicker, dead LEDs, driver failure. It doesn't cover damage from incorrect installation, modified housings, or moisture getting in through a cracked lens. See <a href="/returns">Returns &amp; Warranty</a> for the full policy.</p>
+
+  <h3>How fast will my order ship?</h3>
+  <p>Orders ship in <strong>1–2 business days</strong> from our Rosemead, CA location via <strong>USPS and UPS</strong>. You'll get a tracking number by email as soon as your order leaves. Orders over $99 ship free in the continental US.</p>
+
+  <h3>What's your return policy?</h3>
+  <p><strong>30-day returns</strong> on <strong>unused items</strong> in their original packaging. Contact us first and we'll walk you through it — no restocking games.</p>
+
+  <h3>How do I find bulbs that fit my vehicle?</h3>
+  <p>Use the <strong>fitment finder</strong> at the top of the <a href="/">homepage</a>: pick your year, then make, model, and trim. We'll show every bulb position on your vehicle — low beam, high beam, fog, turn, brake, reverse, interior — along with the bulb size each one takes and the LED products that match. Ordered through the finder and a bulb doesn't fit? We'll exchange it or refund you.</p>
+
+  <h3>What do lumens mean?</h3>
+  <p>Lumens measure <strong>total light output</strong> — more lumens, more light. Our listings show lumens per pair (both bulbs together). As a rough guide: a stock halogen low beam puts out around 1,000–1,500 lumens per bulb, while our LED lines range from about 6,000 lumens per pair on the entry tier up to 26,000 on the flagship Platinum 4070 series. Lumens tell you brightness; the beam pattern of your housing decides where that light goes.</p>
+
+  <h3>What's the difference between 6000K, 8000K, and 3000K?</h3>
+  <p>That's <strong>color temperature</strong>, not brightness — higher K is not brighter, just a different color:</p>
+  <ul>
+    <li><strong>6000K</strong> — crisp cool white, the classic LED look. Most popular for low/high beams and reverse.</li>
+    <li><strong>8000K</strong> — icy white with a blue tint. Style choice; slightly less usable light than 6000K.</li>
+    <li><strong>3000K</strong> — golden yellow. The foul-weather pick for fog lights — yellow cuts through rain and fog better than white.</li>
+  </ul>
+  <p>If you want maximum usable light, 6000K is the sweet spot. If you want fog lights that actually work in fog, go 3000K.</p>
+
+  <h3>Are these legal for on-road use?</h3>
+  <p class="disclaimer">⚠️ {{ disclaimer_html|safe }}</p>
+  <p>Retrofit LED bulbs in halogen housings are not DOT/SAE approved for on-road use, regardless of brand. Read <a href="/dot-compliance">DOT Rules &amp; Proper Use</a> for the full explanation, then check your state and local laws.</p>
+
+  <h3>Why is my turn signal blinking so fast after installing LEDs?</h3>
+  <p>That's <strong>hyperflash</strong>. LEDs draw far less current than the incandescent bulb they replaced, so your car thinks a bulb burned out and blinks double-time to warn you. The fix is a <strong>load resistor</strong> wired in parallel on each turn-signal circuit (mounted to bare metal — they get hot), or a CANbus-ready bulb/decoder that needs no splicing. See our <a href="/guides/turn-signal-bulbs">turn signal install guide</a>.</p>
+
+  <h3>Do I need a CANbus decoder or anti-flicker harness?</h3>
+  <p>Maybe — it depends on the car. If your new LEDs flicker, strobe, stay dimly lit when off, or trigger a "bulb out" dash warning, your car's computer is fighting the lower power draw. A plug-and-play <a href="/shop/accessories">CANbus decoder</a> inline with the bulb usually solves it in seconds. Most older cars need nothing at all.</p>
+
+  <h3>Can I install these myself?</h3>
+  <p>Almost always, yes — most of our bulbs are true plug-and-play and take 15–30 minutes a side with basic hand tools. We wrote step-by-step <a href="/guides">install guides</a> for every position: low beam, high beam, fog, turn signal, brake/backup, and interior. And if you're near Rosemead, stop by the store — we'll talk you through it at the counter.</p>
+</div></div>
+{% endblock %}

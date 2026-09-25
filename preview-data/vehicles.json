@@ -1,0 +1,883 @@
+[
+ {
+  "year": 2018,
+  "make": "Toyota",
+  "model": "Camry",
+  "trim": null,
+  "fitment": [
+   {
+    "position": "low_beam",
+    "label": "Low Beam",
+    "size": "H11",
+    "note": "",
+    "categories": [
+     "headlight"
+    ]
+   },
+   {
+    "position": "high_beam",
+    "label": "High Beam",
+    "size": "9005",
+    "note": "",
+    "categories": [
+     "headlight"
+    ]
+   },
+   {
+    "position": "fog_light",
+    "label": "Fog Light",
+    "size": "H11",
+    "note": "",
+    "categories": [
+     "fog"
+    ]
+   },
+   {
+    "position": "front_turn_signal",
+    "label": "Front Turn Signal",
+    "size": "7440",
+    "note": "",
+    "categories": [
+     "turn"
+    ]
+   },
+   {
+    "position": "rear_turn_signal",
+    "label": "Rear Turn Signal",
+    "size": "7440",
+    "note": "",
+    "categories": [
+     "turn"
+    ]
+   },
+   {
+    "position": "brake_light",
+    "label": "Brake Light",
+    "size": "7440",
+    "note": "",
+    "categories": [
+     "brake"
+    ]
+   },
+   {
+    "position": "reverse_light",
+    "label": "Reverse / Backup",
+    "size": "921",
+    "note": "",
+    "categories": [
+     "reverse"
+    ]
+   },
+   {
+    "position": "license_plate",
+    "label": "License Plate",
+    "size": "168",
+    "note": "",
+    "categories": [
+     "interior"
+    ]
+   },
+   {
+    "position": "dome_light",
+    "label": "Dome / Map Light",
+    "size": "194",
+    "note": "",
+    "categories": [
+     "interior"
+    ]
+   }
+  ]
+ },
+ {
+  "year": 2016,
+  "make": "Honda",
+  "model": "Civic",
+  "trim": null,
+  "fitment": [
+   {
+    "position": "low_beam",
+    "label": "Low Beam",
+    "size": "H11",
+    "note": "",
+    "categories": [
+     "headlight"
+    ]
+   },
+   {
+    "position": "high_beam",
+    "label": "High Beam",
+    "size": "9005",
+    "note": "",
+    "categories": [
+     "headlight"
+    ]
+   },
+   {
+    "position": "fog_light",
+    "label": "Fog Light",
+    "size": "H11",
+    "note": "",
+    "categories": [
+     "fog"
+    ]
+   },
+   {
+    "position": "front_turn_signal",
+    "label": "Front Turn Signal",
+    "size": "7440",
+    "note": "",
+    "categories": [
+     "turn"
+    ]
+   },
+   {
+    "position": "rear_turn_signal",
+    "label": "Rear Turn Signal",
+    "size": "7440",
+    "note": "",
+    "categories": [
+     "turn"
+    ]
+   },
+   {
+    "position": "brake_light",
+    "label": "Brake Light",
+    "size": "7443",
+    "note": "",
+    "categories": [
+     "brake"
+    ]
+   },
+   {
+    "position": "reverse_light",
+    "label": "Reverse / Backup",
+    "size": "921",
+    "note": "",
+    "categories": [
+     "reverse"
+    ]
+   },
+   {
+    "position": "license_plate",
+    "label": "License Plate",
+    "size": "168",
+    "note": "",
+    "categories": [
+     "interior"
+    ]
+   },
+   {
+    "position": "dome_light",
+    "label": "Dome / Map Light",
+    "size": "194",
+    "note": "",
+    "categories": [
+     "interior"
+    ]
+   }
+  ]
+ },
+ {
+  "year": 2019,
+  "make": "Ford",
+  "model": "F-150",
+  "trim": null,
+  "fitment": [
+   {
+    "position": "low_beam",
+    "label": "Low Beam",
+    "size": "H11",
+    "note": "",
+    "categories": [
+     "headlight"
+    ]
+   },
+   {
+    "position": "high_beam",
+    "label": "High Beam",
+    "size": "9005",
+    "note": "",
+    "categories": [
+     "headlight"
+    ]
+   },
+   {
+    "position": "fog_light",
+    "label": "Fog Light",
+    "size": "9145",
+    "note": "",
+    "categories": [
+     "fog"
+    ]
+   },
+   {
+    "position": "front_turn_signal",
+    "label": "Front Turn Signal",
+    "size": "3157",
+    "note": "",
+    "categories": [
+     "turn"
+    ]
+   },
+   {
+    "position": "rear_turn_signal",
+    "label": "Rear Turn Signal",
+    "size": "3157",
+    "note": "",
+    "categories": [
+     "turn"
+    ]
+   },
+   {
+    "position": "brake_light",
+    "label": "Brake Light",
+    "size": "3157",
+    "note": "",
+    "categories": [
+     "brake"
+    ]
+   },
+   {
+    "position": "reverse_light",
+    "label": "Reverse / Backup",
+    "size": "921",
+    "note": "",
+    "categories": [
+     "reverse"
+    ]
+   },
+   {
+    "position": "license_plate",
+    "label": "License Plate",
+    "size": "194",
+    "note": "",
+    "categories": [
+     "interior"
+    ]
+   },
+   {
+    "position": "dome_light",
+    "label": "Dome / Map Light",
+    "size": "194",
+    "note": "",
+    "categories": [
+     "interior"
+    ]
+   }
+  ]
+ },
+ {
+  "year": 2018,
+  "make": "Chevrolet",
+  "model": "Silverado 1500",
+  "trim": null,
+  "fitment": [
+   {
+    "position": "low_beam",
+    "label": "Low Beam",
+    "size": "H11",
+    "note": "",
+    "categories": [
+     "headlight"
+    ]
+   },
+   {
+    "position": "high_beam",
+    "label": "High Beam",
+    "size": "9005",
+    "note": "",
+    "categories": [
+     "headlight"
+    ]
+   },
+   {
+    "position": "fog_light",
+    "label": "Fog Light",
+    "size": "5202",
+    "note": "",
+    "categories": [
+     "fog"
+    ]
+   },
+   {
+    "position": "front_turn_signal",
+    "label": "Front Turn Signal",
+    "size": "3157",
+    "note": "",
+    "categories": [
+     "turn"
+    ]
+   },
+   {
+    "position": "rear_turn_signal",
+    "label": "Rear Turn Signal",
+    "size": "3157",
+    "note": "",
+    "categories": [
+     "turn"
+    ]
+   },
+   {
+    "position": "brake_light",
+    "label": "Brake Light",
+    "size": "3157",
+    "note": "",
+    "categories": [
+     "brake"
+    ]
+   },
+   {
+    "position": "reverse_light",
+    "label": "Reverse / Backup",
+    "size": "921",
+    "note": "",
+    "categories": [
+     "reverse"
+    ]
+   },
+   {
+    "position": "license_plate",
+    "label": "License Plate",
+    "size": "194",
+    "note": "",
+    "categories": [
+     "interior"
+    ]
+   },
+   {
+    "position": "dome_light",
+    "label": "Dome / Map Light",
+    "size": "194",
+    "note": "",
+    "categories": [
+     "interior"
+    ]
+   }
+  ]
+ },
+ {
+  "year": 2020,
+  "make": "Toyota",
+  "model": "RAV4",
+  "trim": null,
+  "fitment": [
+   {
+    "position": "low_beam",
+    "label": "Low Beam",
+    "size": "H11",
+    "note": "",
+    "categories": [
+     "headlight"
+    ]
+   },
+   {
+    "position": "high_beam",
+    "label": "High Beam",
+    "size": "9005",
+    "note": "",
+    "categories": [
+     "headlight"
+    ]
+   },
+   {
+    "position": "fog_light",
+    "label": "Fog Light",
+    "size": "H11",
+    "note": "",
+    "categories": [
+     "fog"
+    ]
+   },
+   {
+    "position": "front_turn_signal",
+    "label": "Front Turn Signal",
+    "size": "7440",
+    "note": "",
+    "categories": [
+     "turn"
+    ]
+   },
+   {
+    "position": "rear_turn_signal",
+    "label": "Rear Turn Signal",
+    "size": "7440",
+    "note": "",
+    "categories": [
+     "turn"
+    ]
+   },
+   {
+    "position": "brake_light",
+    "label": "Brake Light",
+    "size": "7440",
+    "note": "",
+    "categories": [
+     "brake"
+    ]
+   },
+   {
+    "position": "reverse_light",
+    "label": "Reverse / Backup",
+    "size": "921",
+    "note": "",
+    "categories": [
+     "reverse"
+    ]
+   },
+   {
+    "position": "license_plate",
+    "label": "License Plate",
+    "size": "168",
+    "note": "",
+    "categories": [
+     "interior"
+    ]
+   },
+   {
+    "position": "dome_light",
+    "label": "Dome / Map Light",
+    "size": "194",
+    "note": "",
+    "categories": [
+     "interior"
+    ]
+   }
+  ]
+ },
+ {
+  "year": 2017,
+  "make": "Toyota",
+  "model": "Corolla",
+  "trim": null,
+  "fitment": [
+   {
+    "position": "low_beam",
+    "label": "Low Beam",
+    "size": "H11",
+    "note": "",
+    "categories": [
+     "headlight"
+    ]
+   },
+   {
+    "position": "high_beam",
+    "label": "High Beam",
+    "size": "9005",
+    "note": "",
+    "categories": [
+     "headlight"
+    ]
+   },
+   {
+    "position": "fog_light",
+    "label": "Fog Light",
+    "size": "H11",
+    "note": "",
+    "categories": [
+     "fog"
+    ]
+   },
+   {
+    "position": "front_turn_signal",
+    "label": "Front Turn Signal",
+    "size": "7440",
+    "note": "",
+    "categories": [
+     "turn"
+    ]
+   },
+   {
+    "position": "rear_turn_signal",
+    "label": "Rear Turn Signal",
+    "size": "7440",
+    "note": "",
+    "categories": [
+     "turn"
+    ]
+   },
+   {
+    "position": "brake_light",
+    "label": "Brake Light",
+    "size": "7443",
+    "note": "",
+    "categories": [
+     "brake"
+    ]
+   },
+   {
+    "position": "reverse_light",
+    "label": "Reverse / Backup",
+    "size": "921",
+    "note": "",
+    "categories": [
+     "reverse"
+    ]
+   },
+   {
+    "position": "license_plate",
+    "label": "License Plate",
+    "size": "168",
+    "note": "",
+    "categories": [
+     "interior"
+    ]
+   },
+   {
+    "position": "dome_light",
+    "label": "Dome / Map Light",
+    "size": "194",
+    "note": "",
+    "categories": [
+     "interior"
+    ]
+   }
+  ]
+ },
+ {
+  "year": 2018,
+  "make": "Honda",
+  "model": "Accord",
+  "trim": null,
+  "fitment": [
+   {
+    "position": "low_beam",
+    "label": "Low Beam",
+    "size": "H11",
+    "note": "",
+    "categories": [
+     "headlight"
+    ]
+   },
+   {
+    "position": "high_beam",
+    "label": "High Beam",
+    "size": "9005",
+    "note": "",
+    "categories": [
+     "headlight"
+    ]
+   },
+   {
+    "position": "front_turn_signal",
+    "label": "Front Turn Signal",
+    "size": "7440",
+    "note": "",
+    "categories": [
+     "turn"
+    ]
+   },
+   {
+    "position": "rear_turn_signal",
+    "label": "Rear Turn Signal",
+    "size": "7440",
+    "note": "",
+    "categories": [
+     "turn"
+    ]
+   },
+   {
+    "position": "brake_light",
+    "label": "Brake Light",
+    "size": "7443",
+    "note": "",
+    "categories": [
+     "brake"
+    ]
+   },
+   {
+    "position": "reverse_light",
+    "label": "Reverse / Backup",
+    "size": "921",
+    "note": "",
+    "categories": [
+     "reverse"
+    ]
+   },
+   {
+    "position": "license_plate",
+    "label": "License Plate",
+    "size": "168",
+    "note": "",
+    "categories": [
+     "interior"
+    ]
+   },
+   {
+    "position": "dome_light",
+    "label": "Dome / Map Light",
+    "size": "194",
+    "note": "",
+    "categories": [
+     "interior"
+    ]
+   }
+  ]
+ },
+ {
+  "year": 2019,
+  "make": "Nissan",
+  "model": "Altima",
+  "trim": null,
+  "fitment": [
+   {
+    "position": "low_beam",
+    "label": "Low Beam",
+    "size": "H11",
+    "note": "",
+    "categories": [
+     "headlight"
+    ]
+   },
+   {
+    "position": "high_beam",
+    "label": "High Beam",
+    "size": "9005",
+    "note": "",
+    "categories": [
+     "headlight"
+    ]
+   },
+   {
+    "position": "fog_light",
+    "label": "Fog Light",
+    "size": "H11",
+    "note": "",
+    "categories": [
+     "fog"
+    ]
+   },
+   {
+    "position": "front_turn_signal",
+    "label": "Front Turn Signal",
+    "size": "7440",
+    "note": "",
+    "categories": [
+     "turn"
+    ]
+   },
+   {
+    "position": "rear_turn_signal",
+    "label": "Rear Turn Signal",
+    "size": "7440",
+    "note": "",
+    "categories": [
+     "turn"
+    ]
+   },
+   {
+    "position": "brake_light",
+    "label": "Brake Light",
+    "size": "7440",
+    "note": "",
+    "categories": [
+     "brake"
+    ]
+   },
+   {
+    "position": "reverse_light",
+    "label": "Reverse / Backup",
+    "size": "921",
+    "note": "",
+    "categories": [
+     "reverse"
+    ]
+   },
+   {
+    "position": "license_plate",
+    "label": "License Plate",
+    "size": "168",
+    "note": "",
+    "categories": [
+     "interior"
+    ]
+   },
+   {
+    "position": "dome_light",
+    "label": "Dome / Map Light",
+    "size": "194",
+    "note": "",
+    "categories": [
+     "interior"
+    ]
+   }
+  ]
+ },
+ {
+  "year": 2020,
+  "make": "Toyota",
+  "model": "Tacoma",
+  "trim": null,
+  "fitment": [
+   {
+    "position": "low_beam",
+    "label": "Low Beam",
+    "size": "H11",
+    "note": "",
+    "categories": [
+     "headlight"
+    ]
+   },
+   {
+    "position": "high_beam",
+    "label": "High Beam",
+    "size": "9005",
+    "note": "",
+    "categories": [
+     "headlight"
+    ]
+   },
+   {
+    "position": "fog_light",
+    "label": "Fog Light",
+    "size": "9145",
+    "note": "",
+    "categories": [
+     "fog"
+    ]
+   },
+   {
+    "position": "front_turn_signal",
+    "label": "Front Turn Signal",
+    "size": "7440",
+    "note": "",
+    "categories": [
+     "turn"
+    ]
+   },
+   {
+    "position": "rear_turn_signal",
+    "label": "Rear Turn Signal",
+    "size": "7440",
+    "note": "",
+    "categories": [
+     "turn"
+    ]
+   },
+   {
+    "position": "brake_light",
+    "label": "Brake Light",
+    "size": "7440",
+    "note": "",
+    "categories": [
+     "brake"
+    ]
+   },
+   {
+    "position": "reverse_light",
+    "label": "Reverse / Backup",
+    "size": "921",
+    "note": "",
+    "categories": [
+     "reverse"
+    ]
+   },
+   {
+    "position": "license_plate",
+    "label": "License Plate",
+    "size": "168",
+    "note": "",
+    "categories": [
+     "interior"
+    ]
+   },
+   {
+    "position": "dome_light",
+    "label": "Dome / Map Light",
+    "size": "194",
+    "note": "",
+    "categories": [
+     "interior"
+    ]
+   }
+  ]
+ },
+ {
+  "year": 2018,
+  "make": "Jeep",
+  "model": "Wrangler",
+  "trim": null,
+  "fitment": [
+   {
+    "position": "low_beam",
+    "label": "Low Beam",
+    "size": "H13",
+    "note": "",
+    "categories": [
+     "headlight"
+    ]
+   },
+   {
+    "position": "high_beam",
+    "label": "High Beam",
+    "size": "H13",
+    "note": "Dual-filament H13 serves low and high beam",
+    "categories": [
+     "headlight"
+    ]
+   },
+   {
+    "position": "fog_light",
+    "label": "Fog Light",
+    "size": "5202",
+    "note": "",
+    "categories": [
+     "fog"
+    ]
+   },
+   {
+    "position": "front_turn_signal",
+    "label": "Front Turn Signal",
+    "size": "3157",
+    "note": "",
+    "categories": [
+     "turn"
+    ]
+   },
+   {
+    "position": "rear_turn_signal",
+    "label": "Rear Turn Signal",
+    "size": "3157",
+    "note": "",
+    "categories": [
+     "turn"
+    ]
+   },
+   {
+    "position": "brake_light",
+    "label": "Brake Light",
+    "size": "3157",
+    "note": "",
+    "categories": [
+     "brake"
+    ]
+   },
+   {
+    "position": "reverse_light",
+    "label": "Reverse / Backup",
+    "size": "921",
+    "note": "",
+    "categories": [
+     "reverse"
+    ]
+   },
+   {
+    "position": "license_plate",
+    "label": "License Plate",
+    "size": "194",
+    "note": "",
+    "categories": [
+     "interior"
+    ]
+   },
+   {
+    "position": "dome_light",
+    "label": "Dome / Map Light",
+    "size": "194",
+    "note": "",
+    "categories": [
+     "interior"
+    ]
+   }
+  ]
+ }
+]

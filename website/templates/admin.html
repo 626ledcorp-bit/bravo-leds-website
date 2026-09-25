@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard — Bravo LEDs{% endblock %}
+{% block content %}
+<div class="wrap">
+  <h1>Admin Dashboard <span class="data-pill">orders · inventory</span></h1>
+  <p style="margin-bottom:20px"><a class="btn" href="/admin/orders">Order Manager</a>
+     <a class="btn btn-ghost" href="/admin/orders/tracking">Tracking Import</a>
+     <a class="btn btn-ghost" href="/admin/orders/pick-list">Pick List</a>
+     <a class="btn btn-ghost" href="/admin/square">Square POS</a>
+     <a class="btn btn-ghost" href="/admin/settings">Settings</a>
+     <a href="/admin/logout" style="margin-left:12px">Log out</a></p>
+
+  <h2>Sales Summary</h2>
+  <div class="cat-grid" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr))">
+    <div class="contact-card"><h3>{{ money(stats.revenue_cents) }}</h3><p class="hint">Revenue (paid + shipped)</p></div>
+    {% for st in ["new","paid","shipped","cancelled"] %}
+    <div class="contact-card"><h3>{{ stats.by_status.get(st, {}).get("count", 0) }}</h3>
+    <p class="hint">{{ st|capitalize }} orders{% if st in ["paid","shipped"] %} · {{ money(stats.by_status.get(st, {}).get("revenue_cents", 0)) }}{% endif %}</p></div>
+    {% endfor %}
+  </div>
+  {% if stats.by_date %}
+  <h3 style="margin-top:14px">Revenue by Day</h3>
+  <table class="admin-table">
+    <tr><th>Date</th><th>Orders</th><th>Revenue</th></tr>
+    {% for d in stats.by_date %}
+    <tr><td>{{ d.day }}</td><td>{{ d.count }}</td><td>{{ money(d.revenue_cents) }}</td></tr>
+    {% endfor %}
+  </table>
+  {% endif %}
+
+  <h2 style="margin-top:28px">Marketing</h2>
+  <p><a class="btn" href="/admin/landing">Landing Pages</a>
+     <a class="btn btn-ghost" href="/admin/promos">Promo Codes</a></p>
+  <p class="hint">Ad landing pages (<code>/go/&lt;slug&gt;</code>) with countdown timers and auto-applied promo codes, plus cart-wide discount codes.</p>
+
+  <h2 id="orders" style="margin-top:28px">Orders</h2>
+  {% if orders %}
+  {% for o in orders %}
+  <div class="contact-card" id="order-{{ o.id }}" style="margin-bottom:14px">
+    <p><strong>#{{ o.id }}</strong> — <span class="badge">{{ o.status }}</span>
+    {{ money(o.total_cents) }} · {{ o.created_at[:16] }}</p>
+    {% if o.promo_code %}
+    <p class="hint">Promo code: <strong>{{ o.promo_code }}</strong> (−{{ money(o.discount_cents or 0) }})</p>
+    {% endif %}
+    <p>{{ o.customer_name }} &lt;{{ o.customer_email }}&gt;<br>
+    <span class="hint">{{ o.addr_line1 }}{% if o.addr_line2 %}, {{ o.addr_line2 }}{% endif %},
+    {{ o.addr_city }}, {{ o.addr_state }} {{ o.addr_zip }}</span></p>
+    <ul>
+      {% for i in o.line_items %}
+      <li>{{ i.qty }}× {{ i.name }}{% if i.variation_label %} — <strong>{{ i.variation_label }}</strong>{% elif i.size %} ({{ i.size }}{% if i.color_temp %}, {{ i.color_temp }}{% endif %}){% endif %} — {{ money(i.line_total_cents) }}</li>
+      {% endfor %}
+    </ul>
+    <p class="hint">Stripe session: {{ o.stripe_session_id or "—" }}
+    {% if o.tracking_number %} · Tracking: <strong>{{ o.tracking_number }}</strong>{% endif %}</p>
+    <form method="post" action="/admin/order/{{ o.id }}/status" class="finder-grid" style="grid-template-columns:2fr 2fr auto">
+      <label class="field">Tracking # (for "shipped")
+        <input type="text" name="tracking" value="{{ o.tracking_number or '' }}" placeholder="e.g. 1Z...">
+      </label>
+      <label class="field">Action
+        <select name="action">
+          {% if o.status == "new" %}
+          <option value="paid">Mark paid</option>
+          <option value="cancelled">Cancel order</option>
+          {% elif o.status == "paid" %}
+          <option value="shipped">Mark shipped</option>
+          <option value="cancelled">Cancel order</option>
+          {% else %}
+          <option value="">— no actions —</option>
+          {% endif %}
+        </select>
+      </label>
+      <div><br><button class="btn" type="submit"{% if o.status not in ["new","paid"] %} disabled{% endif %}>Apply</button></div>
+    </form>
+  </div>
+  {% endfor %}
+  {% else %}
+  <p class="hint">No orders yet.</p>
+  {% endif %}
+
+  <h2 id="products" style="margin-top:28px">Products</h2>
+  <p class="hint">Draft products are hidden from the public shop and the
+  fitment finder until published. Archived products are hidden everywhere
+  except here. Publish only when the real SKU, price and photo are in
+  place.</p>
+  <div style="display:flex;gap:10px;align-items:center;margin:10px 0;flex-wrap:wrap">
+    <a class="btn" href="/admin/products/new">+ New product</a>
+    <a class="btn" href="/admin/products/import">Import CSV</a>
+    <form method="get" action="/admin" style="display:flex;gap:6px">
+      <input type="hidden" name="q" value="">
+      <input name="q" value="{{ search_q }}" placeholder="Search name, SKU, tag, vendor…" style="min-width:240px">
+      <button class="btn btn-ghost" type="submit">Search</button>
+      {% if search_q %}<a class="btn btn-ghost" href="/admin#products">Clear</a>{% endif %}
+    </form>
+  </div>
+  <table class="admin-table">
+    <tr><th>Product</th><th>Category</th><th>Price</th><th>Status</th><th></th></tr>
+    {% for p in products %}
+    <tr>
+      <td>{{ p.name }}<br><span class="hint">{{ p.id }}{% if p.sku %} · SKU {{ p.sku }}{% endif %}</span></td>
+      <td>{{ categories[p.category].name }}</td>
+      <td>{{ money(p.price_cents) }}</td>
+      <td>
+        {% if p.status == "archived" %}
+        <span class="badge" style="position:static; background:#666; color:#fff;">ARCHIVED</span>
+        {% elif p.status == "draft" %}
+        <span class="badge" style="position:static; background:#e5484d; color:#fff;">DRAFT — needs real SKU/price/photo</span>
+        {% else %}
+        <span class="badge" style="position:static;">Live</span>
+        {% endif %}
+      </td>
+      <td class="nowrap">
+        <a class="btn btn-ghost" href="/admin/product/{{ p.id }}/edit">Edit</a>
+        <form method="post" action="/admin/product/{{ p.id }}/publish" style="display:inline">
+          <input type="hidden" name="action" value="{{ 'publish' if p.status != 'active' else 'unpublish' }}">
+          <button class="btn btn-ghost" type="submit">{{ "Publish" if p.status != "active" else "Unpublish" }}</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% if archived %}
+  <h3 style="margin-top:20px">Archived ({{ archived|length }})</h3>
+  <table class="admin-table">
+    <tr><th>Product</th><th></th></tr>
+    {% for p in archived %}
+    <tr>
+      <td>{{ p.name }}<br><span class="hint">{{ p.id }}</span></td>
+      <td class="nowrap"><a class="btn btn-ghost" href="/admin/product/{{ p.id }}/edit">Edit</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% endif %}
+
+  <h2 id="inventory" style="margin-top:28px">Inventory</h2>
+  <p class="hint">Counts start as placeholder defaults — edit to real numbers here.
+  Items at or below their threshold are flagged low.</p>
+  <table class="admin-table">
+    <tr><th>Product</th><th>Tier</th><th>Stock</th><th>Low at ≤</th><th></th></tr>
+    {% for i in inventory %}
+    <tr{% if i.low_stock %} class="low-stock"{% endif %}>
+      <td>{{ i.name }}</td><td>{{ i.tier }}</td><td>{{ i.stock }}{% if i.low_stock %} ⚠️{% endif %}</td>
+      <td>{{ i.low_threshold }}</td>
+      <td>
+        <form method="post" action="/admin/inventory" style="display:flex;gap:6px;align-items:center">
+          <input type="hidden" name="product_id" value="{{ i.product_id }}">
+          <input type="number" name="stock" value="{{ i.stock }}" min="0" style="width:70px">
+          <input type="number" name="low_threshold" value="{{ i.low_threshold }}" min="0" style="width:60px" title="low-stock threshold">
+          <button class="btn btn-ghost" type="submit">Save</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+<style>
+.admin-table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.92rem}
+.admin-table th,.admin-table td{border:1px solid var(--border);padding:8px 10px;text-align:left;vertical-align:top}
+.admin-table th{background:var(--panel)}
+.admin-table tr.low-stock td{background:rgba(255,162,26,.08)}
+.admin-table input,.admin-table select{background:#1b1b1b;color:#eee;border:1px solid var(--border);border-radius:6px;padding:6px}
+</style>
+{% endblock %}

@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+{% block title %}Import Products (CSV) — Admin{% endblock %}
+{% block content %}
+<div class="wrap admin-form">
+  <p class="small" style="margin:22px 0 0"><a href="/admin#products">← Admin</a></p>
+  <h1>Import products from CSV</h1>
+
+  {% if errors %}
+  <div class="flash-errors">
+    <strong>Fix {{ errors|length }} problem{{ "s" if errors|length != 1 }}:</strong>
+    <ul>{% for e in errors %}<li>{{ e }}</li>{% endfor %}</ul>
+  </div>
+  {% endif %}
+
+  {% if preview %}
+  {# ------------------------------ preview / confirm ------------------------------ #}
+  <h2>Preview — {{ "full product import" if preview.mode == "full" else "inventory-only import" }}</h2>
+  <p class="muted small">File: <code>{{ filename }}</code>. Nothing has been written yet — review every row, then confirm.</p>
+
+  {% if preview.errors %}
+  <div class="flash-errors">
+    <strong>File-level problem{{ "s" if preview.errors|length != 1 }}:</strong>
+    <ul>{% for e in preview.errors %}<li>{{ e }}</li>{% endfor %}</ul>
+  </div>
+  {% endif %}
+
+  <p>
+    {% if preview.mode == "full" %}
+    <strong>{{ preview.summary.create }}</strong> to create ·
+    <strong>{{ preview.summary.update }}</strong> to update ·
+    <strong>{{ preview.summary.errors }}</strong> with errors
+    {% else %}
+    <strong>{{ preview.summary.update }}</strong> stock updates ·
+    <strong>{{ preview.summary.errors }}</strong> with errors
+    {% endif %}
+  </p>
+
+  {% if preview.mode == "full" %}
+  <table class="atable">
+    <thead><tr><th>Rows</th><th>Product</th><th>Action</th><th>Details / errors</th></tr></thead>
+    <tbody>
+    {% for g in preview.products %}
+      {% set nerr = g.errors|length + (g.variations|map(attribute="errors")|map("length")|sum) %}
+      <tr class="{% if nerr %}row-err{% elif g.action == "create" %}row-new{% endif %}">
+        <td class="small">{{ g.row_numbers|join(", ") }}</td>
+        <td><strong>{{ g.name or g.sku or "(unnamed)" }}</strong>
+          {% if g.sku %}<br><code class="small">{{ g.sku }}</code>{% endif %}</td>
+        <td>{% if nerr %}<strong class="err">error</strong>
+            {% else %}{{ g.action }}{% endif %}</td>
+        <td class="small">
+          {% for e in g.errors %}<div class="err">{{ e }}</div>{% endfor %}
+          {% for v in g.variations %}
+            <div>{{ "Row %d"|format(v.row) }} · variation
+              <strong>{{ v.label }}</strong> — {{ v.action }}
+              {% for e in v.errors %}<div class="err">{{ e }}</div>{% endfor %}</div>
+          {% endfor %}
+          {% if not nerr and not g.variations %}<span class="muted">no variations</span>{% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <table class="atable">
+    <thead><tr><th>Row</th><th>Target</th><th>New quantity</th><th>Status</th></tr></thead>
+    <tbody>
+    {% for r in preview.rows %}
+      <tr class="{% if r.errors %}row-err{% endif %}">
+        <td>{{ r.row }}</td>
+        <td class="small">{{ r.target.label if r.target else (r.variation_sku or r.sku) }}</td>
+        <td>{{ r.quantity if r.quantity is not none else "—" }}</td>
+        <td class="small">
+          {% if r.errors %}{% for e in r.errors %}<div class="err">{{ e }}</div>{% endfor %}
+          {% else %}update stock{% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+
+  {% if preview.valid %}
+  <form method="post" action="/admin/products/import/confirm" style="margin-top:16px">
+    <input type="hidden" name="token" value="{{ token }}">
+    <input type="hidden" name="mode" value="{{ preview.mode }}">
+    <button class="btn btn-primary" type="submit"
+            onclick="return confirm('Apply this import now? This writes to the product catalog.')">
+      Confirm import</button>
+    <a class="btn" href="/admin/products/import">Start over</a>
+  </form>
+  {% else %}
+  <p><strong class="err">Fix the errors above and upload the file again — nothing was written.</strong></p>
+  <p><a class="btn" href="/admin/products/import">Back to upload</a></p>
+  {% endif %}
+
+  {% else %}
+  {# ------------------------------ upload + docs ------------------------------ #}
+  <form method="post" enctype="multipart/form-data">
+    <div class="frow frow-2">
+      <label>Import type
+        <select name="mode">
+          <option value="full" {% if mode == "full" %}selected{% endif %}>Full product import (create/update products + variations)</option>
+          <option value="inventory" {% if mode == "inventory" %}selected{% endif %}>Inventory only (stock counts)</option>
+        </select></label>
+      <label>CSV file (max 5 MB)<input type="file" name="csv" accept=".csv" required></label>
+    </div>
+    <p><button class="btn btn-primary" type="submit">Upload &amp; preview</button></p>
+  </form>
+
+  <p class="small">
+    Templates (headers + one example row):
+    <a href="/admin/products/import/template?mode=full">full import template</a> ·
+    <a href="/admin/products/import/template?mode=inventory">inventory template</a>
+  </p>
+
+  <h2>How it works</h2>
+  <ul class="small">
+    <li><strong>Two steps, always.</strong> Upload → every row is validated and shown as create / update / error → you confirm. If any row has an error, <em>nothing</em> is written until the file is fixed and re-uploaded.</li>
+    <li><strong>Matching.</strong> An existing product is matched by its product <code>sku</code>; an existing variation is matched by <code>variation_sku</code>, or by its option values when no variation SKU is given. Unknown SKUs in an inventory import are errors.</li>
+    <li><strong>Blank cells.</strong> On <em>update</em>, a blank cell keeps the existing value — only cells you fill in are overwritten. On <em>create</em>, blanks take the defaults (status <code>draft</code>, taxable yes, 1-year warranty, placeholder stock). An explicit <code>0</code> in <code>quantity</code> sets stock to zero. CSV cannot clear an optional text field — use the product form for that.</li>
+    <li><strong>Prices.</strong> <code>price</code> is the selling price. If <code>compare_at_price</code> is also given, <code>price</code> becomes the sale price and <code>compare_at_price</code> the regular (struck-through) price. Same for <code>variation_price</code> / <code>variation_compare_at</code>.</li>
+    <li><strong>Rows &amp; variations.</strong> Rows sharing one product <code>sku</code> are one product. Any row with option values (<code>option1_name</code>/<code>option1_value</code>, up to 3 options) or variation columns creates/updates a variation. Imports never delete variations — remove them on the product form.</li>
+    <li><strong>Names.</strong> “Bravo ” is prepended automatically when missing. Names containing “headlight”, “off-road” or “offroad” are rejected (off-road wording is fine in the description).</li>
+    <li><strong>Validation.</strong> Price must be &gt; 0, category must exist, duplicate SKUs inside the file are rejected, and unknown column headers are rejected (typo guard).</li>
+    <li><strong>Private fields.</strong> <code>cost</code>, <code>msku</code>, supplier fields and <code>notes</code> stay admin-only — they never appear on public pages, in carts, or in customer emails.</li>
+  </ul>
+
+  <h2>Full-import columns</h2>
+  <p class="small"><code>name, sku, msku, barcode, category, product_type, tier, price, compare_at_price, cost, vendor, weight_oz, length_in, width_in, height_in, quantity, low_threshold, taxable (yes/no), status (active/draft/archived), description, blurb, features (| separated), tags (comma separated), seo_title, seo_description, fitment_positions (comma separated), badge, warranty, supplier_name, supplier_sku, supplier_notes, notes, option1_name, option1_value, option2_name, option2_value, option3_name, option3_value, variation_sku, variation_msku, variation_barcode, variation_price, variation_compare_at, variation_cost, variation_quantity</code></p>
+  <h2>Inventory-only columns</h2>
+  <p class="small"><code>sku, quantity, variation_sku</code> — <code>variation_sku</code> optional; when given, that variation's stock is set, otherwise the product's stock.</p>
+  {% endif %}
+</div>
+<style>
+  .atable{width:100%;border-collapse:collapse;margin-top:8px}
+  .atable th,.atable td{border:1px solid #ddd;padding:6px 8px;text-align:left;vertical-align:top}
+  .atable th{background:#f5f5f5}
+  .row-err{background:#fff3f3}
+  .row-new{background:#f3fff3}
+  .err{color:#a00}
+</style>
+{% endblock %}

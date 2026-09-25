@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}{{ guide.title }} — Install Guides — Bravo LEDs{% endblock %}
+{% block content %}
+<div class="wrap"><div class="page-narrow">
+  <p class="small" style="margin:22px 0 0"><a href="/guides">Install Guides</a> / {{ guide.title }}</p>
+  <h1>{{ guide.title }}</h1>
+  <p class="muted"><strong>Difficulty:</strong> {{ guide.difficulty }} &nbsp;·&nbsp; <strong>Time:</strong> {{ guide.time }}</p>
+  <p class="disclaimer">⚠️ {{ disclaimer_html|safe }}</p>
+
+  <h3>What you'll need</h3>
+  <ul>
+    {% for t in guide.tools %}<li>{{ t }}</li>{% endfor %}
+  </ul>
+
+  <h3>Steps</h3>
+  <ol class="guide-steps">
+    {% for s in guide.steps %}
+    <li style="margin-bottom:10px">{{ s }}
+      {% set im = guide.images.get(loop.index) if guide.images else None %}
+      {% if im %}
+      <figure class="guide-step-img">
+        <img src="{{ url_for('static', filename=im.src) }}" alt="{{ im.alt }}" loading="lazy">
+      </figure>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ol>
+
+  <h3>Safety notes</h3>
+  <ul>
+    {% for s in guide.safety %}<li style="margin-bottom:8px">{{ s }}</li>{% endfor %}
+  </ul>
+
+  <hr class="divider">
+  <h3>More guides</h3>
+  <ul>
+    {% for slug in guide_order %}
+      {% if slug != request.view_args.slug %}
+      <li><a href="/guides/{{ slug }}">{{ guides[slug].title }}</a></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</div></div>
+{% endblock %}

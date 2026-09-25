@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Packing Slip — Order #{{ o.id }} — Bravo LEDs{% endblock %}
+{% block content %}
+<style>
+@media print {
+  header, footer, .no-print { display: none !important; }
+  .wrap { max-width: 100%; }
+}
+.slip { border: 2px solid #111; padding: 24px; max-width: 720px; }
+.slip h1 { margin: 0 0 4px; }
+.slip-bar { font-family: monospace; font-size: 28px; letter-spacing: 4px; }
+</style>
+<div class="wrap">
+  <p class="no-print"><a href="/admin/order/{{ o.id }}">← Order #{{ o.id }}</a>
+  <button class="btn" onclick="window.print()">Print</button></p>
+  <div class="slip">
+    <h1>Bravo LEDs <span class="hint">by 626 LEDs: Automotive Lighting Parts Store — Rosemead, CA</span></h1>
+    <p class="slip-bar">* ORDER {{ o.id }} *</p>
+    <p><strong>PACKING SLIP</strong> — {{ o.created_at[:10] }} · Status: {{ o.status|upper }}</p>
+    <table class="admin-table">
+      <tr><th>Qty</th><th>Item</th><th>SKU</th><th>✓</th></tr>
+      {% for i in o.line_items %}
+      <tr>
+        <td style="font-size:20px"><strong>{{ i.qty }}</strong></td>
+        <td>{{ i.name }}{% if i.variation_label %}<br><span class="hint">{{ i.variation_label }}</span>{% elif i.size %}<br><span class="hint">{{ i.size }}{% if i.color_temp %}, {{ i.color_temp }}{% endif %}</span>{% endif %}</td>
+        <td><code>{{ i.sku or "—" }}</code></td>
+        <td style="width:60px;border:1px solid #999"></td>
+      </tr>
+      {% endfor %}
+    </table>
+    <p style="margin-top:16px"><strong>Ship to:</strong><br>
+    {{ o.customer_name }}<br>
+    {{ o.addr_line1 }}{% if o.addr_line2 %}<br>{{ o.addr_line2 }}{% endif %}<br>
+    {{ o.addr_city }}, {{ o.addr_state }} {{ o.addr_zip }}</p>
+    <p class="hint">For off-road and fog light use only. Not DOT/SAE approved for on-road use. 1-year warranty · 30-day returns on unused items.</p>
+  </div>
+</div>
+{% endblock %}

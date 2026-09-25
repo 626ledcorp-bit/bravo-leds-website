@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block title %}Settings — Admin — Bravo LEDs{% endblock %}
+{% block content %}
+<div class="wrap">
+  <h1>Settings <span class="data-pill">notifications · shipping</span></h1>
+  <p style="margin-bottom:16px"><a href="/admin">← Dashboard</a></p>
+  <p class="hint" style="max-width:640px">Every email the store sends is toggled here — no code changes needed. Owner alerts go to the addresses below (falls back to <code>ORDER_NOTIFY_EMAIL</code>, then the default test address).</p>
+
+  <form method="post" action="/admin/settings">
+    <div class="contact-card" style="margin-bottom:16px">
+      <h2>Owner alerts</h2>
+      <div class="finder-grid" style="grid-template-columns:1fr 1fr">
+        <label class="field">Order alerts recipient
+          <input type="email" name="email_owner_orders" value="{{ settings.get('email_owner_orders','') }}" placeholder="(default test address)">
+        </label>
+        <label class="field">Other alerts recipient (stock, contact, reviews)
+          <input type="email" name="email_owner_alerts" value="{{ settings.get('email_owner_alerts','') }}" placeholder="(same as order alerts)">
+        </label>
+      </div>
+      {% for key, label, group in toggles %}
+      {% if group == "owner" %}
+      <p><label><input type="checkbox" name="{{ key }}"{% if settings.get(key,"1") == "1" %} checked{% endif %}> {{ label }}</label></p>
+      {% endif %}
+      {% endfor %}
+    </div>
+
+    <div class="contact-card" style="margin-bottom:16px">
+      <h2>Customer emails</h2>
+      {% for key, label, group in toggles %}
+      {% if group == "customer" %}
+      <p><label><input type="checkbox" name="{{ key }}"{% if settings.get(key,"1") == "1" %} checked{% endif %}> {{ label }}</label></p>
+      {% endif %}
+      {% endfor %}
+    </div>
+
+    <div class="contact-card" style="margin-bottom:16px">
+      <h2>Shipping</h2>
+      <label class="field" style="max-width:240px">Packaging tare (oz) added to Pirate Ship CSV weights
+        <input type="text" name="shipping_tare_oz" value="{{ settings.get('shipping_tare_oz','3') }}">
+      </label>
+      <p class="hint">A fixed allowance for box + packing material, added to every exported order's item weight.</p>
+    </div>
+
+    <div class="contact-card" style="margin-bottom:16px">
+      <h2>Square POS inventory sync</h2>
+      <p class="hint">Two-way stock sync with the in-store Square POS. The website is the catalog master: push products to Square once, then counts stay aligned. <a href="/admin/square">Open the Square sync page →</a></p>
+      <div class="finder-grid" style="grid-template-columns:1fr 1fr">
+        <label class="field">Square access token
+          <input type="password" name="square_access_token" value="" autocomplete="off"
+                 placeholder="{% if settings.get('square_access_token_configured') %}configured (••••{{ settings.get('square_access_token_last4') }}) — leave blank to keep{% else %}paste from Square Developer Dashboard{% endif %}">
+        </label>
+        <label class="field">Square location ID
+          <input type="text" name="square_location_id" value="{{ settings.get('square_location_id','') }}" placeholder="e.g. L123ABC456DEF">
+        </label>
+      </div>
+      <div class="finder-grid" style="grid-template-columns:1fr 1fr">
+        <label class="field">Environment
+          <select name="square_environment">
+            <option value="sandbox"{% if settings.get('square_environment','sandbox') == 'sandbox' %} selected{% endif %}>Sandbox (testing)</option>
+            <option value="production"{% if settings.get('square_environment') == 'production' %} selected{% endif %}>Production (live)</option>
+          </select>
+        </label>
+        <label class="field">Webhook signature key
+          <input type="password" name="square_webhook_signature_key" value="" autocomplete="off"
+                 placeholder="{% if settings.get('square_webhook_signature_key_configured') %}configured (••••{{ settings.get('square_webhook_signature_key_last4') }}) — leave blank to keep{% else %}from the webhook subscription in Square{% endif %}">
+        </label>
+      </div>
+      <p><label><input type="checkbox" name="square_auto_sync"{% if settings.get('square_auto_sync','0') == '1' %} checked{% endif %}> Push stock counts to Square automatically when a website order is paid</label></p>
+      <p class="hint">Leave secret fields blank to keep the saved value. The token is stored server-side only — it is never shown here and never logged. You can also set <code>SQUARE_ACCESS_TOKEN</code> / <code>SQUARE_LOCATION_ID</code> as environment variables instead; those take precedence.</p>
+    </div>
+
+    <button class="btn" type="submit">Save settings</button>
+  </form>
+</div>
+{% endblock %}

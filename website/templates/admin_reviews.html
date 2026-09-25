@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Review Moderation — Bravo LEDs{% endblock %}
+{% block content %}
+<div class="wrap"><div class="page-narrow">
+  <h1>Review Moderation</h1>
+  <p class="muted">Pending reviews need approval before they appear on product pages.</p>
+  {% if reviews %}
+  <table style="width:100%; border-collapse:collapse; font-size:14px">
+    <tr class="muted small" style="text-align:left">
+      <th style="padding:8px">Status</th><th style="padding:8px">Product</th>
+      <th style="padding:8px">Rating</th><th style="padding:8px">Name</th>
+      <th style="padding:8px">Review</th><th style="padding:8px"></th>
+    </tr>
+    {% for r in reviews %}
+    <tr style="border-top:1px solid #2a2e35; vertical-align:top">
+      <td style="padding:8px"><strong>{{ r.status }}</strong></td>
+      <td style="padding:8px"><a href="/product/{{ r.product_id }}">{{ r.product_id }}</a></td>
+      <td style="padding:8px">{{ "★" * r.rating }}{{ "☆" * (5 - r.rating) }}</td>
+      <td style="padding:8px">{{ r.name }}</td>
+      <td style="padding:8px">{{ r.body }}</td>
+      <td style="padding:8px; white-space:nowrap">
+        {% if r.status == "pending" %}
+        <form action="/admin/reviews/{{ r.id }}/approve" method="post" style="display:inline">
+          <button class="btn" type="submit" style="padding:6px 12px">Approve</button>
+        </form>
+        {% endif %}
+        <form action="/admin/reviews/{{ r.id }}/delete" method="post" style="display:inline"
+              onsubmit="return confirm('Delete this review?')">
+          <button class="btn btn-ghost" type="submit" style="padding:6px 12px">Delete</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+  <p class="muted">No reviews yet.</p>
+  {% endif %}
+</div></div>
+{% endblock %}

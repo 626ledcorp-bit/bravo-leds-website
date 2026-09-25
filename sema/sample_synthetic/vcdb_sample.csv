@@ -1,0 +1,9 @@
+# ═══════════════════════════════════════════════════════════════════
+# SYNTHETIC TEST DATA — NOT REAL FITMENT — FOR PIPELINE TESTING ONLY
+# ═══════════════════════════════════════════════════════════════════
+# Fake VCdb-style vehicle mapping: BaseVehicleID -> year/make/model/trim.
+# In production, replace with a real export from your VCdb subscription
+# (or the vehicle reference included in your SEMA Data download).
+base_vehicle_id,year,make,model,trim
+90001,2018,DemoMake,DemoModel-SYNTHETIC,LE
+90002,2020,DemoMake,DemoModel-SYNTHETIC,
