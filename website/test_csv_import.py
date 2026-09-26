@@ -381,6 +381,50 @@ def main():
                content_type="multipart/form-data")
     check("non-csv filename rejected", r.status_code == 400)
 
+    print("== export round-trip ==")
+    r = c.get("/admin/products/export")
+    check("export download 200", r.status_code == 200)
+    check("export download is CSV",
+          "text/csv" in r.headers.get("Content-Type", ""))
+    check("export download is attachment",
+          "attachment" in r.headers.get("Content-Disposition", ""))
+    exp = r.data.decode()
+    check("export has every column header",
+          all(col in exp.splitlines()[0].split(",")
+              for col in csvimport.FULL_COLUMNS))
+    check("export contains the imported product sku", "CSV-001" in exp)
+    check("export has one row per variation",
+          exp.count("CSV-001-H11") == 1 and exp.count("CSV-001-9005") == 1)
+    check("export writes dollars not cents", "49.99" in exp)
+    # Re-importing the untouched export is valid and updates in place.
+    # (Only the SKU'd product rows are round-tripped here: seed products
+    # have no SKU and can never match on re-import, by design.)
+    import csv as _csv2
+    exp_rows = list(_csv2.DictReader(io.StringIO(exp)))
+    mine = [r for r in exp_rows if (r.get("sku") or "") == "CSV-001"]
+    check("exported the 2 variation rows", len(mine) == 2)
+    buf = io.StringIO()
+    w = _csv2.DictWriter(buf, fieldnames=csvimport.FULL_COLUMNS,
+                         extrasaction="ignore")
+    w.writeheader()
+    for r in mine:
+        w.writerow(r)
+    res2 = csvimport.validate(buf.getvalue().encode(), "full")
+    check("untouched export re-validates", res2["valid"],
+          str(res2["errors"]))
+    counts2 = csvimport.apply(res2)
+    check("re-import updates, creates nothing",
+          counts2["created"] == 0 and counts2["updated"] >= 1,
+          str(counts2))
+    # Bulk edit: change the price in the exported CSV, re-import.
+    edited = buf.getvalue().replace("49.99", "59.99")
+    res3 = csvimport.validate(edited.encode(), "full")
+    check("edited export validates", res3["valid"], str(res3["errors"]))
+    csvimport.apply(res3)
+    p3 = db.get_product_by_sku("CSV-001")
+    check("bulk price edit applied", p3["price_cents"] == 5999,
+          str(p3["price_cents"]))
+
     print("== privacy: import internals stay admin-only ==")
     pub = c.get(f"/product/{pr['id']}")
     check("public product page loads", pub.status_code == 200)

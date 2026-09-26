@@ -7,10 +7,53 @@
   <meta name="description" content="{% block meta %}Plug-and-play LED off-road, fog, turn, brake and interior bulbs. Find bulbs for your exact vehicle. Rosemead, CA.{% endblock %}">
   <link rel="stylesheet" href="/static/css/style.css">
   <link rel="icon" href="/static/img/favicon-chevron.png">
+  {% if request.path.startswith("/admin") %}
+  <style>
+    /* Admin light theme: white background, dark text, light inputs. */
+    body.admin-light{
+      --bg:#ffffff; --panel:#f3f4f6; --panel-2:#e9ebef; --border:#d3d9e1;
+      --text:#14171c; --muted:#5b6470; --dim:#8a93a0;
+      --accent:#dd7d00; --accent-hot:#c26a00; --accent-soft:rgba(221,125,0,.12);
+      background:#fff; color:#14171c;
+    }
+    body.admin-light .site-header{background:#fff;}
+    body.admin-light .cat-strip{background:#f3f4f6;}
+    body.admin-light .nav-more-menu{background:#fff;}
+    body.admin-light .frow input, body.admin-light .frow select,
+    body.admin-light .frow textarea,
+    body.admin-light .admin-table input, body.admin-light .admin-table select,
+    body.admin-light .field input, body.admin-light .field select,
+    body.admin-light input[type="text"], body.admin-light input[type="number"],
+    body.admin-light input[type="password"], body.admin-light input[type="email"]{
+      background:#fff; color:#14171c; border:1px solid #b9c1cc;
+    }
+    body.admin-light .frow input[readonly]{background:#f0f1f4;color:#6b7280;}
+    body.admin-light .btn{color:#fff;}
+    body.admin-light .btn-ghost{color:#14171c;}
+    body.admin-light code{background:#f0f1f4;}
+  </style>
+  {% endif %}
 </head>
-<body>
+<body{% if request.path.startswith("/admin") %} class="admin-light"{% endif %}>
 <header class="site-header">
   <div class="wrap header-inner">
+    {% if request.path.startswith("/admin") %}
+    <a class="logo" href="/admin">
+      <img src="/static/img/logo-bravo-led.png" alt="Bravo LEDs" class="logo-img">
+    </a>
+    <nav class="nav admin-nav">
+      <a href="/admin"{% if request.path == "/admin" %} class="active"{% endif %}>Dashboard</a>
+      <a href="/admin/orders"{% if request.path.startswith("/admin/orders") %} class="active"{% endif %}>Orders</a>
+      <a href="/admin#products">Products</a>
+      <a href="/admin#inventory">Inventory</a>
+      <a href="/admin/square"{% if request.path.startswith("/admin/square") %} class="active"{% endif %}>Square POS</a>
+      <a href="/admin/landing"{% if request.path.startswith("/admin/landing") %} class="active"{% endif %}>Landing Pages</a>
+      <a href="/admin/settings"{% if request.path.startswith("/admin/settings") %} class="active"{% endif %}>Settings</a>
+    </nav>
+    <span class="header-spacer"></span>
+    <a class="btn btn-ghost" href="/" target="_blank" rel="noopener" style="padding:9px 16px;font-size:14px">View Store ↗</a>
+    <a href="/admin/logout" style="margin-left:10px">Log out</a>
+    {% else %}
     <a class="logo" href="/">
       <img src="/static/img/logo-bravo-led.png" alt="Bravo LEDs" class="logo-img">
     </a>
@@ -35,7 +78,9 @@
     </nav>
     <span class="header-spacer"></span>
     <a class="cart-btn" href="/cart">🛒 Cart <span class="cart-count">{{ cart_count }}</span></a>
+    {% endif %}
   </div>
+  {% if not request.path.startswith("/admin") %}
   <div class="cat-strip">
     <div class="wrap cat-strip-inner">
       <a href="/shop">All</a>
@@ -44,6 +89,7 @@
       {% endfor %}
     </div>
   </div>
+  {% endif %}
 </header>
 
 <main>

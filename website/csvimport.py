@@ -715,3 +715,81 @@ def template_csv(mode):
     w.writeheader()
     w.writerow({c: example.get(c, "") for c in cols})
     return out.getvalue()
+
+
+# ---------------------------------------------------------------- export
+def _dollars_out(cents):
+    if cents is None:
+        return ""
+    return "%.2f" % (cents / 100)
+
+
+def export_csv(products):
+    """Full-catalog export in FULL_COLUMNS format.
+
+    One row per variation (products without variations get a single row
+    with blank variation columns). The output re-imports cleanly through
+    the normal full-import validation: existing SKUs match in place, and
+    blank cells preserve existing values.
+    """
+    out = io.StringIO()
+    w = csv.DictWriter(out, fieldnames=FULL_COLUMNS, extrasaction="ignore")
+    w.writeheader()
+    for p in products:
+        stock = db.get_stock(p["id"]) or {}
+        groups = p.get("variant_groups") or []
+        base = {
+            "name": p.get("name") or "",
+            "sku": p.get("sku") or "",
+            "msku": p.get("msku") or "",
+            "barcode": p.get("barcode") or "",
+            "category": p.get("category") or "",
+            "product_type": p.get("product_type") or "",
+            "tier": p.get("tier") or "",
+            "price": _dollars_out(p.get("price_cents")),
+            "compare_at_price": _dollars_out(p.get("compare_at_cents")),
+            "cost": _dollars_out(p.get("cost_cents")),
+            "vendor": p.get("vendor") or "",
+            "weight_oz": p.get("weight_oz") or "",
+            "length_in": p.get("length_in") or "",
+            "width_in": p.get("width_in") or "",
+            "height_in": p.get("height_in") or "",
+            "quantity": stock.get("stock", ""),
+            "low_threshold": stock.get("low_threshold", ""),
+            "taxable": "yes" if p.get("taxable") else "no",
+            "status": p.get("status") or "",
+            "description": p.get("description") or "",
+            "blurb": p.get("blurb") or "",
+            "features": "|".join(p.get("features") or []),
+            "tags": ", ".join(p.get("tags") or []),
+            "seo_title": p.get("seo_title") or "",
+            "seo_description": p.get("seo_description") or "",
+            "fitment_positions": ", ".join(p.get("fitment_positions") or []),
+            "badge": p.get("badge") or "",
+            "warranty": p.get("warranty") or "",
+            "supplier_name": p.get("supplier_name") or "",
+            "supplier_sku": p.get("supplier_sku") or "",
+            "supplier_notes": p.get("supplier_notes") or "",
+            "notes": p.get("notes") or "",
+        }
+        for v in p.get("variations") or [None]:
+            row = dict(base)
+            for n in (1, 2, 3):
+                gname = groups[n - 1]["name"] if len(groups) >= n else ""
+                row["option%d_name" % n] = gname
+                oval = ""
+                if v and gname:
+                    oval = (v.get("option_values") or {}).get(gname) or ""
+                row["option%d_value" % n] = oval
+            if v:
+                row["variation_sku"] = v.get("sku") or ""
+                row["variation_msku"] = v.get("msku") or ""
+                row["variation_barcode"] = v.get("barcode") or ""
+                row["variation_price"] = _dollars_out(v.get("price_cents"))
+                row["variation_compare_at"] = _dollars_out(
+                    v.get("compare_at_cents"))
+                row["variation_cost"] = _dollars_out(v.get("cost_cents"))
+                row["variation_quantity"] = ("" if v.get("inventory_qty") is None
+                                             else v.get("inventory_qty"))
+            w.writerow(row)
+    return out.getvalue()

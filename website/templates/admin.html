@@ -3,13 +3,21 @@
 {% block content %}
 <div class="wrap">
   <h1>Admin Dashboard <span class="data-pill">orders · inventory</span></h1>
-  <p style="margin-bottom:20px"><a class="btn" href="/admin/orders">Order Manager</a>
+  <p style="margin-bottom:16px"><a class="btn" href="/admin/orders">Order Manager</a>
      <a class="btn btn-ghost" href="/admin/orders/tracking">Tracking Import</a>
      <a class="btn btn-ghost" href="/admin/orders/pick-list">Pick List</a>
      <a class="btn btn-ghost" href="/admin/square">Square POS</a>
      <a class="btn btn-ghost" href="/admin/settings">Settings</a>
      <a href="/admin/logout" style="margin-left:12px">Log out</a></p>
 
+  <div class="admin-tabs" role="tablist">
+    <button class="admin-tab active" data-tab="overview" role="tab">Overview</button>
+    <button class="admin-tab" data-tab="orders" role="tab">Orders</button>
+    <button class="admin-tab" data-tab="products" role="tab">Products</button>
+    <button class="admin-tab" data-tab="inventory" role="tab">Inventory</button>
+  </div>
+
+  <div class="tab-panel active" id="tab-overview" role="tabpanel">
   <h2>Sales Summary</h2>
   <div class="cat-grid" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr))">
     <div class="contact-card"><h3>{{ money(stats.revenue_cents) }}</h3><p class="hint">Revenue (paid + shipped)</p></div>
@@ -32,8 +40,10 @@
   <p><a class="btn" href="/admin/landing">Landing Pages</a>
      <a class="btn btn-ghost" href="/admin/promos">Promo Codes</a></p>
   <p class="hint">Ad landing pages (<code>/go/&lt;slug&gt;</code>) with countdown timers and auto-applied promo codes, plus cart-wide discount codes.</p>
+  </div><!-- /tab-overview -->
 
-  <h2 id="orders" style="margin-top:28px">Orders</h2>
+  <div class="tab-panel" id="tab-orders" role="tabpanel">
+  <h2>Orders</h2>
   {% if orders %}
   {% for o in orders %}
   <div class="contact-card" id="order-{{ o.id }}" style="margin-bottom:14px">
@@ -76,8 +86,10 @@
   {% else %}
   <p class="hint">No orders yet.</p>
   {% endif %}
+  </div><!-- /tab-orders -->
 
-  <h2 id="products" style="margin-top:28px">Products</h2>
+  <div class="tab-panel" id="tab-products" role="tabpanel">
+  <h2>Products</h2>
   <p class="hint">Draft products are hidden from the public shop and the
   fitment finder until published. Archived products are hidden everywhere
   except here. Publish only when the real SKU, price and photo are in
@@ -85,8 +97,9 @@
   <div style="display:flex;gap:10px;align-items:center;margin:10px 0;flex-wrap:wrap">
     <a class="btn" href="/admin/products/new">+ New product</a>
     <a class="btn" href="/admin/products/import">Import CSV</a>
+    <a class="btn btn-ghost" href="/admin/products/export">Export CSV</a>
     <form method="get" action="/admin" style="display:flex;gap:6px">
-      <input type="hidden" name="q" value="">
+      <input type="hidden" name="tab" value="products">
       <input name="q" value="{{ search_q }}" placeholder="Search name, SKU, tag, vendor…" style="min-width:240px">
       <button class="btn btn-ghost" type="submit">Search</button>
       {% if search_q %}<a class="btn btn-ghost" href="/admin#products">Clear</a>{% endif %}
@@ -130,8 +143,10 @@
     {% endfor %}
   </table>
   {% endif %}
+  </div><!-- /tab-products -->
 
-  <h2 id="inventory" style="margin-top:28px">Inventory</h2>
+  <div class="tab-panel" id="tab-inventory" role="tabpanel">
+  <h2>Inventory</h2>
   <p class="hint">Counts start as placeholder defaults — edit to real numbers here.
   Items at or below their threshold are flagged low.</p>
   <table class="admin-table">
@@ -151,6 +166,7 @@
     </tr>
     {% endfor %}
   </table>
+  </div><!-- /tab-inventory -->
 </div>
 <style>
 .admin-table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.92rem}
@@ -158,5 +174,34 @@
 .admin-table th{background:var(--panel)}
 .admin-table tr.low-stock td{background:rgba(255,162,26,.08)}
 .admin-table input,.admin-table select{background:#1b1b1b;color:#eee;border:1px solid var(--border);border-radius:6px;padding:6px}
+.admin-tabs{display:flex;gap:8px;margin:4px 0 18px;flex-wrap:wrap;border-bottom:2px solid var(--border);padding-bottom:10px}
+.admin-tab{background:transparent;border:1px solid var(--border);color:var(--ink);border-radius:8px;padding:8px 18px;font-size:.95rem;cursor:pointer}
+.admin-tab:hover{border-color:var(--accent)}
+.admin-tab.active{background:var(--accent);border-color:var(--accent);color:#111;font-weight:700}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+.tab-panel h2{margin-top:4px}
 </style>
+<script>
+(function(){
+  var tabs = document.querySelectorAll('.admin-tab');
+  function activate(name){
+    tabs.forEach(function(t){ t.classList.toggle('active', t.dataset.tab === name); });
+    document.querySelectorAll('.tab-panel').forEach(function(p){
+      p.classList.toggle('active', p.id === 'tab-' + name);
+    });
+  }
+  tabs.forEach(function(t){
+    t.addEventListener('click', function(){
+      activate(t.dataset.tab);
+      history.replaceState(null, '', '#' + t.dataset.tab);
+    });
+  });
+  // Deep-link: /admin#orders, /admin#products, /admin#inventory, ?tab=products
+  var initial = (location.hash || '').replace('#','');
+  var params = new URLSearchParams(location.search);
+  if (params.get('tab')) initial = params.get('tab');
+  if (['overview','orders','products','inventory'].indexOf(initial) >= 0) activate(initial);
+})();
+</script>
 {% endblock %}

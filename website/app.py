@@ -960,6 +960,16 @@ def admin_product_import_template():
                  "attachment; filename=product-import-%s-template.csv" % mode})
 
 
+@app.route("/admin/products/export")
+@admin_required
+def admin_product_export():
+    products = db.list_products(include_drafts=True, include_archived=True)
+    return Response(
+        csvimport.export_csv(products), mimetype="text/csv",
+        headers={"Content-Disposition":
+                 "attachment; filename=bravo-products-export.csv"})
+
+
 @app.route("/admin/products/import", methods=["POST"])
 @admin_required
 def admin_product_import_upload():
