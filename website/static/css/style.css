@@ -219,6 +219,7 @@ img { max-width: 100%; display: block; }
 .prod-gallery {
   background: var(--panel); border: 1px solid var(--border); border-radius: 16px;
   aspect-ratio: 1 / 1; display: grid; place-items: center; position: relative;
+  max-height: min(560px, 72vh); width: 100%;
 }
 .prod-gallery img { width: 76%; height: 76%; object-fit: contain; filter: drop-shadow(0 0 40px rgba(255,162,26,.3)); }
 .prod-info .tier { color: var(--accent); font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
