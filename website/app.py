@@ -7,6 +7,8 @@ yet: /checkout is a "coming soon" page wired for Stripe Checkout in Phase 2.
 import os
 import json
 import re
+import hmac
+import secrets
 import shutil
 import time
 import uuid
@@ -14,6 +16,8 @@ from functools import wraps
 from flask import (Flask, abort, flash, jsonify, redirect, render_template,
                    request, Response, session, url_for)
 from werkzeug.utils import secure_filename
+
+import pyotp
 
 import db
 import emails
@@ -443,6 +447,83 @@ def stripe_webhook():
 
 
 # ---------------------------------------------------------------- admin
+# ------------------------------------------------- login brute-force guard
+# Simple in-memory throttle: 6 failures from one IP inside 10 minutes locks
+# that IP out of the login forms for the rest of the window. Approximate
+# across gunicorn workers, but enough to make guessing infeasible.
+_LOGIN_ATTEMPTS = {}
+_LOGIN_MAX_ATTEMPTS = 6
+_LOGIN_WINDOW_SECS = 600
+
+
+def _login_throttled(ip):
+    rec = _LOGIN_ATTEMPTS.get(ip)
+    if not rec:
+        return False
+    if time.time() - rec["first"] > _LOGIN_WINDOW_SECS:
+        _LOGIN_ATTEMPTS.pop(ip, None)
+        return False
+    return rec["count"] >= _LOGIN_MAX_ATTEMPTS
+
+
+def _record_login_fail(ip):
+    now = time.time()
+    rec = _LOGIN_ATTEMPTS.get(ip)
+    if not rec or now - rec["first"] > _LOGIN_WINDOW_SECS:
+        _LOGIN_ATTEMPTS[ip] = {"count": 1, "first": now}
+    else:
+        rec["count"] += 1
+
+
+def _clear_login_fails(ip):
+    _LOGIN_ATTEMPTS.pop(ip, None)
+
+
+# ------------------------------------------------------------------ 2FA
+def _totp_secret():
+    return (os.environ.get("ADMIN_TOTP_SECRET") or "").strip()
+
+
+def _totp_required():
+    return bool(_totp_secret())
+
+
+def _verify_totp(code):
+    secret = _totp_secret()
+    if not secret:
+        return False
+    try:
+        return bool(pyotp.TOTP(secret).verify((code or "").strip(),
+                                              valid_window=1))
+    except Exception:
+        return False
+
+
+_BACKUP_CODE_ALPHABET = "ABCDEFGHJKMNPQRSTUVWXYZ23456789"
+
+
+def _generate_backup_codes(n=10):
+    codes = []
+    for _ in range(n):
+        raw = "".join(secrets.choice(_BACKUP_CODE_ALPHABET) for _ in range(8))
+        codes.append(f"{raw[:4]}-{raw[4:]}")
+    return codes
+
+
+def _hash_backup_code(code):
+    import hashlib
+    return hashlib.sha256((code or "").strip().encode()).hexdigest()
+
+
+def _safe_next(default):
+    nxt = request.args.get("next") or default
+    # Only allow relative paths, so a crafted ?next= can't bounce the admin
+    # to a lookalike site after login.
+    if not nxt.startswith("/") or nxt.startswith("//"):
+        return default
+    return nxt
+
+
 def admin_required(view):
     @wraps(view)
     def wrapper(*args, **kwargs):
@@ -458,15 +539,60 @@ def admin_login():
     if not pw:
         # Fail closed: no password configured -> no admin access at all.
         return render_template("admin_login.html", disabled=True), 403
+    ip = request.remote_addr or "?"
     if request.method == "POST":
-        import hmac
+        if _login_throttled(ip):
+            return render_template(
+                "admin_login.html",
+                error="Too many attempts. Wait a few minutes and try again."
+            ), 429
         given = request.form.get("password", "")
         if hmac.compare_digest(given, pw):
+            _clear_login_fails(ip)
+            nxt = _safe_next(url_for("admin_dashboard"))
+            if _totp_required():
+                # Step 2: the 6-digit authenticator code.
+                session["admin_pre_2fa"] = True
+                session["admin_pre_2fa_next"] = nxt
+                return redirect(url_for("admin_login_2fa"))
             session["admin_authed"] = True
-            nxt = request.args.get("next") or url_for("admin_dashboard")
             return redirect(nxt)
-        return render_template("admin_login.html", error="Wrong password."), 401
+        _record_login_fail(ip)
+        return render_template("admin_login.html",
+                               error="Wrong password."), 401
     return render_template("admin_login.html")
+
+
+@app.route("/admin/login/2fa", methods=["GET", "POST"])
+def admin_login_2fa():
+    if not session.get("admin_pre_2fa"):
+        return redirect(url_for("admin_login"))
+    if not _totp_required():
+        # 2FA was disabled mid-flow: complete the login.
+        session["admin_authed"] = True
+        nxt = session.pop("admin_pre_2fa_next", None) \
+            or url_for("admin_dashboard")
+        session.pop("admin_pre_2fa", None)
+        return redirect(nxt)
+    ip = request.remote_addr or "?"
+    error = None
+    status = 200
+    if request.method == "POST":
+        if _login_throttled(ip):
+            error = "Too many attempts. Wait a few minutes and try again."
+            status = 429
+        else:
+            code = (request.form.get("code") or "").strip()
+            if _verify_totp(code) or db.burn_totp_backup_code(code):
+                _clear_login_fails(ip)
+                session["admin_authed"] = True
+                nxt = session.pop("admin_pre_2fa_next", None) \
+                    or url_for("admin_dashboard")
+                session.pop("admin_pre_2fa", None)
+                return redirect(nxt)
+            _record_login_fail(ip)
+            error = "Wrong code. Check your authenticator app and try again."
+    return render_template("admin_login_2fa.html", error=error), status
 
 
 @app.route("/admin/logout")
@@ -1404,6 +1530,13 @@ def _masked_square_settings(settings):
     return out
 
 
+def _settings_2fa_ctx():
+    return {
+        "totp_enabled": _totp_required(),
+        "backup_count": len(db.get_totp_backup_hashes()),
+    }
+
+
 @app.route("/admin/settings", methods=["GET", "POST"])
 @admin_required
 def admin_settings():
@@ -1442,7 +1575,22 @@ def admin_settings():
     return render_template("admin_settings.html",
                            settings=_masked_square_settings(
                                db.get_all_settings()),
-                           toggles=db.NOTIFY_TOGGLES)
+                           toggles=db.NOTIFY_TOGGLES,
+                           **_settings_2fa_ctx())
+
+
+@app.route("/admin/settings/2fa-codes", methods=["POST"])
+@admin_required
+def admin_settings_2fa_codes():
+    """Generate a fresh set of one-time backup codes (shown once)."""
+    codes = _generate_backup_codes(10)
+    db.set_totp_backup_hashes([_hash_backup_code(c) for c in codes])
+    return render_template("admin_settings.html",
+                           settings=_masked_square_settings(
+                               db.get_all_settings()),
+                           toggles=db.NOTIFY_TOGGLES,
+                           new_2fa_codes=codes,
+                           **_settings_2fa_ctx())
 
 
 # ------------------------------------------------------------ Square POS

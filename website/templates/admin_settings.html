@@ -71,5 +71,24 @@
 
     <button class="btn" type="submit">Save settings</button>
   </form>
+
+  <div class="contact-card" style="margin-top:16px">
+    <h2>Two-factor authentication</h2>
+    {% if totp_enabled %}
+    <p>✓ 2FA is <strong>enabled</strong> — admin logins require the password plus a 6-digit code from your authenticator app.</p>
+    <p class="hint">{{ backup_count }} backup code{{ "s" if backup_count != 1 }} remaining. Each backup code works once, for when your phone is unavailable.</p>
+    {% else %}
+    <p class="flash">2FA is <strong>not configured</strong> (ADMIN_TOTP_SECRET is unset). Admin login is password-only.</p>
+    {% endif %}
+    {% if new_2fa_codes %}
+    <div class="flash-ok" style="margin:12px 0">
+      <strong>New backup codes — save these now. They won't be shown again.</strong><br>
+      <span style="font-family:monospace;font-size:15px;line-height:1.9">{% for c in new_2fa_codes %}{{ c }}<br>{% endfor %}</span>
+    </div>
+    {% endif %}
+    <form method="post" action="/admin/settings/2fa-codes" onsubmit="return confirm('Generate 10 new backup codes? Any unused old codes stop working.')">
+      <button class="btn btn-ghost" type="submit">Generate new backup codes</button>
+    </form>
+  </div>
 </div>
 {% endblock %}

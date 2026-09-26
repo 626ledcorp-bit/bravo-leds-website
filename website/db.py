@@ -1505,6 +1505,31 @@ def set_setting(key, value):
     con.close()
 
 
+def get_totp_backup_hashes():
+    """SHA-256 hex digests of unused 2FA backup codes."""
+    try:
+        vals = json.loads(get_setting("totp_backup_codes", "[]"))
+    except Exception:
+        return []
+    return [v for v in vals if isinstance(v, str)]
+
+
+def set_totp_backup_hashes(hashes):
+    set_setting("totp_backup_codes", json.dumps(list(hashes)))
+
+
+def burn_totp_backup_code(code):
+    """Consume one backup code. Returns True iff it was valid and unused."""
+    import hashlib
+    digest = hashlib.sha256((code or "").strip().encode()).hexdigest()
+    hashes = get_totp_backup_hashes()
+    if digest in hashes:
+        hashes.remove(digest)
+        set_totp_backup_hashes(hashes)
+        return True
+    return False
+
+
 def get_all_settings():
     con = _connect()
     rows = con.execute("SELECT key, value FROM settings").fetchall()

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Two-Factor Authentication — Bravo LEDs{% endblock %}
+{% block content %}
+<div class="wrap">
+  <div class="soon-box" style="max-width:420px">
+    <h1>Two-Factor Authentication</h1>
+    <p class="muted small">Password accepted. Enter the 6-digit code from your authenticator app.</p>
+    {% if error %}<p class="flash">{{ error }}</p>{% endif %}
+    <form method="post" style="text-align:left">
+      <label class="field">Authenticator code
+        <input type="text" name="code" required autofocus autocomplete="one-time-code"
+               inputmode="numeric" pattern="[0-9A-Za-z-]{6,12}" placeholder="123456">
+      </label>
+      <p class="muted small" style="margin-top:8px">Lost your phone? Enter one of your backup codes instead.</p>
+      <p style="margin-top:16px"><button class="btn btn-block" type="submit">Verify</button></p>
+    </form>
+  </div>
+</div>
+{% endblock %}
