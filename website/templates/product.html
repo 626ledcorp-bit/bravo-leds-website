@@ -10,6 +10,7 @@
       {% for im in p.images %}{% if im.primary %}{% set _prim.src = im.src %}{% endif %}{% endfor %}
       {% if not p.images %}{% set _prim.src = "/static/img/ph-" ~ categories[p.category].icon ~ ".svg" %}{% endif %}
       <img id="gallery-main" src="{{ _prim.src }}" alt="{{ p.name }}">
+      <span class="gallery-hint">⤢ Click to enlarge</span>
       {% if p.images|length > 1 %}
       <div class="thumbs">
         {% for im in p.images %}
@@ -17,6 +18,10 @@
         {% endfor %}
       </div>
       {% endif %}
+    </div>
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <button type="button" class="lb-close" id="lb-close">✕ Close</button>
+      <img id="lightbox-img" src="" alt="{{ p.name }} enlarged">
     </div>
     <div class="prod-info">
       <div class="tier">{{ p.tier }} Series</div>
@@ -132,6 +137,21 @@
             t.classList.add("selected");
           };
         });
+        // lightbox: click main image for full-size view
+        var lb = document.getElementById("lightbox");
+        var lbImg = document.getElementById("lightbox-img");
+        var mainImg = document.getElementById("gallery-main");
+        function closeLb(){ lb.classList.remove("open"); document.body.style.overflow = ""; }
+        if (mainImg && lb) {
+          mainImg.onclick = function(){
+            lbImg.src = mainImg.src;
+            lb.classList.add("open");
+            document.body.style.overflow = "hidden";
+          };
+          lb.onclick = closeLb;
+          document.getElementById("lb-close").onclick = function(e){ e.stopPropagation(); closeLb(); };
+          document.addEventListener("keydown", function(e){ if (e.key === "Escape") closeLb(); });
+        }
         render();
       })();
       </script>
