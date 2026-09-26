@@ -51,7 +51,7 @@
       <a href="/admin/settings"{% if request.path.startswith("/admin/settings") %} class="active"{% endif %}>Settings</a>
     </nav>
     <span class="header-spacer"></span>
-    <a class="btn btn-ghost" href="/" target="_blank" rel="noopener" style="padding:9px 16px;font-size:14px">View Store ↗</a>
+    <a class="btn btn-ghost" href="/" target="_blank" rel="noopener" style="padding:9px 16px;font-size:14px">WEBSITE</a>
     <a href="/admin/logout" style="margin-left:10px">Log out</a>
     {% else %}
     <a class="logo" href="/">
@@ -103,6 +103,16 @@
   {% block content %}{% endblock %}
 </main>
 
+{% if request.path.startswith("/admin") %}
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-bottom">
+      <span>© 2026 Bravo LEDs — admin</span>
+      <span><a href="/admin">Dashboard</a> · <a href="/admin/logout">Log out</a></span>
+    </div>
+  </div>
+</footer>
+{% else %}
 <footer class="site-footer">
   <div class="wrap">
     <div class="foot-grid">
@@ -162,6 +172,7 @@
     </div>
   </div>
 </footer>
+{% endif %}
 <script src="/static/js/main.js"></script>
 </body>
 </html>
