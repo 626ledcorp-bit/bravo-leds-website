@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% block title %}Navigation — Admin{% endblock %}
+{% block content %}
+<div class="wrap">
+  <h1>Navigation</h1>
+  <p><a href="/admin">← Admin Dashboard</a></p>
+  <p class="hint">This controls the site header menus. Changes appear on the site immediately.
+  Top-level items show left to right. Kinds: <b>Dropdown</b> opens a panel;
+  <b>Image tile</b> and <b>Footer link</b> render inside a dropdown's mega panel;
+  <b>Bulb-size pill</b> renders inside a dropdown's size grid;
+  <b>Link</b> under a dropdown renders as a stacked link. Hidden items don't show on the site.</p>
+
+  {% for t in tops %}
+  <h2 style="margin-top:22px">{{ t.label }}
+    <small class="hint">({{ kind_labels.get(t.kind, t.kind) }}{% if not t.visible %} · hidden{% endif %})</small></h2>
+  <table class="admin-table">
+    <tr><th>Item</th><th>Kind</th><th>Link</th><th>Status</th><th>Order</th><th></th></tr>
+    <tr>
+      <td><b>{{ t.label }}</b></td>
+      <td>{{ kind_labels.get(t.kind, t.kind) }}</td>
+      <td>{% if t.link %}<code>{{ t.link }}</code>{% else %}—{% endif %}</td>
+      <td>{{ "Hidden" if not t.visible else "Shown" }}</td>
+      <td style="white-space:nowrap">
+        <form method="post" action="/admin/navigation/{{ t.id }}/move/up" style="display:inline"><button class="btn btn-ghost" type="submit" title="Move up">↑</button></form>
+        <form method="post" action="/admin/navigation/{{ t.id }}/move/down" style="display:inline"><button class="btn btn-ghost" type="submit" title="Move down">↓</button></form>
+      </td>
+      <td style="white-space:nowrap">
+        <a class="btn btn-ghost" href="/admin/navigation/{{ t.id }}/edit">Edit</a>
+        <form method="post" action="/admin/navigation/{{ t.id }}/toggle" style="display:inline">
+          <button class="btn btn-ghost" type="submit">{{ "Show" if not t.visible else "Hide" }}</button>
+        </form>
+        <form method="post" action="/admin/navigation/{{ t.id }}/delete" style="display:inline"
+              onsubmit="return confirm('Delete {{ t.label }} and all its children?')">
+          <button class="btn btn-ghost" type="submit">Delete</button>
+        </form>
+      </td>
+    </tr>
+    {% for c in kids.get(t.id, []) %}
+    <tr>
+      <td style="padding-left:28px">↳ {{ c.label }}{% if c.accent %} <small class="hint">(accent)</small>{% endif %}</td>
+      <td>{{ kind_labels.get(c.kind, c.kind) }}</td>
+      <td>{% if c.link %}<code>{{ c.link }}</code>{% else %}—{% endif %}{% if c.image %}<br><small class="hint">{{ c.image }}</small>{% endif %}</td>
+      <td>{{ "Hidden" if not c.visible else "Shown" }}</td>
+      <td style="white-space:nowrap">
+        <form method="post" action="/admin/navigation/{{ c.id }}/move/up" style="display:inline"><button class="btn btn-ghost" type="submit" title="Move up">↑</button></form>
+        <form method="post" action="/admin/navigation/{{ c.id }}/move/down" style="display:inline"><button class="btn btn-ghost" type="submit" title="Move down">↓</button></form>
+      </td>
+      <td style="white-space:nowrap">
+        <a class="btn btn-ghost" href="/admin/navigation/{{ c.id }}/edit">Edit</a>
+        <form method="post" action="/admin/navigation/{{ c.id }}/toggle" style="display:inline">
+          <button class="btn btn-ghost" type="submit">{{ "Show" if not c.visible else "Hide" }}</button>
+        </form>
+        <form method="post" action="/admin/navigation/{{ c.id }}/delete" style="display:inline"
+              onsubmit="return confirm('Delete {{ c.label }}?')">
+          <button class="btn btn-ghost" type="submit">Delete</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+  <p class="hint">No menu items yet.</p>
+  {% endfor %}
+
+  <h2 style="margin-top:28px">Add menu item</h2>
+  <form method="post" action="/admin/navigation/add" enctype="multipart/form-data" class="nav-form">
+    <label>Parent
+      <select name="parent_id">
+        <option value="">Top level</option>
+        {% for t in tops %}<option value="{{ t.id }}">{{ t.label }}</option>{% endfor %}
+      </select>
+    </label>
+    <label>Type
+      <select name="kind">
+        {% for k in nav_kinds %}<option value="{{ k }}">{{ kind_labels.get(k, k) }}</option>{% endfor %}
+      </select>
+    </label>
+    <label>Label <input type="text" name="label" required maxlength="80"></label>
+    <label>Link URL <input type="text" name="link" list="nav-pages" maxlength="200" placeholder="/shop/fog or https://…">
+      <datalist id="nav-pages">
+        {% for name, url in page_choices %}<option value="{{ url }}">{{ name }}</option>{% endfor %}
+      </datalist>
+    </label>
+    <label>Tile image <input type="text" name="image" list="nav-images" maxlength="200" placeholder="for image tiles">
+      <datalist id="nav-images">
+        {% for src in image_choices %}<option value="{{ src }}">{{ src }}</option>{% endfor %}
+      </datalist>
+    </label>
+    <label>Upload tile image <input type="file" name="image_upload" accept=".png,.jpg,.jpeg,.webp"></label>
+    <label><input type="checkbox" name="accent"> Accent (orange) label</label>
+    <label><input type="checkbox" name="visible" checked> Shown</label>
+    <p><button class="btn" type="submit">Add item</button></p>
+  </form>
+  <p class="hint">Uploaded tile images go to <code>/static/img/nav/</code> — they live on the server disk and are lost on a full redeploy unless moved into the repo.</p>
+</div>
+<style>
+.admin-table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.92rem}
+.admin-table th,.admin-table td{border:1px solid var(--border);padding:8px 10px;text-align:left;vertical-align:top}
+.admin-table th{background:var(--panel)}
+.nav-form label{display:block;margin:8px 0}
+.nav-form input[type=text],.nav-form select{width:100%;max-width:420px;padding:6px 8px}
+</style>
+{% endblock %}

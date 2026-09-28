@@ -57,32 +57,51 @@
     <a class="logo" href="/">
       <img src="/static/img/logo-bravo-led.png" alt="Bravo LEDs" class="logo-img">
     </a>
-    <nav class="nav">
-      <a href="/shop">Shop All</a>
-      <a href="/shop/led-bulbs">LED Bulbs</a>
-      <a href="/shop/fog">Fog</a>
-      <a href="/shop/turn">Turn</a>
-      <a href="/shop/brake">Brake</a>
-      <details class="nav-more">
-        <summary>Interior ▾</summary>
-        <div class="nav-more-menu">
-          <a href="/shop/interior">All Interior LEDs</a>
-          <a href="/interior-kits">Complete Interior Kits</a>
-        </div>
-      </details>
-      <details class="nav-more">
-        <summary>More ▾</summary>
-        <div class="nav-more-menu">
-          {% for cid, c in categories.items() %}
-          {% if cid not in ["led-bulbs", "fog", "turn", "brake", "interior"] %}
-          <a href="/shop/{{ cid }}">{{ c.name }}</a>
+    <nav class="nav" id="main-nav" aria-label="Main navigation">
+      {% for item in nav_tree %}
+      {% if item.kind == "dropdown" %}
+      <div class="nav-item">
+        <button class="nav-btn" aria-expanded="false" aria-haspopup="true" aria-controls="nav-panel-{{ item.id }}">{{ item.label }} ▾</button>
+        <div class="nav-panel {{ "nav-panel-mega" if item.has_tiles else "nav-panel-narrow" }}" id="nav-panel-{{ item.id }}" role="menu">
+          {% if item.has_tiles %}
+          <div class="mega-tiles">
+            {% for c in item.children if c.kind == "tile" %}
+            <a class="mega-tile" href="{{ c.link }}" role="menuitem">{% if c.image %}<img src="{{ c.image }}" alt="" loading="lazy">{% endif %}<span>{{ c.label }}</span></a>
+            {% endfor %}
+          </div>
+          {% set morelinks = item.children | selectattr("kind", "equalto", "morelink") | list %}
+          {% if morelinks %}
+          <div class="mega-more">
+            {% for c in morelinks %}<a href="{{ c.link }}">{{ c.label }}</a>{% endfor %}
+          </div>
           {% endif %}
+          {% elif item.has_sizelinks %}
+          <div class="size-grid">
+            {% for c in item.children if c.kind == "sizelink" %}
+            <a href="{{ c.link }}" role="menuitem">{{ c.label }}</a>
+            {% endfor %}
+          </div>
+          {% else %}
+          {% for c in item.children %}
+          <a href="{{ c.link }}" class="{{ "nav-panel-cta" if c.accent }}" role="menuitem">{{ c.label }}{% if c.accent %} →{% endif %}</a>
           {% endfor %}
+          {% endif %}
         </div>
-      </details>
-      <a href="/contact">Contact</a>
+      </div>
+      {% elif item.kind == "cta" %}
+      <a href="{{ item.link }}" class="btn btn-nav-cta">{{ item.label }}</a>
+      {% else %}
+      <a href="{{ item.link }}">{{ item.label }}</a>
+      {% endif %}
+      {% endfor %}
     </nav>
     <span class="header-spacer"></span>
+    <a class="vehicle-pill" href="/#fitment-finder" title="Your vehicle — change">
+      <span aria-hidden="true">🚗</span>
+      {% if vehicle %}<strong>{{ vehicle.year }} {{ vehicle.make }} {{ vehicle.model }}</strong><em>CHANGE</em>
+      {% else %}<strong>Select Vehicle</strong>{% endif %}
+    </a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">☰</button>
     <button class="search-toggle" id="search-toggle" aria-label="Search products" aria-expanded="false" aria-controls="search-dropdown">🔍</button>
     <a class="cart-btn" href="/cart">🛒 Cart <span class="cart-count">{{ cart_count }}</span></a>
     {% endif %}
@@ -93,6 +112,30 @@
       <input type="search" name="q" placeholder="Search products, sizes, SKUs…" aria-label="Search products" autocomplete="off"{% if request.path == "/search" and q is defined %} value="{{ q }}"{% endif %}>
       <button class="btn" type="submit">Search</button>
     </form>
+  </div>
+  <div class="mobile-drawer" id="mobile-drawer" hidden>
+    <div class="wrap">
+      {% for item in nav_tree %}
+      {% if item.kind == "dropdown" %}
+      <details class="m-acc">
+        <summary>{{ item.label }}</summary>
+        <div class="m-acc-body {{ "mega-tiles" if item.has_tiles else ("size-grid" if item.has_sizelinks) }}">
+          {% for c in item.children %}
+          {% if c.kind == "tile" %}
+          <a class="mega-tile" href="{{ c.link }}">{% if c.image %}<img src="{{ c.image }}" alt="" loading="lazy">{% endif %}<span>{{ c.label }}</span></a>
+          {% else %}
+          <a href="{{ c.link }}">{{ c.label }}</a>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </details>
+      {% elif item.kind == "cta" %}
+      <a class="btn m-link-cta" href="{{ item.link }}">{{ item.label }}</a>
+      {% else %}
+      <a class="m-link" href="{{ item.link }}">{{ item.label }}</a>
+      {% endif %}
+      {% endfor %}
+    </div>
   </div>
   {% endif %}
   {% if not request.path.startswith("/admin") %}
@@ -149,6 +192,7 @@
         <h4>Help</h4>
         <ul>
           <li><a href="/faq">FAQ</a></li>
+          <li><a href="/track-order">Track Order</a></li>
           <li><a href="/guides">Install Guides</a></li>
           <li><a href="/shipping">Shipping Policy</a></li>
           <li><a href="/returns">Returns &amp; Warranty</a></li>

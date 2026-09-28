@@ -111,6 +111,8 @@ def inject_globals():
         "cart_discount_cents": discount_cents,
         "cart_discount_str": money(discount_cents),
         "cart_total_cents": subtotal - discount_cents,
+        "vehicle": session.get("vehicle"),  # saved-vehicle header pill
+        "nav_tree": db.get_nav_tree(),  # admin-editable header menus
         "cart_total_str": money(subtotal - discount_cents),
         "fitment_source": fitment_db.source_info(),
         "money": money,
@@ -250,9 +252,13 @@ def fitment_results():
     trim = request.args.get("trim") or None
     if not (year and make and model):
         return redirect(url_for("home"))
+    # Remember the visitor's vehicle for the header pill (LASFIT-style) —
+    # only once fitment is confirmed, so an invalid request can't set it.
     rows = fitment_db.get_fitment(year, make, model, trim)
     if not rows:
         abort(404)
+    session["vehicle"] = {"year": year, "make": make, "model": model,
+                          "trim": trim}
     setup = fitment_db.get_vehicle_setup(year, make, model, trim)
     # Front-bulb positions affected by xenon / sealed factory LED setups.
     FRONT_POSITIONS = {"low_beam", "high_beam", "high_low_beam",
@@ -733,6 +739,196 @@ def admin_dashboard():
                            products=products, archived=archived,
                            search_q=q, money=money,
                            low_stock_threshold=db.PLACEHOLDER_LOW_THRESHOLD)
+
+
+# ------------------------------------------------- admin navigation editor
+NAV_KIND_LABELS = {
+    "dropdown": "Dropdown (top-level, opens a panel)",
+    "link": "Link",
+    "cta": "Accent button (e.g. Contact Us)",
+    "tile": "Image tile (mega panel)",
+    "morelink": "Footer link (small link under mega tiles)",
+    "sizelink": "Bulb-size pill (size grid panel)",
+}
+
+
+def _nav_page_choices():
+    pages = [("Home", "/"), ("Shop All", "/shop")]
+    for cid, meta in CATEGORIES.items():
+        pages.append((meta.get("name", cid), "/shop/" + cid))
+    pages += [
+        ("Complete Interior Kits", "/interior-kits"),
+        ("Fitment Finder (homepage section)", "/#fitment-finder"),
+        ("Fitment Search", "/fitment"),
+        ("Track Order", "/track-order"),
+        ("Contact", "/contact"),
+        ("FAQ", "/faq"),
+        ("Guides", "/guides"),
+        ("Shipping", "/shipping"),
+        ("Returns", "/returns"),
+        ("Privacy", "/privacy"),
+        ("DOT Compliance", "/dot-compliance"),
+        ("Search results", "/search"),
+        ("Cart", "/cart"),
+    ]
+    return pages
+
+
+def _nav_image_choices():
+    imgs = []
+    imgdir = os.path.join(app.static_folder, "img")
+    try:
+        for f in sorted(os.listdir(imgdir)):
+            if f.startswith("ph-") and f.endswith(".svg"):
+                imgs.append("/static/img/" + f)
+    except OSError:
+        pass
+    navdir = os.path.join(imgdir, "nav")
+    if os.path.isdir(navdir):
+        for f in sorted(os.listdir(navdir)):
+            if os.path.isfile(os.path.join(navdir, f)):
+                imgs.append("/static/img/nav/" + f)
+    return imgs
+
+
+def _nav_image_from_request(form, files):
+    """Uploaded file wins, else the image text field (datalist of picks)."""
+    f = files.get("image_upload")
+    if f and f.filename:
+        ext = f.filename.rsplit(".", 1)[-1].lower() \
+            if "." in f.filename else ""
+        if ext not in PRODUCT_IMAGE_EXTS:
+            raise ValueError(
+                "Rejected %s: only %s allowed." %
+                (f.filename, "/".join(sorted(PRODUCT_IMAGE_EXTS))))
+        blob = f.read()
+        if len(blob) > MAX_IMAGE_BYTES:
+            raise ValueError(
+                "Rejected %s: over the 5 MB limit." % f.filename)
+        if not blob:
+            raise ValueError("Rejected %s: empty file." % f.filename)
+        navdir = os.path.join(app.static_folder, "img", "nav")
+        os.makedirs(navdir, exist_ok=True)
+        name = secure_filename(f.filename)
+        with open(os.path.join(navdir, name), "wb") as fh:
+            fh.write(blob)
+        return "/static/img/nav/" + name
+    return (form.get("image") or "").strip()
+
+
+def _nav_form_common(form):
+    parent = (form.get("parent_id") or "").strip() or None
+    if parent is not None:
+        parent = int(parent)
+    label = (form.get("label") or "").strip()[:80]
+    link = (form.get("link") or "").strip()[:200]
+    kind = (form.get("kind") or "link").strip()
+    if kind not in db.NAV_KINDS:
+        raise ValueError("Unknown menu item type.")
+    if not label:
+        raise ValueError("Label is required.")
+    if kind in ("link", "cta", "tile", "morelink", "sizelink") and not link:
+        raise ValueError("A link URL is required for this item type.")
+    return parent, label, link, kind
+
+
+@app.route("/admin/navigation")
+@admin_required
+def admin_navigation():
+    items = db.list_nav_items()
+    tops = [i for i in items if not i["parent_id"]]
+    kids = {}
+    for i in items:
+        if i["parent_id"]:
+            kids.setdefault(i["parent_id"], []).append(i)
+    return render_template("admin_navigation.html", tops=tops, kids=kids,
+                           page_choices=_nav_page_choices(),
+                           image_choices=_nav_image_choices(),
+                           kind_labels=NAV_KIND_LABELS,
+                           nav_kinds=db.NAV_KINDS)
+
+
+@app.route("/admin/navigation/add", methods=["POST"])
+@admin_required
+def admin_navigation_add():
+    try:
+        parent, label, link, kind = _nav_form_common(request.form)
+        image = _nav_image_from_request(request.form, request.files)
+        db.add_nav_item(parent, label, link, kind, image,
+                        accent="accent" in request.form,
+                        visible="visible" in request.form)
+        flash("Menu item added.")
+    except (ValueError, OSError) as e:
+        flash("Could not add menu item: %s" % e)
+    return redirect(url_for("admin_navigation"))
+
+
+@app.route("/admin/navigation/<int:item_id>/edit",
+           methods=["GET", "POST"])
+@admin_required
+def admin_navigation_edit(item_id):
+    item = db.get_nav_item(item_id)
+    if not item:
+        return "Not found", 404
+    if request.method == "POST":
+        try:
+            parent, label, link, kind = _nav_form_common(request.form)
+            if parent == item_id:
+                raise ValueError("An item cannot be its own parent.")
+            image = _nav_image_from_request(request.form, request.files)
+            db.update_nav_item(item_id, label, link, kind, image,
+                               accent="accent" in request.form,
+                               visible="visible" in request.form)
+            # parent change = move to end of the new sibling group
+            if parent != item["parent_id"]:
+                con = db._connect()
+                mx = con.execute(
+                    "SELECT COALESCE(MAX(position), 0) FROM nav_items "
+                    "WHERE COALESCE(parent_id, -1) = COALESCE(?, -1)",
+                    (parent,)).fetchone()[0]
+                con.execute("UPDATE nav_items SET parent_id=?, position=? "
+                            "WHERE id=?", (parent, mx + 1, item_id))
+                con.commit()
+                con.close()
+            flash("Menu item saved.")
+            return redirect(url_for("admin_navigation"))
+        except (ValueError, OSError) as e:
+            flash("Could not save: %s" % e)
+    tops = [i for i in db.list_nav_items() if not i["parent_id"]
+            and i["id"] != item_id]
+    return render_template("admin_navigation_edit.html", item=item,
+                           tops=tops, page_choices=_nav_page_choices(),
+                           image_choices=_nav_image_choices(),
+                           kind_labels=NAV_KIND_LABELS,
+                           nav_kinds=db.NAV_KINDS)
+
+
+@app.route("/admin/navigation/<int:item_id>/toggle", methods=["POST"])
+@admin_required
+def admin_navigation_toggle(item_id):
+    item = db.get_nav_item(item_id)
+    if item:
+        db.update_nav_item(item_id, item["label"], item["link"],
+                           item["kind"], item["image"], item["accent"],
+                           visible=0 if item["visible"] else 1)
+    return redirect(url_for("admin_navigation"))
+
+
+@app.route("/admin/navigation/<int:item_id>/move/<direction>",
+           methods=["POST"])
+@admin_required
+def admin_navigation_move(item_id, direction):
+    if direction in ("up", "down"):
+        db.move_nav_item(item_id, direction)
+    return redirect(url_for("admin_navigation"))
+
+
+@app.route("/admin/navigation/<int:item_id>/delete", methods=["POST"])
+@admin_required
+def admin_navigation_delete(item_id):
+    db.delete_nav_item(item_id)
+    flash("Menu item deleted.")
+    return redirect(url_for("admin_navigation"))
 
 
 @app.route("/admin/product/<pid>/publish", methods=["POST"])
@@ -1932,6 +2128,27 @@ def contact():
         emails.notify_owner_contact_message(name, email, message)
         return render_template("contact.html", sent=True)
     return render_template("contact.html")
+
+
+@app.route("/track-order", methods=["GET", "POST"])
+def track_order():
+    """Customer order tracking: order number + email -> status/tracking."""
+    result = None
+    error = None
+    if request.method == "POST":
+        number = (request.form.get("order_number") or "").strip()
+        email = (request.form.get("email") or "").strip().lower()
+        order = None
+        if number.isdigit():
+            order = db.get_order(int(number))
+        if order and (order.get("customer_email") or "").strip().lower() == email and email:
+            order = dict(order)
+            order["total_str"] = "$%.2f" % (order.get("total_cents", 0) / 100)
+            result = order
+        else:
+            error = ("We couldn't find an order with that number and email. "
+                     "Double-check both and try again.")
+    return render_template("track_order.html", result=result, error=error)
 
 
 @app.errorhandler(404)

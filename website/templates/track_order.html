@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Track Your Order — BRAVO LEDS{% endblock %}
+{% block content %}
+<div class="section-light">
+<div class="wrap">
+  <h1>Track Your Order</h1>
+  <p class="muted">Enter your order number and the email you ordered with.</p>
+  {% if error %}<div class="flash-errors">{{ error }}</div>{% endif %}
+  {% if result %}
+  <div class="track-result">
+    <h2>Order #{{ result.id }}</h2>
+    <p><span class="track-status {{ result.status }}">{{ result.status }}</span></p>
+    {% if result.status == "shipped" and result.tracking_number %}
+    <p><strong>Tracking number:</strong> {{ result.tracking_number }}</p>
+    <p class="muted small">Track it on the carrier's site (USPS / UPS).</p>
+    {% elif result.status == "shipped" %}
+    <p class="muted">Your order shipped — tracking info will appear here shortly.</p>
+    {% elif result.status == "paid" %}
+    <p class="muted">Payment confirmed. We're preparing your order — it ships in 1–2 business days.</p>
+    {% elif result.status == "new" %}
+    <p class="muted">Order received. You'll get a confirmation once payment clears.</p>
+    {% elif result.status == "cancelled" %}
+    <p class="muted">This order was cancelled. Contact us if you have questions.</p>
+    {% endif %}
+    <div style="margin-top:18px">
+      {% for l in result.line_items %}
+      <div class="track-line"><span>{{ l.qty }} × {{ l.product.name }}{% if l.variation_label %} <span class="muted small">({{ l.variation_label }})</span>{% endif %}</span></div>
+      {% endfor %}
+      <div class="track-line"><strong>Total</strong><strong>{{ result.total_str }}</strong></div>
+    </div>
+    <p style="margin-top:18px"><a href="/track-order">Track another order →</a></p>
+  </div>
+  {% else %}
+  <form class="track-form" action="/track-order" method="post">
+    <div class="field">
+      <label for="to-number">Order number</label>
+      <input type="text" id="to-number" name="order_number" required inputmode="numeric" placeholder="e.g. 1234" autocomplete="off">
+    </div>
+    <div class="field">
+      <label for="to-email">Email</label>
+      <input type="email" id="to-email" name="email" required placeholder="you@email.com" autocomplete="email">
+    </div>
+    <button class="btn btn-block" type="submit">Track Order</button>
+  </form>
+  <p class="muted small" style="max-width:440px;margin:14px auto 0">Your order number is in your confirmation email. Orders ship in 1–2 business days via USPS / UPS.</p>
+  {% endif %}
+</div>
+</div>
+{% endblock %}

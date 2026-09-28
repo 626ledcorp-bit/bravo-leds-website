@@ -276,6 +276,7 @@ def init_db():
             VALUES (?, ?, ?, ?)
         """, (pid, PLACEHOLDER_DEFAULT_STOCK,
               PLACEHOLDER_LOW_THRESHOLD, _utcnow()))
+    _init_nav_items(con)
     con.commit()
     con.close()
 
@@ -283,6 +284,203 @@ def init_db():
 # PLACEHOLDER inventory defaults — the owner edits real counts in /admin.
 PLACEHOLDER_DEFAULT_STOCK = 25
 PLACEHOLDER_LOW_THRESHOLD = 5
+
+
+# ---------------------------------------------------------------- navigation
+#
+# Admin-editable header navigation (/admin/navigation). A flat table with a
+# parent column: parent_id NULL = top-level item. Kinds:
+#   dropdown  top-level item that opens a panel
+#   link      plain top-level link
+#   cta       top-level accent-button link (e.g. Contact Us)
+#   tile      child rendered as an image tile (mega panel)
+#   morelink  child rendered as a small footer link (mega panel)
+#   sizelink  child rendered in the bulb-size pill grid
+#   link      (as a child) stacked link in a narrow dropdown panel
+
+NAV_KINDS = ("dropdown", "link", "cta", "tile", "morelink", "sizelink")
+
+
+def _init_nav_items(con):
+    con.execute("""
+        CREATE TABLE IF NOT EXISTS nav_items (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            parent_id INTEGER NULL,
+            label TEXT NOT NULL,
+            link TEXT NOT NULL DEFAULT '',
+            kind TEXT NOT NULL DEFAULT 'link',
+            image TEXT NOT NULL DEFAULT '',
+            accent INTEGER NOT NULL DEFAULT 0,
+            position INTEGER NOT NULL DEFAULT 0,
+            visible INTEGER NOT NULL DEFAULT 1
+        )
+    """)
+    n = con.execute("SELECT COUNT(*) FROM nav_items").fetchone()[0]
+    if n:
+        return
+    pos = [0]
+
+    def add(parent, label, link="", kind="link", image="", accent=0):
+        pos[0] += 1
+        cur = con.execute(
+            """INSERT INTO nav_items
+               (parent_id, label, link, kind, image, accent, position, visible)
+               VALUES (?, ?, ?, ?, ?, ?, ?, 1)""",
+            (parent, label, link, kind, image, accent, pos[0]))
+        return cur.lastrowid
+
+    by_vehicle = add(None, "By Vehicle", "", "dropdown")
+    add(by_vehicle, "Find bulbs for your vehicle", "/#fitment-finder",
+        "link", "", 1)
+    add(by_vehicle, "Complete Interior Kits", "/interior-kits")
+
+    by_size = add(None, "By Bulb Size", "", "dropdown")
+    for sz in ("H11", "H7", "9005", "9006", "9012", "H10", "9145", "7440",
+               "7443", "3157", "1156", "1157", "T10", "194", "31mm", "42mm"):
+        add(by_size, sz, "/search?q=" + sz, "sizelink")
+
+    led = add(None, "LED Bulbs", "", "dropdown")
+    for label, link, img in (
+            ("LED Bulbs", "/shop/led-bulbs", "/static/img/ph-bulb.svg"),
+            ("Fog", "/shop/fog", "/static/img/ph-fog.svg"),
+            ("Turn Signal", "/shop/turn", "/static/img/ph-signal.svg"),
+            ("Brake", "/shop/brake", "/static/img/ph-brake.svg"),
+            ("Reverse / Backup", "/shop/reverse", "/static/img/ph-backup.svg"),
+            ("Interior & License", "/shop/interior", "/static/img/ph-dome.svg"),
+            ("Complete Interior Kits", "/interior-kits", "/static/img/ph-dome.svg"),
+            ("Pods & Bars", "/shop/pods", "/static/img/ph-pod.svg")):
+        add(led, label, link, "tile", img)
+    for label, link in (
+            ("Shop All", "/shop"),
+            ("LED Strip Kits", "/shop/strips"),
+            ("Decoders & Accessories", "/shop/accessories"),
+            ("LED Miniature Bulbs", "/shop/led-miniature-bulbs"),
+            ("HID Conversion Kits", "/shop/hid-conversion-kits"),
+            ("Factory HID Bulbs", "/shop/factory-hid-bulbs"),
+            ("Dash Cams", "/shop/dash-cams"),
+            ("Jump Starters", "/shop/jump-starters")):
+        add(led, label, link, "morelink")
+
+    add(None, "Shop All", "/shop", "link")
+    add(None, "Track Order", "/track-order", "link")
+    add(None, "Contact Us", "/contact", "cta")
+
+
+def _nav_row(r):
+    d = dict(r)
+    d["visible"] = bool(d["visible"])
+    d["accent"] = bool(d["accent"])
+    return d
+
+
+def list_nav_items(include_hidden=True):
+    con = _connect()
+    rows = con.execute(
+        "SELECT * FROM nav_items ORDER BY CASE WHEN parent_id IS NULL "
+        "THEN 0 ELSE 1 END, COALESCE(parent_id, 0), position, id"
+    ).fetchall()
+    con.close()
+    items = [_nav_row(r) for r in rows]
+    if not include_hidden:
+        items = [i for i in items if i["visible"]]
+    return items
+
+
+def get_nav_tree():
+    """Visible top-level items, each with ordered visible children and
+    panel-type flags for the template."""
+    items = list_nav_items(include_hidden=False)
+    tops = [i for i in items if not i["parent_id"]]
+    kids = {}
+    for i in items:
+        if i["parent_id"]:
+            kids.setdefault(i["parent_id"], []).append(i)
+    tree = []
+    for t in tops:
+        t = dict(t)
+        t["children"] = kids.get(t["id"], [])
+        kinds = {c["kind"] for c in t["children"]}
+        t["has_tiles"] = "tile" in kinds
+        t["has_sizelinks"] = "sizelink" in kinds
+        tree.append(t)
+    return tree
+
+
+def get_nav_item(item_id):
+    con = _connect()
+    r = con.execute("SELECT * FROM nav_items WHERE id = ?",
+                    (item_id,)).fetchone()
+    con.close()
+    return _nav_row(r) if r else None
+
+
+def add_nav_item(parent_id, label, link, kind, image="", accent=0,
+                 visible=1):
+    if kind not in NAV_KINDS:
+        raise ValueError("bad kind")
+    con = _connect()
+    mx = con.execute(
+        "SELECT COALESCE(MAX(position), 0) FROM nav_items "
+        "WHERE COALESCE(parent_id, -1) = COALESCE(?, -1)",
+        (parent_id,)).fetchone()[0]
+    cur = con.execute(
+        """INSERT INTO nav_items
+           (parent_id, label, link, kind, image, accent, position, visible)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?)""",
+        (parent_id, label, link, kind, image, 1 if accent else 0,
+         mx + 1, 1 if visible else 0))
+    nid = cur.lastrowid
+    con.commit()
+    con.close()
+    return nid
+
+
+def update_nav_item(item_id, label, link, kind, image="", accent=0,
+                    visible=1):
+    if kind not in NAV_KINDS:
+        raise ValueError("bad kind")
+    con = _connect()
+    con.execute(
+        """UPDATE nav_items SET label=?, link=?, kind=?, image=?,
+           accent=?, visible=? WHERE id=?""",
+        (label, link, kind, image, 1 if accent else 0,
+         1 if visible else 0, item_id))
+    con.commit()
+    con.close()
+
+
+def delete_nav_item(item_id):
+    con = _connect()
+    con.execute("DELETE FROM nav_items WHERE parent_id = ?", (item_id,))
+    con.execute("DELETE FROM nav_items WHERE id = ?", (item_id,))
+    con.commit()
+    con.close()
+
+
+def move_nav_item(item_id, direction):
+    """Move an item up/down among its siblings. Returns True if moved."""
+    it = get_nav_item(item_id)
+    if not it:
+        return False
+    con = _connect()
+    rows = con.execute(
+        "SELECT id, position FROM nav_items "
+        "WHERE COALESCE(parent_id, -1) = COALESCE(?, -1) "
+        "ORDER BY position, id", (it["parent_id"],)).fetchall()
+    ids = [r[0] for r in rows]
+    i = ids.index(item_id)
+    j = i - 1 if direction == "up" else i + 1
+    if j < 0 or j >= len(ids):
+        con.close()
+        return False
+    a, b = rows[i], rows[j]
+    con.execute("UPDATE nav_items SET position=? WHERE id=?",
+                (b[1], a[0]))
+    con.execute("UPDATE nav_items SET position=? WHERE id=?",
+                (a[1], b[0]))
+    con.commit()
+    con.close()
+    return True
 
 
 def _seed_variant_groups(p):

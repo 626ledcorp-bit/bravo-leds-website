@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Edit {{ item.label }} — Navigation{% endblock %}
+{% block content %}
+<div class="wrap">
+  <h1>Edit menu item</h1>
+  <p><a href="/admin/navigation">← Navigation</a></p>
+  <form method="post" enctype="multipart/form-data" class="nav-form">
+    <label>Parent
+      <select name="parent_id">
+        <option value="">Top level</option>
+        {% for t in tops %}<option value="{{ t.id }}" {% if item.parent_id == t.id %}selected{% endif %}>{{ t.label }}</option>{% endfor %}
+      </select>
+    </label>
+    <label>Type
+      <select name="kind">
+        {% for k in nav_kinds %}<option value="{{ k }}" {% if item.kind == k %}selected{% endif %}>{{ kind_labels.get(k, k) }}</option>{% endfor %}
+      </select>
+    </label>
+    <label>Label <input type="text" name="label" required maxlength="80" value="{{ item.label }}"></label>
+    <label>Link URL <input type="text" name="link" list="nav-pages" maxlength="200" value="{{ item.link }}" placeholder="/shop/fog or https://…">
+      <datalist id="nav-pages">
+        {% for name, url in page_choices %}<option value="{{ url }}">{{ name }}</option>{% endfor %}
+      </datalist>
+    </label>
+    <label>Tile image <input type="text" name="image" list="nav-images" maxlength="200" value="{{ item.image }}" placeholder="for image tiles">
+      <datalist id="nav-images">
+        {% for src in image_choices %}<option value="{{ src }}">{{ src }}</option>{% endfor %}
+      </datalist>
+    </label>
+    {% if item.image %}<p><img src="{{ item.image }}" alt="" style="max-width:120px"></p>{% endif %}
+    <label>Upload tile image <input type="file" name="image_upload" accept=".png,.jpg,.jpeg,.webp"></label>
+    <label><input type="checkbox" name="accent" {% if item.accent %}checked{% endif %}> Accent (orange) label</label>
+    <label><input type="checkbox" name="visible" {% if item.visible %}checked{% endif %}> Shown</label>
+    <p><button class="btn" type="submit">Save</button>
+       <a class="btn btn-ghost" href="/admin/navigation">Cancel</a></p>
+  </form>
+</div>
+<style>
+.nav-form label{display:block;margin:8px 0}
+.nav-form input[type=text],.nav-form select{width:100%;max-width:420px;padding:6px 8px}
+</style>
+{% endblock %}
