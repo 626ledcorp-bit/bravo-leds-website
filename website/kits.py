@@ -35,7 +35,8 @@ def _load():
     if _kits is None:
         try:
             with open(_DATA_PATH) as f:
-                _kits = json.load(f).get("kits", [])
+                data = json.load(f)
+                _kits = data.get("kits", []) if isinstance(data, dict) else data
         except (OSError, ValueError):
             _kits = []
     return _kits
