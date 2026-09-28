@@ -257,6 +257,24 @@ def _load_legacy(directory):
     return result[0], result[1], "legacy owner scrape (legacy_scrape.db)"
 
 
+def _load_2019plus(directory):
+    """Load ONLY the audited 2019+ union database (fitment_2019plus.db).
+
+    443 vehicles (2019-2026) merged from SEALIGHT/LASFIT/legacy sources with
+    conflicts pre-resolved. Same vehicles/fitment table shape as the others.
+    """
+    path = directory / "fitment_2019plus.db"
+    if not path.exists():
+        return None
+    try:
+        result = _load_sqlite(path)
+    except Exception:
+        result = None
+    if not result:
+        return None
+    return result[0], result[1], "audited 2019+ union (fitment_2019plus.db)"
+
+
 def _vehicle_key(v):
     return (v["year"], v["make"], v["model"], v["trim"] or "")
 
@@ -335,22 +353,32 @@ class FitmentDB:
             self._source = "live"
             return
         # 2) Sylvania crawl output, unioned UNDER it with the legacy owner
-        #    scrape (crawl wins per vehicle+position).
+        #    scrape (crawl wins per vehicle+position), then unioned UNDER the
+        # 2) Sylvania crawl output, unioned UNDER it with the legacy owner
+        #    scrape (crawl wins per vehicle+position), then unioned UNDER the
+        #    audited 2019+ database (2019+ wins where it covers a vehicle).
         crawl_hit = _try_dir(_fitment_dir(), "live crawl data")
         legacy_hit = _load_legacy(_fitment_dir())
+        plus_hit = _load_2019plus(_fitment_dir())
         if crawl_hit and legacy_hit:
+            base = _merge_union(crawl_hit, legacy_hit)
+        else:
+            base = crawl_hit or legacy_hit
+        if plus_hit and base:
             (self._vehicles, self._by_key,
-             self._detail) = _merge_union(crawl_hit, legacy_hit)
-        elif crawl_hit or legacy_hit:
-            hit = crawl_hit or legacy_hit
-            self._vehicles, self._by_key, self._detail = hit
+             self._detail) = _merge_union(plus_hit, base)
+        elif plus_hit:
+            self._vehicles, self._by_key, self._detail = plus_hit
+        elif base:
+            self._vehicles, self._by_key, self._detail = base
         else:
             # 3) Demo seed fallback.
             self._vehicles, self._by_key = _load_seed()
             self._detail = "demo seed data (10 popular vehicles)"
         self._setup_by_key = { _vehicle_key(v): v.get("setup")
                                for v in self._vehicles }
-        self._source = "live" if (crawl_hit or legacy_hit) else "seed"
+        self._source = ("live" if (crawl_hit or legacy_hit or plus_hit)
+                        else "seed")
 
     # -- public interface -------------------------------------------------
     def get_years(self):
