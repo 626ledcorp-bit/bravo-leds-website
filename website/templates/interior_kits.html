@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Complete Interior LED Kits — Bravo LEDs{% endblock %}
+{% block content %}
+<div class="section-light">
+<div class="wrap">
+  <div class="page-title">
+    <h1>Complete Interior LED Kits</h1>
+    <p>One kit covers every interior bulb position — map, dome, vanity, trunk, license — sized for your exact vehicle. Sorted by make and model.</p>
+    <p><a href="/shop/interior">← Interior &amp; License LEDs</a></p>
+  </div>
+  <section class="section" style="padding-top:14px">
+    {% if cards %}
+    <div class="prod-grid">
+      {% for k in cards %}
+      <a class="prod-card" href="{{ k.url }}">
+        <div class="prod-img">
+          <img src="/static/img/ph-dome.svg" alt="{{ k.year }} {{ k.make }} {{ k.model }} interior LED kit" loading="lazy">
+        </div>
+        <div class="prod-body">
+          <div class="prod-tier">Complete Kit</div>
+          <h3 class="prod-name">{{ k.year }} {{ k.make }} {{ k.model }}</h3>
+          <div class="prod-meta">{{ k.total_bulbs }} bulbs · {{ k.positions }} positions</div>
+          <div class="prod-foot">
+            <span class="price">{{ money(k.price_cents) }}</span>
+            <span class="small" style="color:#b25e00">View Kit →</span>
+          </div>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p class="muted">No complete interior kits are available yet — check back soon.</p>
+    {% endif %}
+  </section>
+</div>
+</div>
+{% endblock %}

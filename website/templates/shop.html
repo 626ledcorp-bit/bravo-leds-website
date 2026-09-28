@@ -8,6 +8,15 @@
     {% if tagline %}<p>{{ tagline }}</p>{% endif %}
     {% if active_cat %}<p><a href="/shop">← All categories</a></p>{% endif %}
   </div>
+  {% if active_cat == "interior" %}
+  <div class="kit-banner">
+    <div>
+      <strong>Complete Interior LED Kits</strong>
+      <p class="small muted" style="margin:4px 0 0">One kit covers every interior position for your exact vehicle — no guessing bulb sizes.</p>
+    </div>
+    <a class="btn" href="/interior-kits">Browse Vehicle Kits</a>
+  </div>
+  {% endif %}
   <section class="section" style="padding-top:14px">
     {% include "_prod_cards.html" %}
   </section>
