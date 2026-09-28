@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}{% if q %}Search: {{ q }}{% else %}Search{% endif %} — Bravo LEDs{% endblock %}
+{% block content %}
+<div class="section-light">
+<div class="wrap">
+  <div class="page-title">
+    <h1>Search</h1>
+    {% if q %}
+    <p>{{ results|length }} result{{ "s" if results|length != 1 }} for <strong>“{{ q }}”</strong></p>
+    {% else %}
+    <p class="muted">Type a product name, bulb size, category, or SKU in the search box above.</p>
+    {% endif %}
+  </div>
+  <section class="section" style="padding-top:14px">
+    {% if q and not results %}
+    <div class="contact-card" style="text-align:center; padding:36px 24px">
+      <h2>No matches for “{{ q }}”</h2>
+      <p class="muted">Try a different term — a product name, bulb size like H11 or 7440, or a category like fog, turn, or brake.</p>
+      <p style="margin-top:16px"><a class="btn" href="/shop">Browse All Products →</a></p>
+    </div>
+    {% elif results %}
+    {% set products = results %}
+    {% include "_prod_cards.html" %}
+    {% endif %}
+  </section>
+</div>
+</div>
+{% endblock %}

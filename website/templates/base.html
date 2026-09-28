@@ -77,9 +77,18 @@
       <a href="/contact">Contact</a>
     </nav>
     <span class="header-spacer"></span>
+    <button class="search-toggle" id="search-toggle" aria-label="Search products" aria-expanded="false" aria-controls="search-dropdown">🔍</button>
     <a class="cart-btn" href="/cart">🛒 Cart <span class="cart-count">{{ cart_count }}</span></a>
     {% endif %}
   </div>
+  {% if not request.path.startswith("/admin") %}
+  <div class="search-dropdown" id="search-dropdown">
+    <form class="wrap search-form" action="/search" method="get" role="search">
+      <input type="search" name="q" placeholder="Search products, sizes, SKUs…" aria-label="Search products" autocomplete="off"{% if request.path == "/search" and q is defined %} value="{{ q }}"{% endif %}>
+      <button class="btn" type="submit">Search</button>
+    </form>
+  </div>
+  {% endif %}
   {% if not request.path.startswith("/admin") %}
   <div class="cat-strip">
     <div class="wrap cat-strip-inner">

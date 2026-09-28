@@ -144,6 +144,57 @@ def shop_category(category):
                            tagline=meta["tagline"])
 
 
+def _search_haystack(p):
+    """Weighted searchable text for one full (non-public) product row."""
+    cat = CATEGORIES.get(p.get("category") or "", {})
+    parts = [
+        (p.get("name") or "", 10),
+        (p.get("id") or "", 8),
+        (p.get("sku") or "", 10),
+        (" ".join(p.get("tags") or []), 6),
+        (cat.get("name", ""), 4),
+        (p.get("blurb") or "", 2),
+        (" ".join(p.get("sizes") or []), 6),
+        (" ".join(p.get("color_temps") or []), 4),
+    ]
+    for v in p.get("variations") or []:
+        parts.append((" ".join(str(x) for x in
+                               (v.get("option_values") or {}).values()), 6))
+    return parts
+
+
+def search_products(query):
+    """Token-AND search over active products. Returns full rows, best first."""
+    tokens = [t for t in re.split(r"\s+", query.strip().lower()) if t]
+    if not tokens:
+        return []
+    scored = []
+    for p in db.list_products():
+        fields = _search_haystack(p)
+        lowered = [(t.lower(), w) for t, w in fields]
+        # Every token must appear in at least one field.
+        if not all(any(tok in txt for txt, _w in lowered) for tok in tokens):
+            continue
+        score = 0
+        for tok in tokens:
+            for txt, w in lowered:
+                if tok in txt:
+                    score += w
+                    if txt.startswith(tok):
+                        score += 3
+                    break
+        scored.append((score, p))
+    scored.sort(key=lambda s: (-s[0], (s[1].get("name") or "")))
+    return [p for _s, p in scored]
+
+
+@app.route("/search")
+def search():
+    q = (request.args.get("q") or "").strip()
+    results = [db.public_product(p) for p in search_products(q)] if q else []
+    return render_template("search.html", q=q, results=results)
+
+
 @app.route("/product/<pid>")
 def product_detail(pid):
     p = db.get_product(pid)

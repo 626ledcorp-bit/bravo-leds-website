@@ -95,4 +95,23 @@
       qtyInput.value = Math.max(1, Math.min(99, v));
     });
   });
+
+  /* ---------- Header search toggle (mobile + desktop) ---------- */
+  var searchToggle = document.getElementById("search-toggle");
+  var searchDropdown = document.getElementById("search-dropdown");
+  if (searchToggle && searchDropdown) {
+    var searchInput = searchDropdown.querySelector('input[name="q"]');
+    searchToggle.addEventListener("click", function () {
+      var open = searchDropdown.classList.toggle("open");
+      searchToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      if (open && searchInput) searchInput.focus();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && searchDropdown.classList.contains("open")) {
+        searchDropdown.classList.remove("open");
+        searchToggle.setAttribute("aria-expanded", "false");
+        searchToggle.focus();
+      }
+    });
+  }
 })();

@@ -36,15 +36,15 @@
   </div>
 </section>
 
-<section class="trust-strip" style="background:var(--panel);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+<section class="section-tint trust-strip">
   <div class="wrap" style="display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:center;padding:14px 20px;font-size:13px">
-    <span>🛡️ <strong>1-Year Warranty</strong> on every product</span>
-    <span>🚚 <strong>Ships in 1–2 business days</strong> via USPS &amp; UPS</span>
-    <span>⚠️ <strong>Off-road &amp; fog light use only</strong> — not DOT/SAE approved for on-road use. <a href="/dot-compliance">Learn more →</a></span>
+    <span class="trust-item">🛡️ <strong>1-Year Warranty</strong> on every product</span>
+    <span class="trust-item">🚚 <strong>Ships in 1–2 business days</strong> via USPS &amp; UPS</span>
+    <span class="trust-item">⚠️ <strong>Off-road &amp; fog light use only</strong> — not DOT/SAE approved for on-road use. <a href="/dot-compliance">Learn more →</a></span>
   </div>
 </section>
 
-<section class="section">
+<section class="section section-light">
   <div class="wrap">
     <div class="section-head">
       <h2>Shop by Category</h2>
@@ -62,7 +62,7 @@
   </div>
 </section>
 
-<section class="section" style="padding-top:0">
+<section class="section section-tint" style="padding-top:0">
   <div class="wrap">
     <div class="section-head">
       <h2>Customer Favorites</h2>
@@ -90,7 +90,7 @@
   </div>
 </section>
 
-<section class="section" style="padding-top:0">
+<section class="section section-light" style="padding-top:0">
   <div class="wrap">
     <div class="section-head">
       <h2>Customer Reviews</h2>
@@ -119,9 +119,9 @@
   </div>
 </section>
 
-<section class="section" style="padding-top:0">
+<section class="section section-darkband" style="padding-top:0">
   <div class="wrap">
-    <div class="contact-card" style="text-align:center; padding:36px 24px">
+    <div class="contact-card" style="text-align:center; padding:36px 24px; max-width:640px; margin:0 auto">
       <h2>Get deals &amp; new products first</h2>
       <p class="muted">Join the list for deals and new products.</p>
       {% if request.args.get('nl') == 'ok' %}
@@ -137,7 +137,7 @@
   </div>
 </section>
 
-<section class="section" style="padding-top:0">
+<section class="section section-tint" style="padding-top:0">
   <div class="wrap">
     <div class="props">
       <div class="prop"><div class="icon">🚚</div><h4>Fast Shipping</h4><p>Orders ship in 1–2 business days via USPS &amp; UPS.</p></div>

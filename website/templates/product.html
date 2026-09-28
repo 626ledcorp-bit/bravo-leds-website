@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 {% block title %}{{ p.name }} — Bravo LEDs{% endblock %}
 {% block content %}
+<div class="section-light">
 <div class="wrap">
-  <p class="small" style="margin:22px 0 0"><a href="/shop">Shop</a> / <a href="/shop/{{ p.category }}">{{ cat_name }}</a></p>
+  <p class="small" style="margin:0;padding-top:22px"><a href="/shop">Shop</a> / <a href="/shop/{{ p.category }}">{{ cat_name }}</a></p>
   <div class="prod-detail">
     <div class="prod-gallery">
       {% if p.badge %}<span class="badge">{{ p.badge }}</span>{% endif %}
@@ -237,5 +238,6 @@
   </div>
   {% endif %}
   <div style="height:40px"></div>
+</div>
 </div>
 {% endblock %}

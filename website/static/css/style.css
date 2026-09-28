@@ -105,6 +105,27 @@ img { max-width: 100%; display: block; }
   display: inline-grid; place-items: center; padding: 0 6px;
 }
 
+/* ---------- header search ---------- */
+.search-toggle {
+  background: var(--panel-2); border: 1px solid var(--border); color: var(--text);
+  border-radius: 10px; width: 38px; height: 38px; font-size: 17px; cursor: pointer;
+  display: inline-grid; place-items: center; flex: 0 0 auto;
+}
+.search-toggle:hover, .search-toggle[aria-expanded="true"] { border-color: var(--accent); }
+.search-dropdown {
+  display: none; border-top: 1px solid var(--border);
+  background: rgba(13, 14, 17, .98); padding: 12px 0;
+}
+.search-dropdown.open { display: block; }
+.search-form { display: flex; gap: 10px; }
+.search-form input[type="search"] {
+  flex: 1; background: var(--bg); border: 1px solid var(--border); color: var(--text);
+  border-radius: 10px; padding: 11px 14px; font-size: 15px; font-family: inherit;
+  -webkit-appearance: none;
+}
+.search-form input[type="search"]:focus { outline: none; border-color: var(--accent); }
+.search-form .btn { padding: 11px 22px; white-space: nowrap; }
+
 /* ---------- hero ---------- */
 .hero {
   position: relative; overflow: hidden;
@@ -426,3 +447,85 @@ label.check input{display:inline;width:auto;margin-right:6px}
 .nowrap{white-space:nowrap}
 .var-table input{width:100%;box-sizing:border-box}
 .btn-danger{background:#a33;color:#fff;border:1px solid #a33;border-radius:6px;padding:8px 14px;cursor:pointer}
+
+/* ---------- light content sections (LASFIT-like rhythm: dark hero, light content) ---------- */
+.section-light, .section-tint { color: #16191f; }
+.section-light { background: #ffffff; }
+.section-tint { background: #f1f2f4; }
+.section-light h1, .section-light h2, .section-light h3, .section-light h4,
+.section-tint h1, .section-tint h2, .section-tint h3, .section-tint h4 { color: #0e1116; }
+.section-light .muted, .section-tint .muted { color: #5b6470; }
+.section-light .small, .section-tint .small { color: #5b6470; }
+/* Darker orange for readable links on light backgrounds; buttons keep the gradient. */
+.section-light a, .section-tint a { color: #b25e00; }
+.section-light a:hover, .section-tint a:hover { color: #8f4a00; }
+.section-light .divider, .section-tint .divider { border-top-color: #d8dde4; }
+/* Cards flip to white-on-light with soft borders. */
+.section-light .cat-card, .section-tint .cat-card,
+.section-light .prod-card, .section-tint .prod-card,
+.section-light .prop, .section-tint .prop,
+.section-light .contact-card, .section-tint .contact-card {
+  background: #ffffff; border-color: #dfe3e9; color: #16191f;
+  box-shadow: 0 1px 3px rgba(16, 24, 40, .06);
+}
+.section-light .cat-card p, .section-tint .cat-card p,
+.section-light .prop p, .section-tint .prop p,
+.section-light .contact-card p, .section-tint .contact-card p { color: #5b6470; }
+.section-light .prod-img, .section-tint .prod-img { background: #f6f7f9; }
+.section-light .prod-img img, .section-tint .prod-img img { filter: none; }
+.section-light .prod-tier, .section-tint .prod-tier { color: #b25e00; }
+.section-light .prod-name, .section-tint .prod-name { color: #0e1116; }
+.section-light .prod-meta, .section-tint .prod-meta { color: #5b6470; }
+.section-light .price small, .section-tint .price small { color: #8a93a0; }
+.section-light .prod-card:hover, .section-tint .prod-card:hover,
+.section-light .cat-card:hover, .section-tint .cat-card:hover { border-color: var(--accent); }
+/* Product detail on light. */
+.section-light .prod-info .tier, .section-tint .prod-info .tier { color: #b25e00; }
+.section-light .prod-info h1, .section-tint .prod-info h1 { color: #0e1116; }
+.section-light .warranty-line, .section-tint .warranty-line { color: #15803d; }
+.section-light .thumb, .section-tint .thumb { background: #f6f7f9; }
+.section-light .thumb img, .section-tint .thumb img { background: #f6f7f9; }
+.section-light .pill, .section-tint .pill {
+  background: #ffffff; border: 1px solid #c8cfd8; color: #16191f;
+}
+.section-light .pill.selected, .section-tint .pill.selected {
+  border-color: var(--accent); background: rgba(255,162,26,.14); color: #8f4a00;
+}
+/* Forms on light. */
+.section-light input, .section-light select, .section-light textarea,
+.section-tint input, .section-tint select, .section-tint textarea {
+  background: #ffffff; color: #16191f; border: 1px solid #c8cfd8;
+}
+.section-light .field label, .section-tint .field label { color: #5b6470; }
+.section-light .btn, .section-tint .btn { color: #17130a; }
+.section-light .btn-ghost, .section-tint .btn-ghost {
+  background: transparent; color: #16191f; border: 1px solid #c8cfd8; box-shadow: none;
+}
+/* Tables on light. */
+.section-light table, .section-tint table { color: #16191f; }
+.section-light th, .section-tint th { color: #0e1116; }
+.section-light td, .section-tint td { border-color: #e3e7ec; }
+/* Trust strip items stay readable. */
+.section-light .trust-item, .section-tint .trust-item { color: #3a4048; }
+
+/* Light-section overrides for product detail, cart, fitment and content bits. */
+.section-light .variant-label, .section-tint .variant-label { color: #5b6470; }
+.section-light .qty, .section-tint .qty { border-color: #c8cfd8; background: #fff; }
+.section-light .qty button, .section-tint .qty button { background: #eef0f3; color: #16191f; }
+.section-light .qty input, .section-tint .qty input { color: #16191f; }
+.section-light .feat-list li, .section-tint .feat-list li { color: #2c333c; border-bottom-color: #e3e7ec; }
+.section-light .trust-box, .section-tint .trust-box {
+  background: #fff; border-color: #dfe3e9; color: #5b6470;
+}
+.section-light .trust-box strong, .section-tint .trust-box strong { color: #0e1116; }
+.section-light .page-narrow p, .section-light .page-narrow li,
+.section-tint .page-narrow p, .section-tint .page-narrow li { color: #3a4048; }
+.section-light .page-narrow h1, .section-light .page-narrow h3,
+.section-tint .page-narrow h1, .section-tint .page-narrow h3 { color: #0e1116; }
+.section-light .vehicle-banner, .section-tint .vehicle-banner { color: #16191f; }
+.section-light .vehicle-banner .sub, .section-tint .vehicle-banner .sub { color: #5b6470; }
+.section-light .disclaimer, .section-tint .disclaimer { color: #3a4048; }
+/* Dark accent band: full-width dark rhythm break between light sections. */
+.section-darkband { background: #0d0e11; color: var(--text); }
+.section-darkband h2 { color: #f2f4f7; }
+.section-darkband .muted { color: var(--muted); }

@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block title %}{{ guide.title }} — Install Guides — Bravo LEDs{% endblock %}
 {% block content %}
+<div class="section-light">
 <div class="wrap"><div class="page-narrow">
   <p class="small" style="margin:22px 0 0"><a href="/guides">Install Guides</a> / {{ guide.title }}</p>
   <h1>{{ guide.title }}</h1>
@@ -41,4 +42,5 @@
     {% endfor %}
   </ul>
 </div></div>
+</div>
 {% endblock %}
