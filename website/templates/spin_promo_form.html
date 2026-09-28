@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+{% block title %}{{ "New" if is_new else "Edit" }} Spin Promo — Admin{% endblock %}
+{% block content %}
+<div class="wrap" style="max-width:900px">
+  <h1>{{ "New" if is_new else "Edit" }} Spin-to-Win Promo</h1>
+  <p><a href="/admin/spin-promos">← Spin Promos</a></p>
+
+  {% if errors %}
+  <div class="alert alert-error"><ul style="margin:0;padding-left:20px">
+    {% for e in errors %}<li>{{ e }}</li>{% endfor %}
+  </ul></div>
+  {% endif %}
+
+  <form method="post">
+    {% if not is_new %}<input type="hidden" name="promo_id" value="{{ promo.id }}">{% endif %}
+
+    <div class="frow"><label>Name (internal)<input type="text" name="name" value="{{ vals.name }}" required maxlength="80"></label></div>
+
+    <div class="frow frow-2">
+      <label>Type
+        <select name="type">
+          <option value="spin_wheel" {% if vals.type == "spin_wheel" %}selected{% endif %}>spin_wheel</option>
+          <option value="modal" {% if vals.type == "modal" %}selected{% endif %}>modal (future)</option>
+        </select>
+      </label>
+      <label>Status
+        <select name="status">
+          {% for s in ["draft", "active", "archived"] %}
+          <option value="{{ s }}" {% if vals.status == s %}selected{% endif %}>{{ s }}</option>
+          {% endfor %}
+        </select>
+      </label>
+    </div>
+
+    <div class="frow frow-2">
+      <label>Trigger delay (seconds, 0–120)<input type="number" name="trigger_delay_sec" value="{{ vals.trigger_delay_sec }}" min="0" max="120"></label>
+      <label>Trigger scroll (%, 0–100; 0 = delay only)<input type="number" name="trigger_scroll_pct" value="{{ vals.trigger_scroll_pct }}" min="0" max="100"></label>
+    </div>
+
+    <div class="frow"><label>Pages (page scopes this promo can appear on)</label>
+      <div>
+        {% for p in page_choices %}
+        <label style="display:inline-block;margin-right:14px;font-weight:normal">
+          <input type="checkbox" name="pages" value="{{ p }}" {% if p in vals.pages %}checked{% endif %}> {{ p }}
+        </label>
+        {% endfor %}
+      </div>
+      <p class="hint">"all" covers every page. Only one active promo per overlapping scope.</p>
+    </div>
+
+    <div class="frow frow-2">
+      <label>Start at (optional, local ISO)<input type="datetime-local" name="start_at" value="{{ vals.start_at }}"></label>
+      <label>End at (optional)<input type="datetime-local" name="end_at" value="{{ vals.end_at }}"></label>
+    </div>
+
+    <div class="frow"><label>Headline<input type="text" name="headline" value="{{ vals.headline }}" maxlength="120" required></label></div>
+    <div class="frow"><label>Subheadline<input type="text" name="subheadline" value="{{ vals.subheadline }}" maxlength="120"></label></div>
+    <div class="frow"><label>Spin button text<input type="text" name="button_text" value="{{ vals.button_text }}" maxlength="120"></label></div>
+
+    <div class="frow">
+      <label style="display:inline-block;margin-right:18px;font-weight:normal">
+        <input type="checkbox" name="email_required" {% if vals.email_required %}checked{% endif %}> Require email to reveal/claim prize
+      </label>
+      <label style="display:inline-block;font-weight:normal">
+        <input type="checkbox" name="once_per_visitor" {% if vals.once_per_visitor %}checked{% endif %}> Show at most once per visitor
+      </label>
+    </div>
+
+    <h2>Wheel segments</h2>
+    <p class="hint">Weights set the odds — the % column shows each segment's share live.
+    "none" = no prize (consolation slice). Keep big prizes rare.</p>
+    <table class="admin-table" id="seg-table">
+      <tr><th>Label</th><th>Prize type</th><th>Value</th><th>Weight</th><th>Share</th><th>Code prefix</th><th>Win cap</th><th></th></tr>
+      {% for s in segs %}
+      <tr class="seg-row">
+        <td><input type="text" name="seg_label_{{ loop.index0 }}" value="{{ s.label }}" maxlength="40" style="width:130px"></td>
+        <td><select name="seg_prize_type_{{ loop.index0 }}">
+          {% for t in ["percent", "amount", "none"] %}
+          <option value="{{ t }}" {% if s.prize_type == t %}selected{% endif %}>{{ t }}</option>
+          {% endfor %}
+        </select></td>
+        <td><input type="text" name="seg_prize_value_{{ loop.index0 }}" value="{% if s.prize_type == 'percent' %}{{ s.prize_value }}{% elif s.prize_type == 'amount' %}{{ '%.2f' % (s.prize_value / 100) }}{% endif %}" placeholder="% or $" style="width:80px"></td>
+        <td><input type="number" name="seg_weight_{{ loop.index0 }}" value="{{ s.weight }}" min="1" max="1000" class="seg-w" style="width:70px"></td>
+        <td class="seg-pct">–</td>
+        <td><input type="text" name="seg_prefix_{{ loop.index0 }}" value="{{ s.coupon_prefix }}" maxlength="8" style="width:80px"></td>
+        <td><input type="number" name="seg_cap_{{ loop.index0 }}" value="{{ s.total_win_cap or '' }}" min="1" placeholder="∞" style="width:70px"></td>
+        <td><button type="button" class="btn btn-ghost seg-del">✕</button></td>
+      </tr>
+      {% endfor %}
+    </table>
+    <p><button type="button" class="btn btn-ghost" id="seg-add">+ Add segment</button></p>
+
+    <p style="margin-top:18px"><button class="btn" type="submit">Save promo</button>
+    {% if not is_new %}<a class="btn btn-ghost" href="/?spin_preview={{ promo.id }}" target="_blank" rel="noopener">Preview popup</a>{% endif %}</p>
+  </form>
+</div>
+
+<script>
+(function () {
+  var table = document.getElementById("seg-table");
+  var idx = table.querySelectorAll(".seg-row").length;
+  function rowHTML(i) {
+    return '<tr class="seg-row">' +
+      '<td><input type="text" name="seg_label_' + i + '" maxlength="40" style="width:130px" placeholder="10% OFF"></td>' +
+      '<td><select name="seg_prize_type_' + i + '">' +
+      '<option value="percent">percent</option><option value="amount">amount</option><option value="none">none</option></select></td>' +
+      '<td><input type="text" name="seg_prize_value_' + i + '" placeholder="% or $" style="width:80px"></td>' +
+      '<td><input type="number" name="seg_weight_' + i + '" value="10" min="1" max="1000" class="seg-w" style="width:70px"></td>' +
+      '<td class="seg-pct">–</td>' +
+      '<td><input type="text" name="seg_prefix_' + i + '" value="SPIN" maxlength="8" style="width:80px"></td>' +
+      '<td><input type="number" name="seg_cap_' + i + '" min="1" placeholder="∞" style="width:70px"></td>' +
+      '<td><button type="button" class="btn btn-ghost seg-del">✕</button></td></tr>';
+  }
+  document.getElementById("seg-add").onclick = function () {
+    if (idx >= 24) { alert("Max 24 segments."); return; }
+    table.insertAdjacentHTML("beforeend", rowHTML(idx));
+    idx++;
+    updateShares();
+  };
+  table.addEventListener("click", function (e) {
+    if (e.target.classList.contains("seg-del")) {
+      e.target.closest("tr").remove();
+      updateShares();
+    }
+  });
+  table.addEventListener("input", function (e) {
+    if (e.target.classList.contains("seg-w")) updateShares();
+  });
+  function updateShares() {
+    var ws = Array.prototype.map.call(
+      table.querySelectorAll(".seg-w"),
+      function (el) { return Math.max(1, parseInt(el.value, 10) || 1); });
+    var total = ws.reduce(function (a, b) { return a + b; }, 0) || 1;
+    var cells = table.querySelectorAll(".seg-pct");
+    ws.forEach(function (w, i) {
+      if (cells[i]) cells[i].textContent = (100 * w / total).toFixed(1) + "%";
+    });
+  }
+  updateShares();
+})();
+</script>
+<style>
+.admin-table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.92rem}
+.admin-table th,.admin-table td{border:1px solid var(--border);padding:8px 10px;text-align:left;vertical-align:top}
+.admin-table th{background:var(--panel)}
+.frow{margin:10px 0}
+.frow-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.frow label{font-weight:600;display:block}
+.hint{color:var(--muted);font-size:.85rem}
+.alert-error{background:#fdecec;border:1px solid #e5484d;border-radius:8px;padding:10px 14px;margin:10px 0}
+</style>
+{% endblock %}

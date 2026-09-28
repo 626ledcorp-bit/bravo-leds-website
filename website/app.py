@@ -27,6 +27,7 @@ import payments
 import shipping as shiputil
 import square_sync
 import square_import
+import spinpromo
 from catalog import CATEGORIES
 from content import register_content_routes
 from fitment_loader import fitment_db
@@ -36,6 +37,7 @@ app.secret_key = os.environ.get("SECRET_KEY", "626leds-dev-secret")
 db.init_db()
 register_content_routes(app)
 landing.register_landing_routes(app)
+spinpromo.register_spin_routes(app)
 
 FREE_SHIP_THRESHOLD_CENTS = 9900  # free shipping over $99
 
@@ -302,6 +304,25 @@ def interior_kit_page(year, make, model):
     p = kits.kit_product(kit)
     return render_template("interior_kit.html", p=p, kit=kit,
                            cat_name=CATEGORIES["interior"]["name"])
+
+
+@app.route("/interior-kits")
+def interior_kits():
+    """Browse every vehicle-specific complete interior LED kit."""
+    allk = sorted(kits.all_kits(),
+                  key=lambda k: (str(k.get("make", "")).lower(),
+                                 str(k.get("model", "")).lower(),
+                                 str(k.get("year"))))
+    cards = [{
+        "url": kits.kit_url(k),
+        "year": k.get("year"),
+        "make": k.get("make"),
+        "model": k.get("model"),
+        "total_bulbs": k.get("total_bulbs"),
+        "positions": len(k.get("items", [])),
+        "price_cents": kits.KIT_PRICE_CENTS,
+    } for k in allk]
+    return render_template("interior_kits.html", cards=cards)
 
 
 # ---------------------------------------------------------------- cart

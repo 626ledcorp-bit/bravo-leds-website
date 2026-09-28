@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Spin-to-Win Promos — Admin{% endblock %}
+{% block content %}
+<div class="wrap">
+  <h1>Spin-to-Win Promos</h1>
+  <p><a href="/admin">← Admin Dashboard</a> · <a href="/admin/promos">Promo Codes →</a></p>
+  <p><a class="btn" href="/admin/spin-promos/new">+ New Spin Promo</a></p>
+  <p class="hint">Spin wheels convert ~8–15% of visitors vs 3–5% for plain discount popups.
+  Prizes are real single-use coupon codes applied at checkout. Only one promo may be
+  active per page scope — saving a second one is blocked.</p>
+
+  {% if promos %}
+  <table class="admin-table">
+    <tr><th>Name</th><th>Status</th><th>Pages</th><th>Impressions</th><th>Spins</th>
+        <th>Emails</th><th>Codes issued</th><th>Redeemed</th><th></th></tr>
+    {% for p in promos %}
+    <tr>
+      <td><strong>{{ p.name }}</strong><br><span class="hint">{{ p.headline }}</span></td>
+      <td>
+        {% if p.status == "archived" %}<span class="badge">archived</span>
+        {% elif p.live_now %}<span class="badge" style="background:#46c46a;color:#131313">live</span>
+        {% elif p.status == "active" %}<span class="badge" style="background:#e5484d;color:#fff">scheduled/off</span>
+        {% else %}<span class="badge">draft</span>{% endif %}
+      </td>
+      <td>{{ ", ".join(p.pages) }}</td>
+      <td>{{ p.stats.impressions }}</td>
+      <td>{{ p.stats.spins }}</td>
+      <td>{{ p.stats.emails }}</td>
+      <td>{{ p.stats.codes_issued }}</td>
+      <td>{{ p.stats.codes_redeemed }}</td>
+      <td style="white-space:nowrap">
+        <a class="btn btn-ghost" href="/admin/spin-promos/{{ p.id }}/edit">Edit</a>
+        <a class="btn btn-ghost" href="/?spin_preview={{ p.id }}" target="_blank" rel="noopener">Preview</a>
+        {% if p.status != "archived" %}
+        <form method="post" action="/admin/spin-promos/{{ p.id }}/archive" style="display:inline"
+              onsubmit="return confirm('Archive promo {{ p.name }}? It will stop showing immediately.')">
+          <button class="btn btn-ghost" type="submit">Archive</button>
+        </form>
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+  <p class="hint">No spin promos yet — create one to get started.</p>
+  {% endif %}
+</div>
+<style>
+.admin-table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.92rem}
+.admin-table th,.admin-table td{border:1px solid var(--border);padding:8px 10px;text-align:left;vertical-align:top}
+.admin-table th{background:var(--panel)}
+</style>
+{% endblock %}
