@@ -249,17 +249,23 @@ def _load_legacy(directory):
 
     Never falls through to fitment.db — the crawl is loaded separately so
     the two can be unioned with explicit priority.
+
+    Prefers fitment_live.db — a slim committed copy of the scrape's
+    vehicles/fitment tables. The full legacy_scrape.db is gitignored and
+    only exists on the dev machine, so production (Render) would otherwise
+    fall back to seed data.
     """
-    path = directory / "legacy_scrape.db"
-    if not path.exists():
-        return None
-    try:
-        result = _load_sqlite(path)
-    except Exception:
-        result = None
-    if not result:
-        return None
-    return result[0], result[1], "legacy owner scrape (legacy_scrape.db)"
+    for name in ("fitment_live.db", "legacy_scrape.db"):
+        path = directory / name
+        if not path.exists():
+            continue
+        try:
+            result = _load_sqlite(path)
+        except Exception:
+            result = None
+        if result:
+            return result[0], result[1], f"legacy owner scrape ({name})"
+    return None
 
 
 def _load_2019plus(directory):
