@@ -716,12 +716,25 @@ label.check input{display:inline;width:auto;margin-right:6px}
 .sr-price { font-size: 14.5px; font-weight: 800; color: var(--accent); white-space: nowrap; }
 .btn-sm { padding: 8px 16px; font-size: 13.5px; border-radius: 9px; }
 
+/* Interior kit opt-in row on the fitment page */
+.ik-optin { display: flex; align-items: center; gap: 10px; padding: 10px 12px;
+  margin: 14px 16px 0; background: var(--bg); border: 1px dashed var(--accent);
+  border-radius: 10px; }
+.ik-label { display: flex; align-items: center; gap: 10px; flex: 1 1 auto;
+  min-width: 0; cursor: pointer; }
+.ik-label input[type="checkbox"] { width: 20px; height: 20px; flex: 0 0 auto;
+  accent-color: var(--accent); cursor: pointer; }
+.ik-main { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; }
+.ik-main strong { font-size: 13.5px; }
+.ik-price { font-size: 14.5px; font-weight: 800; color: var(--accent);
+  white-space: nowrap; }
+.ik-view { flex: 0 0 auto; white-space: nowrap; }
+
 /* Sticky bundle builder bar */
 .kitbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
   background: var(--panel); border-top: 1px solid var(--border);
   box-shadow: 0 -8px 30px rgba(0,0,0,.45);
-  padding: 10px 14px calc(10px + env(safe-area-inset-bottom)); }
-.kitbar-inner { max-width: 1100px; margin: 0 auto; display: flex; gap: 12px;
+  padding: 10px 14px calc(10px + env(safe-area-inset-bottom)); }.kitbar-inner { max-width: 1100px; margin: 0 auto; display: flex; gap: 12px;
   align-items: center; justify-content: space-between; flex-wrap: wrap; }
 .kitbar-info { min-width: 0; flex: 1 1 220px; }
 .kitbar-info > strong { font-size: 13px; display: block; margin-bottom: 6px; }
@@ -748,4 +761,27 @@ label.check input{display:inline;width:auto;margin-right:6px}
   .sr-spec { display: none; }
   .kitbar-inner { gap: 8px; }
   .kitbar-actions { width: 100%; justify-content: space-between; }
+}
+
+/* Announcement bar (top promo strip) */
+.announce-bar{
+  background:var(--announce-bg,#FFD200); color:var(--announce-fg,#1a1a1a);
+  display:flex; align-items:center; justify-content:center; gap:10px;
+  padding:7px 12px; font-size:14px; font-weight:600; text-align:center;
+}
+.announce-arrow{
+  background:none; border:none; color:inherit; font-size:20px; line-height:1;
+  cursor:pointer; opacity:.7; padding:0 6px;
+}
+.announce-arrow:hover{opacity:1;}
+.announce-msg{display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:center;}
+.announce-code-wrap{display:inline-flex; align-items:center; gap:6px; font-weight:500;}
+.announce-code{letter-spacing:.5px;}
+.announce-copy{
+  background:rgba(0,0,0,.12); color:inherit; border:1px solid currentColor;
+  border-radius:4px; font-size:11px; font-weight:700; padding:2px 8px; cursor:pointer;
+}
+.announce-copy:hover{background:rgba(0,0,0,.2);}
+@media (max-width:480px){
+  .announce-bar{font-size:12.5px; padding:6px 8px;}
 }

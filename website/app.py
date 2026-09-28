@@ -119,7 +119,31 @@ def inject_globals():
         "nav_tree": db.get_nav_tree(),  # admin-editable header menus
         "cart_total_str": money(subtotal - discount_cents),
         "fitment_source": fitment_db.source_info(),
+        "announce": _announce_bar(),
         "money": money,
+    }
+
+
+def _announce_bar():
+    """Top announcement bar config (admin-editable under Settings)."""
+    msgs = []
+    for i in ("1", "2", "3"):
+        text = db.get_setting(f"announce_msg{i}", "").strip()
+        if text:
+            msgs.append({
+                "text": text,
+                "code": db.get_setting(f"announce_code{i}", "").strip(),
+            })
+    if not msgs:  # fresh install defaults
+        msgs = [
+            {"text": "15% OFF Sitewide", "code": "BRAVO15"},
+            {"text": "Free shipping on $99+ orders", "code": ""},
+        ]
+    return {
+        "enabled": db.get_setting("announce_enabled", "1") == "1",
+        "bg": db.get_setting("announce_bg", "#FFD200"),
+        "fg": db.get_setting("announce_fg", "#1a1a1a"),
+        "messages": msgs,
     }
 
 
@@ -472,6 +496,10 @@ def _fitment_context(year, make, model, trim=None):
             "url": kits.kit_url(kit),
             "price_cents": kits.KIT_PRICE_CENTS,
             "total_bulbs": kit.get("total_bulbs"),
+            "product_id": kit["kit_id"],
+            "variation_id": kits.KIT_VARIATION_ID,
+            "name": (f"{kit['year']} {kit['make']} {kit['model']} "
+                     "Complete Interior LED Kit"),
         }
     return rows, setup, enriched, interior_kit
 
@@ -656,15 +684,25 @@ def api_cart_add():
 @app.route("/api/cart/add-kit", methods=["POST"])
 def api_cart_add_kit():
     """AJAX bundle add for the fitment page: one line per position, each
-    with its own series+size variation."""
+    with its own series+size variation, plus an optional interior kit.
+
+    Kit items are validated against the page's vehicle (sent as
+    ``vehicle``): a kit only goes in the cart when it belongs to that
+    vehicle. Prices are always re-derived server-side."""
     data = request.get_json(force=True, silent=True) or {}
     items = data.get("items") or []
+    vehicle = data.get("vehicle") or {}
     if not items or len(items) > 25:
         return jsonify({"ok": False, "error": "bad items"}), 400
     added, total = 0, 0
     for it in items:
-        ok, detail = _cart_add_item(it.get("product_id", ""),
-                                    it.get("variation_id", ""),
+        pid = it.get("product_id", "")
+        if kits.parse_kit_id(pid):
+            vk = kits.get_kit(vehicle.get("year"), vehicle.get("make"),
+                              vehicle.get("model")) if vehicle else None
+            if not vk or vk.get("kit_id") != str(pid):
+                continue  # kit doesn't belong to this vehicle: skip it
+        ok, detail = _cart_add_item(pid, it.get("variation_id", ""),
                                     it.get("qty", 1))
         if ok:
             added += 1
@@ -2150,6 +2188,23 @@ def admin_settings():
         except (TypeError, ValueError):
             tare = 3.0
         db.set_setting("shipping_tare_oz", str(tare))
+        # --- Announcement bar ---
+        db.set_setting("announce_enabled",
+                       "1" if request.form.get("announce_enabled") == "on"
+                       else "0")
+        for color_key, default in (("announce_bg", "#FFD200"),
+                                   ("announce_fg", "#1a1a1a")):
+            val = request.form.get(color_key, "").strip()
+            if not re.fullmatch(r"#[0-9a-fA-F]{6}", val):
+                val = default
+            db.set_setting(color_key, val)
+        for i in ("1", "2", "3"):
+            db.set_setting(f"announce_msg{i}",
+                           request.form.get(f"announce_msg{i}", "").strip())
+            db.set_setting(f"announce_code{i}",
+                           re.sub(r"\s+", "",
+                                  request.form.get(f"announce_code{i}",
+                                                   "")).upper())
         # --- Square POS: blank secret fields keep the saved value ---
         token = request.form.get("square_access_token", "").strip()
         if token:

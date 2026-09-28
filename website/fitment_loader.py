@@ -46,6 +46,7 @@ Public interface (stable — templates and routes only use these):
 import csv
 import json
 import os
+import re
 import sqlite3
 from pathlib import Path
 
@@ -73,6 +74,9 @@ POSITION_LABELS = {
     "low_beam": "Low Beam",
     "high_beam": "High Beam",
     "high_low_beam": "High / Low Beam",
+    # SEALIGHT-sourced rows use a combined "headlight" position for low+high;
+    # never render the word "headlight" (brand rule).
+    "headlight": "High / Low Beam",
     "fog_light": "Fog Light",
     "drl": "Daytime Running Light",
     "front_turn_signal": "Front Turn Signal",
@@ -101,6 +105,7 @@ POSITION_CATEGORIES = {
     "low_beam": ["led-bulbs", "hid-conversion-kits", "factory-hid-bulbs"],
     "high_beam": ["led-bulbs", "hid-conversion-kits", "factory-hid-bulbs"],
     "high_low_beam": ["led-bulbs", "hid-conversion-kits", "factory-hid-bulbs"],
+    "headlight": ["led-bulbs", "hid-conversion-kits", "factory-hid-bulbs"],
     "fog_light": ["fog", "hid-conversion-kits"],
     "drl": ["led-bulbs"],
     "front_turn_signal": ["turn"],
@@ -419,8 +424,15 @@ class FitmentDB:
         # label + category enrichment for templates
         out = []
         for r in rows:
+            # Brand rule: the word "headlight" must never reach the site.
+            # Scrub it from source notes ("sealight position: LED Headlight
+            # Bulbs" -> "sealight position: LED Bulbs").
+            note = re.sub(r"(?i)\s*headlights?", "",
+                          r.get("note") or "").strip()
+            note = re.sub(r"\s{2,}", " ", note)
             out.append({
                 **r,
+                "note": note,
                 "label": POSITION_LABELS.get(r["position"],
                                              r["position"].replace("_", " ").title()),
                 "categories": POSITION_CATEGORIES.get(r["position"], []),

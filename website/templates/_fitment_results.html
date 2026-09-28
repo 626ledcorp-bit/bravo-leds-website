@@ -61,7 +61,26 @@
     💡 Tip: bulbs are sold per pair unless noted. Add a single position with <strong>Add</strong>, or pick a tier per position and add everything at once below.
   </div>
 
-  <div id="kitbar" class="kitbar" hidden>
+  {% if interior_kit %}
+  <div class="ik-optin" id="ik-optin"
+       data-pid="{{ interior_kit.product_id }}"
+       data-vid="{{ interior_kit.variation_id }}"
+       data-price="{{ interior_kit.price_cents }}"
+       data-name="Complete Interior LED Kit">
+    <label class="ik-label">
+      <input type="checkbox" id="ik-check">
+      <span class="ik-main">
+        <strong>Add interior light kit</strong>
+        <span class="small muted">{{ interior_kit.total_bulbs }} bulbs sized for your {{ vehicle_label }}.</span>
+      </span>
+      <span class="ik-price">{{ money(interior_kit.price_cents) }}</span>
+    </label>
+    <a class="small ik-view" href="{{ interior_kit.url }}">View kit</a>
+  </div>
+  {% endif %}
+
+  <div id="kitbar" class="kitbar" hidden
+       data-year="{{ year }}" data-make="{{ make }}" data-model="{{ model }}">
     <div class="kitbar-inner">
       <div class="kitbar-info">
         <strong>Your lighting kit</strong>
@@ -83,6 +102,8 @@
   var totalEl = document.getElementById('kittotal');
   var toastEl = document.getElementById('fittoast');
   var toastTimer = null;
+  var ikOptin = document.getElementById('ik-optin');
+  var ikCheck = document.getElementById('ik-check');
 
   function money(c) { return '$' + (c / 100).toFixed(2); }
   function selectedRows() {
@@ -104,7 +125,10 @@
   }
   function refreshBar() {
     var sel = selectedRows();
-    if (!sel.length) { bar.hidden = true; document.body.style.paddingBottom = ''; return; }
+    var ikOn = !!(ikCheck && ikCheck.checked);
+    if (!sel.length && !ikOn) {
+      bar.hidden = true; document.body.style.paddingBottom = ''; return;
+    }
     var total = 0;
     chipsEl.innerHTML = '';
     sel.forEach(function (row) {
@@ -115,7 +139,17 @@
         ' · ' + row.dataset.size;
       chipsEl.appendChild(chip);
     });
-    countEl.textContent = sel.length + (sel.length === 1 ? ' item' : ' items');
+    var count = sel.length;
+    if (ikOn) {
+      total += parseInt(ikOptin.dataset.price, 10) || 0;
+      count += 1;
+      var ikChip = document.createElement('span');
+      ikChip.className = 'kitchip';
+      ikChip.textContent = 'Interior light kit · ' +
+        money(parseInt(ikOptin.dataset.price, 10) || 0);
+      chipsEl.appendChild(ikChip);
+    }
+    countEl.textContent = count + (count === 1 ? ' item' : ' items');
     totalEl.textContent = money(total);
     bar.hidden = false;
     document.body.style.paddingBottom = '92px';
@@ -176,8 +210,15 @@
       return { product_id: row.dataset.pid,
                variation_id: row.dataset.vid, qty: 1 };
     });
+    if (ikCheck && ikCheck.checked && ikOptin) {
+      items.push({ product_id: ikOptin.dataset.pid,
+                   variation_id: ikOptin.dataset.vid, qty: 1 });
+    }
     if (!items.length) return;
-    postJSON('/api/cart/add-kit', { items: items }, btn, 'Adding…')
+    var body = { items: items, vehicle: {
+      year: bar.dataset.year, make: bar.dataset.make,
+      model: bar.dataset.model } };
+    postJSON('/api/cart/add-kit', body, btn, 'Adding…')
       .then(function (res) {
         var j = res.json;
         if (j.ok) {
@@ -191,6 +232,9 @@
   });
 
   refreshBar();
+  if (ikCheck) {
+    ikCheck.addEventListener('change', refreshBar);
+  }
 })();
 </script>
   <div style="height:30px"></div>
