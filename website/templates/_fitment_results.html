@@ -1,6 +1,6 @@
 {# Shared fitment results body: disclaimer, kit banner, setup banner,
-   per-position product rows. Expects vehicle_label, rows, setup,
-   interior_kit. Included by fitment.html and fit_vehicle.html. #}
+   per-position series rows, bundle builder bar. Expects vehicle_label,
+   rows, setup, interior_kit. Included by fitment.html and fit_vehicle.html. #}
   {% if interior_kit %}
   <div class="kit-banner">
     <div>
@@ -12,7 +12,7 @@
   {% endif %}
 
   {% if setup == "halogen" %}
-  <p class="setup-banner halogen">✓ LED upgrades fit this vehicle — pick your size and tier below.</p>
+  <p class="setup-banner halogen">✓ LED upgrades fit this vehicle — pick your tier per position below, or build the whole kit at once.</p>
   {% elif setup == "xenon" %}
   <p class="setup-banner xenon">This vehicle uses xenon/HID front bulbs — HID options are listed below, not LEDs.</p>
   {% elif setup == "factory_led" %}
@@ -22,7 +22,7 @@
   {% endif %}
 
   {% for r in rows %}
-  <div class="pos-block">
+  <div class="pos-block" data-position="{{ r.label }}">
     <div class="pos-head">
       <h3>{{ r.label }}</h3>
       <span class="size-chip">{{ r.bulb_size_raw }}</span>
@@ -30,17 +30,25 @@
     </div>
     {% if r.sealed %}
     <div class="no-match">Sealed factory LED unit — not replaceable with an aftermarket bulb.</div>
-    {% elif r.products %}
-    <div class="pos-prods">
-      {% for p in r.products %}
-      <a class="pos-prod" href="/product/{{ p.id }}?size={{ r.bulb_size|urlencode }}" title="{{ p.name }} — opens with size {{ r.bulb_size }} preselected">
-        <img src="{{ primary_image(p) }}" alt="{{ p.name }}" loading="lazy">
-        <div style="flex:1">
-          <div class="nm">{{ p.name }}</div>
-          <div class="small muted">{{ p.tier }} · {{ p.warranty }}</div>
+    {% elif r.options %}
+    <div class="series-list">
+      {% for o in r.options %}
+      <div class="series-row{% if loop.index0 == r.default_idx %} sel{% endif %}"
+           data-pid="{{ o.product.id }}" data-vid="{{ o.variation_id }}"
+           data-price="{{ o.price_cents }}" data-size="{{ o.size }}"
+           data-name="{{ o.product.name }}" data-pos="{{ r.label }}">
+        <button type="button" class="kit-pick" role="radio"
+                aria-checked="{{ 'true' if loop.index0 == r.default_idx else 'false' }}"
+                aria-label="Choose {{ o.product.name }} for {{ r.label }} in your kit"
+                title="Include in your lighting kit"><span></span></button>
+        <div class="sr-main">
+          <a class="sr-name" href="/product/{{ o.product.id }}?size={{ o.size|urlencode }}"
+             title="{{ o.product.name }} — opens with size {{ o.size }} preselected">{{ o.product.name }}</a>
+          <div class="sr-spec">{{ o.spec }}</div>
         </div>
-        <div class="pr">{{ money(p.price_cents) }}</div>
-      </a>
+        <div class="sr-price">{{ money(o.price_cents) }}</div>
+        <button type="button" class="btn btn-sm add-one">Add</button>
+      </div>
       {% endfor %}
     </div>
     {% else %}
@@ -50,6 +58,139 @@
   {% endfor %}
 
   <div class="flash">
-    💡 Tip: bulbs are sold per pair unless noted. Not sure between tiers? <a href="/contact">Message us</a> with your vehicle and how you drive — we'll recommend the right setup.
+    💡 Tip: bulbs are sold per pair unless noted. Add a single position with <strong>Add</strong>, or pick a tier per position and add everything at once below.
   </div>
+
+  <div id="kitbar" class="kitbar" hidden>
+    <div class="kitbar-inner">
+      <div class="kitbar-info">
+        <strong>Your lighting kit</strong>
+        <div class="kitbar-chips" id="kitchips"></div>
+      </div>
+      <div class="kitbar-actions">
+        <div class="kitbar-total"><span id="kitcount"></span> · <strong id="kittotal"></strong></div>
+        <button type="button" class="btn" id="kitadd">Add kit to cart</button>
+      </div>
+    </div>
+  </div>
+  <div id="fittoast" class="fittoast" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+  var bar = document.getElementById('kitbar');
+  var chipsEl = document.getElementById('kitchips');
+  var countEl = document.getElementById('kitcount');
+  var totalEl = document.getElementById('kittotal');
+  var toastEl = document.getElementById('fittoast');
+  var toastTimer = null;
+
+  function money(c) { return '$' + (c / 100).toFixed(2); }
+  function selectedRows() {
+    return Array.prototype.slice.call(
+      document.querySelectorAll('.series-row.sel'));
+  }
+  function toast(msg) {
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () {
+      toastEl.classList.remove('show');
+    }, 2600);
+  }
+  function bumpBadge(n) {
+    document.querySelectorAll('.cart-count').forEach(function (el) {
+      el.textContent = n;
+    });
+  }
+  function refreshBar() {
+    var sel = selectedRows();
+    if (!sel.length) { bar.hidden = true; document.body.style.paddingBottom = ''; return; }
+    var total = 0;
+    chipsEl.innerHTML = '';
+    sel.forEach(function (row) {
+      total += parseInt(row.dataset.price, 10) || 0;
+      var chip = document.createElement('span');
+      chip.className = 'kitchip';
+      chip.textContent = row.dataset.pos + ': ' + row.dataset.name +
+        ' · ' + row.dataset.size;
+      chipsEl.appendChild(chip);
+    });
+    countEl.textContent = sel.length + (sel.length === 1 ? ' item' : ' items');
+    totalEl.textContent = money(total);
+    bar.hidden = false;
+    document.body.style.paddingBottom = '92px';
+  }
+
+  document.querySelectorAll('.pos-block').forEach(function (block) {
+    block.addEventListener('click', function (e) {
+      var pick = e.target.closest('.kit-pick');
+      if (pick) {
+        block.querySelectorAll('.series-row').forEach(function (r) {
+          r.classList.remove('sel');
+          r.querySelector('.kit-pick').setAttribute('aria-checked', 'false');
+        });
+        var row = pick.closest('.series-row');
+        row.classList.add('sel');
+        pick.setAttribute('aria-checked', 'true');
+        refreshBar();
+        return;
+      }
+      var add = e.target.closest('.add-one');
+      if (add) { addOne(add.closest('.series-row'), add); }
+    });
+  });
+
+  function postJSON(url, body, btn, busyLabel) {
+    var orig = btn ? btn.textContent : null;
+    if (btn) { btn.disabled = true; btn.textContent = busyLabel; }
+    return fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    }).then(function (r) { return r.json().then(function (j) {
+      return { status: r.status, json: j };
+    }); }).finally(function () {
+      if (btn) { btn.disabled = false; btn.textContent = orig; }
+    });
+  }
+
+  function addOne(row, btn) {
+    postJSON('/api/cart/add', {
+      product_id: row.dataset.pid,
+      variation_id: row.dataset.vid,
+      qty: 1
+    }, btn, 'Adding…').then(function (res) {
+      var j = res.json;
+      if (j.ok) {
+        bumpBadge(j.cart_count);
+        toast('Added ' + row.dataset.name + ' (' + j.size + ') to cart');
+      } else {
+        toast('Could not add — please try again');
+      }
+    }).catch(function () { toast('Could not add — please try again'); });
+  }
+
+  document.getElementById('kitadd').addEventListener('click', function () {
+    var btn = this;
+    var items = selectedRows().map(function (row) {
+      return { product_id: row.dataset.pid,
+               variation_id: row.dataset.vid, qty: 1 };
+    });
+    if (!items.length) return;
+    postJSON('/api/cart/add-kit', { items: items }, btn, 'Adding…')
+      .then(function (res) {
+        var j = res.json;
+        if (j.ok) {
+          bumpBadge(j.cart_count);
+          toast('Added ' + j.added + ' items (' + money(j.total_cents) +
+                ') to your cart');
+        } else {
+          toast('Could not add the kit — please try again');
+        }
+      }).catch(function () { toast('Could not add the kit — please try again'); });
+  });
+
+  refreshBar();
+})();
+</script>
   <div style="height:30px"></div>

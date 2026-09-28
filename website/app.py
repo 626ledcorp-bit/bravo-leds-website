@@ -31,7 +31,10 @@ import square_import
 import spinpromo
 from catalog import CATEGORIES
 from content import register_content_routes
-from fitment_loader import fitment_db
+from fitment_loader import fitment_db, norm_size
+
+# Series lineup order for the fitment page's per-position option rows.
+TIER_ORDER = ["Basic", "Plus", "Premium", "Platinum", "Pro", "Ultra"]
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY", "626leds-dev-secret")
@@ -384,6 +387,37 @@ def api_garage_main():
     return jsonify({"ok": True, "vehicle": session.get("vehicle")})
 
 
+def _fit_variation_for_size(pub, bulb_size):
+    """The purchasable variation for a fitment size: matching Size option
+    (normalized) with the default color temp (first in its group). Returns
+    None when the product has no variation in that size — the series is then
+    skipped for that position."""
+    target = norm_size(bulb_size)
+    groups = pub.get("variant_groups") or []
+    default_ct = next((g["values"][0] for g in groups
+                       if g["name"].lower() == "color temp" and g["values"]),
+                      None)
+    cands = [v for v in (pub.get("variations") or [])
+             if norm_size((v.get("option_values") or {}).get("Size", ""))
+             == target]
+    if not cands:
+        return None
+    if default_ct:
+        for v in cands:
+            if (v.get("option_values") or {}).get("Color temp") == default_ct:
+                return v
+    return cands[0]
+
+
+def _one_line_spec(pub):
+    """Compact spec for a fitment option row: first sentence of the blurb."""
+    blurb = (pub.get("blurb") or "").strip()
+    if not blurb:
+        return pub.get("tier", "")
+    first = blurb.split(". ")[0].rstrip(".")
+    return first[:90]
+
+
 def _fitment_context(year, make, model, trim=None):
     """Shared enrichment for /fitment and /fit/<vehicle> pages."""
     rows = fitment_db.get_fitment(year, make, model, trim)
@@ -403,13 +437,33 @@ def _fitment_context(year, make, model, trim=None):
                 # Sealed factory LED units: not replaceable, no products.
                 cats = []
                 sealed = True
+        options = []
+        for p in db.products_matching_size(r["bulb_size"], cats):
+            pub = db.public_product(p)
+            var = _fit_variation_for_size(pub, r["bulb_size"])
+            if var is None:
+                continue  # series doesn't actually stock this size
+            options.append({
+                "product": pub,
+                "variation_id": var["id"],
+                "size": (var.get("option_values") or {}).get(
+                    "Size", r["bulb_size"]),
+                "price_cents": db.variation_sell_price(p, var),
+                "spec": _one_line_spec(pub),
+            })
+        options.sort(key=lambda o: (
+            TIER_ORDER.index(o["product"]["tier"])
+            if o["product"]["tier"] in TIER_ORDER else 99,
+            o["price_cents"]))
+        default_idx = next(
+            (i for i, o in enumerate(options)
+             if o["product"]["tier"] == "Premium"), 0)
         enriched.append({
             **r,
             "categories": cats,
             "sealed": sealed,
-            "products": [db.public_product(p)
-                         for p in db.products_matching_size(r["bulb_size"],
-                                                            cats)],
+            "options": options,
+            "default_idx": default_idx,
         })
     interior_kit = None
     kit = kits.get_kit(year, make, model)
@@ -552,6 +606,73 @@ def cart_add():
                      "qty": qty}
     session["cart"] = cart
     return redirect(url_for("cart_view"))
+
+
+def _cart_add_item(pid, vid, qty=1):
+    """Validated single-line add, shared by /cart/add's variation path and
+    the JSON fitment API. The variation must belong to the product; the
+    price is always re-derived server-side. Returns (ok, detail)."""
+    p = kits.kit_product_for_id(pid) or db.get_product(pid)
+    if not p or p["status"] != "active":
+        return False, "product not found"
+    var = next((v for v in (p.get("variations") or [])
+                if str(v["id"]) == str(vid)), None)
+    if var is None:
+        return False, "variation not found"
+    try:
+        qty = max(1, min(99, int(qty or 1)))
+    except (TypeError, ValueError):
+        qty = 1
+    key = f"{pid}::v{var['id']}"
+    cart = get_cart()
+    if key in cart:
+        cart[key]["qty"] = min(99, cart[key]["qty"] + qty)
+    else:
+        cart[key] = {"product_id": pid, "variation_id": var["id"],
+                     "qty": qty}
+    session["cart"] = cart
+    return True, {"key": key, "qty": cart[key]["qty"],
+                  "unit_cents": db.variation_sell_price(p, var),
+                  "size": (var.get("option_values") or {}).get("Size", "")}
+
+
+def _cart_count():
+    return sum(max(1, min(99, int(i.get("qty", 1))))
+               for i in get_cart().values())
+
+
+@app.route("/api/cart/add", methods=["POST"])
+def api_cart_add():
+    """AJAX single add for the fitment page: one series+size option."""
+    data = request.get_json(force=True, silent=True) or {}
+    ok, detail = _cart_add_item(data.get("product_id", ""),
+                                data.get("variation_id", ""),
+                                data.get("qty", 1))
+    if not ok:
+        return jsonify({"ok": False, "error": detail}), 400
+    return jsonify({"ok": True, "cart_count": _cart_count(), **detail})
+
+
+@app.route("/api/cart/add-kit", methods=["POST"])
+def api_cart_add_kit():
+    """AJAX bundle add for the fitment page: one line per position, each
+    with its own series+size variation."""
+    data = request.get_json(force=True, silent=True) or {}
+    items = data.get("items") or []
+    if not items or len(items) > 25:
+        return jsonify({"ok": False, "error": "bad items"}), 400
+    added, total = 0, 0
+    for it in items:
+        ok, detail = _cart_add_item(it.get("product_id", ""),
+                                    it.get("variation_id", ""),
+                                    it.get("qty", 1))
+        if ok:
+            added += 1
+            total += detail["unit_cents"] * detail["qty"]
+    if not added:
+        return jsonify({"ok": False, "error": "nothing added"}), 400
+    return jsonify({"ok": True, "added": added, "total_cents": total,
+                    "cart_count": _cart_count()})
 
 
 @app.route("/cart/update", methods=["POST"])

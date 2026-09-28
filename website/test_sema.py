@@ -132,7 +132,7 @@ def scenario_a(tmp):
     check("fitment results page renders SEMA data",
           r.status_code == 200 and "H11" in body and "DemoMake" in body)
     check("results show matching products",
-          'class="pos-prod"' in body or "pos-prod" in body)
+          'class="series-row' in body)
 
     # Cart cycle.
     p0 = dbmod.get_product(p0["id"])
