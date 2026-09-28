@@ -342,54 +342,158 @@ def _load_seed():
 
 
 class FitmentDB:
-    """Lazily-loaded fitment database: SEMA import -> crawl+scrape -> seed."""
+    """Fitment database: SEMA import -> crawl+scrape+2019+ -> seed.
+
+    Vehicle metadata (~26k records) lives in memory; the ~440k fitment
+    rows stay in SQLite and are queried per vehicle. A full in-memory
+    load costs ~370MB per worker — too much for the Starter plan.
+    """
 
     def __init__(self):
-        self._vehicles = None
-        self._by_key = None
+        self._vehicles = None       # merged vehicle dicts (small)
+        self._veh_sources = None    # key -> [(source_idx, vehicle_id)], priority order
+        self._db_paths = None       # sqlite paths, priority order
+        self._by_key = None         # only for the SEMA/seed in-memory paths
         self._setup_by_key = None
         self._source = None
         self._detail = ""
+        self._row_count = 0
 
     def _ensure(self):
         if self._vehicles is not None:
             return
-        # 1) SEMA Data import — preferred when present.
+        # 1) SEMA Data import — preferred when present (in-memory legacy path).
         hit = _try_dir(_sema_dir(), "SEMA Data import",
                        extra_names=("sema_fitment.db",))
         if hit:
             self._vehicles, self._by_key, self._detail = hit
-            self._setup_by_key = { _vehicle_key(v): v.get("setup")
-                                   for v in self._vehicles }
+            self._setup_by_key = {_vehicle_key(v): v.get("setup")
+                                  for v in self._vehicles}
             self._source = "live"
+            self._row_count = sum(len(r) for r in self._by_key.values())
             return
-        # 2) Sylvania crawl output, unioned UNDER it with the legacy owner
-        #    scrape (crawl wins per vehicle+position), then unioned UNDER the
-        # 2) Sylvania crawl output, unioned UNDER it with the legacy owner
-        #    scrape (crawl wins per vehicle+position), then unioned UNDER the
-        #    audited 2019+ database (2019+ wins where it covers a vehicle).
-        crawl_hit = _try_dir(_fitment_dir(), "live crawl data")
-        legacy_hit = _load_legacy(_fitment_dir())
-        plus_hit = _load_2019plus(_fitment_dir())
-        if crawl_hit and legacy_hit:
-            base = _merge_union(crawl_hit, legacy_hit)
-        else:
-            base = crawl_hit or legacy_hit
-        if plus_hit and base:
-            (self._vehicles, self._by_key,
-             self._detail) = _merge_union(plus_hit, base)
-        elif plus_hit:
-            self._vehicles, self._by_key, self._detail = plus_hit
-        elif base:
-            self._vehicles, self._by_key, self._detail = base
-        else:
-            # 3) Demo seed fallback.
-            self._vehicles, self._by_key = _load_seed()
-            self._detail = "demo seed data (10 popular vehicles)"
-        self._setup_by_key = { _vehicle_key(v): v.get("setup")
-                               for v in self._vehicles }
-        self._source = ("live" if (crawl_hit or legacy_hit or plus_hit)
-                        else "seed")
+        # 2) SQLite sources, highest priority first: audited 2019+ union,
+        #    then the Sylvania crawl, then the legacy owner scrape.
+        d = _fitment_dir()
+        sources = []  # (label, path)
+        plus = d / "fitment_2019plus.db"
+        if plus.exists():
+            sources.append(("audited 2019+ union (fitment_2019plus.db)", plus))
+        crawl = d / "fitment.db"
+        if crawl.exists():
+            sources.append(("live crawl data (fitment.db)", crawl))
+        for name in ("fitment_live.db", "legacy_scrape.db"):
+            leg = d / name
+            if leg.exists():
+                # fitment_live.db is the slim committed copy of the scrape;
+                # the full legacy_scrape.db is gitignored (dev machines only).
+                sources.append((f"legacy owner scrape ({name})", leg))
+                break
+        if sources:
+            self._init_sql_sources(sources)
+            return
+        # 3) Demo seed fallback.
+        self._vehicles, self._by_key = _load_seed()
+        self._setup_by_key = {_vehicle_key(v): v.get("setup")
+                              for v in self._vehicles}
+        self._detail = "demo seed data (10 popular vehicles)"
+        self._source = "seed"
+        self._row_count = sum(len(r) for r in self._by_key.values())
+
+    def _init_sql_sources(self, sources):
+        """Register SQLite sources; load vehicle metadata only."""
+        self._db_paths = [str(p) for _, p in sources]
+        self._detail = " + ".join(label for label, _ in sources)
+        self._source = "live"
+        veh_by_key = {}
+        self._veh_sources = {}
+        self._row_count = 0
+        for idx, (_, path) in enumerate(sources):
+            con = sqlite3.connect(f"file:{path}?mode=ro", uri=True)
+            try:
+                vcols = [r[1] for r in
+                         con.execute("PRAGMA table_info(vehicles)")]
+                vselect = "v.vehicle_id, v.year, v.make, v.model, v.trim"
+                if "setup" in vcols:
+                    vselect += ", v.setup"
+                # Only vehicles that actually have fitment rows, mirroring
+                # the old in-memory _normalize() filter.
+                for r in con.execute(
+                        f"SELECT {vselect} FROM vehicles v WHERE EXISTS "
+                        "(SELECT 1 FROM fitment f "
+                        "WHERE f.vehicle_id = v.vehicle_id)"):
+                    rec = {
+                        "vehicle_id": str(r[0]),
+                        "year": int(r[1]),
+                        "make": str(r[2]).strip(),
+                        "model": str(r[3]).strip(),
+                        "trim": (str(r[4]).strip()
+                                 if r[4] not in (None, "", "None") else None),
+                        "setup": (str(r[5]).strip()
+                                  if len(r) > 5 and
+                                  r[5] not in (None, "", "None") else None),
+                    }
+                    key = (rec["year"], rec["make"], rec["model"],
+                           rec["trim"] or "")
+                    self._veh_sources.setdefault(key, []).append(
+                        (idx, rec["vehicle_id"]))
+                    if key not in veh_by_key:
+                        veh_by_key[key] = rec
+                    elif (not veh_by_key[key].get("setup")
+                          and rec.get("setup")):
+                        veh_by_key[key] = {**veh_by_key[key],
+                                           "setup": rec["setup"]}
+                self._row_count += con.execute(
+                    "SELECT COUNT(*) FROM fitment").fetchone()[0]
+            finally:
+                con.close()
+        self._vehicles = sorted(
+            veh_by_key.values(),
+            key=lambda v: (v["year"], v["make"], v["model"], v["trim"] or ""))
+        self._setup_by_key = {_vehicle_key(v): v.get("setup")
+                              for v in self._vehicles}
+
+    def _sql_fitment(self, year, make, model, trim):
+        """Fitment rows for one vehicle, merged across sources by priority.
+
+        Mirrors the old in-memory _merge_union(): a higher-priority source
+        wins per position, but multiple rows for the same position *within*
+        one source (e.g. 7440 and 7440NA turn signals) are all kept.
+        """
+        key = (int(year), make, model, trim or "")
+        srcs = (self._veh_sources or {}).get(key)
+        if not srcs:
+            return []
+        per_source = []  # [(positions, rows)] in priority order
+        for idx, vid in srcs:
+            con = sqlite3.connect(f"file:{self._db_paths[idx]}?mode=ro",
+                                  uri=True)
+            try:
+                con.row_factory = sqlite3.Row
+                rows = []
+                for f in con.execute(
+                        "SELECT position, bulb_size_raw, bulb_size, note "
+                        "FROM fitment WHERE vehicle_id = ?", (vid,)):
+                    row = {
+                        "position": str(f["position"]).strip().lower(),
+                        "bulb_size_raw": str(f["bulb_size_raw"]
+                                             or f["bulb_size"] or "").strip(),
+                        "bulb_size": norm_size(f["bulb_size"]
+                                               or f["bulb_size_raw"] or ""),
+                        "note": str(f["note"] or "").strip(),
+                    }
+                    if not row["bulb_size"]:
+                        continue
+                    rows.append(row)
+            finally:
+                con.close()
+            per_source.append(({r["position"] for r in rows}, rows))
+        merged = []
+        for i in range(len(per_source) - 1, -1, -1):
+            positions, rows = per_source[i]
+            higher = set().union(*(p for p, _ in per_source[:i])) if i else set()
+            merged.extend(r for r in rows if r["position"] not in higher)
+        return merged
 
     # -- public interface -------------------------------------------------
     def get_years(self):
@@ -425,8 +529,10 @@ class FitmentDB:
 
     def get_fitment(self, year, make, model, trim=None):
         self._ensure()
-        key = (int(year), make, model, trim or "")
-        rows = self._by_key.get(key, [])
+        if self._by_key is not None:
+            rows = self._by_key.get((int(year), make, model, trim or ""), [])
+        else:
+            rows = self._sql_fitment(year, make, model, trim)
         # label + category enrichment for templates
         out = []
         for r in rows:
@@ -464,16 +570,19 @@ class FitmentDB:
             "source": self._source,
             "detail": self._detail,
             "vehicles": len(self._vehicles),
-            "rows": sum(len(r) for r in self._by_key.values()),
+            "rows": self._row_count,
         }
 
     def reload(self):
         """Force re-detection (e.g. after the crawl lands new data)."""
         self._vehicles = None
+        self._veh_sources = None
+        self._db_paths = None
         self._by_key = None
         self._setup_by_key = None
         self._source = None
         self._detail = ""
+        self._row_count = 0
 
 
 fitment_db = FitmentDB()

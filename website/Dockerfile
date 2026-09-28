@@ -1,12 +1,15 @@
 FROM python:3.12-slim
 
+# Build context is the repo root: website/ holds the app, fitment/ holds the
+# committed fitment databases (fitment_live.db, fitment_2019plus.db).
 WORKDIR /srv
-COPY requirements.txt .
+COPY website/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . .
+COPY website/ .
+COPY fitment/ ./fitment/
 
-COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+COPY website/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
 ENV PORT=8000 \
