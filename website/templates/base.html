@@ -96,11 +96,10 @@
       {% endfor %}
     </nav>
     <span class="header-spacer"></span>
-    <a class="vehicle-pill" href="/#fitment-finder" title="Your vehicle — change">
+    <button class="vehicle-pill" id="garage-open" type="button" title="My Garage — your saved vehicles" aria-haspopup="dialog">
       <span aria-hidden="true">🚗</span>
-      {% if vehicle %}<strong>{{ vehicle.year }} {{ vehicle.make }} {{ vehicle.model }}</strong><em>CHANGE</em>
-      {% else %}<strong>Select Vehicle</strong>{% endif %}
-    </a>
+      <span id="garage-pill-label">{% if vehicle %}<strong>{{ vehicle.year }} {{ vehicle.make }} {{ vehicle.model }}</strong><em>CHANGE</em>{% else %}<strong>Select Vehicle</strong>{% endif %}</span>
+    </button>
     <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">☰</button>
     <button class="search-toggle" id="search-toggle" aria-label="Search products" aria-expanded="false" aria-controls="search-dropdown">🔍</button>
     <a class="cart-btn" href="/cart">🛒 Cart <span class="cart-count">{{ cart_count }}</span></a>
@@ -232,7 +231,46 @@
   </div>
 </footer>
 {% endif %}
+{# ---------------- My Garage modal (LASFIT-style vehicle picker) ---------------- #}
+{% if not request.path.startswith("/admin") %}
+<div class="garage-modal" id="garage-modal" hidden>
+  <div class="garage-backdrop" data-garage-close></div>
+  <div class="garage-dialog" role="dialog" aria-modal="true" aria-labelledby="garage-title">
+    <button class="garage-x" data-garage-close aria-label="Close">×</button>
+    <div class="garage-head">
+      <h2 id="garage-title">My Garage</h2>
+      <button class="garage-clear" id="garage-clear" type="button">Clear All</button>
+    </div>
+    <ul class="garage-list" id="garage-list"></ul>
+    <p class="garage-empty muted" id="garage-empty" hidden>No vehicles saved yet — add yours below.</p>
+    <button class="btn garage-add-btn" id="garage-add-toggle" type="button">ADD VEHICLE</button>
+    <form class="garage-form" id="garage-add-form" hidden>
+      <div class="finder-grid">
+        <div class="field">
+          <label for="g-year">Year</label>
+          <select id="g-year" name="year"><option value="">Year</option></select>
+        </div>
+        <div class="field">
+          <label for="g-make">Make</label>
+          <select id="g-make" name="make" disabled><option value="">Make</option></select>
+        </div>
+        <div class="field">
+          <label for="g-model">Model</label>
+          <select id="g-model" name="model" disabled><option value="">Model</option></select>
+        </div>
+        <div class="field">
+          <label for="g-trim">Trim</label>
+          <select id="g-trim" name="trim" disabled><option value="">Trim (optional)</option></select>
+        </div>
+      </div>
+      <p class="garage-err" id="garage-err" hidden></p>
+      <button class="btn" id="garage-add-go" type="submit" disabled>Add &amp; Browse</button>
+    </form>
+  </div>
+</div>
+{% endif %}
 <script src="/static/js/main.js"></script>
+<script src="/static/js/garage.js" defer></script>
 <script src="/static/js/spinwheel.js" defer></script>
 </body>
 </html>

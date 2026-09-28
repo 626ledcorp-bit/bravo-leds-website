@@ -12,6 +12,7 @@ import secrets
 import shutil
 import time
 import uuid
+from urllib.parse import quote
 from functools import wraps
 from flask import (Flask, abort, flash, jsonify, redirect, render_template,
                    request, Response, session, url_for)
@@ -244,26 +245,151 @@ def api_trims():
                                         request.args.get("model", "")))
 
 
-@app.route("/fitment")
-def fitment_results():
-    year = request.args.get("year", "")
-    make = request.args.get("make", "")
-    model = request.args.get("model", "")
-    trim = request.args.get("trim") or None
+# ------------------------------------------------------- My Garage + /fit/
+# LASFIT-style: the header pill opens a garage modal; each saved vehicle
+# gets a landing page at /fit/<year>/<make>/<model>.
+_vehicle_slug_index = None
+
+
+def _vehicle_slug_index_build():
+    """(year, make_slug, model_slug) -> (make, model); first match wins."""
+    global _vehicle_slug_index
+    if _vehicle_slug_index is None:
+        idx = {}
+        for v in fitment_db.iter_vehicles():
+            key = (int(v["year"]), kits.slugify(v["make"]),
+                   kits.slugify(v["model"]))
+            idx.setdefault(key, (v["make"], v["model"]))
+        _vehicle_slug_index = idx
+    return _vehicle_slug_index
+
+
+def resolve_vehicle_slug(year, make_slug, model_slug):
+    """Slugs -> canonical (make, model), or None when unknown."""
+    try:
+        year = int(year)
+    except (TypeError, ValueError):
+        return None
+    hit = _vehicle_slug_index_build().get(
+        (year, kits.slugify(make_slug), kits.slugify(model_slug)))
+    return hit
+
+
+def fit_url(year, make, model, trim=None):
+    url = (f"/fit/{int(year)}/{kits.slugify(make)}/{kits.slugify(model)}")
+    if trim:
+        url += "?trim=" + quote(str(trim), safe="")
+    return url
+
+
+def _garage_get():
+    return session.get("garage") or []
+
+
+def _garage_save(garage):
+    session["garage"] = garage
+    # The header pill mirrors the main (first) garage vehicle.
+    session["vehicle"] = dict(garage[0]) if garage else None
+
+
+def _vehicle_valid(year, make, model, trim=None):
+    """True only when the fitment DB has rows for this vehicle."""
+    try:
+        rows = fitment_db.get_fitment(year, make, model, trim)
+    except (TypeError, ValueError):
+        return False
+    return bool(rows)
+
+
+def garage_add_vehicle(year, make, model, trim=None):
+    """Add a validated vehicle to the session garage; returns fit URL."""
+    garage = _garage_get()
+    key = (str(year), make, model, trim or "")
+    if not any((str(g["year"]), g["make"], g["model"], g.get("trim") or "")
+               == key for g in garage):
+        garage.insert(0, {"year": int(year), "make": make, "model": model,
+                          "trim": trim or None})
+    _garage_save(garage)
+    return fit_url(year, make, model, trim)
+
+
+@app.route("/api/garage/sync", methods=["POST"])
+def api_garage_sync():
+    """Restore browser-persisted vehicles into the session (validated)."""
+    data = request.get_json(force=True, silent=True) or {}
+    kept = []
+    for v in data.get("vehicles", [])[:10]:
+        try:
+            year, make, model = v["year"], v["make"], v["model"]
+        except (KeyError, TypeError):
+            continue
+        trim = v.get("trim") or None
+        if _vehicle_valid(year, make, model, trim):
+            kept.append({"year": int(year), "make": make, "model": model,
+                         "trim": trim})
+    if kept and not _garage_get():
+        _garage_save(kept)
+    return jsonify({"vehicles": _garage_get()})
+
+
+@app.route("/api/garage/add", methods=["POST"])
+def api_garage_add():
+    data = request.get_json(force=True, silent=True) or {}
+    year, make, model = data.get("year"), data.get("make"), data.get("model")
+    trim = data.get("trim") or None
     if not (year and make and model):
-        return redirect(url_for("home"))
-    # Remember the visitor's vehicle for the header pill (LASFIT-style) —
-    # only once fitment is confirmed, so an invalid request can't set it.
+        return jsonify({"ok": False, "error": "missing"}), 400
+    if not _vehicle_valid(year, make, model, trim):
+        # Never persist an invalid selection.
+        return jsonify({"ok": False, "error": "unknown vehicle"}), 404
+    url = garage_add_vehicle(year, make, model, trim)
+    return jsonify({"ok": True, "url": url,
+                    "vehicle": session.get("vehicle")})
+
+
+@app.route("/api/garage/remove", methods=["POST"])
+def api_garage_remove():
+    data = request.get_json(force=True, silent=True) or {}
+    key = (str(data.get("year")), data.get("make"), data.get("model"),
+           data.get("trim") or "")
+    garage = [g for g in _garage_get()
+              if (str(g["year"]), g["make"], g["model"], g.get("trim") or "")
+              != key]
+    _garage_save(garage)
+    return jsonify({"ok": True, "vehicles": garage})
+
+
+@app.route("/api/garage/clear", methods=["POST"])
+def api_garage_clear():
+    _garage_save([])
+    return jsonify({"ok": True})
+
+
+@app.route("/api/garage/main", methods=["POST"])
+def api_garage_main():
+    """Promote a saved vehicle to main (header pill). Must be in garage."""
+    data = request.get_json(force=True, silent=True) or {}
+    key = (str(data.get("year")), data.get("make"), data.get("model"),
+           data.get("trim") or "")
+    garage = _garage_get()
+    hit = next((g for g in garage
+                if (str(g["year"]), g["make"], g["model"],
+                    g.get("trim") or "") == key), None)
+    if not hit:
+        return jsonify({"ok": False}), 404
+    garage.remove(hit)
+    garage.insert(0, hit)
+    _garage_save(garage)
+    return jsonify({"ok": True, "vehicle": session.get("vehicle")})
+
+
+def _fitment_context(year, make, model, trim=None):
+    """Shared enrichment for /fitment and /fit/<vehicle> pages."""
     rows = fitment_db.get_fitment(year, make, model, trim)
-    if not rows:
-        abort(404)
-    session["vehicle"] = {"year": year, "make": make, "model": model,
-                          "trim": trim}
     setup = fitment_db.get_vehicle_setup(year, make, model, trim)
     # Front-bulb positions affected by xenon / sealed factory LED setups.
     FRONT_POSITIONS = {"low_beam", "high_beam", "high_low_beam",
                        "fog_light", "fog_light_rear", "drl"}
-    # attach matching products per position (public-safe copies only)
     enriched = []
     for r in rows:
         cats = r["categories"]
@@ -284,9 +410,6 @@ def fitment_results():
                          for p in db.products_matching_size(r["bulb_size"],
                                                             cats)],
         })
-    vehicle_label = f"{year} {make} {model}" + (f" {trim}" if trim else "")
-    # Suggest the complete interior LED kit when one exists for this
-    # vehicle — the main fitment lookup itself is unchanged.
     interior_kit = None
     kit = kits.get_kit(year, make, model)
     if kit:
@@ -295,6 +418,47 @@ def fitment_results():
             "price_cents": kits.KIT_PRICE_CENTS,
             "total_bulbs": kit.get("total_bulbs"),
         }
+    return rows, setup, enriched, interior_kit
+
+
+@app.route("/fit/<int:year>/<make_slug>/<model_slug>")
+def fit_vehicle(year, make_slug, model_slug):
+    """LASFIT-style vehicle landing page: 'Fit for: 2021 Toyota RAV4'."""
+    resolved = resolve_vehicle_slug(year, make_slug, model_slug)
+    if not resolved:
+        abort(404)
+    make, model = resolved
+    trim = request.args.get("trim") or None
+    rows, setup, enriched, interior_kit = _fitment_context(year, make, model,
+                                                           trim)
+    if not rows:
+        abort(404)
+    # Valid vehicle only — safe to remember and add to the garage.
+    garage_add_vehicle(year, make, model, trim)
+    vehicle_label = f"{year} {make} {model}"
+    return render_template("fit_vehicle.html", vehicle_label=vehicle_label,
+                           rows=enriched, year=year, make=make, model=model,
+                           trim=trim, setup=setup,
+                           interior_kit=interior_kit)
+
+
+@app.route("/fitment")
+def fitment_results():
+    year = request.args.get("year", "")
+    make = request.args.get("make", "")
+    model = request.args.get("model", "")
+    trim = request.args.get("trim") or None
+    if not (year and make and model):
+        return redirect(url_for("home"))
+    # Remember the visitor's vehicle for the header pill (LASFIT-style) —
+    # only once fitment is confirmed, so an invalid request can't set it.
+    rows, setup, enriched, interior_kit = _fitment_context(year, make, model,
+                                                           trim)
+    if not rows:
+        abort(404)
+    session["vehicle"] = {"year": year, "make": make, "model": model,
+                          "trim": trim}
+    vehicle_label = f"{year} {make} {model}" + (f" {trim}" if trim else "")
     return render_template("fitment.html", vehicle_label=vehicle_label,
                            rows=enriched, year=year, make=make, model=model,
                            trim=trim, setup=setup,

@@ -2,14 +2,26 @@
 (function () {
   "use strict";
 
-  /* ---------- Fitment finder: Year -> Make -> Model -> Trim ---------- */
-  var finder = document.getElementById("fitment-finder");
-  if (finder) {
-    var yearSel = document.getElementById("ff-year");
-    var makeSel = document.getElementById("ff-make");
-    var modelSel = document.getElementById("ff-model");
-    var trimSel = document.getElementById("ff-trim");
-    var goBtn = document.getElementById("ff-go");
+  /* ---------- Fitment finder: Year -> Make -> Model -> Trim ----------
+     Shared by the homepage hero form and the My Garage modal form. */
+  function slugify(s) {
+    return String(s || "").toLowerCase().replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+  }
+  function fitUrl(year, make, model, trim) {
+    var u = "/fit/" + encodeURIComponent(year) + "/" +
+            slugify(make) + "/" + slugify(model);
+    if (trim) u += "?trim=" + encodeURIComponent(trim);
+    return u;
+  }
+  function initFitmentFinder(formId, ids, onSubmit) {
+    var form = document.getElementById(formId);
+    if (!form) return null;
+    var yearSel = document.getElementById(ids.year);
+    var makeSel = document.getElementById(ids.make);
+    var modelSel = document.getElementById(ids.model);
+    var trimSel = document.getElementById(ids.trim);
+    var goBtn = document.getElementById(ids.go);
 
     function reset(sel, placeholder) {
       sel.innerHTML = "";
@@ -64,16 +76,20 @@
     });
     trimSel.addEventListener("change", updateGo);
 
-    finder.addEventListener("submit", function (e) {
+    form.addEventListener("submit", function (e) {
       e.preventDefault();
       if (goBtn.disabled) return;
-      var q = "/fitment?year=" + encodeURIComponent(yearSel.value) +
-              "&make=" + encodeURIComponent(makeSel.value) +
-              "&model=" + encodeURIComponent(modelSel.value);
-      if (trimSel.value) q += "&trim=" + encodeURIComponent(trimSel.value);
-      window.location.href = q;
+      onSubmit({ year: yearSel.value, make: makeSel.value,
+                 model: modelSel.value, trim: trimSel.value || null });
     });
+    return { form: form, updateGo: updateGo };
   }
+  window.BravoFit = { initFitmentFinder: initFitmentFinder, fitUrl: fitUrl, slugify: slugify };
+
+  // Homepage hero form -> vehicle landing page.
+  initFitmentFinder("fitment-finder",
+    { year: "ff-year", make: "ff-make", model: "ff-model", trim: "ff-trim", go: "ff-go" },
+    function (v) { window.location.href = fitUrl(v.year, v.make, v.model, v.trim); });
 
   /* ---------- Product page: variant pills + qty ---------- */
   document.querySelectorAll("[data-pill-group]").forEach(function (group) {

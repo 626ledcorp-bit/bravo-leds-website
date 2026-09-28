@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Fit for {{ vehicle_label }} — BRAVO LEDS{% endblock %}
+{% block content %}
+<div class="section-light">
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="/">Home</a> <span aria-hidden="true">›</span>
+    <span>Fit for {{ vehicle_label }}</span>
+  </nav>
+
+  <h1 class="fit-title">Fit for: {{ vehicle_label }}</h1>
+  <p class="sub muted" style="margin:4px 0 18px">Every lighting position, the size it takes, and the LEDs that fit — pick your tier.</p>
+
+  <p class="disclaimer">⚠️ For off-road and fog light use only. Not DOT/SAE approved for on-road use. Check your local laws. <a href="/dot-compliance">Learn more →</a></p>
+
+  {% include "_fitment_results.html" %}
+</div>
+</div>
+{% endblock %}

@@ -8,7 +8,10 @@ Data sources, checked in priority order:
      Preferred over crawl data when present.
   2. Sylvania crawl output (``FITMENT_DIR`` env var, default ``../fitment``):
      ``fitment.json``, ``fitment.db`` / ``fitment.sqlite``,
-     ``vehicles.csv`` + ``fitment.csv``.
+     ``vehicles.csv`` + ``fitment.csv`` — unioned UNDER it with the legacy
+     owner scrape (``legacy_scrape.db``, same dir). On a vehicle+position
+     conflict the crawl row wins (2026 snapshot); the scrape fills the
+     119-make / 1985-2019 gaps the crawl lacks.
   3. Seed data (``seed_fitment.py``) — demo fallback.
 
 Accepted shapes per directory:
@@ -19,6 +22,8 @@ Accepted shapes per directory:
 Schema (both tables/files):
   vehicles: vehicle_id, year, make, model, trim
             (+ optional vcdb_vehicle_id, base_vehicle_id — read-safe)
+            (+ optional setup — read-safe; per-vehicle front-bulb setup
+             halogen/xenon/factory_led/mixed from the legacy owner scrape)
   fitment:  vehicle_id, position, bulb_size_raw, bulb_size, note
             (+ optional extras — read-safe)
 
@@ -31,6 +36,9 @@ Public interface (stable — templates and routes only use these):
   get_trims(year, make, model)     -> ["LE", ...] (may be [])
   get_fitment(year, make, model, trim=None)
       -> [{"position", "bulb_size_raw", "bulb_size", "note"}]
+  get_vehicle_setup(year, make, model, trim=None)
+      -> "halogen" | "xenon" | "factory_led" | "mixed" | None
+      (front-bulb setup from the legacy owner scrape; None when unknown)
   source_info() -> {"source": "live"|"seed", "detail": str,
                     "vehicles": int, "rows": int}
 """
@@ -64,6 +72,7 @@ def _sema_dir():
 POSITION_LABELS = {
     "low_beam": "Low Beam",
     "high_beam": "High Beam",
+    "high_low_beam": "High / Low Beam",
     "fog_light": "Fog Light",
     "drl": "Daytime Running Light",
     "front_turn_signal": "Front Turn Signal",
@@ -91,6 +100,7 @@ POSITION_LABELS = {
 POSITION_CATEGORIES = {
     "low_beam": ["led-bulbs", "hid-conversion-kits", "factory-hid-bulbs"],
     "high_beam": ["led-bulbs", "hid-conversion-kits", "factory-hid-bulbs"],
+    "high_low_beam": ["led-bulbs", "hid-conversion-kits", "factory-hid-bulbs"],
     "fog_light": ["fog", "hid-conversion-kits"],
     "drl": ["led-bulbs"],
     "front_turn_signal": ["turn"],
@@ -131,8 +141,12 @@ def _load_sqlite(path):
     con = sqlite3.connect(f"file:{path}?mode=ro", uri=True)
     con.row_factory = sqlite3.Row
     try:
+        vcols = [r[1] for r in con.execute("PRAGMA table_info(vehicles)")]
+        vselect = "vehicle_id, year, make, model, trim"
+        if "setup" in vcols:  # legacy owner scrape: read-safe extra column
+            vselect += ", setup"
         vehicles = [dict(r) for r in con.execute(
-            "SELECT vehicle_id, year, make, model, trim FROM vehicles")]
+            f"SELECT {vselect} FROM vehicles")]
         fitment = [dict(r) for r in con.execute(
             "SELECT vehicle_id, position, bulb_size_raw, bulb_size, note "
             "FROM fitment")]
@@ -158,19 +172,23 @@ def _load_csv(vpath, fpath):
 def _normalize(vehicles, fitment):
     """Normalize any source shape into (vehicles, by_key) structures."""
     vehs = []
+    by_id = {}
     for v in vehicles:
-        vehs.append({
+        rec = {
             "vehicle_id": str(v.get("vehicle_id")),
             "year": int(v.get("year")),
             "make": str(v.get("make")).strip(),
             "model": str(v.get("model")).strip(),
             "trim": (str(v.get("trim")).strip()
                      if v.get("trim") not in (None, "", "None") else None),
-        })
+            "setup": (str(v.get("setup")).strip()
+                      if v.get("setup") not in (None, "", "None") else None),
+        }
+        vehs.append(rec)
+        by_id[rec["vehicle_id"]] = rec
     by_key = {}
     for f in fitment:
-        vid = str(f.get("vehicle_id"))
-        veh = next((v for v in vehs if v["vehicle_id"] == vid), None)
+        veh = by_id.get(str(f.get("vehicle_id")))
         if veh is None:
             continue
         key = (veh["year"], veh["make"], veh["model"], veh["trim"] or "")
@@ -221,6 +239,60 @@ def _try_dir(directory, label, extra_names=()):
     return None
 
 
+def _load_legacy(directory):
+    """Load ONLY the legacy owner scrape (legacy_scrape.db).
+
+    Never falls through to fitment.db — the crawl is loaded separately so
+    the two can be unioned with explicit priority.
+    """
+    path = directory / "legacy_scrape.db"
+    if not path.exists():
+        return None
+    try:
+        result = _load_sqlite(path)
+    except Exception:
+        result = None
+    if not result:
+        return None
+    return result[0], result[1], "legacy owner scrape (legacy_scrape.db)"
+
+
+def _vehicle_key(v):
+    return (v["year"], v["make"], v["model"], v["trim"] or "")
+
+
+def _merge_union(primary, secondary):
+    """Union two (vehicles, by_key, detail) loads; primary wins per position.
+
+    primary = Sylvania crawl (2026 snapshot), secondary = legacy owner
+    scrape. For a vehicle present in both, positions the crawl covers use
+    the crawl rows; positions only in the scrape are kept. Vehicles only in
+    one source are kept as-is. Per-vehicle setup comes from the scrape
+    (the crawl carries none).
+    """
+    p_vehs, p_by, p_detail = primary
+    s_vehs, s_by, s_detail = secondary
+    by_key = {k: list(rows) for k, rows in s_by.items()}
+    for key, rows in p_by.items():
+        if key not in by_key:
+            by_key[key] = list(rows)
+            continue
+        p_positions = {r["position"] for r in rows}
+        by_key[key] = ([r for r in by_key[key]
+                        if r["position"] not in p_positions]
+                       + list(rows))
+    veh_by_key = {_vehicle_key(v): v for v in s_vehs}
+    for v in p_vehs:
+        key = _vehicle_key(v)
+        if key in veh_by_key and not v.get("setup"):
+            v = {**v, "setup": veh_by_key[key].get("setup")}
+        veh_by_key[key] = v
+    vehicles = sorted(veh_by_key.values(),
+                      key=lambda v: (v["year"], v["make"], v["model"],
+                                     v["trim"] or ""))
+    return vehicles, by_key, f"{p_detail} + {s_detail}"
+
+
 def _load_seed():
     vehicles = []
     by_key = {}
@@ -241,11 +313,12 @@ def _load_seed():
 
 
 class FitmentDB:
-    """Lazily-loaded fitment database: SEMA import -> crawl -> seed fallback."""
+    """Lazily-loaded fitment database: SEMA import -> crawl+scrape -> seed."""
 
     def __init__(self):
         self._vehicles = None
         self._by_key = None
+        self._setup_by_key = None
         self._source = None
         self._detail = ""
 
@@ -257,18 +330,27 @@ class FitmentDB:
                        extra_names=("sema_fitment.db",))
         if hit:
             self._vehicles, self._by_key, self._detail = hit
+            self._setup_by_key = { _vehicle_key(v): v.get("setup")
+                                   for v in self._vehicles }
             self._source = "live"
             return
-        # 2) Sylvania crawl output.
-        hit = _try_dir(_fitment_dir(), "live crawl data")
-        if hit:
+        # 2) Sylvania crawl output, unioned UNDER it with the legacy owner
+        #    scrape (crawl wins per vehicle+position).
+        crawl_hit = _try_dir(_fitment_dir(), "live crawl data")
+        legacy_hit = _load_legacy(_fitment_dir())
+        if crawl_hit and legacy_hit:
+            (self._vehicles, self._by_key,
+             self._detail) = _merge_union(crawl_hit, legacy_hit)
+        elif crawl_hit or legacy_hit:
+            hit = crawl_hit or legacy_hit
             self._vehicles, self._by_key, self._detail = hit
-            self._source = "live"
-            return
-        # 3) Demo seed fallback.
-        self._vehicles, self._by_key = _load_seed()
-        self._source = "seed"
-        self._detail = "demo seed data (10 popular vehicles)"
+        else:
+            # 3) Demo seed fallback.
+            self._vehicles, self._by_key = _load_seed()
+            self._detail = "demo seed data (10 popular vehicles)"
+        self._setup_by_key = { _vehicle_key(v): v.get("setup")
+                               for v in self._vehicles }
+        self._source = "live" if (crawl_hit or legacy_hit) else "seed"
 
     # -- public interface -------------------------------------------------
     def get_years(self):
@@ -291,6 +373,17 @@ class FitmentDB:
                        if v["year"] == int(year) and v["make"] == make
                        and v["model"] == model and v["trim"]})
 
+    def iter_vehicles(self):
+        """Distinct (year, make, model) dicts across the whole database."""
+        self._ensure()
+        seen = set()
+        for v in self._vehicles:
+            key = (v["year"], v["make"], v["model"])
+            if key not in seen:
+                seen.add(key)
+                yield {"year": v["year"], "make": v["make"],
+                       "model": v["model"]}
+
     def get_fitment(self, year, make, model, trim=None):
         self._ensure()
         key = (int(year), make, model, trim or "")
@@ -306,6 +399,19 @@ class FitmentDB:
             })
         return out
 
+    def get_vehicle_setup(self, year, make, model, trim=None):
+        """Front-bulb setup for a vehicle: halogen/xenon/factory_led/mixed.
+
+        Comes from the legacy owner scrape; None when the vehicle isn't in
+        the scrape or the scrape has no front-bulb rows for it.
+        """
+        self._ensure()
+        try:
+            key = (int(year), make, model, trim or "")
+        except (TypeError, ValueError):
+            return None
+        return self._setup_by_key.get(key)
+
     def source_info(self):
         self._ensure()
         return {
@@ -319,6 +425,7 @@ class FitmentDB:
         """Force re-detection (e.g. after the crawl lands new data)."""
         self._vehicles = None
         self._by_key = None
+        self._setup_by_key = None
         self._source = None
         self._detail = ""
 
