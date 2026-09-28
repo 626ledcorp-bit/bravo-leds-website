@@ -18,6 +18,26 @@
 
   <p class="disclaimer">⚠️ For off-road and fog light use only. Not DOT/SAE approved for on-road use. Check your local laws. <a href="/dot-compliance">Learn more →</a></p>
 
+  {% if interior_kit %}
+  <div class="kit-banner">
+    <div>
+      <strong>Complete Interior LED Kit for your {{ vehicle_label }}</strong>
+      <p class="small muted" style="margin:4px 0 0">One kit covers every interior position — {{ interior_kit.total_bulbs }} bulbs, sized for your exact vehicle.</p>
+    </div>
+    <a class="btn" href="{{ interior_kit.url }}">{{ money(interior_kit.price_cents) }} — View Kit</a>
+  </div>
+  {% endif %}
+
+  {% if setup == "halogen" %}
+  <p class="setup-banner halogen">✓ LED upgrades fit this vehicle — pick your size and tier below.</p>
+  {% elif setup == "xenon" %}
+  <p class="setup-banner xenon">This vehicle uses xenon/HID front bulbs — HID options are listed below, not LEDs.</p>
+  {% elif setup == "factory_led" %}
+  <p class="setup-banner sealed">This vehicle uses sealed factory LED front lighting — those units aren't replaceable with aftermarket bulbs.</p>
+  {% elif setup == "mixed" %}
+  <p class="setup-banner mixed">Front bulb setup varies by trim on this vehicle — confirm whether yours uses halogen or HID before ordering.</p>
+  {% endif %}
+
   {% for r in rows %}
   <div class="pos-block">
     <div class="pos-head">
@@ -25,7 +45,9 @@
       <span class="size-chip">{{ r.bulb_size_raw }}</span>
       {% if r.note %}<span class="pos-note">{{ r.note }}</span>{% endif %}
     </div>
-    {% if r.products %}
+    {% if r.sealed %}
+    <div class="no-match">Sealed factory LED unit — not replaceable with an aftermarket bulb.</div>
+    {% elif r.products %}
     <div class="pos-prods">
       {% for p in r.products %}
       <a class="pos-prod" href="/product/{{ p.id }}">

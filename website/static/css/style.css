@@ -276,6 +276,7 @@ img { max-width: 100%; display: block; }
 .data-pill.live { color: var(--green); border-color: rgba(52,211,153,.4); }
 .data-pill.seed { color: var(--accent); border-color: rgba(255,162,26,.4); }
 .pos-block { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; margin-bottom: 16px; overflow: hidden; }
+.kit-banner { display: flex; align-items: center; justify-content: space-between; gap: 16px; background: var(--panel); border: 2px solid #ffa21a; border-radius: 14px; padding: 16px 20px; margin: 18px 0; flex-wrap: wrap; }
 .pos-head { display: flex; align-items: center; gap: 12px; padding: 15px 18px; background: var(--panel-2); border-bottom: 1px solid var(--border); flex-wrap: wrap; }
 .pos-head h3 { margin: 0; font-size: 16.5px; }
 .size-chip {
@@ -366,6 +367,22 @@ img { max-width: 100%; display: block; }
   margin: 18px 0;
 }
 footer .disclaimer { margin: 18px 0 4px; }
+
+/* ---------- fitment setup banner ---------- */
+.setup-banner {
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0 0 18px;
+  border: 1px solid var(--border);
+  background: var(--panel-2);
+  color: var(--text);
+}
+.setup-banner.halogen { border-color: rgba(52,211,153,.45); background: rgba(52,211,153,.08); }
+.setup-banner.xenon { border-color: rgba(255,162,26,.45); background: rgba(255,162,26,.08); }
+.setup-banner.sealed { border-color: rgba(255,107,107,.45); background: rgba(255,107,107,.08); }
+.setup-banner.mixed { border-color: rgba(255,162,26,.45); background: rgba(255,162,26,.08); }
 
 /* ---------- install guide step illustrations ---------- */
 .guide-step-img { margin: 14px 0 6px; }

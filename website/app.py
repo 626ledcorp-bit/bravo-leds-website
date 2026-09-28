@@ -21,6 +21,7 @@ import pyotp
 
 import db
 import emails
+import kits
 import landing
 import payments
 import shipping as shiputil
@@ -63,7 +64,10 @@ def cart_detailed():
     can never set its own price."""
     lines, subtotal = [], 0
     for key, item in get_cart().items():
-        p = db.get_product(item["product_id"])
+        # Interior kits are virtual products resolved from the committed
+        # kit data file, not rows in store.db.
+        p = kits.kit_product_for_id(item["product_id"]) or db.get_product(
+            item["product_id"])
         if not p:
             continue
         var = db.resolve_cart_variation(p, item)
@@ -196,19 +200,57 @@ def fitment_results():
     rows = fitment_db.get_fitment(year, make, model, trim)
     if not rows:
         abort(404)
+    setup = fitment_db.get_vehicle_setup(year, make, model, trim)
+    # Front-bulb positions affected by xenon / sealed factory LED setups.
+    FRONT_POSITIONS = {"low_beam", "high_beam", "high_low_beam",
+                       "fog_light", "fog_light_rear", "drl"}
     # attach matching products per position (public-safe copies only)
     enriched = []
     for r in rows:
+        cats = r["categories"]
+        sealed = False
+        if r["position"] in FRONT_POSITIONS:
+            if setup == "xenon":
+                # Xenon/HID up front: point at HID products, no LED quote.
+                cats = [c for c in cats if "hid" in c]
+            elif setup == "factory_led":
+                # Sealed factory LED units: not replaceable, no products.
+                cats = []
+                sealed = True
         enriched.append({
             **r,
+            "categories": cats,
+            "sealed": sealed,
             "products": [db.public_product(p)
                          for p in db.products_matching_size(r["bulb_size"],
-                                                            r["categories"])],
+                                                            cats)],
         })
     vehicle_label = f"{year} {make} {model}" + (f" {trim}" if trim else "")
+    # Suggest the complete interior LED kit when one exists for this
+    # vehicle — the main fitment lookup itself is unchanged.
+    interior_kit = None
+    kit = kits.get_kit(year, make, model)
+    if kit:
+        interior_kit = {
+            "url": kits.kit_url(kit),
+            "price_cents": kits.KIT_PRICE_CENTS,
+            "total_bulbs": kit.get("total_bulbs"),
+        }
     return render_template("fitment.html", vehicle_label=vehicle_label,
                            rows=enriched, year=year, make=make, model=model,
-                           trim=trim)
+                           trim=trim, setup=setup,
+                           interior_kit=interior_kit)
+
+
+@app.route("/interior-kit/<int:year>/<make>/<model>")
+def interior_kit_page(year, make, model):
+    """One page per year/make/model with the complete interior LED kit."""
+    kit = kits.get_kit(year, make, model)
+    if not kit:
+        abort(404)
+    p = kits.kit_product(kit)
+    return render_template("interior_kit.html", p=p, kit=kit,
+                           cat_name=CATEGORIES["interior"]["name"])
 
 
 # ---------------------------------------------------------------- cart
@@ -228,7 +270,7 @@ def cart_view():
 @app.route("/cart/add", methods=["POST"])
 def cart_add():
     pid = request.form.get("product_id", "")
-    p = db.get_product(pid)
+    p = kits.kit_product_for_id(pid) or db.get_product(pid)
     if not p or p["status"] != "active":
         abort(404)
     variations = p.get("variations") or []

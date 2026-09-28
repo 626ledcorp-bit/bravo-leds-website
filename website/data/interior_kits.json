@@ -1,0 +1,999 @@
+{
+  "generated_at": "2026-09-28 17:56:39 UTC",
+  "kits": [
+    {
+      "kit_id": "kit-2020-toyota-4runner",
+      "year": 2020,
+      "make": "Toyota",
+      "model": "4Runner",
+      "sources": [
+        "lasfit"
+      ],
+      "estimated": true,
+      "total_bulbs": 10,
+      "items": [
+        {
+          "position": "map_light",
+          "position_label": "Map Light",
+          "bulb_size": "194",
+          "quantity": 2,
+          "location_desc": "Front map lights (overhead console)",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "dome_light",
+          "position_label": "Dome Light",
+          "bulb_size": "31MM",
+          "quantity": 1,
+          "location_desc": "Rear dome light",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "vanity_mirror",
+          "position_label": "Vanity Mirror",
+          "bulb_size": "194",
+          "quantity": 2,
+          "location_desc": "Sun visor vanity mirror lights",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "courtesy_step",
+          "position_label": "Courtesy / Step",
+          "bulb_size": "194",
+          "quantity": 2,
+          "location_desc": "Door courtesy / step lights",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "trunk_cargo",
+          "position_label": "Trunk / Cargo",
+          "bulb_size": "31MM",
+          "quantity": 1,
+          "location_desc": "Trunk / cargo area light",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "license_plate",
+          "position_label": "License Plate",
+          "bulb_size": "194",
+          "quantity": 2,
+          "location_desc": "License plate lights",
+          "estimated": true,
+          "source": "lasfit"
+        }
+      ]
+    },
+    {
+      "kit_id": "kit-2019-toyota-4runner",
+      "year": 2019,
+      "make": "Toyota",
+      "model": "4Runner",
+      "sources": [
+        "lasfit"
+      ],
+      "estimated": true,
+      "total_bulbs": 10,
+      "items": [
+        {
+          "position": "map_light",
+          "position_label": "Map Light",
+          "bulb_size": "194",
+          "quantity": 2,
+          "location_desc": "Front map lights (overhead console)",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "dome_light",
+          "position_label": "Dome Light",
+          "bulb_size": "31MM",
+          "quantity": 1,
+          "location_desc": "Rear dome light",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "vanity_mirror",
+          "position_label": "Vanity Mirror",
+          "bulb_size": "194",
+          "quantity": 2,
+          "location_desc": "Sun visor vanity mirror lights",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "courtesy_step",
+          "position_label": "Courtesy / Step",
+          "bulb_size": "194",
+          "quantity": 2,
+          "location_desc": "Door courtesy / step lights",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "trunk_cargo",
+          "position_label": "Trunk / Cargo",
+          "bulb_size": "31MM",
+          "quantity": 1,
+          "location_desc": "Trunk / cargo area light",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "license_plate",
+          "position_label": "License Plate",
+          "bulb_size": "194",
+          "quantity": 2,
+          "location_desc": "License plate lights",
+          "estimated": true,
+          "source": "lasfit"
+        }
+      ]
+    },
+    {
+      "kit_id": "kit-2025-ford-transit-150-250-350",
+      "year": 2025,
+      "make": "Ford",
+      "model": "Transit 150 250 350",
+      "sources": [
+        "lasfit"
+      ],
+      "estimated": true,
+      "total_bulbs": 5,
+      "items": [
+        {
+          "position": "map_light",
+          "position_label": "Map Light",
+          "bulb_size": "194",
+          "quantity": 2,
+          "location_desc": "Front map lights (overhead console)",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "dome_light",
+          "position_label": "Dome Light",
+          "bulb_size": "194",
+          "quantity": 1,
+          "location_desc": "Rear dome light",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "license_plate",
+          "position_label": "License Plate",
+          "bulb_size": "194",
+          "quantity": 2,
+          "location_desc": "License plate lights",
+          "estimated": true,
+          "source": "lasfit"
+        }
+      ]
+    },
+    {
+      "kit_id": "kit-2024-ford-transit-150-250-350",
+      "year": 2024,
+      "make": "Ford",
+      "model": "Transit 150 250 350",
+      "sources": [
+        "lasfit"
+      ],
+      "estimated": true,
+      "total_bulbs": 5,
+      "items": [
+        {
+          "position": "map_light",
+          "position_label": "Map Light",
+          "bulb_size": "194",
+          "quantity": 2,
+          "location_desc": "Front map lights (overhead console)",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "dome_light",
+          "position_label": "Dome Light",
+          "bulb_size": "194",
+          "quantity": 1,
+          "location_desc": "Rear dome light",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "license_plate",
+          "position_label": "License Plate",
+          "bulb_size": "194",
+          "quantity": 2,
+          "location_desc": "License plate lights",
+          "estimated": true,
+          "source": "lasfit"
+        }
+      ]
+    },
+    {
+      "kit_id": "kit-2023-ford-transit-150-250-350",
+      "year": 2023,
+      "make": "Ford",
+      "model": "Transit 150 250 350",
+      "sources": [
+        "lasfit"
+      ],
+      "estimated": true,
+      "total_bulbs": 5,
+      "items": [
+        {
+          "position": "map_light",
+          "position_label": "Map Light",
+          "bulb_size": "194",
+          "quantity": 2,
+          "location_desc": "Front map lights (overhead console)",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "dome_light",
+          "position_label": "Dome Light",
+          "bulb_size": "194",
+          "quantity": 1,
+          "location_desc": "Rear dome light",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "license_plate",
+          "position_label": "License Plate",
+          "bulb_size": "194",
+          "quantity": 2,
+          "location_desc": "License plate lights",
+          "estimated": true,
+          "source": "lasfit"
+        }
+      ]
+    },
+    {
+      "kit_id": "kit-2022-ford-transit-150-250-350",
+      "year": 2022,
+      "make": "Ford",
+      "model": "Transit 150 250 350",
+      "sources": [
+        "lasfit"
+      ],
+      "estimated": true,
+      "total_bulbs": 5,
+      "items": [
+        {
+          "position": "map_light",
+          "position_label": "Map Light",
+          "bulb_size": "194",
+          "quantity": 2,
+          "location_desc": "Front map lights (overhead console)",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "dome_light",
+          "position_label": "Dome Light",
+          "bulb_size": "194",
+          "quantity": 1,
+          "location_desc": "Rear dome light",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "license_plate",
+          "position_label": "License Plate",
+          "bulb_size": "194",
+          "quantity": 2,
+          "location_desc": "License plate lights",
+          "estimated": true,
+          "source": "lasfit"
+        }
+      ]
+    },
+    {
+      "kit_id": "kit-2021-ford-transit-150-250-350",
+      "year": 2021,
+      "make": "Ford",
+      "model": "Transit 150 250 350",
+      "sources": [
+        "lasfit"
+      ],
+      "estimated": true,
+      "total_bulbs": 5,
+      "items": [
+        {
+          "position": "map_light",
+          "position_label": "Map Light",
+          "bulb_size": "194",
+          "quantity": 2,
+          "location_desc": "Front map lights (overhead console)",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "dome_light",
+          "position_label": "Dome Light",
+          "bulb_size": "194",
+          "quantity": 1,
+          "location_desc": "Rear dome light",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "license_plate",
+          "position_label": "License Plate",
+          "bulb_size": "194",
+          "quantity": 2,
+          "location_desc": "License plate lights",
+          "estimated": true,
+          "source": "lasfit"
+        }
+      ]
+    },
+    {
+      "kit_id": "kit-2020-ford-transit-150-250-350",
+      "year": 2020,
+      "make": "Ford",
+      "model": "Transit 150 250 350",
+      "sources": [
+        "lasfit"
+      ],
+      "estimated": true,
+      "total_bulbs": 5,
+      "items": [
+        {
+          "position": "map_light",
+          "position_label": "Map Light",
+          "bulb_size": "194",
+          "quantity": 2,
+          "location_desc": "Front map lights (overhead console)",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "dome_light",
+          "position_label": "Dome Light",
+          "bulb_size": "194",
+          "quantity": 1,
+          "location_desc": "Rear dome light",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "license_plate",
+          "position_label": "License Plate",
+          "bulb_size": "194",
+          "quantity": 2,
+          "location_desc": "License plate lights",
+          "estimated": true,
+          "source": "lasfit"
+        }
+      ]
+    },
+    {
+      "kit_id": "kit-2019-ford-transit-150-250-350",
+      "year": 2019,
+      "make": "Ford",
+      "model": "Transit 150 250 350",
+      "sources": [
+        "lasfit"
+      ],
+      "estimated": true,
+      "total_bulbs": 5,
+      "items": [
+        {
+          "position": "map_light",
+          "position_label": "Map Light",
+          "bulb_size": "194",
+          "quantity": 2,
+          "location_desc": "Front map lights (overhead console)",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "dome_light",
+          "position_label": "Dome Light",
+          "bulb_size": "194",
+          "quantity": 1,
+          "location_desc": "Rear dome light",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "license_plate",
+          "position_label": "License Plate",
+          "bulb_size": "194",
+          "quantity": 2,
+          "location_desc": "License plate lights",
+          "estimated": true,
+          "source": "lasfit"
+        }
+      ]
+    },
+    {
+      "kit_id": "kit-2024-ram-1500",
+      "year": 2024,
+      "make": "Ram",
+      "model": "1500",
+      "sources": [
+        "lasfit"
+      ],
+      "estimated": true,
+      "total_bulbs": 6,
+      "items": [
+        {
+          "position": "map_light",
+          "position_label": "Map Light",
+          "bulb_size": "194",
+          "quantity": 2,
+          "location_desc": "Front map lights (overhead console)",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "dome_light",
+          "position_label": "Dome Light",
+          "bulb_size": "578",
+          "quantity": 1,
+          "location_desc": "Rear dome light",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "trunk_cargo",
+          "position_label": "Trunk / Cargo",
+          "bulb_size": "921",
+          "quantity": 1,
+          "location_desc": "Trunk / cargo area light",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "license_plate",
+          "position_label": "License Plate",
+          "bulb_size": "194",
+          "quantity": 2,
+          "location_desc": "License plate lights",
+          "estimated": true,
+          "source": "lasfit"
+        }
+      ]
+    },
+    {
+      "kit_id": "kit-2023-ram-1500",
+      "year": 2023,
+      "make": "Ram",
+      "model": "1500",
+      "sources": [
+        "lasfit"
+      ],
+      "estimated": true,
+      "total_bulbs": 6,
+      "items": [
+        {
+          "position": "map_light",
+          "position_label": "Map Light",
+          "bulb_size": "194",
+          "quantity": 2,
+          "location_desc": "Front map lights (overhead console)",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "dome_light",
+          "position_label": "Dome Light",
+          "bulb_size": "578",
+          "quantity": 1,
+          "location_desc": "Rear dome light",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "trunk_cargo",
+          "position_label": "Trunk / Cargo",
+          "bulb_size": "921",
+          "quantity": 1,
+          "location_desc": "Trunk / cargo area light",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "license_plate",
+          "position_label": "License Plate",
+          "bulb_size": "194",
+          "quantity": 2,
+          "location_desc": "License plate lights",
+          "estimated": true,
+          "source": "lasfit"
+        }
+      ]
+    },
+    {
+      "kit_id": "kit-2022-ram-1500",
+      "year": 2022,
+      "make": "Ram",
+      "model": "1500",
+      "sources": [
+        "lasfit"
+      ],
+      "estimated": true,
+      "total_bulbs": 6,
+      "items": [
+        {
+          "position": "map_light",
+          "position_label": "Map Light",
+          "bulb_size": "194",
+          "quantity": 2,
+          "location_desc": "Front map lights (overhead console)",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "dome_light",
+          "position_label": "Dome Light",
+          "bulb_size": "578",
+          "quantity": 1,
+          "location_desc": "Rear dome light",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "trunk_cargo",
+          "position_label": "Trunk / Cargo",
+          "bulb_size": "921",
+          "quantity": 1,
+          "location_desc": "Trunk / cargo area light",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "license_plate",
+          "position_label": "License Plate",
+          "bulb_size": "194",
+          "quantity": 2,
+          "location_desc": "License plate lights",
+          "estimated": true,
+          "source": "lasfit"
+        }
+      ]
+    },
+    {
+      "kit_id": "kit-2021-ram-1500",
+      "year": 2021,
+      "make": "Ram",
+      "model": "1500",
+      "sources": [
+        "lasfit"
+      ],
+      "estimated": true,
+      "total_bulbs": 6,
+      "items": [
+        {
+          "position": "map_light",
+          "position_label": "Map Light",
+          "bulb_size": "194",
+          "quantity": 2,
+          "location_desc": "Front map lights (overhead console)",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "dome_light",
+          "position_label": "Dome Light",
+          "bulb_size": "578",
+          "quantity": 1,
+          "location_desc": "Rear dome light",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "trunk_cargo",
+          "position_label": "Trunk / Cargo",
+          "bulb_size": "921",
+          "quantity": 1,
+          "location_desc": "Trunk / cargo area light",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "license_plate",
+          "position_label": "License Plate",
+          "bulb_size": "194",
+          "quantity": 2,
+          "location_desc": "License plate lights",
+          "estimated": true,
+          "source": "lasfit"
+        }
+      ]
+    },
+    {
+      "kit_id": "kit-2020-ram-1500",
+      "year": 2020,
+      "make": "Ram",
+      "model": "1500",
+      "sources": [
+        "lasfit"
+      ],
+      "estimated": true,
+      "total_bulbs": 6,
+      "items": [
+        {
+          "position": "map_light",
+          "position_label": "Map Light",
+          "bulb_size": "194",
+          "quantity": 2,
+          "location_desc": "Front map lights (overhead console)",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "dome_light",
+          "position_label": "Dome Light",
+          "bulb_size": "578",
+          "quantity": 1,
+          "location_desc": "Rear dome light",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "trunk_cargo",
+          "position_label": "Trunk / Cargo",
+          "bulb_size": "921",
+          "quantity": 1,
+          "location_desc": "Trunk / cargo area light",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "license_plate",
+          "position_label": "License Plate",
+          "bulb_size": "194",
+          "quantity": 2,
+          "location_desc": "License plate lights",
+          "estimated": true,
+          "source": "lasfit"
+        }
+      ]
+    },
+    {
+      "kit_id": "kit-2019-ram-1500",
+      "year": 2019,
+      "make": "Ram",
+      "model": "1500",
+      "sources": [
+        "lasfit",
+        "legacy"
+      ],
+      "estimated": true,
+      "total_bulbs": 7,
+      "items": [
+        {
+          "position": "map_light",
+          "position_label": "Map Light",
+          "bulb_size": "578",
+          "quantity": 2,
+          "location_desc": "Front map lights (overhead console)",
+          "estimated": true,
+          "source": "legacy"
+        },
+        {
+          "position": "dome_light",
+          "position_label": "Dome Light",
+          "bulb_size": "578",
+          "quantity": 1,
+          "location_desc": "Rear dome light",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "glove_box",
+          "position_label": "Glove Box",
+          "bulb_size": "194",
+          "quantity": 1,
+          "location_desc": "Glove box light",
+          "estimated": true,
+          "source": "legacy"
+        },
+        {
+          "position": "trunk_cargo",
+          "position_label": "Trunk / Cargo",
+          "bulb_size": "921",
+          "quantity": 1,
+          "location_desc": "Trunk / cargo area light",
+          "estimated": true,
+          "source": "legacy"
+        },
+        {
+          "position": "license_plate",
+          "position_label": "License Plate",
+          "bulb_size": "194",
+          "quantity": 2,
+          "location_desc": "License plate lights",
+          "estimated": true,
+          "source": "legacy"
+        }
+      ]
+    },
+    {
+      "kit_id": "kit-2022-dodge-charger",
+      "year": 2022,
+      "make": "Dodge",
+      "model": "Charger",
+      "sources": [
+        "lasfit"
+      ],
+      "estimated": true,
+      "total_bulbs": 4,
+      "items": [
+        {
+          "position": "map_light",
+          "position_label": "Map Light",
+          "bulb_size": "194",
+          "quantity": 2,
+          "location_desc": "Front map lights (overhead console)",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "dome_light",
+          "position_label": "Dome Light",
+          "bulb_size": "194",
+          "quantity": 1,
+          "location_desc": "Rear dome light",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "glove_box",
+          "position_label": "Glove Box",
+          "bulb_size": "194",
+          "quantity": 1,
+          "location_desc": "Glove box light",
+          "estimated": true,
+          "source": "lasfit"
+        }
+      ]
+    },
+    {
+      "kit_id": "kit-2021-dodge-charger",
+      "year": 2021,
+      "make": "Dodge",
+      "model": "Charger",
+      "sources": [
+        "lasfit"
+      ],
+      "estimated": true,
+      "total_bulbs": 4,
+      "items": [
+        {
+          "position": "map_light",
+          "position_label": "Map Light",
+          "bulb_size": "194",
+          "quantity": 2,
+          "location_desc": "Front map lights (overhead console)",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "dome_light",
+          "position_label": "Dome Light",
+          "bulb_size": "194",
+          "quantity": 1,
+          "location_desc": "Rear dome light",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "glove_box",
+          "position_label": "Glove Box",
+          "bulb_size": "194",
+          "quantity": 1,
+          "location_desc": "Glove box light",
+          "estimated": true,
+          "source": "lasfit"
+        }
+      ]
+    },
+    {
+      "kit_id": "kit-2020-dodge-charger",
+      "year": 2020,
+      "make": "Dodge",
+      "model": "Charger",
+      "sources": [
+        "lasfit"
+      ],
+      "estimated": true,
+      "total_bulbs": 4,
+      "items": [
+        {
+          "position": "map_light",
+          "position_label": "Map Light",
+          "bulb_size": "194",
+          "quantity": 2,
+          "location_desc": "Front map lights (overhead console)",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "dome_light",
+          "position_label": "Dome Light",
+          "bulb_size": "194",
+          "quantity": 1,
+          "location_desc": "Rear dome light",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "glove_box",
+          "position_label": "Glove Box",
+          "bulb_size": "194",
+          "quantity": 1,
+          "location_desc": "Glove box light",
+          "estimated": true,
+          "source": "lasfit"
+        }
+      ]
+    },
+    {
+      "kit_id": "kit-2019-dodge-charger",
+      "year": 2019,
+      "make": "Dodge",
+      "model": "Charger",
+      "sources": [
+        "lasfit"
+      ],
+      "estimated": true,
+      "total_bulbs": 4,
+      "items": [
+        {
+          "position": "map_light",
+          "position_label": "Map Light",
+          "bulb_size": "194",
+          "quantity": 2,
+          "location_desc": "Front map lights (overhead console)",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "dome_light",
+          "position_label": "Dome Light",
+          "bulb_size": "194",
+          "quantity": 1,
+          "location_desc": "Rear dome light",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "glove_box",
+          "position_label": "Glove Box",
+          "bulb_size": "194",
+          "quantity": 1,
+          "location_desc": "Glove box light",
+          "estimated": true,
+          "source": "lasfit"
+        }
+      ]
+    },
+    {
+      "kit_id": "kit-2020-dodge-durango",
+      "year": 2020,
+      "make": "Dodge",
+      "model": "Durango",
+      "sources": [
+        "lasfit"
+      ],
+      "estimated": true,
+      "total_bulbs": 7,
+      "items": [
+        {
+          "position": "map_light",
+          "position_label": "Map Light",
+          "bulb_size": "194",
+          "quantity": 2,
+          "location_desc": "Front map lights (overhead console)",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "dome_light",
+          "position_label": "Dome Light",
+          "bulb_size": "194",
+          "quantity": 1,
+          "location_desc": "Rear dome light",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "glove_box",
+          "position_label": "Glove Box",
+          "bulb_size": "194",
+          "quantity": 1,
+          "location_desc": "Glove box light",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "courtesy_step",
+          "position_label": "Courtesy / Step",
+          "bulb_size": "194",
+          "quantity": 2,
+          "location_desc": "Door courtesy / step lights",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "trunk_cargo",
+          "position_label": "Trunk / Cargo",
+          "bulb_size": "194",
+          "quantity": 1,
+          "location_desc": "Trunk / cargo area light",
+          "estimated": true,
+          "source": "lasfit"
+        }
+      ]
+    },
+    {
+      "kit_id": "kit-2019-dodge-durango",
+      "year": 2019,
+      "make": "Dodge",
+      "model": "Durango",
+      "sources": [
+        "lasfit"
+      ],
+      "estimated": true,
+      "total_bulbs": 7,
+      "items": [
+        {
+          "position": "map_light",
+          "position_label": "Map Light",
+          "bulb_size": "194",
+          "quantity": 2,
+          "location_desc": "Front map lights (overhead console)",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "dome_light",
+          "position_label": "Dome Light",
+          "bulb_size": "194",
+          "quantity": 1,
+          "location_desc": "Rear dome light",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "glove_box",
+          "position_label": "Glove Box",
+          "bulb_size": "194",
+          "quantity": 1,
+          "location_desc": "Glove box light",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "courtesy_step",
+          "position_label": "Courtesy / Step",
+          "bulb_size": "194",
+          "quantity": 2,
+          "location_desc": "Door courtesy / step lights",
+          "estimated": true,
+          "source": "lasfit"
+        },
+        {
+          "position": "trunk_cargo",
+          "position_label": "Trunk / Cargo",
+          "bulb_size": "194",
+          "quantity": 1,
+          "location_desc": "Trunk / cargo area light",
+          "estimated": true,
+          "source": "lasfit"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block title %}{{ p.name }} — Bravo LEDs{% endblock %}
+{% block content %}
+<div class="wrap">
+  <p class="small" style="margin:22px 0 0"><a href="/shop">Shop</a> / <a href="/shop/interior">Interior &amp; License LEDs</a> / Complete Interior Kits</p>
+  <div class="prod-detail">
+    <div class="prod-gallery">
+      <span class="badge">{{ p.badge }}</span>
+      <img id="gallery-main" src="/static/img/ph-dome.svg" alt="{{ p.name }}">
+    </div>
+    <div class="prod-info">
+      <div class="tier">{{ p.tier }}</div>
+      <h1>{{ p.name }}</h1>
+      <div class="price-lg" id="price-display">{{ money(p.price_cents) }}</div>
+      <div class="warranty-line">✓ {{ p.warranty }}</div>
+      <p class="muted">{{ p.blurb }}</p>
+
+      <form action="/cart/add" method="post" id="add-form">
+        <input type="hidden" name="product_id" value="{{ p.id }}">
+        <input type="hidden" name="variation_id" value="kit-var">
+        <div class="qty-row">
+          <div class="qty">
+            <button type="button" data-qty="-1">−</button>
+            <input id="qty-input" name="qty" value="1" inputmode="numeric" aria-label="Quantity">
+            <button type="button" data-qty="1">+</button>
+          </div>
+          <button class="btn" type="submit">Add to Cart</button>
+        </div>
+      </form>
+      <script>
+      (function(){
+        var input = document.getElementById("qty-input");
+        document.querySelectorAll("[data-qty]").forEach(function(b){
+          b.onclick = function(){
+            var v = parseInt(input.value || "1", 10) + parseInt(b.dataset.qty, 10);
+            input.value = Math.max(1, Math.min(99, v));
+          };
+        });
+      })();
+      </script>
+
+      <p class="disclaimer">⚠️ For off-road and fog light use only. Not DOT/SAE approved for on-road use. Check your local laws. <a href="/dot-compliance">Learn more →</a></p>
+
+      <ul class="feat-list">
+        {% for f in p.features %}<li>{{ f }}</li>{% endfor %}
+      </ul>
+
+      <div class="trust-row">
+        <div class="trust-box"><strong>🚚 1–2 Days</strong>Fast USPS / UPS shipping</div>
+        <div class="trust-box"><strong>↩️ 30 Days</strong>Easy returns</div>
+        <div class="trust-box"><strong>🏪 Rosemead</strong>Local install help</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+  <div class="section-head"><h2>What's in the kit</h2></div>
+  <p class="muted">{{ kit.total_bulbs }} bulbs, sized for your exact vehicle — no guessing.</p>
+  <div class="pos-block">
+    <div class="pos-head">
+      <h3>Kit contents</h3>
+      <span class="pos-note">Quantities are estimates — most vehicles match these counts</span>
+    </div>
+    <div class="pos-prods">
+      {% for i in kit["items"] %}
+      <div class="pos-prod" style="cursor:default">
+        <div style="flex:1">
+          <div class="nm">{{ i.location_desc }}</div>
+          <div class="small muted">{{ i.position_label }}</div>
+        </div>
+        <span class="size-chip">{{ i.bulb_size }}</span>
+        <div class="pr" style="min-width:52px;text-align:right">× {{ i.quantity }}{% if i.estimated %}*{% endif %}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <p class="small muted">* Estimated quantity based on the common layout for this model. Bulb sizes verified from published bulb guides.</p>
+
+  <div class="flash">
+    💡 Tip: bulbs are sold per pair unless noted. Not sure between tiers? <a href="/contact">Message us</a> with your vehicle and how you drive — we'll recommend the right setup.
+  </div>
+  <div style="height:40px"></div>
+</div>
+{% endblock %}
