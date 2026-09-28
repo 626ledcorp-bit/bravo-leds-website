@@ -33,7 +33,7 @@
     {% elif r.products %}
     <div class="pos-prods">
       {% for p in r.products %}
-      <a class="pos-prod" href="/product/{{ p.id }}">
+      <a class="pos-prod" href="/product/{{ p.id }}?size={{ r.bulb_size|urlencode }}" title="{{ p.name }} — opens with size {{ r.bulb_size }} preselected">
         <img src="{{ primary_image(p) }}" alt="{{ p.name }}" loading="lazy">
         <div style="flex:1">
           <div class="nm">{{ p.name }}</div>

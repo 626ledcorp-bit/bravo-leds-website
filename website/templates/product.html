@@ -61,6 +61,7 @@
       <script>
       (function(){
         var VARIATIONS = {{ variation_json|safe }};
+        var PRESELECT_SIZE = {{ preselect_size|tojson }};
         var picker = document.getElementById("variation-picker");
         var varInput = document.getElementById("variation-input");
         if (!VARIATIONS.length) return;
@@ -71,6 +72,22 @@
         Object.keys(VARIATIONS[0].option_values).forEach(function(g, gi){
           state[g] = VARIATIONS[0].option_values[g];
         });
+        // ?size= from a vehicle fitment page: preselect that size when the
+        // product actually offers it; unknown sizes are ignored gracefully.
+        if (PRESELECT_SIZE) {
+          var sizeGroup = null;
+          groups.forEach(function(g){
+            if (g.toLowerCase() === "size") sizeGroup = g;
+          });
+          if (sizeGroup) {
+            var want = String(PRESELECT_SIZE).trim().toLowerCase();
+            VARIATIONS.forEach(function(v){
+              if (String(v.option_values[sizeGroup]).trim().toLowerCase() === want) {
+                state[sizeGroup] = v.option_values[sizeGroup];
+              }
+            });
+          }
+        }
         function fmt(c){ return "$" + (c/100).toFixed(2); }
         function current(){
           return VARIATIONS.find(function(v){

@@ -171,6 +171,23 @@ def test_garage_modal_markup():
     check("pill opens modal", 'id="garage-open"' in html)
 
 
+def test_size_preselect():
+    c = client()
+    html = c.get("/fit/2019/toyota/avalon").get_data(as_text=True)
+    links = re.findall(r'href="(/product/[^"]+)"', html)
+    check("vehicle product links carry ?size=",
+          any("?size=9005" in l for l in links), str(links[:3]))
+    r = c.get("/product/platinum-4070-led-bulbs?size=9005")
+    h = r.get_data(as_text=True)
+    check("product page 200 with ?size=", r.status_code == 200)
+    check("preselect size emitted to picker",
+          "PRESELECT_SIZE" in h and '"9005"' in h)
+    r = c.get("/product/platinum-4070-led-bulbs?size=BOGUS99")
+    check("unknown size ignored gracefully", r.status_code == 200)
+    r = c.get("/product/platinum-4070-led-bulbs")
+    check("no size param still 200", r.status_code == 200)
+
+
 def main():
     test_vehicle_page()
     test_slug_roundtrip()
@@ -178,6 +195,7 @@ def main():
     test_legacy_fitment_route()
     test_forbidden_word()
     test_garage_modal_markup()
+    test_size_preselect()
     print(f"\n{len(PASS)} passed, {len(FAIL)} failed")
     if FAIL:
         print("FAILURES:", FAIL)

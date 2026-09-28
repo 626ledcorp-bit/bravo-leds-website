@@ -217,6 +217,7 @@ def product_detail(pid):
                            related=related,
                            cat_name=cat["name"],
                            variation_json=variation_json,
+                           preselect_size=request.args.get("size"),
                            disclaimer_required=cat.get(
                                "requires_dot_disclaimer", True))
 
