@@ -11,7 +11,7 @@ Inputs (read-only):
 Outputs (NEW files; existing databases are never modified):
   fitment_2019plus.db        — union of the three sources, 2019+ only
   interior_kits.db           — vehicle-specific complete interior LED kits
-  ../website/data/interior_kits.json — committed kit data the site loads
+  ../website/kit_data/interior_kits.json — committed kit data the site loads
   fitment_2019plus_build_log.md       — build log
 
 Conflict rule: owner-audited legacy data > LASFIT > SEALIGHT. Disagreements
@@ -477,17 +477,19 @@ def main():
     kcon.close()
     log(f"- interior_kits.db: {len(kits_json)} kits written\n")
 
-    data_dir = os.path.join(REPO, "website", "data")
+    # NOTE: kit_data/ (not data/) — Render's persistent disk mounts at
+    # /srv/data and would shadow anything the image ships under data/.
+    data_dir = os.path.join(REPO, "website", "kit_data")
     os.makedirs(data_dir, exist_ok=True)
     jpath = os.path.join(data_dir, "interior_kits.json")
     json.dump({"generated_at": time.strftime("%Y-%m-%d %H:%M:%S %Z"),
                "kits": kits_json}, open(jpath, "w"), indent=2)
-    log(f"- website/data/interior_kits.json: {len(kits_json)} kits\n")
+    log(f"- website/kit_data/interior_kits.json: {len(kits_json)} kits\n")
 
     log(f"\nDone in {time.time() - t0:.1f}s. Outputs:")
     log("- fitment/fitment_2019plus.db (NEW; existing DBs untouched)")
     log("- fitment/interior_kits.db (NEW)")
-    log("- website/data/interior_kits.json (committed with the site)")
+    log("- website/kit_data/interior_kits.json (committed with the site)")
     log_path = os.path.join(BASE, "fitment_2019plus_build_log.md")
     open(log_path, "w").write("\n".join(LOG) + "\n")
     print(f"build log -> {log_path}")

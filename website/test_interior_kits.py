@@ -51,7 +51,7 @@ KIT = None  # a real kit from the data file
 
 def load_data():
     global KIT
-    path = os.path.join(WEB, "data", "interior_kits.json")
+    path = os.path.join(WEB, "kit_data", "interior_kits.json")
     data = json.load(open(path))
     allkits = data.get("kits", [])
     check("interior_kits.json loads with kits", len(allkits) > 0)
@@ -169,7 +169,7 @@ def test_cart():
 def test_forbidden_word():
     print("forbidden wording")
     paths = [
-        os.path.join(WEB, "data", "interior_kits.json"),
+        os.path.join(WEB, "kit_data", "interior_kits.json"),
         os.path.join(WEB, "templates", "interior_kit.html"),
         os.path.join(WEB, "templates", "fitment.html"),
         os.path.join(WEB, "kits.py"),

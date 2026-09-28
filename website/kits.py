@@ -6,7 +6,7 @@ the kit page and in the build data.
 
 Kits are *virtual* products: they are not rows in store.db (the store DB
 lives on a persistent disk and is created at runtime), so the cart resolves
-them from the committed data file website/data/interior_kits.json. Prices
+them from the committed data file website/kit_data/interior_kits.json. Prices
 are server-side constants — the client can never set its own kit price.
 
 Data notes:
@@ -25,7 +25,7 @@ KIT_PRICE_CENTS = 3499
 KIT_VARIATION_ID = "kit-var"
 
 _DATA_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                           "data", "interior_kits.json")
+                           "kit_data", "interior_kits.json")
 
 _kits = None
 
