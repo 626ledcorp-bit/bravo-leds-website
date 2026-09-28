@@ -148,6 +148,18 @@ EXAMPLE_PROMO = {
     "active": 1,
 }
 
+# Sitewide code advertised in the announcement bar. Seeded once; the owner
+# can edit/disable it under promo codes without it being re-created.
+ANNOUNCE_PROMO = {
+    "code": "BRAVO15",
+    "kind": "percent",
+    "percent": 15,
+    "amount_cents": None,
+    "expires_at": None,
+    "max_uses": None,
+    "active": 1,
+}
+
 EXAMPLE_LANDING = {
     # "premium-csp-led-bulbs" is the Premium LED Bulb product — the
     # SilverHolder-equivalent model the store is known for.
@@ -181,16 +193,17 @@ EXAMPLE_LANDING = {
 def seed_landing_defaults():
     """Insert the example promo code + landing page only if missing."""
     con = _connect()
-    con.execute("""
-        INSERT INTO promo_codes
-          (code, kind, percent, amount_cents, expires_at, max_uses,
-           used_count, active, created_at)
-        VALUES (?, ?, ?, ?, ?, ?, 0, ?, ?)
-        ON CONFLICT(code) DO NOTHING
-    """, (EXAMPLE_PROMO["code"], EXAMPLE_PROMO["kind"],
-          EXAMPLE_PROMO["percent"], EXAMPLE_PROMO["amount_cents"],
-          EXAMPLE_PROMO["expires_at"], EXAMPLE_PROMO["max_uses"],
-          EXAMPLE_PROMO["active"], _now_iso()))
+    for promo in (EXAMPLE_PROMO, ANNOUNCE_PROMO):
+        con.execute("""
+            INSERT INTO promo_codes
+              (code, kind, percent, amount_cents, expires_at, max_uses,
+               used_count, active, created_at)
+            VALUES (?, ?, ?, ?, ?, ?, 0, ?, ?)
+            ON CONFLICT(code) DO NOTHING
+        """, (promo["code"], promo["kind"],
+              promo["percent"], promo["amount_cents"],
+              promo["expires_at"], promo["max_uses"],
+              promo["active"], _now_iso()))
     now = _now_iso()
     con.execute("""
         INSERT INTO landing_pages

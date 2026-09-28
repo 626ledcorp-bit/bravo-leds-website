@@ -42,6 +42,30 @@
     </div>
 
     <div class="contact-card" style="margin-bottom:16px">
+      <h2>Announcement bar</h2>
+      <p class="hint">The promo strip at the very top of the storefront. Messages rotate with ‹ › arrows; a COPY button appears when a message has a code. The code must exist under promo codes to work at checkout.</p>
+      <p><label><input type="checkbox" name="announce_enabled"{% if settings.get('announce_enabled','1') == '1' %} checked{% endif %}> Show the announcement bar</label></p>
+      <div class="finder-grid" style="grid-template-columns:1fr 1fr">
+        <label class="field">Background color
+          <input type="color" name="announce_bg" value="{{ settings.get('announce_bg','#FFD200') }}" style="height:38px;width:70px;padding:2px">
+        </label>
+        <label class="field">Text color
+          <input type="color" name="announce_fg" value="{{ settings.get('announce_fg','#1a1a1a') }}" style="height:38px;width:70px;padding:2px">
+        </label>
+      </div>
+      {% for i in ["1","2","3"] %}
+      <div class="finder-grid" style="grid-template-columns:2fr 1fr;margin-top:8px">
+        <label class="field">Message {{ i }}
+          <input type="text" name="announce_msg{{ i }}" value="{{ settings.get('announce_msg'+i,'') }}" placeholder="{% if i == '1' %}15% OFF Sitewide{% elif i == '2' %}Free shipping on $99+ orders{% endif %}">
+        </label>
+        <label class="field">Code (optional)
+          <input type="text" name="announce_code{{ i }}" value="{{ settings.get('announce_code'+i,'') }}" placeholder="BRAVO15" style="text-transform:uppercase">
+        </label>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="contact-card" style="margin-bottom:16px">
       <h2>Square POS inventory sync</h2>
       <p class="hint">Two-way stock sync with the in-store Square POS. The website is the catalog master: push products to Square once, then counts stay aligned. <a href="/admin/square">Open the Square sync page →</a></p>
       <div class="finder-grid" style="grid-template-columns:1fr 1fr">

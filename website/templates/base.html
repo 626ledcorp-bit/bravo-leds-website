@@ -35,6 +35,51 @@
   {% endif %}
 </head>
 <body{% if request.path.startswith("/admin") %} class="admin-light"{% endif %}>
+{% if announce.enabled and not request.path.startswith("/admin") %}
+<div class="announce-bar" style="--announce-bg:{{ announce.bg }};--announce-fg:{{ announce.fg }};" role="region" aria-label="Promotions">
+  <button class="announce-arrow" data-dir="-1" aria-label="Previous promotion">&#8249;</button>
+  <div class="announce-msg">
+    <span class="announce-text"></span>
+    <span class="announce-code-wrap" hidden>Code: <strong class="announce-code"></strong>
+      <button type="button" class="announce-copy">COPY</button>
+    </span>
+  </div>
+  <button class="announce-arrow" data-dir="1" aria-label="Next promotion">&#8250;</button>
+</div>
+<script>
+(function(){
+  var msgs = {{ announce.messages|tojson }};
+  if(!msgs.length) return;
+  var i = 0, bar = document.querySelector(".announce-bar");
+  var text = bar.querySelector(".announce-text");
+  var wrap = bar.querySelector(".announce-code-wrap");
+  var code = bar.querySelector(".announce-code");
+  function show(n){
+    i = (n + msgs.length) % msgs.length;
+    text.textContent = msgs[i].text;
+    if(msgs[i].code){ wrap.hidden = false; code.textContent = msgs[i].code; }
+    else { wrap.hidden = true; }
+  }
+  bar.querySelectorAll(".announce-arrow").forEach(function(b){
+    b.addEventListener("click", function(){ show(i + parseInt(b.dataset.dir, 10)); });
+  });
+  bar.querySelector(".announce-copy").addEventListener("click", function(){
+    var c = code.textContent, btn = this;
+    function done(){ btn.textContent = "COPIED"; setTimeout(function(){ btn.textContent = "COPY"; }, 1500); }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(c).then(done).catch(done);
+    } else {
+      var t = document.createElement("textarea"); t.value = c;
+      document.body.appendChild(t); t.select();
+      try { document.execCommand("copy"); } catch(e) {}
+      document.body.removeChild(t); done();
+    }
+  });
+  show(0);
+  if(msgs.length > 1) setInterval(function(){ show(i + 1); }, 6000);
+})();
+</script>
+{% endif %}
 <header class="site-header">
   <div class="wrap header-inner">
     {% if request.path.startswith("/admin") %}
