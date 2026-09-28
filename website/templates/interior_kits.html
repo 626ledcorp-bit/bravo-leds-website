@@ -5,14 +5,29 @@
 <div class="wrap">
   <div class="page-title">
     <h1>Complete Interior LED Kits</h1>
-    <p>One kit covers every interior bulb position — map, dome, vanity, trunk, license — sized for your exact vehicle. Sorted by make and model.</p>
+    <p>One kit covers every interior bulb position — map, dome, vanity, trunk, license — sized for your exact vehicle. {{ kit_count }} vehicle-specific kits.</p>
     <p><a href="/shop/interior">← Interior &amp; License LEDs</a></p>
   </div>
-  <section class="section" style="padding-top:14px">
-    {% if cards %}
-    <div class="prod-grid">
+
+  <section class="section" style="padding-top:6px">
+    <div class="kit-finder">
+      <h2>Find your kit</h2>
+      <div class="kit-finder-row">
+        <select id="kf-year" aria-label="Year"><option value="">Year</option></select>
+        <select id="kf-make" aria-label="Make" disabled><option value="">Make</option></select>
+        <select id="kf-model" aria-label="Model" disabled><option value="">Model</option></select>
+        <button class="btn" id="kf-go" disabled>View Kit →</button>
+      </div>
+      <p class="small muted" id="kf-note">Pick your vehicle to jump straight to its kit.</p>
+    </div>
+    <div class="kit-search-row">
+      <input id="kit-search" type="search" placeholder="Or type to filter — e.g. 2018 civic" aria-label="Filter kits">
+      <span class="small muted" id="kit-count-note"></span>
+    </div>
+    <div class="prod-grid" id="kit-grid">
       {% for k in cards %}
-      <a class="prod-card" href="{{ k.url }}">
+      <a class="prod-card kit-card" href="{{ k.url }}"
+         data-search="{{ '%s %s %s'|format(k.year, k.make, k.model)|lower }}">
         <div class="prod-img">
           <img src="/static/img/ph-dome.svg" alt="{{ k.year }} {{ k.make }} {{ k.model }} interior LED kit" loading="lazy">
         </div>
@@ -28,10 +43,83 @@
       </a>
       {% endfor %}
     </div>
-    {% else %}
-    <p class="muted">No complete interior kits are available yet — check back soon.</p>
-    {% endif %}
+    <p class="muted" id="kit-empty" hidden>No kits match that search — try a different year or model.</p>
   </section>
 </div>
 </div>
+<style>
+.kit-finder{background:#fff;border:1px solid #e5e5e5;border-radius:12px;padding:18px 20px;margin-bottom:14px}
+.kit-finder h2{margin:0 0 10px;font-size:18px}
+.kit-finder-row{display:flex;gap:10px;flex-wrap:wrap}
+.kit-finder-row select{flex:1;min-width:120px;padding:10px;border:1px solid #ccc;border-radius:8px;font-size:15px;background:#fff}
+.kit-search-row{display:flex;gap:12px;align-items:center;margin:4px 0 14px}
+.kit-search-row input{flex:1;padding:10px 12px;border:1px solid #ccc;border-radius:8px;font-size:15px}
+</style>
+<script>
+(function(){
+  var YMM = {{ kit_ymm_json|safe }};
+  var ySel = document.getElementById('kf-year'),
+      mSel = document.getElementById('kf-make'),
+      dSel = document.getElementById('kf-model'),
+      go = document.getElementById('kf-go'),
+      note = document.getElementById('kf-note');
+  Object.keys(YMM).sort().forEach(function(y){
+    var o = document.createElement('option'); o.value = y; o.textContent = y;
+    ySel.appendChild(o);
+  });
+  function reset(sel, label){
+    sel.innerHTML = ''; var o = document.createElement('option');
+    o.value = ''; o.textContent = label; sel.appendChild(o);
+    sel.disabled = true;
+  }
+  function fill(sel, items){
+    items.forEach(function(v){
+      var o = document.createElement('option'); o.value = v; o.textContent = v;
+      sel.appendChild(o);
+    });
+    sel.disabled = false;
+  }
+  function slug(s){ return s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); }
+  function update(){
+    go.disabled = !(ySel.value && mSel.value && dSel.value);
+    if (go.disabled) { note.textContent = 'Pick your vehicle to jump straight to its kit.'; return; }
+    note.innerHTML = '';
+    var a = document.createElement('a');
+    a.href = '/interior-kit/' + ySel.value + '/' + slug(mSel.value) + '/' + slug(dSel.value);
+    a.textContent = 'View Kit →'; note.appendChild(a);
+  }
+  ySel.onchange = function(){
+    reset(mSel, 'Make'); reset(dSel, 'Model');
+    if (ySel.value) fill(mSel, Object.keys(YMM[ySel.value]).sort());
+    update();
+  };
+  mSel.onchange = function(){
+    reset(dSel, 'Model');
+    if (mSel.value) fill(dSel, YMM[ySel.value][mSel.value]);
+    update();
+  };
+  dSel.onchange = update;
+  go.onclick = function(){
+    window.location = '/interior-kit/' + ySel.value + '/' + slug(mSel.value) + '/' + slug(dSel.value);
+  };
+
+  var search = document.getElementById('kit-search'),
+      grid = document.getElementById('kit-grid'),
+      cards = Array.prototype.slice.call(grid.getElementsByClassName('kit-card')),
+      empty = document.getElementById('kit-empty'),
+      countNote = document.getElementById('kit-count-note');
+  cards.forEach(function(c){ c._s = c.getAttribute('data-search'); });
+  function filter(){
+    var q = search.value.trim().toLowerCase(), n = 0;
+    cards.forEach(function(c){
+      var show = !q || c._s.indexOf(q) !== -1;
+      c.style.display = show ? '' : 'none';
+      if (show) n++;
+    });
+    empty.hidden = n !== 0;
+    countNote.textContent = q ? n + ' of ' + cards.length + ' kits' : '';
+  }
+  search.addEventListener('input', filter);
+})();
+</script>
 {% endblock %}

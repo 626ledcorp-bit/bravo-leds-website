@@ -626,7 +626,15 @@ def interior_kits():
         "positions": len(k.get("items", [])),
         "price_cents": kits.KIT_PRICE_CENTS,
     } for k in allk]
-    return render_template("interior_kits.html", cards=cards)
+    # Year -> make -> [models] index for the kit finder (only kit vehicles)
+    ymm = {}
+    for k in allk:
+        ymm.setdefault(k["year"], {}).setdefault(k["make"], set()).add(k["model"])
+    kit_ymm = {y: {m: sorted(ms) for m, ms in makes.items()}
+               for y, makes in sorted(ymm.items())}
+    return render_template("interior_kits.html", cards=cards,
+                           kit_ymm_json=json.dumps(kit_ymm),
+                           kit_count=len(cards))
 
 
 # ---------------------------------------------------------------- cart

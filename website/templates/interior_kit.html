@@ -60,7 +60,14 @@
   <div class="pos-block">
     <div class="pos-head">
       <h3>Kit contents</h3>
+      {% set n_est = kit["items"]|selectattr("estimated")|list|length %}
+      {% if n_est == 0 %}
+      <span class="pos-note">Quantities verified from published kit data for this vehicle</span>
+      {% elif n_est < kit["items"]|length %}
+      <span class="pos-note">Counts without * verified from published kit data; * marks estimates</span>
+      {% else %}
       <span class="pos-note">Quantities are estimates — most vehicles match these counts</span>
+      {% endif %}
     </div>
     <div class="pos-prods">
       {% for i in kit["items"] %}
@@ -75,10 +82,12 @@
       {% endfor %}
     </div>
   </div>
+  {% if n_est > 0 %}
   <p class="small muted">* Estimated quantity based on the common layout for this model. Bulb sizes verified from published bulb guides.</p>
+  {% endif %}
 
   <div class="flash">
-    💡 Tip: bulbs are sold per pair unless noted. Not sure between tiers? <a href="/contact">Message us</a> with your vehicle and how you drive — we'll recommend the right setup.
+    💡 One kit covers every interior position listed above — no need to buy bulbs per position. <a href="/contact">Message us</a> with your vehicle if anything looks off and we'll confirm the fit.
   </div>
   <div style="height:40px"></div>
 </div>

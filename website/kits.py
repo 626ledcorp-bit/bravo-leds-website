@@ -100,6 +100,10 @@ def kit_product(kit):
     features = [
         f"Covers every interior position — {total} bulbs in one box",
         "Bulb sizes verified per vehicle from published bulb guides",
+    ]
+    if not any(i.get("estimated") for i in items):
+        features.append("Quantities verified from published kit data")
+    features += [
         "6000K cool white — matches modern factory lighting",
         "Plug-and-play swap for the factory interior bulbs",
         "1-year warranty on all bulbs in the kit",

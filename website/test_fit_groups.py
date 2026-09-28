@@ -111,8 +111,11 @@ def test_interior_kit_card():
           "/interior-kit/2020/toyota/4runner" in runner)
     check("4runner kit card has add button", 'id="kitcard-add"' in runner)
     prius = c.get(f"{PRIUS}/interior").get_data(as_text=True)
-    check("prius has no kit card",
-          "Complete Interior LED Kit" not in prius)
+    check("prius kit card links kit page",
+          "/interior-kit/2010/toyota/prius" in prius)
+    nokit = c.get("/fit/2010/toyota/4runner/interior").get_data(as_text=True)
+    check("vehicle without kit has no kit card",
+          "Complete Interior LED Kit" not in nokit)
 
 
 def test_cheapest_default():
