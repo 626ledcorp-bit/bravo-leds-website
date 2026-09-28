@@ -160,6 +160,26 @@ FIT_GROUP_DESCS = {
     "interior": "Dome, map, trunk and courtesy lights — or the complete kit for your vehicle.",
 }
 
+# Display order of positions on vehicle pages: Low Beam, High Beam,
+# Fog Light first, then the rest of forward lighting, rear, interior.
+POSITION_DISPLAY_ORDER = [
+    "low_beam", "high_low_beam", "high_beam", "headlight",
+    "fog_light", "fog_light_rear", "drl",
+    "front_turn_signal", "turn_signal", "front_side_marker",
+    "parking_light",
+    "brake_light", "tail_light", "reverse_light",
+    "rear_turn_signal", "rear_side_marker", "center_high_mount_stop",
+    "license_plate",
+    "dome_light", "map_light", "reading_light", "door_light",
+    "trunk_cargo", "glove_box", "vanity_mirror", "courtesy_step",
+    "interior",
+]
+_POSITION_ORDER_IDX = {p: i for i, p in enumerate(POSITION_DISPLAY_ORDER)}
+
+
+def position_sort_key(position):
+    return _POSITION_ORDER_IDX.get(position, 999)
+
 
 def norm_size(s):
     """Canonicalize a bulb size for matching: 'H-11' -> 'H11'."""
@@ -585,6 +605,7 @@ class FitmentDB:
                 "categories": POSITION_CATEGORIES.get(r["position"], []),
                 "group": POSITION_GROUP.get(r["position"], "forward"),
             })
+        out.sort(key=lambda r: position_sort_key(r["position"]))
         return out
 
     def get_vehicle_setup(self, year, make, model, trim=None):
