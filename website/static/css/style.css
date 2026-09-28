@@ -56,7 +56,7 @@ img { max-width: 100%; display: block; }
 .logo-img { height: 40px; width: auto; display: block; }
 .nav { display: none; gap: 4px; margin-left: 8px; }
 .nav a {
-  color: var(--muted); font-weight: 600; font-size: 14.5px;
+  color: var(--text); font-weight: 600; font-size: 14.5px;
   padding: 8px 12px; border-radius: 8px;
 }
 .nav a:hover, .nav a.active { color: var(--text); background: var(--panel-2); text-decoration: none; }
@@ -64,7 +64,7 @@ img { max-width: 100%; display: block; }
 /* ---------- "More" dropdown in desktop nav (Track 2: new categories) ---------- */
 .nav-more { position: relative; }
 .nav-more summary {
-  color: var(--muted); font-weight: 600; font-size: 14.5px;
+  color: var(--text); font-weight: 600; font-size: 14.5px;
   padding: 8px 12px; border-radius: 8px; cursor: pointer; list-style: none;
 }
 .nav-more summary::-webkit-details-marker { display: none; }
@@ -88,7 +88,7 @@ img { max-width: 100%; display: block; }
 }
 .cat-strip-inner::-webkit-scrollbar { display: none; }
 .cat-strip-inner a {
-  white-space: nowrap; color: var(--muted); font-size: 13px; font-weight: 700;
+  white-space: nowrap; color: var(--text); font-size: 13px; font-weight: 700;
   padding: 6px 12px; border-radius: 16px; border: 1px solid transparent;
 }
 .cat-strip-inner a:hover { color: var(--text); border-color: var(--border); text-decoration: none; }
@@ -532,7 +532,7 @@ label.check input{display:inline;width:auto;margin-right:6px}
 
 /* ---------- Mega-menu navigation (LASFIT-style) ---------- */
 .nav-btn {
-  color: var(--muted); font-weight: 600; font-size: 14.5px;
+  color: var(--text); font-weight: 600; font-size: 14.5px;
   padding: 8px 12px; border-radius: 8px; background: none; border: 0;
   cursor: pointer; font-family: inherit;
 }
