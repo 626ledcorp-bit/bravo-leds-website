@@ -1683,6 +1683,7 @@ def _form_prefill(product=None):
             "f": _field_values(None),
             "groups_text": "Size: Universal",
             "variations": [], "stock": 25, "low_threshold": 5,
+            "bulb_sizes": fitment_db.all_bulb_sizes(),
         }
     groups = product.get("variant_groups") or []
     groups_text = "\n".join(
@@ -1718,6 +1719,7 @@ def _form_prefill(product=None):
         "groups_text": groups_text, "variations": variations,
         "stock": stock["stock"] if stock else 0,
         "low_threshold": stock["low_threshold"] if stock else 5,
+        "bulb_sizes": fitment_db.all_bulb_sizes(),
     }
 
 

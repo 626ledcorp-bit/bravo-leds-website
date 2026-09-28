@@ -103,8 +103,12 @@
 
     <h2>Options &amp; variations</h2>
     <div class="frow">
-      <label>Option groups (one per line: <code>Group: value, value</code>)<textarea name="option_groups" rows="3">{{ groups_text }}</textarea>
+      <label>Option groups (one per line: <code>Group: value, value</code>)<textarea name="option_groups" id="option_groups" rows="3">{{ groups_text }}</textarea>
       <span class="hint">Changing groups rebuilds the variation table on save; per-variation data is kept where the option combination still exists.</span></label>
+      <div style="margin-top:8px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+        <button type="button" id="fill_sizes" style="background:#2a2f36;color:#f2f4f7;border:1px solid #3a4048;border-radius:8px;padding:9px 16px;font-size:13.5px;font-weight:700;cursor:pointer">Fill Size with all {{ bulb_sizes|length }} fitment sizes</button>
+        <span class="hint">Merges every bulb size from the fitment data into the <code>Size:</code> line, in the exact format the vehicle lookup matches.</span>
+      </div>
     </div>
     {% if variations %}
     <div style="overflow-x:auto">
@@ -209,6 +213,34 @@
     var cell = document.getElementById("vmargin-" + row);
     function upd(){ if (cell) cell.textContent = marginText(parse(p.value), parse(c.value)); }
     p.addEventListener("input", upd); c.addEventListener("input", upd);
+  });
+})();
+</script>
+<script>
+/* Merge every fitment bulb size into the Size: option line (union, sorted). */
+(function() {
+  var BULB_SIZES = {{ bulb_sizes|tojson }};
+  var btn = document.getElementById("fill_sizes");
+  if (!btn) return;
+  btn.addEventListener("click", function() {
+    var ta = document.getElementById("option_groups");
+    var lines = ta.value.split("\n"), kept = [], seen = {}, hasSize = false;
+    lines.forEach(function(ln) {
+      var m = ln.match(/^\s*size\s*:(.*)$/i);
+      if (m && !hasSize) {
+        hasSize = true;
+        m[1].split(",").forEach(function(v) {
+          v = v.trim(); if (v) seen[v.toUpperCase()] = v;
+        });
+      } else if (!m) { kept.push(ln); }
+    });
+    BULB_SIZES.forEach(function(s) {
+      if (!seen[s.toUpperCase()]) seen[s.toUpperCase()] = s;
+    });
+    var merged = Object.keys(seen).sort().map(function(k) { return seen[k]; });
+    kept.push("Size: " + merged.join(", "));
+    ta.value = kept.join("\n").replace(/^\n+/, "");
+    ta.rows = Math.min(12, 3 + Math.ceil(merged.length / 8));
   });
 })();
 </script>

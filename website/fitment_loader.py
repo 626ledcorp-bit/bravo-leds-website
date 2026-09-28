@@ -413,11 +413,11 @@ class FitmentDB:
         self._source = None
         self._detail = ""
         self._row_count = 0
+        self._bulb_sizes = None     # cached all_bulb_sizes()
 
     def _ensure(self):
         if self._vehicles is not None:
-            return
-        # 1) SEMA Data import — preferred when present (in-memory legacy path).
+            return        # 1) SEMA Data import — preferred when present (in-memory legacy path).
         hit = _try_dir(_sema_dir(), "SEMA Data import",
                        extra_names=("sema_fitment.db",))
         if hit:
@@ -630,6 +630,38 @@ class FitmentDB:
             "rows": self._row_count,
         }
 
+    def all_bulb_sizes(self):
+        """Distinct normalized bulb sizes across all fitment sources.
+
+        Used by the admin product form so the Size option group can be
+        filled with every size the fitment lookup may produce, in the
+        exact normalized format the matcher compares against.
+        """
+        if self._bulb_sizes is not None:
+            return self._bulb_sizes
+        self._ensure()
+        sizes = set()
+        if self._by_key is not None:
+            for rows in self._by_key.values():
+                for r in rows:
+                    s = norm_size(r.get("bulb_size") or r.get("bulb_size_raw"))
+                    if s:
+                        sizes.add(s)
+        else:
+            for path in self._db_paths or ():
+                con = sqlite3.connect(f"file:{path}?mode=ro", uri=True)
+                try:
+                    for raw, normed in con.execute(
+                            "SELECT DISTINCT bulb_size_raw, bulb_size "
+                            "FROM fitment"):
+                        s = norm_size(normed or raw)
+                        if s:
+                            sizes.add(s)
+                finally:
+                    con.close()
+        self._bulb_sizes = sorted(sizes)
+        return self._bulb_sizes
+
     def reload(self):
         """Force re-detection (e.g. after the crawl lands new data)."""
         self._vehicles = None
@@ -640,6 +672,7 @@ class FitmentDB:
         self._source = None
         self._detail = ""
         self._row_count = 0
+        self._bulb_sizes = None
 
 
 fitment_db = FitmentDB()
