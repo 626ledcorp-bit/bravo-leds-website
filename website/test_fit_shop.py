@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """Fitment page shop-by-position tests: series rows, AJAX add, kit builder.
 
-- Vehicle page renders compact series rows per position (not full cards),
+- Group pages render compact series rows per position (not full cards),
   each row carrying the exact series+size variation id.
 - Options are filtered: every row under a position must offer that
   position's bulb size (via its variation's Size option).
-- Default kit pick is Premium when present, else the first option.
+- Default kit pick is the cheapest option; pricier tiers show their
+  upcharge vs the base pick.
 - /api/cart/add puts the correct variant (right Size) in the cart.
 - /api/cart/add-kit creates one line item per position with correct sizes,
   and the reported total matches server-side prices.
@@ -60,7 +61,7 @@ def rows_in(block):
 
 def test_series_rows():
     c = client()
-    r = c.get("/fit/2010/toyota/prius")
+    r = c.get("/fit/2010/toyota/prius/forward")
     html = r.get_data(as_text=True)
     check("fit page 200", r.status_code == 200)
     check("series rows rendered", 'class="series-row' in html)
@@ -97,16 +98,20 @@ def test_series_rows():
 
 def test_default_pick():
     c = client()
-    html = c.get("/fit/2010/toyota/prius").get_data(as_text=True)
+    html = c.get("/fit/2010/toyota/prius/forward").get_data(as_text=True)
     block = pos_block(html, "Low Beam")
     sel = re.findall(r'<div class="series-row sel".*?data-name="([^"]+)"',
                      block, re.S)
     check("low beam has exactly one default pick", len(sel) == 1,
           f"sel={sel}")
-    has_premium = "premium" in block.lower()
-    check("default is Premium when available",
-          (not has_premium) or any("remium" in s for s in sel),
-          f"sel={sel}")
+    prices = [int(p) for p in re.findall(r'data-price="(\d+)"', block)]
+    sel_price = re.findall(
+        r'<div class="series-row sel".*?data-price="(\d+)"', block, re.S)
+    check("default pick is the cheapest option",
+          sel_price and int(sel_price[0]) == min(prices),
+          f"sel_price={sel_price} prices={prices}")
+    check("upcharge shown on pricier tiers",
+          re.search(r'class="upcharge">\+\$', block) is not None)
 
 
 def _first_row(block):
@@ -117,7 +122,7 @@ def _first_row(block):
 
 def test_ajax_add():
     c = client()
-    html = c.get("/fit/2010/toyota/prius").get_data(as_text=True)
+    html = c.get("/fit/2010/toyota/prius/forward").get_data(as_text=True)
     pid, vid, price, size = _first_row(pos_block(html, "Low Beam"))
     check("found a low-beam row to add", bool(pid and vid))
     r = c.post("/api/cart/add",
@@ -143,7 +148,7 @@ def test_ajax_add():
 
 def test_kit_add():
     c = client()
-    html = c.get("/fit/2010/toyota/prius").get_data(as_text=True)
+    html = c.get("/fit/2010/toyota/prius/forward").get_data(as_text=True)
     items, expect_total = [], 0
     for label in ("Low Beam", "High Beam", "Fog Light"):
         pid, vid, price, size = _first_row(pos_block(html, label))
@@ -185,7 +190,7 @@ def test_api_rejects_bad():
     r = c.post("/api/cart/add",
                json={"product_id": "nope", "variation_id": "1"})
     check("bad product -> 400", r.status_code == 400)
-    html = c.get("/fit/2010/toyota/prius").get_data(as_text=True)
+    html = c.get("/fit/2010/toyota/prius/forward").get_data(as_text=True)
     pid, vid, _, _ = _first_row(pos_block(html, "Low Beam"))
     r = c.post("/api/cart/add",
                json={"product_id": pid, "variation_id": "999999"})
@@ -199,7 +204,7 @@ def test_wording():
     check("no 'headlight' in fitment template",
           "headlight" not in src.lower())
     check("BRAVO LEDS all caps on vehicle page",
-          "BRAVO LEDS" in client().get("/fit/2010/toyota/prius")
+          "BRAVO LEDS" in client().get("/fit/2010/toyota/prius/forward")
           .get_data(as_text=True))
 
 

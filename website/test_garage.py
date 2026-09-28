@@ -54,7 +54,7 @@ def test_vehicle_page():
           "Fit for: 2019 Toyota Avalon" in html)
     check("fit page breadcrumbs", 'aria-label="Breadcrumb"' in html
           and "Fit for 2019 Toyota Avalon" in html)
-    check("fit page has position blocks", "pos-block" in html)
+    check("fit page has category cards", "fit-cat-card" in html)
     check("fit page all-caps brand", "BRAVO LEDS" in html)
     # invalid slugs -> 404, and nothing persisted
     for bad in ("/fit/2019/toyota/nosuchmodel",
@@ -173,7 +173,7 @@ def test_garage_modal_markup():
 
 def test_size_preselect():
     c = client()
-    html = c.get("/fit/2019/toyota/avalon").get_data(as_text=True)
+    html = c.get("/fit/2019/toyota/avalon/forward").get_data(as_text=True)
     links = re.findall(r'href="(/product/[^"]+)"', html)
     check("vehicle product links carry ?size=",
           any("?size=9005" in l for l in links), str(links[:3]))

@@ -60,19 +60,25 @@ def first_series_row(html):
     return (m.group(1), m.group(2), int(m.group(3))) if m else (None, None, 0)
 
 
+def kit_card(html):
+    m = re.search(r'<div class="kit-card">(.*?)</button>', html, re.S)
+    return m.group(0) if m else None
+
+
 def test_optin_present_when_kit_exists():
-    html = client().get('/fit/2020/toyota/4runner').get_data(as_text=True)
-    attrs = optin_block(html)
-    check('opt-in block present for kit vehicle', attrs is not None)
-    check('opt-in carries kit product id',
-          attrs is not None and 'data-pid="%s"' % KIT_PID in attrs,
-          (attrs or '')[:200])
-    check('opt-in carries kit variation id',
-          attrs is not None and 'data-vid="%s"' % KIT_VID in attrs)
-    check('opt-in carries kit price',
-          attrs is not None and 'data-price="%d"' % KIT_PRICE in attrs)
-    check('opt-in default unchecked',
-          '<input type="checkbox" id="ik-check">' in html)
+    html = client().get('/fit/2020/toyota/4runner/interior'
+                        ).get_data(as_text=True)
+    card = kit_card(html)
+    check('kit card present for kit vehicle', card is not None)
+    check('kit card carries kit product id',
+          card is not None and 'data-pid="%s"' % KIT_PID in card,
+          (card or '')[:200])
+    check('kit card carries kit variation id',
+          card is not None and 'data-vid="%s"' % KIT_VID in card)
+    check('kit card carries kit price',
+          card is not None and 'Add — $%.2f' % (KIT_PRICE / 100) in card)
+    check('kit card has add button',
+          'id="kitcard-add"' in html)
     check('no headlight in page copy', 'headlight' not in html.lower())
 
 
@@ -80,6 +86,10 @@ def test_optin_absent_without_kit():
     html = client().get('/fit/2010/toyota/prius').get_data(as_text=True)
     check('no opt-in block for non-kit vehicle', 'id="ik-optin"' not in html)
     check('no dead kit UI for non-kit vehicle', 'id="ik-check"' not in html)
+    intr = client().get('/fit/2010/toyota/prius/interior'
+                        ).get_data(as_text=True)
+    check('no kit card on interior page for non-kit vehicle',
+          'id="kitcard-add"' not in intr)
 
 
 def test_kit_adds_as_own_line():
@@ -122,7 +132,7 @@ def test_kit_rejected_for_wrong_vehicle():
 
 def test_kit_combines_with_positions():
     c = client()
-    html = c.get('/fit/2020/toyota/4runner').get_data(as_text=True)
+    html = c.get('/fit/2020/toyota/4runner/forward').get_data(as_text=True)
     pid, vid, price = first_series_row(html)
     check('4runner page has series rows', bool(pid))
     if not pid:
@@ -143,7 +153,7 @@ def test_kit_combines_with_positions():
 
 def test_unchecked_kit_changes_nothing():
     c = client()
-    html = c.get('/fit/2020/toyota/4runner').get_data(as_text=True)
+    html = c.get('/fit/2020/toyota/4runner/forward').get_data(as_text=True)
     pid, vid, price = first_series_row(html)
     r = c.post('/api/cart/add-kit', json={
         'items': [{'product_id': pid, 'variation_id': vid, 'qty': 1}],

@@ -785,3 +785,21 @@ label.check input{display:inline;width:auto;margin-right:6px}
 @media (max-width:480px){
   .announce-bar{font-size:12.5px; padding:6px 8px;}
 }
+
+/* Vehicle hub: three lighting category cards */
+.fit-cat-grid { display: grid; gap: 14px; margin: 20px 0 30px; }
+@media (min-width: 760px) { .fit-cat-grid { grid-template-columns: repeat(3, 1fr); } }
+.fit-cat-card { position: relative; display: flex; gap: 14px; align-items: flex-start; background: var(--panel); border: 2px solid var(--border); border-radius: 14px; padding: 20px 18px; color: var(--text); text-decoration: none; transition: border-color .15s, transform .15s; }
+.fit-cat-card:hover { border-color: #ffa21a; transform: translateY(-2px); }
+.fit-cat-icon { font-size: 34px; line-height: 1; }
+.fit-cat-main { display: flex; flex-direction: column; gap: 6px; }
+.fit-cat-main strong { font-size: 17px; }
+.fit-cat-arrow { margin-left: auto; font-size: 22px; color: var(--accent); align-self: center; }
+.fit-cat-badge { position: absolute; top: -12px; right: 14px; background: #ffa21a; color: #1a1a1a; font-size: 12px; font-weight: 800; border-radius: 20px; padding: 3px 12px; }
+
+/* Upgrade price delta on series rows */
+.upcharge { display: inline-block; margin-left: 8px; font-size: 12.5px; font-weight: 700; color: var(--accent); background: var(--accent-soft); border: 1px solid rgba(255,162,26,.45); border-radius: 6px; padding: 1px 8px; white-space: nowrap; }
+
+/* Interior kit card on the interior group page */
+.kit-card { display: flex; align-items: center; justify-content: space-between; gap: 16px; background: var(--panel); border: 2px solid #ffa21a; border-radius: 14px; padding: 18px 20px; margin: 18px 0 6px; flex-wrap: wrap; }
+.kit-card-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }

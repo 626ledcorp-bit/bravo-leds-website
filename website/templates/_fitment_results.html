@@ -1,7 +1,12 @@
-{# Shared fitment results body: disclaimer, kit banner, setup banner,
-   per-position series rows, bundle builder bar. Expects vehicle_label,
-   rows, setup, interior_kit. Included by fitment.html and fit_vehicle.html. #}
-  {% if interior_kit %}
+{# Shared fitment results body: kit banner, setup banner, per-position
+   series rows, bundle builder bar. Expects vehicle_label, rows, setup,
+   interior_kit. Optional flags (default to the legacy all-positions
+   behavior): show_kit_banner, show_setup, show_ik_optin.
+   Included by fitment.html, fit_vehicle.html and fit_group.html. #}
+  {% if show_kit_banner is not defined %}{% set show_kit_banner = True %}{% endif %}
+  {% if show_setup is not defined %}{% set show_setup = True %}{% endif %}
+  {% if show_ik_optin is not defined %}{% set show_ik_optin = True %}{% endif %}
+  {% if interior_kit and show_kit_banner %}
   <div class="kit-banner">
     <div>
       <strong>Complete Interior LED Kit for your {{ vehicle_label }}</strong>
@@ -11,6 +16,7 @@
   </div>
   {% endif %}
 
+  {% if show_setup %}
   {% if setup == "halogen" %}
   <p class="setup-banner halogen">✓ LED upgrades fit this vehicle — pick your tier per position below, or build the whole kit at once.</p>
   {% elif setup == "xenon" %}
@@ -19,6 +25,7 @@
   <p class="setup-banner sealed">This vehicle uses sealed factory LED front lighting — those units aren't replaceable with aftermarket bulbs.</p>
   {% elif setup == "mixed" %}
   <p class="setup-banner mixed">Front bulb setup varies by trim on this vehicle — confirm whether yours uses halogen or HID before ordering.</p>
+  {% endif %}
   {% endif %}
 
   {% for r in rows %}
@@ -46,7 +53,7 @@
              title="{{ o.product.name }} — opens with size {{ o.size }} preselected">{{ o.product.name }}</a>
           <div class="sr-spec">{{ o.spec }}</div>
         </div>
-        <div class="sr-price">{{ money(o.price_cents) }}</div>
+        <div class="sr-price">{{ money(o.price_cents) }}{% if o.upcharge_cents and o.upcharge_cents > 0 %}<span class="upcharge">+{{ money(o.upcharge_cents) }}</span>{% endif %}</div>
         <button type="button" class="btn btn-sm add-one">Add</button>
       </div>
       {% endfor %}
@@ -61,7 +68,7 @@
     💡 Tip: bulbs are sold per pair unless noted. Add a single position with <strong>Add</strong>, or pick a tier per position and add everything at once below.
   </div>
 
-  {% if interior_kit %}
+  {% if interior_kit and show_ik_optin %}
   <div class="ik-optin" id="ik-optin"
        data-pid="{{ interior_kit.product_id }}"
        data-vid="{{ interior_kit.variation_id }}"

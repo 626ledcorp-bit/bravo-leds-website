@@ -32,6 +32,7 @@ import spinpromo
 from catalog import CATEGORIES
 from content import register_content_routes
 from fitment_loader import fitment_db, norm_size
+import fitment_loader
 
 # Series lineup order for the fitment page's per-position option rows.
 TIER_ORDER = ["Basic", "Plus", "Premium", "Platinum", "Pro", "Ultra"]
@@ -479,9 +480,12 @@ def _fitment_context(year, make, model, trim=None):
             TIER_ORDER.index(o["product"]["tier"])
             if o["product"]["tier"] in TIER_ORDER else 99,
             o["price_cents"]))
-        default_idx = next(
-            (i for i, o in enumerate(options)
-             if o["product"]["tier"] == "Premium"), 0)
+        # Cheapest option is the default; pricier tiers show their
+        # upcharge vs the base pick.
+        base_cents = options[0]["price_cents"] if options else 0
+        for o in options:
+            o["upcharge_cents"] = o["price_cents"] - base_cents
+        default_idx = 0
         enriched.append({
             **r,
             "categories": cats,
@@ -506,7 +510,11 @@ def _fitment_context(year, make, model, trim=None):
 
 @app.route("/fit/<int:year>/<make_slug>/<model_slug>")
 def fit_vehicle(year, make_slug, model_slug):
-    """LASFIT-style vehicle landing page: 'Fit for: 2021 Toyota RAV4'."""
+    """Vehicle hub: three clickable lighting categories.
+
+    Forward Lighting, Exterior Rear Lighting and Interior Lighting each
+    open their own page with the positions that belong to them.
+    """
     resolved = resolve_vehicle_slug(year, make_slug, model_slug)
     if not resolved:
         abort(404)
@@ -519,8 +527,51 @@ def fit_vehicle(year, make_slug, model_slug):
     # Valid vehicle only — safe to remember and add to the garage.
     garage_add_vehicle(year, make, model, trim)
     vehicle_label = f"{year} {make} {model}"
+    base = f"/fit/{int(year)}/{kits.slugify(make)}/{kits.slugify(model)}"
+    trim_qs = f"?trim={quote(str(trim), safe='')}" if trim else ""
+    groups = []
+    for g in fitment_loader.FIT_GROUPS:
+        g_rows = [r for r in enriched if r.get("group") == g]
+        if not g_rows:
+            continue
+        groups.append({
+            "slug": g,
+            "label": fitment_loader.FIT_GROUP_LABELS[g],
+            "desc": fitment_loader.FIT_GROUP_DESCS[g],
+            "count": len(g_rows),
+            "url": f"{base}/{g}{trim_qs}",
+            "has_kit": bool(interior_kit) and g == "interior",
+        })
     return render_template("fit_vehicle.html", vehicle_label=vehicle_label,
-                           rows=enriched, year=year, make=make, model=model,
+                           year=year, make=make, model=model, trim=trim,
+                           setup=setup, groups=groups,
+                           interior_kit=interior_kit)
+
+
+@app.route("/fit/<int:year>/<make_slug>/<model_slug>/<group>")
+def fit_vehicle_group(year, make_slug, model_slug, group):
+    """One lighting category for a vehicle: forward, rear or interior."""
+    if group not in fitment_loader.FIT_GROUPS:
+        abort(404)
+    resolved = resolve_vehicle_slug(year, make_slug, model_slug)
+    if not resolved:
+        abort(404)
+    make, model = resolved
+    trim = request.args.get("trim") or None
+    rows, setup, enriched, interior_kit = _fitment_context(year, make, model,
+                                                           trim)
+    if not rows:
+        abort(404)
+    garage_add_vehicle(year, make, model, trim)
+    g_rows = [r for r in enriched if r.get("group") == group]
+    if not g_rows and not (group == "interior" and interior_kit):
+        abort(404)
+    vehicle_label = f"{year} {make} {model}"
+    group_label = fitment_loader.FIT_GROUP_LABELS[group]
+    return render_template("fit_group.html", vehicle_label=vehicle_label,
+                           group=group, group_label=group_label,
+                           rows=g_rows, year=year, make=make, model=model,
+                           make_slug=make_slug, model_slug=model_slug,
                            trim=trim, setup=setup,
                            interior_kit=interior_kit)
 

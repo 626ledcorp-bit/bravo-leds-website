@@ -126,6 +126,41 @@ POSITION_CATEGORIES = {
 }
 
 
+# Which of the three vehicle category pages a position belongs to.
+POSITION_GROUP = {
+    # Forward Lighting
+    "low_beam": "forward", "high_beam": "forward",
+    "high_low_beam": "forward", "headlight": "forward",
+    "fog_light": "forward", "fog_light_rear": "forward",
+    "drl": "forward", "front_turn_signal": "forward",
+    "front_side_marker": "forward", "parking_light": "forward",
+    "turn_signal": "forward",
+    # Exterior Rear Lighting
+    "rear_turn_signal": "rear", "rear_side_marker": "rear",
+    "brake_light": "rear", "tail_light": "rear",
+    "center_high_mount_stop": "rear", "reverse_light": "rear",
+    "license_plate": "rear",
+    # Interior Lighting
+    "dome_light": "interior", "map_light": "interior",
+    "glove_box": "interior", "vanity_mirror": "interior",
+    "courtesy_step": "interior", "trunk_cargo": "interior",
+    "door_light": "interior", "reading_light": "interior",
+    "interior": "interior",
+}
+
+FIT_GROUPS = ("forward", "rear", "interior")
+FIT_GROUP_LABELS = {
+    "forward": "Forward Lighting",
+    "rear": "Exterior Rear Lighting",
+    "interior": "Interior Lighting",
+}
+FIT_GROUP_DESCS = {
+    "forward": "Low and high beams, fog lights, turn signals, side markers and daytime running lights.",
+    "rear": "Tail lights, brake lights, reverse lights and license plate lights.",
+    "interior": "Dome, map, trunk and courtesy lights — or the complete kit for your vehicle.",
+}
+
+
 def norm_size(s):
     """Canonicalize a bulb size for matching: 'H-11' -> 'H11'."""
     if not s:
@@ -548,6 +583,7 @@ class FitmentDB:
                 "label": POSITION_LABELS.get(r["position"],
                                              r["position"].replace("_", " ").title()),
                 "categories": POSITION_CATEGORIES.get(r["position"], []),
+                "group": POSITION_GROUP.get(r["position"], "forward"),
             })
         return out
 

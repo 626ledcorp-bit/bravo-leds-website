@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}{{ group_label }} — {{ vehicle_label }} — BRAVO LEDS{% endblock %}
+{% block content %}
+<div class="section-light">
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="/">Home</a> <span aria-hidden="true">›</span>
+    <a href="/fit/{{ year }}/{{ make_slug }}/{{ model_slug }}{% if trim %}?trim={{ trim|urlencode }}{% endif %}">Fit for {{ vehicle_label }}</a> <span aria-hidden="true">›</span>
+    <span>{{ group_label }}</span>
+  </nav>
+
+  <h1 class="fit-title">{{ group_label }} — {{ vehicle_label }}</h1>
+  <p class="sub muted" style="margin:4px 0 18px">
+    {% if group == "forward" %}Every forward position, the size it takes, and the LEDs that fit — cheapest option selected by default, upgrade to a higher tier for the difference shown.
+    {% elif group == "rear" %}Tail, brake, reverse and license plate positions for your {{ vehicle_label }} — cheapest option selected by default.
+    {% else %}Interior positions for your {{ vehicle_label }} — or grab the complete kit sized for your exact vehicle.{% endif %}
+  </p>
+
+  <p class="disclaimer">⚠️ For off-road and fog light use only. Not DOT/SAE approved for on-road use. Check your local laws. <a href="/dot-compliance">Learn more →</a></p>
+
+  {% if group == "interior" and interior_kit %}
+  <div class="kit-card">
+    <div class="kit-card-main">
+      <strong>Complete Interior LED Kit for your {{ vehicle_label }}</strong>
+      <p class="small muted" style="margin:4px 0 0">One kit covers every interior position — {{ interior_kit.total_bulbs }} bulbs, sized for your exact vehicle.</p>
+    </div>
+    <div class="kit-card-actions">
+      <a class="btn" href="{{ interior_kit.url }}">View Kit</a>
+      <button type="button" class="btn btn-sm" id="kitcard-add"
+              data-pid="{{ interior_kit.product_id }}"
+              data-vid="{{ interior_kit.variation_id }}"
+              data-name="Complete Interior LED Kit">Add — {{ money(interior_kit.price_cents) }}</button>
+    </div>
+  </div>
+  <p class="small muted" style="margin:14px 0 4px">Or shop individual interior bulbs:</p>
+<script>
+(function () {
+  var btn = document.getElementById('kitcard-add');
+  if (!btn) return;
+  btn.addEventListener('click', function () {
+    var orig = btn.textContent;
+    btn.disabled = true; btn.textContent = 'Adding…';
+    fetch('/api/cart/add', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ product_id: btn.dataset.pid,
+                             variation_id: btn.dataset.vid, qty: 1 })
+    }).then(function (r) { return r.json(); }).then(function (j) {
+      if (j.ok) {
+        document.querySelectorAll('.cart-count').forEach(function (el) {
+          el.textContent = j.cart_count;
+        });
+        btn.textContent = 'Added ✓';
+        setTimeout(function () { btn.disabled = false; btn.textContent = orig; }, 2000);
+      } else { btn.disabled = false; btn.textContent = orig; }
+    }).catch(function () { btn.disabled = false; btn.textContent = orig; });
+  });
+})();
+</script>
+  {% endif %}
+
+  {% set show_kit_banner = False %}
+  {% set show_ik_optin = False %}
+  {% set show_setup = (group == "forward") %}
+  {% include "_fitment_results.html" %}
+</div>
+</div>
+{% endblock %}

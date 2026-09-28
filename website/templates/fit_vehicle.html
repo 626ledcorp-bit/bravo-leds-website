@@ -9,11 +9,38 @@
   </nav>
 
   <h1 class="fit-title">Fit for: {{ vehicle_label }}</h1>
-  <p class="sub muted" style="margin:4px 0 18px">Every lighting position, the size it takes, and the LEDs that fit — pick your tier. Click any product and it opens with your size already selected.</p>
+  <p class="sub muted" style="margin:4px 0 18px">Pick a lighting category — every position shows the size it takes and the LEDs that fit, with the cheapest option selected by default.</p>
 
   <p class="disclaimer">⚠️ For off-road and fog light use only. Not DOT/SAE approved for on-road use. Check your local laws. <a href="/dot-compliance">Learn more →</a></p>
 
-  {% include "_fitment_results.html" %}
+  {% if setup == "halogen" %}
+  <p class="setup-banner halogen">✓ LED upgrades fit this vehicle — pick a category below.</p>
+  {% elif setup == "xenon" %}
+  <p class="setup-banner xenon">This vehicle uses xenon/HID front bulbs — HID options are listed under Forward Lighting, not LEDs.</p>
+  {% elif setup == "factory_led" %}
+  <p class="setup-banner sealed">This vehicle uses sealed factory LED front lighting — those units aren't replaceable with aftermarket bulbs.</p>
+  {% elif setup == "mixed" %}
+  <p class="setup-banner mixed">Front bulb setup varies by trim on this vehicle — confirm whether yours uses halogen or HID before ordering.</p>
+  {% endif %}
+
+  <div class="fit-cat-grid">
+    {% for g in groups %}
+    <a class="fit-cat-card" href="{{ g.url }}">
+      <span class="fit-cat-icon" aria-hidden="true">
+        {% if g.slug == "forward" %}💡{% elif g.slug == "rear" %}🔴{% else %}✨{% endif %}
+      </span>
+      <span class="fit-cat-main">
+        <strong>{{ g.label }}</strong>
+        <span class="small muted">{{ g.desc }}</span>
+        <span class="small">{{ g.count }} position{{ "s" if g.count != 1 }}</span>
+      </span>
+      {% if g.has_kit %}
+      <span class="fit-cat-badge">Complete kit available</span>
+      {% endif %}
+      <span class="fit-cat-arrow" aria-hidden="true">→</span>
+    </a>
+    {% endfor %}
+  </div>
 </div>
 </div>
 {% endblock %}
