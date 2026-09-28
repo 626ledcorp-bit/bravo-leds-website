@@ -2621,6 +2621,82 @@
    ]
   },
   {
+   "kit_id": "kit-2007-chevrolet-silverado-3500-classic",
+   "year": 2007,
+   "make": "Chevrolet",
+   "model": "Silverado 3500 Classic",
+   "sources": [
+    "diode-dynamics"
+   ],
+   "estimated": true,
+   "total_bulbs": 14,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "41MM",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "diode-dynamics"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "41MM",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "diode-dynamics"
+    },
+    {
+     "position": "vanity_mirror",
+     "position_label": "Vanity Mirror",
+     "bulb_size": "28MM",
+     "quantity": 4,
+     "location_desc": "Sun visor vanity mirror lights",
+     "estimated": false,
+     "source": "diode-dynamics"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": false,
+     "source": "diode-dynamics"
+    }
+   ]
+  },
+  {
    "kit_id": "kit-2008-chevrolet-silverado-3500-hd",
    "year": 2008,
    "make": "Chevrolet",
@@ -16218,6 +16294,73 @@
    ]
   },
   {
+   "kit_id": "kit-2000-gmc-sierra-1500",
+   "year": 2000,
+   "make": "GMC",
+   "model": "Sierra 1500",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 10,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "2112",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "74",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
    "kit_id": "kit-2001-gmc-sierra-1500-hd",
    "year": 2001,
    "make": "GMC",
@@ -17519,6 +17662,408 @@
    ]
   },
   {
+   "kit_id": "kit-2001-gmc-sierra-3500",
+   "year": 2001,
+   "make": "GMC",
+   "model": "Sierra 3500",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 10,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "2112",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2002-gmc-sierra-3500",
+   "year": 2002,
+   "make": "GMC",
+   "model": "Sierra 3500",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 10,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "578",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "74",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2003-gmc-sierra-3500",
+   "year": 2003,
+   "make": "GMC",
+   "model": "Sierra 3500",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 10,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "578",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2004-gmc-sierra-3500",
+   "year": 2004,
+   "make": "GMC",
+   "model": "Sierra 3500",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 10,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "578",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "578",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "74",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2005-gmc-sierra-3500",
+   "year": 2005,
+   "make": "GMC",
+   "model": "Sierra 3500",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 10,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "578",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "2112",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2006-gmc-sierra-3500",
+   "year": 2006,
+   "make": "GMC",
+   "model": "Sierra 3500",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 10,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "578",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "578",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "74",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
    "kit_id": "kit-2007-gmc-sierra-3500-classic",
    "year": 2007,
    "make": "GMC",
@@ -17564,6 +18109,55 @@
      "location_desc": "Glove box light",
      "estimated": true,
      "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2007-gmc-sierra-3500-hd",
+   "year": 2007,
+   "make": "GMC",
+   "model": "Sierra 3500 HD",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 7,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "2122",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "2122",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
     },
     {
      "position": "trunk_cargo",
@@ -32975,6 +33569,35 @@
    ]
   },
   {
+   "kit_id": "kit-2018-lexus-es350",
+   "year": 2018,
+   "make": "Lexus",
+   "model": "ES350",
+   "sources": [],
+   "estimated": true,
+   "total_bulbs": 3,
+   "items": [
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
    "kit_id": "kit-1993-lexus-gs300",
    "year": 1993,
    "make": "Lexus",
@@ -34170,6 +34793,44 @@
    "year": 2017,
    "make": "Lexus",
    "model": "IS Turbo",
+   "sources": [],
+   "estimated": true,
+   "total_bulbs": 5,
+   "items": [
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2016-lexus-is200t",
+   "year": 2016,
+   "make": "Lexus",
+   "model": "IS200t",
    "sources": [],
    "estimated": true,
    "total_bulbs": 5,
@@ -36159,6 +36820,300 @@
    ]
   },
   {
+   "kit_id": "kit-2010-lexus-rx350",
+   "year": 2010,
+   "make": "Lexus",
+   "model": "RX350",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 15,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 8,
+     "location_desc": "Courtesy / step lights",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 3,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2011-lexus-rx350",
+   "year": 2011,
+   "make": "Lexus",
+   "model": "RX350",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 15,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 8,
+     "location_desc": "Courtesy / step lights",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3022",
+     "quantity": 3,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2012-lexus-rx350",
+   "year": 2012,
+   "make": "Lexus",
+   "model": "RX350",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 15,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 8,
+     "location_desc": "Courtesy / step lights",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3022",
+     "quantity": 3,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2013-lexus-rx350",
+   "year": 2013,
+   "make": "Lexus",
+   "model": "RX350",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 15,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 8,
+     "location_desc": "Courtesy / step lights",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 3,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2014-lexus-rx350",
+   "year": 2014,
+   "make": "Lexus",
+   "model": "RX350",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 15,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 8,
+     "location_desc": "Courtesy / step lights",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 3,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2015-lexus-rx350",
+   "year": 2015,
+   "make": "Lexus",
+   "model": "RX350",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 15,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 8,
+     "location_desc": "Courtesy / step lights",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3022",
+     "quantity": 3,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    }
+   ]
+  },
+  {
    "kit_id": "kit-2016-lexus-rx350",
    "year": 2016,
    "make": "Lexus",
@@ -36192,6 +37147,37 @@
   {
    "kit_id": "kit-2017-lexus-rx350",
    "year": 2017,
+   "make": "Lexus",
+   "model": "RX350",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 5,
+   "items": [
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 3,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2018-lexus-rx350",
+   "year": 2018,
    "make": "Lexus",
    "model": "RX350",
    "sources": [
@@ -51381,6 +52367,832 @@
    ]
   },
   {
+   "kit_id": "kit-2005-toyota-avalon",
+   "year": 2005,
+   "make": "Toyota",
+   "model": "Avalon",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 11,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 3,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2006-toyota-avalon",
+   "year": 2006,
+   "make": "Toyota",
+   "model": "Avalon",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 11,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 3,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2007-toyota-avalon",
+   "year": 2007,
+   "make": "Toyota",
+   "model": "Avalon",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 11,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 3,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2008-toyota-avalon",
+   "year": 2008,
+   "make": "Toyota",
+   "model": "Avalon",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 11,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 3,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2009-toyota-avalon",
+   "year": 2009,
+   "make": "Toyota",
+   "model": "Avalon",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 11,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 3,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2010-toyota-avalon",
+   "year": 2010,
+   "make": "Toyota",
+   "model": "Avalon",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 11,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 3,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2011-toyota-avalon",
+   "year": 2011,
+   "make": "Toyota",
+   "model": "Avalon",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 11,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 3,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "12961",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2012-toyota-avalon",
+   "year": 2012,
+   "make": "Toyota",
+   "model": "Avalon",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 11,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 3,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "12961",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1997-toyota-camry",
+   "year": 1997,
+   "make": "Toyota",
+   "model": "Camry",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 7,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "DE3175",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1998-toyota-camry",
+   "year": 1998,
+   "make": "Toyota",
+   "model": "Camry",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 7,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "DE3021",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1999-toyota-camry",
+   "year": 1999,
+   "make": "Toyota",
+   "model": "Camry",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 7,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "DE3175",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2000-toyota-camry",
+   "year": 2000,
+   "make": "Toyota",
+   "model": "Camry",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 7,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "DE3175",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2001-toyota-camry",
+   "year": 2001,
+   "make": "Toyota",
+   "model": "Camry",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 7,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "12818",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
    "kit_id": "kit-2007-toyota-camry",
    "year": 2007,
    "make": "Toyota",
@@ -51716,6 +53528,803 @@
    ]
   },
   {
+   "kit_id": "kit-2012-toyota-camry",
+   "year": 2012,
+   "make": "Toyota",
+   "model": "Camry",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 8,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2013-toyota-camry",
+   "year": 2013,
+   "make": "Toyota",
+   "model": "Camry",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 8,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2014-toyota-camry",
+   "year": 2014,
+   "make": "Toyota",
+   "model": "Camry",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 8,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2015-toyota-camry",
+   "year": 2015,
+   "make": "Toyota",
+   "model": "Camry",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 8,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2016-toyota-camry",
+   "year": 2016,
+   "make": "Toyota",
+   "model": "Camry",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 8,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2017-toyota-camry",
+   "year": 2017,
+   "make": "Toyota",
+   "model": "Camry",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 8,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2018-toyota-camry",
+   "year": 2018,
+   "make": "Toyota",
+   "model": "Camry",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 8,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1988-toyota-corolla",
+   "year": 1988,
+   "make": "Toyota",
+   "model": "Corolla",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 4,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1989-toyota-corolla",
+   "year": 1989,
+   "make": "Toyota",
+   "model": "Corolla",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 4,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1990-toyota-corolla",
+   "year": 1990,
+   "make": "Toyota",
+   "model": "Corolla",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 4,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1991-toyota-corolla",
+   "year": 1991,
+   "make": "Toyota",
+   "model": "Corolla",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 4,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1992-toyota-corolla",
+   "year": 1992,
+   "make": "Toyota",
+   "model": "Corolla",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 3,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2009-toyota-corolla",
+   "year": 2009,
+   "make": "Toyota",
+   "model": "Corolla",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 4,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2010-toyota-corolla",
+   "year": 2010,
+   "make": "Toyota",
+   "model": "Corolla",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 4,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2011-toyota-corolla",
+   "year": 2011,
+   "make": "Toyota",
+   "model": "Corolla",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 4,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2012-toyota-corolla",
+   "year": 2012,
+   "make": "Toyota",
+   "model": "Corolla",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 4,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2013-toyota-corolla",
+   "year": 2013,
+   "make": "Toyota",
+   "model": "Corolla",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 4,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
    "kit_id": "kit-2014-toyota-corolla",
    "year": 2014,
    "make": "Toyota",
@@ -51964,6 +54573,1839 @@
     }
    ],
    "note": "Includes 2 plastic trim removal tools."
+  },
+  {
+   "kit_id": "kit-2007-toyota-fj-cruiser",
+   "year": 2007,
+   "make": "Toyota",
+   "model": "FJ Cruiser",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 4,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2008-toyota-fj-cruiser",
+   "year": 2008,
+   "make": "Toyota",
+   "model": "FJ Cruiser",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 4,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2009-toyota-fj-cruiser",
+   "year": 2009,
+   "make": "Toyota",
+   "model": "FJ Cruiser",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 4,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2010-toyota-fj-cruiser",
+   "year": 2010,
+   "make": "Toyota",
+   "model": "FJ Cruiser",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 4,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2011-toyota-fj-cruiser",
+   "year": 2011,
+   "make": "Toyota",
+   "model": "FJ Cruiser",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 4,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2012-toyota-fj-cruiser",
+   "year": 2012,
+   "make": "Toyota",
+   "model": "FJ Cruiser",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 4,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2013-toyota-fj-cruiser",
+   "year": 2013,
+   "make": "Toyota",
+   "model": "FJ Cruiser",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 4,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2014-toyota-fj-cruiser",
+   "year": 2014,
+   "make": "Toyota",
+   "model": "FJ Cruiser",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 4,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1990-toyota-land-cruiser",
+   "year": 1990,
+   "make": "Toyota",
+   "model": "Land Cruiser",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 6,
+   "items": [
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "DE3175",
+     "quantity": 4,
+     "location_desc": "Courtesy / step lights",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "89",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1991-toyota-land-cruiser",
+   "year": 1991,
+   "make": "Toyota",
+   "model": "Land Cruiser",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 6,
+   "items": [
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "DE3175",
+     "quantity": 4,
+     "location_desc": "Courtesy / step lights",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1992-toyota-land-cruiser",
+   "year": 1992,
+   "make": "Toyota",
+   "model": "Land Cruiser",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 6,
+   "items": [
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "DE3175",
+     "quantity": 4,
+     "location_desc": "Courtesy / step lights",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1993-toyota-land-cruiser",
+   "year": 1993,
+   "make": "Toyota",
+   "model": "Land Cruiser",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 8,
+   "items": [
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "158",
+     "quantity": 4,
+     "location_desc": "Courtesy / step lights",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1994-toyota-land-cruiser",
+   "year": 1994,
+   "make": "Toyota",
+   "model": "Land Cruiser",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 8,
+   "items": [
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "DE3175",
+     "quantity": 4,
+     "location_desc": "Courtesy / step lights",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1995-toyota-land-cruiser",
+   "year": 1995,
+   "make": "Toyota",
+   "model": "Land Cruiser",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 8,
+   "items": [
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "DE3175",
+     "quantity": 4,
+     "location_desc": "Courtesy / step lights",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1996-toyota-land-cruiser",
+   "year": 1996,
+   "make": "Toyota",
+   "model": "Land Cruiser",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 8,
+   "items": [
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "DE3175",
+     "quantity": 4,
+     "location_desc": "Courtesy / step lights",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1997-toyota-land-cruiser",
+   "year": 1997,
+   "make": "Toyota",
+   "model": "Land Cruiser",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 8,
+   "items": [
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "DE3022",
+     "quantity": 4,
+     "location_desc": "Courtesy / step lights",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2008-toyota-land-cruiser",
+   "year": 2008,
+   "make": "Toyota",
+   "model": "Land Cruiser",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 6,
+   "items": [
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2009-toyota-land-cruiser",
+   "year": 2009,
+   "make": "Toyota",
+   "model": "Land Cruiser",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 6,
+   "items": [
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2010-toyota-land-cruiser",
+   "year": 2010,
+   "make": "Toyota",
+   "model": "Land Cruiser",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 6,
+   "items": [
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2011-toyota-land-cruiser",
+   "year": 2011,
+   "make": "Toyota",
+   "model": "Land Cruiser",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 6,
+   "items": [
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2013-toyota-land-cruiser",
+   "year": 2013,
+   "make": "Toyota",
+   "model": "Land Cruiser",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 6,
+   "items": [
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2014-toyota-land-cruiser",
+   "year": 2014,
+   "make": "Toyota",
+   "model": "Land Cruiser",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 6,
+   "items": [
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2015-toyota-land-cruiser",
+   "year": 2015,
+   "make": "Toyota",
+   "model": "Land Cruiser",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 6,
+   "items": [
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2003-toyota-matrix",
+   "year": 2003,
+   "make": "Toyota",
+   "model": "Matrix",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 6,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "904",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2004-toyota-matrix",
+   "year": 2004,
+   "make": "Toyota",
+   "model": "Matrix",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 6,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "921",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2005-toyota-matrix",
+   "year": 2005,
+   "make": "Toyota",
+   "model": "Matrix",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 6,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "921",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2006-toyota-matrix",
+   "year": 2006,
+   "make": "Toyota",
+   "model": "Matrix",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 6,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "904",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2007-toyota-matrix",
+   "year": 2007,
+   "make": "Toyota",
+   "model": "Matrix",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 6,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "921",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2008-toyota-matrix",
+   "year": 2008,
+   "make": "Toyota",
+   "model": "Matrix",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 6,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "921",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2009-toyota-matrix",
+   "year": 2009,
+   "make": "Toyota",
+   "model": "Matrix",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 4,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2010-toyota-matrix",
+   "year": 2010,
+   "make": "Toyota",
+   "model": "Matrix",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 4,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2011-toyota-matrix",
+   "year": 2011,
+   "make": "Toyota",
+   "model": "Matrix",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 4,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2012-toyota-matrix",
+   "year": 2012,
+   "make": "Toyota",
+   "model": "Matrix",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 4,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2013-toyota-matrix",
+   "year": 2013,
+   "make": "Toyota",
+   "model": "Matrix",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 4,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2014-toyota-matrix",
+   "year": 2014,
+   "make": "Toyota",
+   "model": "Matrix",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 4,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1991-toyota-mr2",
+   "year": 1991,
+   "make": "Toyota",
+   "model": "MR2",
+   "sources": [],
+   "estimated": true,
+   "total_bulbs": 3,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "89",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1992-toyota-mr2",
+   "year": 1992,
+   "make": "Toyota",
+   "model": "MR2",
+   "sources": [],
+   "estimated": true,
+   "total_bulbs": 3,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "89",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1993-toyota-mr2",
+   "year": 1993,
+   "make": "Toyota",
+   "model": "MR2",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 5,
+   "items": [
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "DE3021",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1994-toyota-mr2",
+   "year": 1994,
+   "make": "Toyota",
+   "model": "MR2",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 5,
+   "items": [
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "DE3175",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1995-toyota-mr2",
+   "year": 1995,
+   "make": "Toyota",
+   "model": "MR2",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 5,
+   "items": [
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "DE3021",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2001-toyota-prius",
+   "year": 2001,
+   "make": "Toyota",
+   "model": "Prius",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 4,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2002-toyota-prius",
+   "year": 2002,
+   "make": "Toyota",
+   "model": "Prius",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 4,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2003-toyota-prius",
+   "year": 2003,
+   "make": "Toyota",
+   "model": "Prius",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 4,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
   },
   {
    "kit_id": "kit-2004-toyota-prius",
@@ -52314,6 +56756,354 @@
    ]
   },
   {
+   "kit_id": "kit-2010-toyota-prius",
+   "year": 2010,
+   "make": "Toyota",
+   "model": "Prius",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 8,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2011-toyota-prius",
+   "year": 2011,
+   "make": "Toyota",
+   "model": "Prius",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 8,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3022",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2012-toyota-prius",
+   "year": 2012,
+   "make": "Toyota",
+   "model": "Prius",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 8,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3022",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2013-toyota-prius",
+   "year": 2013,
+   "make": "Toyota",
+   "model": "Prius",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 8,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3022",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2014-toyota-prius",
+   "year": 2014,
+   "make": "Toyota",
+   "model": "Prius",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 8,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3022",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2015-toyota-prius",
+   "year": 2015,
+   "make": "Toyota",
+   "model": "Prius",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 8,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3022",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
    "kit_id": "kit-2016-toyota-prius",
    "year": 2016,
    "make": "Toyota",
@@ -52511,6 +57301,659 @@
      "location_desc": "Trunk / cargo area light",
      "estimated": false,
      "source": "diode-dynamics"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1996-toyota-rav4",
+   "year": 1996,
+   "make": "Toyota",
+   "model": "RAV4",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 4,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1997-toyota-rav4",
+   "year": 1997,
+   "make": "Toyota",
+   "model": "RAV4",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 4,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1998-toyota-rav4",
+   "year": 1998,
+   "make": "Toyota",
+   "model": "RAV4",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 3,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1999-toyota-rav4",
+   "year": 1999,
+   "make": "Toyota",
+   "model": "RAV4",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 3,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2000-toyota-rav4",
+   "year": 2000,
+   "make": "Toyota",
+   "model": "RAV4",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 3,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2001-toyota-rav4",
+   "year": 2001,
+   "make": "Toyota",
+   "model": "RAV4",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 5,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "DE3175",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2002-toyota-rav4",
+   "year": 2002,
+   "make": "Toyota",
+   "model": "RAV4",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 5,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "DE3175",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2003-toyota-rav4",
+   "year": 2003,
+   "make": "Toyota",
+   "model": "RAV4",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 5,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "DE3175",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2004-toyota-rav4",
+   "year": 2004,
+   "make": "Toyota",
+   "model": "RAV4",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 5,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "DE3175",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2005-toyota-rav4",
+   "year": 2005,
+   "make": "Toyota",
+   "model": "RAV4",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 5,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "DE3175",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2006-toyota-rav4",
+   "year": 2006,
+   "make": "Toyota",
+   "model": "RAV4",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 4,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2007-toyota-rav4",
+   "year": 2007,
+   "make": "Toyota",
+   "model": "RAV4",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 4,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3022",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2008-toyota-rav4",
+   "year": 2008,
+   "make": "Toyota",
+   "model": "RAV4",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 4,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3022",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2009-toyota-rav4",
+   "year": 2009,
+   "make": "Toyota",
+   "model": "RAV4",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 4,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2010-toyota-rav4",
+   "year": 2010,
+   "make": "Toyota",
+   "model": "RAV4",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 4,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3022",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2011-toyota-rav4",
+   "year": 2011,
+   "make": "Toyota",
+   "model": "RAV4",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 4,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3022",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2012-toyota-rav4",
+   "year": 2012,
+   "make": "Toyota",
+   "model": "RAV4",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 4,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3022",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
     }
    ]
   },
@@ -52859,6 +58302,1961 @@
      "location_desc": "License plate lights",
      "estimated": false,
      "source": "diode-dynamics"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2001-toyota-sequoia",
+   "year": 2001,
+   "make": "Toyota",
+   "model": "Sequoia",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 15,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 3,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 6,
+     "location_desc": "Courtesy / step lights",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "37",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2002-toyota-sequoia",
+   "year": 2002,
+   "make": "Toyota",
+   "model": "Sequoia",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 15,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 3,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 6,
+     "location_desc": "Courtesy / step lights",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "37",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2003-toyota-sequoia",
+   "year": 2003,
+   "make": "Toyota",
+   "model": "Sequoia",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 15,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 3,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 6,
+     "location_desc": "Courtesy / step lights",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "37",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2004-toyota-sequoia",
+   "year": 2004,
+   "make": "Toyota",
+   "model": "Sequoia",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 15,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 3,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 6,
+     "location_desc": "Courtesy / step lights",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "37",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2005-toyota-sequoia",
+   "year": 2005,
+   "make": "Toyota",
+   "model": "Sequoia",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 11,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 3,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "37",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2006-toyota-sequoia",
+   "year": 2006,
+   "make": "Toyota",
+   "model": "Sequoia",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 11,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 3,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "37",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2007-toyota-sequoia",
+   "year": 2007,
+   "make": "Toyota",
+   "model": "Sequoia",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 11,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 3,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "37",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1999-toyota-solara",
+   "year": 1999,
+   "make": "Toyota",
+   "model": "Solara",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 7,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "DE3175",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2000-toyota-solara",
+   "year": 2000,
+   "make": "Toyota",
+   "model": "Solara",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 7,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "DE3175",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2001-toyota-solara",
+   "year": 2001,
+   "make": "Toyota",
+   "model": "Solara",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 7,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "DE3175",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2002-toyota-solara",
+   "year": 2002,
+   "make": "Toyota",
+   "model": "Solara",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 7,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "6418",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "DE3021",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2003-toyota-solara",
+   "year": 2003,
+   "make": "Toyota",
+   "model": "Solara",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 7,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3423",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2004-toyota-solara",
+   "year": 2004,
+   "make": "Toyota",
+   "model": "Solara",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 7,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "578",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2005-toyota-solara",
+   "year": 2005,
+   "make": "Toyota",
+   "model": "Solara",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 7,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "578",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2006-toyota-solara",
+   "year": 2006,
+   "make": "Toyota",
+   "model": "Solara",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 7,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "578",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2007-toyota-solara",
+   "year": 2007,
+   "make": "Toyota",
+   "model": "Solara",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 9,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "578",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2008-toyota-solara",
+   "year": 2008,
+   "make": "Toyota",
+   "model": "Solara",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 9,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "578",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "12961",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1987-toyota-supra",
+   "year": 1987,
+   "make": "Toyota",
+   "model": "Supra",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 7,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "DE3022",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "161",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3022",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "89",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1988-toyota-supra",
+   "year": 1988,
+   "make": "Toyota",
+   "model": "Supra",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 7,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "DE3175",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "161",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3022",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "89",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1989-toyota-supra",
+   "year": 1989,
+   "make": "Toyota",
+   "model": "Supra",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 7,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "DE3022",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "161",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "89",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1990-toyota-supra",
+   "year": 1990,
+   "make": "Toyota",
+   "model": "Supra",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 7,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "DE3022",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "161",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "89",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1991-toyota-supra",
+   "year": 1991,
+   "make": "Toyota",
+   "model": "Supra",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 7,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "DE3022",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "161",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "89",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1992-toyota-supra",
+   "year": 1992,
+   "make": "Toyota",
+   "model": "Supra",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 7,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "DE3175",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "161",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3022",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "89",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1993-toyota-supra",
+   "year": 1993,
+   "make": "Toyota",
+   "model": "Supra",
+   "sources": [],
+   "estimated": true,
+   "total_bulbs": 7,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "DE3022",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "161",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "89",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1994-toyota-supra",
+   "year": 1994,
+   "make": "Toyota",
+   "model": "Supra",
+   "sources": [],
+   "estimated": true,
+   "total_bulbs": 4,
+   "items": [
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3022",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1995-toyota-supra",
+   "year": 1995,
+   "make": "Toyota",
+   "model": "Supra",
+   "sources": [],
+   "estimated": true,
+   "total_bulbs": 4,
+   "items": [
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3022",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1996-toyota-supra",
+   "year": 1996,
+   "make": "Toyota",
+   "model": "Supra",
+   "sources": [],
+   "estimated": true,
+   "total_bulbs": 4,
+   "items": [
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3022",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1997-toyota-supra",
+   "year": 1997,
+   "make": "Toyota",
+   "model": "Supra",
+   "sources": [],
+   "estimated": true,
+   "total_bulbs": 4,
+   "items": [
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1998-toyota-supra",
+   "year": 1998,
+   "make": "Toyota",
+   "model": "Supra",
+   "sources": [],
+   "estimated": true,
+   "total_bulbs": 4,
+   "items": [
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3022",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1993-toyota-t100",
+   "year": 1993,
+   "make": "Toyota",
+   "model": "T100",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 7,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "DE3175",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1994-toyota-t100",
+   "year": 1994,
+   "make": "Toyota",
+   "model": "T100",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 7,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "DE3175",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1995-toyota-t100",
+   "year": 1995,
+   "make": "Toyota",
+   "model": "T100",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 7,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "DE3022",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1996-toyota-t100",
+   "year": 1996,
+   "make": "Toyota",
+   "model": "T100",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 7,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "DE3022",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1997-toyota-t100",
+   "year": 1997,
+   "make": "Toyota",
+   "model": "T100",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 7,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "DE3022",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1998-toyota-t100",
+   "year": 1998,
+   "make": "Toyota",
+   "model": "T100",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 7,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "DE3022",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "74",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
     }
    ]
   },

@@ -83,10 +83,10 @@ def test_optin_present_when_kit_exists():
 
 
 def test_optin_absent_without_kit():
-    html = client().get('/fit/2010/toyota/prius').get_data(as_text=True)
+    html = client().get('/fit/2010/toyota/4runner').get_data(as_text=True)
     check('no opt-in block for non-kit vehicle', 'id="ik-optin"' not in html)
     check('no dead kit UI for non-kit vehicle', 'id="ik-check"' not in html)
-    intr = client().get('/fit/2010/toyota/prius/interior'
+    intr = client().get('/fit/2010/toyota/4runner/interior'
                         ).get_data(as_text=True)
     check('no kit card on interior page for non-kit vehicle',
           'id="kitcard-add"' not in intr)
