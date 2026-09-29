@@ -31,7 +31,7 @@ import shipping as shiputil
 import square_sync
 import square_import
 import spinpromo
-from catalog import CATEGORIES
+from catalog import CATEGORIES, LEDBULB_SIZES
 from content import register_content_routes
 from fitment_loader import fitment_db, norm_size
 import fitment_loader
@@ -261,7 +261,17 @@ def search_products(query):
                     break
         scored.append((score, p))
     scored.sort(key=lambda s: (-s[0], (s[1].get("name") or "")))
-    return [p for _s, p in scored]
+    results = [p for _s, p in scored]
+    # By Bulb Size: an exact size query that the main LED Bulb lineup carries
+    # shows only the main models. Shoppers picking a size already know what
+    # they need — the fog-kit duplicates (same bulb, same tier) just clutter.
+    # Sizes the main lineup doesn't carry (e.g. H10, 9145) keep their normal
+    # results so fog-only sizes still return products.
+    if len(tokens) == 1 and tokens[0].upper() in LEDBULB_SIZES:
+        mains = [p for p in results if p.get("category") == "led-bulbs"]
+        if mains:
+            results = mains
+    return results
 
 
 @app.route("/search")
