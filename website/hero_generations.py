@@ -97,10 +97,10 @@ HERO_GENERATIONS = {
     # GMT400 C/K trucks (1988-1998): same body, one banner reused per make.
     ("Chevrolet", "C1500"): [(1988, 1999, "GMT400")],
     ("Chevrolet", "K1500"): [(1988, 1999, "GMT400")],
-    ("Chevrolet", "C2500"): [(1988, 1999, "GMT400")],
-    ("Chevrolet", "K2500"): [(1988, 1999, "GMT400")],
-    ("Chevrolet", "C3500"): [(1988, 1999, "GMT400")],
-    ("Chevrolet", "K3500"): [(1988, 1999, "GMT400")],
+    ("Chevrolet", "C2500"): [(1988, 2000, "GMT400")],
+    ("Chevrolet", "K2500"): [(1988, 2000, "GMT400")],
+    ("Chevrolet", "C3500"): [(1988, 2000, "GMT400")],
+    ("Chevrolet", "K3500"): [(1988, 2000, "GMT400")],
     ("Chevrolet", "Equinox"): [(2005, 2009, "1st gen"), (2010, 2017, "2nd gen"),
                                (2018, 2024, "3rd gen"), (2025, None, "4th gen")],
     ("Chevrolet", "Tahoe"): [(1995, 1999, "1st gen"), (2000, 2006, "2nd gen"),
@@ -109,6 +109,7 @@ HERO_GENERATIONS = {
     ("Chevrolet", "Suburban"): [(1992, 1999, "8th gen"), (2000, 2006, "9th gen"),
                                 (2007, 2014, "10th gen"), (2015, 2020, "11th gen"),
                                 (2021, None, "12th gen")],
+    ("GMC", "Suburban"): [(1992, 1999, "8th gen")],
     ("Chevrolet", "Malibu"): [(1997, 2003, "5th gen"), (2004, 2007, "6th gen"),
                               (2008, 2012, "7th gen"), (2013, 2015, "8th gen"),
                               (2016, 2025, "9th gen")],
@@ -124,10 +125,10 @@ HERO_GENERATIONS = {
     # GMT400 C/K trucks (1988-1998): same body, one banner reused per make.
     ("GMC", "C1500"): [(1988, 1999, "GMT400")],
     ("GMC", "K1500"): [(1988, 1999, "GMT400")],
-    ("GMC", "C2500"): [(1988, 1999, "GMT400")],
-    ("GMC", "K2500"): [(1988, 1999, "GMT400")],
-    ("GMC", "C3500"): [(1988, 1999, "GMT400")],
-    ("GMC", "K3500"): [(1988, 1999, "GMT400")],
+    ("GMC", "C2500"): [(1988, 2000, "GMT400")],
+    ("GMC", "K2500"): [(1988, 2000, "GMT400")],
+    ("GMC", "C3500"): [(1988, 2000, "GMT400")],
+    ("GMC", "K3500"): [(1988, 2000, "GMT400")],
     ("GMC", "Yukon"): [(1992, 1999, "1st gen"), (2000, 2006, "2nd gen"),
                        (2007, 2014, "3rd gen"), (2015, 2020, "4th gen"),
                        (2021, None, "5th gen")],
@@ -143,11 +144,12 @@ HERO_GENERATIONS = {
                                  (2008, 2020, "5th gen")],
     ("Dodge", "Journey"): [(2009, 2020, "1st gen")],
     # 1990-1993 D/W series (1st-gen Ram body) and 1994-2010 Rams sold as Dodge.
-    ("Dodge", "D150"): [(1990, 1993, "1st gen")],
-    ("Dodge", "W150"): [(1990, 1993, "1st gen")],
-    ("Dodge", "D250"): [(1990, 1993, "1st gen")],
-    ("Dodge", "W250"): [(1990, 1993, "1st gen")],
-    ("Dodge", "D350"): [(1990, 1993, "1st gen")],
+    ("Dodge", "D150"): [(1985, 1993, "1st gen")],
+    ("Dodge", "D100"): [(1985, 1993, "1st gen")],
+    ("Dodge", "W150"): [(1985, 1993, "1st gen")],
+    ("Dodge", "D250"): [(1985, 1993, "1st gen")],
+    ("Dodge", "W250"): [(1985, 1993, "1st gen")],
+    ("Dodge", "D350"): [(1985, 1993, "1st gen")],
     ("Dodge", "Ram 1500"): [(1994, 2001, "2nd gen"), (2002, 2008, "3rd gen"),
                             (2009, 2010, "4th gen")],
     ("Dodge", "Ram 2500"): [(1994, 2002, "2nd gen"), (2003, 2009, "3rd gen"),
@@ -156,6 +158,8 @@ HERO_GENERATIONS = {
                       (2009, 2018, "4th gen"), (2019, None, "5th gen")],
     ("Ram", "2500"): [(1994, 2002, "2nd gen"), (2003, 2009, "3rd gen"),
                       (2010, 2018, "4th gen"), (2019, None, "5th gen")],
+    ("Dodge", "Ram 3500"): [(1994, 2002, "2nd gen"), (2003, 2009, "3rd gen"), (2010, 2010, "4th gen")],
+    ("Ram", "3500"): [(1994, 2002, "2nd gen"), (2003, 2009, "3rd gen"), (2010, 2018, "4th gen"), (2019, None, "5th gen")],
     # ---------------- Subaru ----------------
     ("Subaru", "Outback"): [(1995, 1999, "1st gen"), (2000, 2004, "2nd gen"),
                             (2005, 2009, "3rd gen"), (2010, 2014, "4th gen"),
@@ -205,10 +209,27 @@ _TRIM_SUFFIX_TOKENS = frozenset({
 })
 
 
+_CHASSIS_TOKENS = frozenset({
+    "C10", "C20", "C30", "K10", "K20", "K30",
+    "V10", "V20", "V30", "R10", "R20", "R30",
+    "C1500", "C2500", "C3500", "K1500", "K2500", "K3500",
+})
+
+
 def _base_model(model):
-    """Strip trailing trim/series qualifiers: 'Silverado 1500 HD Classic'
-    -> 'Silverado'. Returns the model unchanged if nothing strips."""
+    """Reduce a fitment model name to its base model name.
+
+    - Cuts junk appended with '&' or ':' (data pollution in fitment names).
+    - Strips leading chassis codes ('C1500 Suburban' -> 'Suburban').
+    - Strips trailing trim qualifiers ('Silverado 1500 HD Classic' -> 'Silverado').
+
+    Conservative: never reduces to an empty name, and never merges genuinely
+    different models ('Civic del Sol' keeps its full name).
+    """
+    model = model.split("&")[0].split(":")[0].strip()
     words = model.split()
+    while len(words) > 1 and words[0].upper() in _CHASSIS_TOKENS:
+        words.pop(0)
     while len(words) > 1 and words[-1].lower() in _TRIM_SUFFIX_TOKENS:
         words.pop()
     return " ".join(words)
@@ -243,14 +264,14 @@ HERO_GENERATIONS_EXTRA = {
     ("Toyota", "Land Cruiser"): [(1990, 1997, "80 series"), (1998, 2007, "100 series"), (2008, 2021, "200 series"), (2024, None, "250 series")],
     ("Toyota", "Celica"): [(1990, 1993, "5th gen"), (1994, 1999, "6th gen"), (2000, 2005, "7th gen")],
     ("Toyota", "Yaris"): [(2007, 2011, "2nd gen"), (2012, 2019, "3rd gen"), (2020, None, "4th gen")],
-    ("Toyota", "Matrix"): [(2003, 2008, "1st gen"), (2009, 2013, "2nd gen")],
+    ("Toyota", "Matrix"): [(2003, 2008, "1st gen"), (2009, 2014, "2nd gen")],
     ("Toyota", "Solara"): [(1999, 2003, "1st gen"), (2004, 2008, "2nd gen")],
     ("Toyota", "Tercel"): [(1991, 1994, "4th gen"), (1995, 1999, "5th gen")],
     ("Toyota", "FJ Cruiser"): [(2007, 2014, "1st gen")],
-    ("Toyota", "Venza"): [(2009, 2015, "1st gen"), (2021, 2024, "2nd gen")],
+    ("Toyota", "Venza"): [(2009, 2016, "1st gen"), (2021, 2024, "2nd gen")],
     ("Toyota", "Supra"): [(1993, 1998, "Mk4"), (2020, None, "Mk5")],
     ("Toyota", "Prius C"): [(2012, 2019, "1st gen")],
-    ("Toyota", "Prius V"): [(2012, 2017, "1st gen")],
+    ("Toyota", "Prius V"): [(2012, 2018, "1st gen")],
     ("Toyota", "Echo"): [(2000, 2005, "1st gen")],
     ("Toyota", "Previa"): [(1991, 1997, "1st gen")],
     ("Toyota", "MR2"): [(1991, 1995, "SW20"), (2000, 2005, "Spyder")],
@@ -263,10 +284,10 @@ HERO_GENERATIONS_EXTRA = {
     ("Nissan", "Leaf"): [(2011, 2017, "1st gen"), (2018, None, "2nd gen")],
     ("Nissan", "Juke"): [(2011, 2017, "1st gen")],
     ("Nissan", "Cube"): [(2009, 2014, "3rd gen")],
-    ("Nissan", "350Z"): [(2003, 2008, "Z33")],
-    ("Nissan", "240SX"): [(1990, 1994, "S13"), (1995, 1998, "S14")],
+    ("Nissan", "350Z"): [(2003, 2009, "Z33")],
+    ("Nissan", "240SX"): [(1989, 1994, "S13"), (1995, 1998, "S14")],
     ("Nissan", "300ZX"): [(1990, 1996, "Z32")],
-    ("Honda", "Fit"): [(2007, 2008, "1st gen"), (2009, 2013, "2nd gen"), (2015, 2020, "3rd gen")],
+    ("Honda", "Fit"): [(2007, 2008, "1st gen"), (2009, 2014, "2nd gen"), (2015, 2020, "3rd gen")],
     ("Honda", "Prelude"): [(1992, 1996, "4th gen"), (1997, 2001, "5th gen")],
     ("Honda", "Insight"): [(2000, 2006, "1st gen"), (2010, 2014, "2nd gen"), (2019, 2022, "3rd gen")],
     ("Honda", "S2000"): [(2000, 2009, "AP1/AP2")],
@@ -300,7 +321,7 @@ HERO_GENERATIONS_EXTRA = {
     ("Chevrolet", "HHR"): [(2006, 2011, "1st gen")],
     ("Chevrolet", "Tracker"): [(1999, 2004, "2nd gen")],
     ("Chevrolet", "Trailblazer"): [(2002, 2009, "1st gen"), (2021, None, "2nd gen")],
-    ("Chevrolet", "Trax"): [(2015, None, "1st gen")],
+    ("Chevrolet", "Trax"): [(2013, None, "1st gen")],
     ("Chevrolet", "Volt"): [(2011, 2015, "1st gen"), (2016, 2019, "2nd gen")],
     ("Chevrolet", "Avalanche"): [(2002, 2006, "1st gen"), (2007, 2013, "2nd gen")],
     ("Chevrolet", "Beretta"): [(1990, 1996, "1st gen")],
