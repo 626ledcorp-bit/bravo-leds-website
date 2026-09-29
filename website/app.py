@@ -543,8 +543,9 @@ def fit_vehicle(year, make_slug, model_slug):
     except (TypeError, ValueError):
         hero_image = None
     bs = kit_images_body_style(make, model)
+    bs_img = "sedan" if bs == "car" else bs  # files are fwd-truck/suv/sedan/sport.jpg
     group_images = {
-        "forward": f"/static/img/kits/fwd-{bs}.jpg",
+        "forward": f"/static/img/kits/fwd-{bs_img}.jpg",
         "rear": "/static/img/kits/rear-generic.jpg",
         "interior": "/static/img/kits/int-car.jpg",
     }
