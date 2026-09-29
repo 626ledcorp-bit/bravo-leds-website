@@ -24,6 +24,7 @@ import db
 import emails
 import kits
 from kit_images import body_style as kit_images_body_style
+from hero_generations import hero_slug
 import landing
 import payments
 import shipping as shiputil
@@ -530,6 +531,17 @@ def fit_vehicle(year, make_slug, model_slug):
     vehicle_label = f"{year} {make} {model}"
     base = f"/fit/{int(year)}/{kits.slugify(make)}/{kits.slugify(model)}"
     trim_qs = f"?trim={quote(str(trim), safe='')}" if trim else ""
+    # Generation hero image for the fit landing page (one per generation).
+    hero_image = None
+    try:
+        slug = hero_slug(make, model, int(year))
+        if slug:
+            hero_path = os.path.join(app.root_path, "static", "img", "kits",
+                                     f"{slug}.jpg")
+            if os.path.exists(hero_path):
+                hero_image = f"/static/img/kits/{slug}.jpg"
+    except (TypeError, ValueError):
+        hero_image = None
     bs = kit_images_body_style(make, model)
     group_images = {
         "forward": f"/static/img/kits/fwd-{bs}.jpg",
@@ -553,7 +565,7 @@ def fit_vehicle(year, make_slug, model_slug):
     return render_template("fit_vehicle.html", vehicle_label=vehicle_label,
                            year=year, make=make, model=model, trim=trim,
                            setup=setup, groups=groups,
-                           interior_kit=interior_kit)
+                           interior_kit=interior_kit, hero_image=hero_image)
 
 
 @app.route("/fit/<int:year>/<make_slug>/<model_slug>/<group>")

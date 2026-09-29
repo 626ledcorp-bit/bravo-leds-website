@@ -793,6 +793,10 @@ label.check input{display:inline;width:auto;margin-right:6px}
 .fit-cat-card:hover { border-color: #ffa21a; transform: translateY(-2px); }
 .fit-cat-icon { font-size: 34px; line-height: 1; }
 .fit-cat-photo { width: 92px; height: 92px; object-fit: cover; border-radius: 10px; flex-shrink: 0; }
+
+/* Generation hero banner on fit landing pages */
+.fit-hero { margin: 14px 0 6px; }
+.fit-hero img { display: block; width: 100%; max-height: 320px; object-fit: cover; border-radius: 14px; border: 1px solid var(--border); }
 .fit-cat-main { display: flex; flex-direction: column; gap: 6px; }
 .fit-cat-main strong { font-size: 17px; }
 .fit-cat-arrow { margin-left: auto; font-size: 22px; color: var(--accent-ink); align-self: center; }

@@ -9,6 +9,9 @@
   </nav>
 
   <h1 class="fit-title">Fit for: {{ vehicle_label }}</h1>
+  {% if hero_image %}
+  <div class="fit-hero"><img src="{{ hero_image }}" alt="{{ vehicle_label }} with LED lighting at night" loading="eager" fetchpriority="high"></div>
+  {% endif %}
   <p class="sub muted" style="margin:4px 0 18px">Pick a lighting category — every position shows the size it takes and the LEDs that fit, with the cheapest option selected by default.</p>
 
   <p class="disclaimer">⚠️ For off-road and fog light use only. Not DOT/SAE approved for on-road use. Check your local laws. <a href="/dot-compliance">Learn more →</a></p>
