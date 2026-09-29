@@ -1371,6 +1371,7 @@ def create_order(customer, lines, subtotal_cents, shipping_cents=0,
             "price_cents": l.get("unit_price_cents",
                                  l["product"]["price_cents"]),
             "line_total_cents": l["line_total"],
+            "vehicle": l.get("vehicle", "") or "",
         })
     now = _utcnow()
     con = _connect()

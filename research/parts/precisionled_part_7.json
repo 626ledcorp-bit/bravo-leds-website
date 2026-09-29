@@ -1,0 +1,1044 @@
+{
+  "kits": [
+    {
+      "year_range": "1995-1999",
+      "make": "Toyota",
+      "model": "Tercel",
+      "url": "https://precisionled.com/toyota-tercel-premium-led-interior-package-1995-1999.html",
+      "price_usd": null,
+      "items": [
+        {
+          "location": "Map",
+          "quantity": 2,
+          "bulb_size": null
+        }
+      ]
+    },
+    {
+      "year_range": "2014-2021",
+      "make": "Toyota",
+      "model": "Tundra",
+      "url": "https://precisionled.com/toyota-tundra-led-interior-package-2014-2021.html",
+      "price_usd": null,
+      "items": [
+        {
+          "location": "Map",
+          "quantity": 2,
+          "bulb_size": null
+        },
+        {
+          "location": "Dome",
+          "quantity": 2,
+          "bulb_size": null
+        },
+        {
+          "location": "Courtesy Footwell",
+          "quantity": 1,
+          "bulb_size": null
+        }
+      ]
+    },
+    {
+      "year_range": "2007-2013",
+      "make": "Toyota",
+      "model": "Tundra",
+      "url": "https://precisionled.com/toyota-tundra-premium-led-interior-package-2007-2013.html",
+      "price_usd": null,
+      "items": [
+        {
+          "location": "Map",
+          "quantity": 2,
+          "bulb_size": null
+        },
+        {
+          "location": "Dome",
+          "quantity": 2,
+          "bulb_size": null
+        },
+        {
+          "location": "Courtesy Door",
+          "quantity": 4,
+          "bulb_size": null
+        },
+        {
+          "location": "Courtesy Footwell",
+          "quantity": 1,
+          "bulb_size": null
+        }
+      ]
+    },
+    {
+      "year_range": "2009-present",
+      "make": "Toyota",
+      "model": "Venza",
+      "url": "https://precisionled.com/toyota-venza-led-interior-package-2009-present.html",
+      "price_usd": null,
+      "items": [
+        {
+          "location": "Map",
+          "quantity": 3,
+          "bulb_size": null
+        },
+        {
+          "location": "Dome",
+          "quantity": 2,
+          "bulb_size": null
+        },
+        {
+          "location": "Courtesy",
+          "quantity": 2,
+          "bulb_size": null
+        },
+        {
+          "location": "Trunk",
+          "quantity": 1,
+          "bulb_size": null
+        }
+      ]
+    },
+    {
+      "year_range": "2012-present",
+      "make": "Volkswagen",
+      "model": "Beetle",
+      "url": "https://precisionled.com/volkswagen-beetle-led-interior-package-2012-present.html",
+      "price_usd": null,
+      "items": [
+        {
+          "location": "Map",
+          "quantity": 2,
+          "bulb_size": null
+        },
+        {
+          "location": "Trunk",
+          "quantity": 1,
+          "bulb_size": null
+        }
+      ]
+    },
+    {
+      "year_range": "2009-present",
+      "make": "Volkswagen",
+      "model": "Cc",
+      "url": "https://precisionled.com/volkswagen-cc-premium-led-interior-package-2009-present.html",
+      "price_usd": null,
+      "items": [
+        {
+          "location": "Map",
+          "quantity": 4,
+          "bulb_size": null
+        },
+        {
+          "location": "Dome",
+          "quantity": 2,
+          "bulb_size": null
+        },
+        {
+          "location": "Courtesy",
+          "quantity": 4,
+          "bulb_size": null
+        }
+      ]
+    },
+    {
+      "year_range": "2006-present",
+      "make": "Volkswagen",
+      "model": "Eos",
+      "url": "https://precisionled.com/volkswagen-eos-premium-led-interior-package-2006-present.html",
+      "price_usd": null,
+      "items": [
+        {
+          "location": "Map",
+          "quantity": 2,
+          "bulb_size": null
+        },
+        {
+          "location": "Dome",
+          "quantity": 2,
+          "bulb_size": null
+        },
+        {
+          "location": "Courtesy",
+          "quantity": 4,
+          "bulb_size": null
+        }
+      ]
+    },
+    {
+      "year_range": "1993-2003",
+      "make": "Volkswagen",
+      "model": "Eurovan",
+      "url": "https://precisionled.com/volkswagen-eurovan-led-interior-package-1993-2003.html",
+      "price_usd": null,
+      "items": [
+        {
+          "location": "Map",
+          "quantity": 2,
+          "bulb_size": null
+        },
+        {
+          "location": "Dome",
+          "quantity": 2,
+          "bulb_size": null
+        },
+        {
+          "location": "Courtesy",
+          "quantity": 4,
+          "bulb_size": null
+        },
+        {
+          "location": "Trunk",
+          "quantity": 1,
+          "bulb_size": null
+        }
+      ]
+    },
+    {
+      "year_range": "1985-1992",
+      "make": "Volkswagen",
+      "model": "Golf Mk2",
+      "url": "https://precisionled.com/volkswagen-golf-mk2-led-interior-package-1985-1992.html",
+      "price_usd": null,
+      "items": [
+        {
+          "location": "Map",
+          "quantity": 2,
+          "bulb_size": null
+        },
+        {
+          "location": "Dome",
+          "quantity": 2,
+          "bulb_size": null
+        },
+        {
+          "location": "Courtesy",
+          "quantity": 2,
+          "bulb_size": null
+        }
+      ]
+    },
+    {
+      "year_range": "1999-2005",
+      "make": "Volkswagen",
+      "model": "Golf Mk4",
+      "url": "https://precisionled.com/volkswagen-golf-mk4-led-interior-package-1999-2005.html",
+      "price_usd": null,
+      "items": [
+        {
+          "location": "Map",
+          "quantity": 2,
+          "bulb_size": null
+        },
+        {
+          "location": "Dome",
+          "quantity": 1,
+          "bulb_size": null
+        },
+        {
+          "location": "Courtesy",
+          "quantity": 2,
+          "bulb_size": null
+        },
+        {
+          "location": "Trunk",
+          "quantity": 1,
+          "bulb_size": null
+        }
+      ]
+    },
+    {
+      "year_range": "2006-2009",
+      "make": "Volkswagen",
+      "model": "Golf Mk5",
+      "url": "https://precisionled.com/volkswagen-golf-mk5-premium-led-interior-package-2006-2009.html",
+      "price_usd": null,
+      "items": [
+        {
+          "location": "Map",
+          "quantity": 5,
+          "bulb_size": null
+        },
+        {
+          "location": "Dome",
+          "quantity": 1,
+          "bulb_size": null
+        },
+        {
+          "location": "Courtesy",
+          "quantity": 4,
+          "bulb_size": null
+        },
+        {
+          "location": "Trunk",
+          "quantity": 1,
+          "bulb_size": null
+        }
+      ]
+    },
+    {
+      "year_range": "2010-2013",
+      "make": "Volkswagen",
+      "model": "Gti Mk6",
+      "url": "https://precisionled.com/volkswagen-gti-mk6-premium-led-interior-package-2010-2013.html",
+      "price_usd": null,
+      "items": [
+        {
+          "location": "Map",
+          "quantity": 5,
+          "bulb_size": null
+        },
+        {
+          "location": "Trunk",
+          "quantity": 1,
+          "bulb_size": null
+        },
+        {
+          "location": "Courtesy Footwell",
+          "quantity": 2,
+          "bulb_size": null
+        }
+      ]
+    },
+    {
+      "year_range": "2014-present",
+      "make": "Volkswagen",
+      "model": "Gti Mk7",
+      "url": "https://precisionled.com/volkswagen-gti-mk7-premium-led-interior-package-2014-present.html",
+      "price_usd": null,
+      "items": [
+        {
+          "location": "Map",
+          "quantity": 4,
+          "bulb_size": null
+        },
+        {
+          "location": "Dome",
+          "quantity": 2,
+          "bulb_size": null
+        },
+        {
+          "location": "Courtesy",
+          "quantity": 2,
+          "bulb_size": null
+        }
+      ]
+    },
+    {
+      "year_range": "2005-2010",
+      "make": "Volkswagen",
+      "model": "Jetta",
+      "url": "https://precisionled.com/volkswagen-jetta-led-interior-package-2005-2010.html",
+      "price_usd": null,
+      "items": [
+        {
+          "location": "Map",
+          "quantity": 5,
+          "bulb_size": null
+        },
+        {
+          "location": "Dome",
+          "quantity": 1,
+          "bulb_size": null
+        },
+        {
+          "location": "Courtesy",
+          "quantity": 8,
+          "bulb_size": null
+        }
+      ]
+    },
+    {
+      "year_range": "1993-1998",
+      "make": "Volkswagen",
+      "model": "Jetta",
+      "url": "https://precisionled.com/volkswagen-jetta-premium-led-interior-package-1993-1998.html",
+      "price_usd": null,
+      "items": [
+        {
+          "location": "Map",
+          "quantity": 2,
+          "bulb_size": null
+        },
+        {
+          "location": "Dome",
+          "quantity": 3,
+          "bulb_size": null
+        },
+        {
+          "location": "Courtesy",
+          "quantity": 2,
+          "bulb_size": null
+        }
+      ]
+    },
+    {
+      "year_range": "2011-present",
+      "make": "Volkswagen",
+      "model": "Jetta Sportwagon",
+      "url": "https://precisionled.com/volkswagen-jetta-sportwagon-led-interior-package-2011-present.html",
+      "price_usd": null,
+      "items": [
+        {
+          "location": "Map",
+          "quantity": 2,
+          "bulb_size": null
+        },
+        {
+          "location": "Dome",
+          "quantity": 3,
+          "bulb_size": null
+        }
+      ]
+    },
+    {
+      "year_range": "1999-2004",
+      "make": "Volkswagen",
+      "model": "Jetta Wagon",
+      "url": "https://precisionled.com/volkswagen-jetta-wagon-led-interior-package-1999-2004.html",
+      "price_usd": null,
+      "items": [
+        {
+          "location": "Map",
+          "quantity": 2,
+          "bulb_size": null
+        },
+        {
+          "location": "Dome",
+          "quantity": 3,
+          "bulb_size": null
+        },
+        {
+          "location": "Courtesy",
+          "quantity": 2,
+          "bulb_size": null
+        }
+      ]
+    },
+    {
+      "year_range": "2005-2010",
+      "make": "Volkswagen",
+      "model": "Jetta Wagon",
+      "url": "https://precisionled.com/volkswagen-jetta-wagon-premium-led-interior-package-2005-2010.html",
+      "price_usd": null,
+      "items": [
+        {
+          "location": "Map",
+          "quantity": 5,
+          "bulb_size": null
+        },
+        {
+          "location": "Dome",
+          "quantity": 1,
+          "bulb_size": null
+        },
+        {
+          "location": "Courtesy",
+          "quantity": 8,
+          "bulb_size": null
+        }
+      ]
+    },
+    {
+      "year_range": "1990-1993",
+      "make": "Volkswagen",
+      "model": "Passat",
+      "url": "https://precisionled.com/volkswagen-passat-led-interior-package-1990-1993.html",
+      "price_usd": null,
+      "items": [
+        {
+          "location": "Map",
+          "quantity": 2,
+          "bulb_size": null
+        },
+        {
+          "location": "Dome",
+          "quantity": 2,
+          "bulb_size": null
+        },
+        {
+          "location": "Courtesy",
+          "quantity": 4,
+          "bulb_size": null
+        }
+      ]
+    },
+    {
+      "year_range": "1994-1997",
+      "make": "Volkswagen",
+      "model": "Passat",
+      "url": "https://precisionled.com/volkswagen-passat-led-interior-package-1994-1997.html",
+      "price_usd": null,
+      "items": [
+        {
+          "location": "Map",
+          "quantity": 4,
+          "bulb_size": null
+        },
+        {
+          "location": "Dome",
+          "quantity": 3,
+          "bulb_size": null
+        },
+        {
+          "location": "Courtesy",
+          "quantity": 6,
+          "bulb_size": null
+        }
+      ]
+    },
+    {
+      "year_range": "2011-present",
+      "make": "Volkswagen",
+      "model": "Passat",
+      "url": "https://precisionled.com/volkswagen-passat-led-interior-package-2011-present.html",
+      "price_usd": null,
+      "items": [
+        {
+          "location": "Map",
+          "quantity": 5,
+          "bulb_size": null
+        },
+        {
+          "location": "Dome",
+          "quantity": 1,
+          "bulb_size": null
+        },
+        {
+          "location": "Courtesy",
+          "quantity": 8,
+          "bulb_size": null
+        }
+      ]
+    },
+    {
+      "year_range": "1994-1997",
+      "make": "Volkswagen",
+      "model": "Passat",
+      "url": "https://precisionled.com/volkswagen-passat-premium-led-interior-package-1994-1997.html",
+      "price_usd": null,
+      "items": [
+        {
+          "location": "Map",
+          "quantity": 4,
+          "bulb_size": null
+        },
+        {
+          "location": "Dome",
+          "quantity": 3,
+          "bulb_size": null
+        },
+        {
+          "location": "Courtesy",
+          "quantity": 6,
+          "bulb_size": null
+        }
+      ]
+    },
+    {
+      "year_range": "1998-2004",
+      "make": "Volkswagen",
+      "model": "Passat Wagon",
+      "url": "https://precisionled.com/volkswagen-passat-wagon-led-interior-package-1998-2004.html",
+      "price_usd": null,
+      "items": [
+        {
+          "location": "Map",
+          "quantity": 2,
+          "bulb_size": null
+        },
+        {
+          "location": "Dome",
+          "quantity": 3,
+          "bulb_size": null
+        },
+        {
+          "location": "Courtesy",
+          "quantity": 4,
+          "bulb_size": null
+        }
+      ]
+    },
+    {
+      "year_range": "1994-1997",
+      "make": "Volkswagen",
+      "model": "Passat Wagon",
+      "url": "https://precisionled.com/volkswagen-passat-wagon-premium-led-interior-package-1994-1997.html",
+      "price_usd": null,
+      "items": [
+        {
+          "location": "Map",
+          "quantity": 2,
+          "bulb_size": null
+        },
+        {
+          "location": "Dome",
+          "quantity": 2,
+          "bulb_size": null
+        },
+        {
+          "location": "Courtesy",
+          "quantity": 4,
+          "bulb_size": null
+        }
+      ]
+    },
+    {
+      "year_range": "2009-present",
+      "make": "Volkswagen",
+      "model": "Tiguan",
+      "url": "https://precisionled.com/volkswagen-tiguan-premium-led-interior-package-2009-present.html",
+      "price_usd": null,
+      "items": [
+        {
+          "location": "Map",
+          "quantity": 2,
+          "bulb_size": null
+        },
+        {
+          "location": "Dome",
+          "quantity": 2,
+          "bulb_size": null
+        },
+        {
+          "location": "Footwell",
+          "quantity": 2,
+          "bulb_size": null
+        },
+        {
+          "location": "Trunk",
+          "quantity": 1,
+          "bulb_size": null
+        }
+      ]
+    },
+    {
+      "year_range": "2011-present",
+      "make": "Volkswagen",
+      "model": "Touareg",
+      "url": "https://precisionled.com/volkswagen-touareg-led-interior-package-2011-present.html",
+      "price_usd": null,
+      "items": [
+        {
+          "location": "Map",
+          "quantity": 4,
+          "bulb_size": null
+        },
+        {
+          "location": "Dome",
+          "quantity": 3,
+          "bulb_size": null
+        },
+        {
+          "location": "Courtesy",
+          "quantity": 8,
+          "bulb_size": null
+        },
+        {
+          "location": "Trunk",
+          "quantity": 3,
+          "bulb_size": null
+        }
+      ]
+    },
+    {
+      "year_range": "2004-2010",
+      "make": "Volkswagen",
+      "model": "Touareg",
+      "url": "https://precisionled.com/volkswagen-touareg-premium-led-interior-package-2004-2010.html",
+      "price_usd": null,
+      "items": [
+        {
+          "location": "Map",
+          "quantity": 4,
+          "bulb_size": null
+        },
+        {
+          "location": "Dome",
+          "quantity": 1,
+          "bulb_size": null
+        },
+        {
+          "location": "Courtesy",
+          "quantity": 8,
+          "bulb_size": null
+        },
+        {
+          "location": "Trunk",
+          "quantity": 2,
+          "bulb_size": null
+        }
+      ]
+    },
+    {
+      "year_range": "2011-present",
+      "make": "Volkswagen",
+      "model": "Touareg",
+      "url": "https://precisionled.com/volkswagen-touareg-premium-led-interior-package-2011-present.html",
+      "price_usd": null,
+      "items": [
+        {
+          "location": "Map",
+          "quantity": 4,
+          "bulb_size": null
+        },
+        {
+          "location": "Dome",
+          "quantity": 3,
+          "bulb_size": null
+        },
+        {
+          "location": "Courtesy",
+          "quantity": 8,
+          "bulb_size": null
+        },
+        {
+          "location": "Trunk",
+          "quantity": 3,
+          "bulb_size": null
+        }
+      ]
+    },
+    {
+      "year_range": "1991-1995",
+      "make": "Volvo",
+      "model": "940",
+      "url": "https://precisionled.com/volvo-940-led-interior-package-1991-1995.html",
+      "price_usd": null,
+      "items": [
+        {
+          "location": "Map",
+          "quantity": 4,
+          "bulb_size": null
+        },
+        {
+          "location": "Dome",
+          "quantity": 2,
+          "bulb_size": null
+        },
+        {
+          "location": "Courtesy",
+          "quantity": 4,
+          "bulb_size": null
+        }
+      ]
+    },
+    {
+      "year_range": "1991-1996",
+      "make": "Volvo",
+      "model": "960",
+      "url": "https://precisionled.com/volvo-960-premium-led-interior-package-1991-1996.html",
+      "price_usd": null,
+      "items": [
+        {
+          "location": "Map",
+          "quantity": 4,
+          "bulb_size": null
+        },
+        {
+          "location": "Dome",
+          "quantity": 2,
+          "bulb_size": null
+        },
+        {
+          "location": "Courtesy",
+          "quantity": 4,
+          "bulb_size": null
+        }
+      ]
+    },
+    {
+      "year_range": "2008-present",
+      "make": "Volvo",
+      "model": "S40",
+      "url": "https://precisionled.com/volvo-s40-led-interior-package-2008-present.html",
+      "price_usd": null,
+      "items": [
+        {
+          "location": "Map",
+          "quantity": 4,
+          "bulb_size": null
+        },
+        {
+          "location": "Dome",
+          "quantity": 2,
+          "bulb_size": null
+        },
+        {
+          "location": "Courtesy",
+          "quantity": 2,
+          "bulb_size": null
+        }
+      ]
+    },
+    {
+      "year_range": "2008-present",
+      "make": "Volvo",
+      "model": "S40",
+      "url": "https://precisionled.com/volvo-s40-premium-led-interior-package-2008-present.html",
+      "price_usd": null,
+      "items": [
+        {
+          "location": "Map",
+          "quantity": 4,
+          "bulb_size": null
+        },
+        {
+          "location": "Dome",
+          "quantity": 2,
+          "bulb_size": null
+        },
+        {
+          "location": "Courtesy",
+          "quantity": 2,
+          "bulb_size": null
+        }
+      ]
+    },
+    {
+      "year_range": "2010-present",
+      "make": "Volvo",
+      "model": "S60",
+      "url": "https://precisionled.com/volvo-s60-premium-led-interior-package-2010-present.html",
+      "price_usd": null,
+      "items": [
+        {
+          "location": "Map",
+          "quantity": 4,
+          "bulb_size": null
+        },
+        {
+          "location": "Dome",
+          "quantity": 2,
+          "bulb_size": null
+        },
+        {
+          "location": "Courtesy",
+          "quantity": 2,
+          "bulb_size": null
+        }
+      ]
+    },
+    {
+      "year_range": "1999-2006",
+      "make": "Volvo",
+      "model": "S80",
+      "url": "https://precisionled.com/volvo-s80-led-interior-package-1999-2006.html",
+      "price_usd": null,
+      "items": [
+        {
+          "location": "Map",
+          "quantity": 4,
+          "bulb_size": null
+        },
+        {
+          "location": "Dome",
+          "quantity": 4,
+          "bulb_size": null
+        },
+        {
+          "location": "Courtesy",
+          "quantity": 4,
+          "bulb_size": null
+        }
+      ]
+    },
+    {
+      "year_range": "1999-2006",
+      "make": "Volvo",
+      "model": "S80",
+      "url": "https://precisionled.com/volvo-s80-premium-led-interior-package-1999-2006.html",
+      "price_usd": null,
+      "items": [
+        {
+          "location": "Map",
+          "quantity": 4,
+          "bulb_size": null
+        },
+        {
+          "location": "Dome",
+          "quantity": 4,
+          "bulb_size": null
+        },
+        {
+          "location": "Courtesy",
+          "quantity": 4,
+          "bulb_size": null
+        }
+      ]
+    },
+    {
+      "year_range": "1997-2004",
+      "make": "Volvo",
+      "model": "V40",
+      "url": "https://precisionled.com/volvo-v40-led-interior-package-1997-2004.html",
+      "price_usd": null,
+      "items": [
+        {
+          "location": "Map",
+          "quantity": 2,
+          "bulb_size": null
+        },
+        {
+          "location": "Dome",
+          "quantity": 6,
+          "bulb_size": null
+        },
+        {
+          "location": "Courtesy",
+          "quantity": 4,
+          "bulb_size": null
+        },
+        {
+          "location": "Trunk",
+          "quantity": 2,
+          "bulb_size": null
+        }
+      ]
+    },
+    {
+      "year_range": "2001-2007",
+      "make": "Volvo",
+      "model": "V70",
+      "url": "https://precisionled.com/volvo-v70-premium-led-interior-package-2001-2007.html",
+      "price_usd": null,
+      "items": [
+        {
+          "location": "Map",
+          "quantity": 4,
+          "bulb_size": null
+        },
+        {
+          "location": "Dome",
+          "quantity": 4,
+          "bulb_size": null
+        },
+        {
+          "location": "Courtesy",
+          "quantity": 4,
+          "bulb_size": null
+        },
+        {
+          "location": "Trunk",
+          "quantity": 2,
+          "bulb_size": null
+        }
+      ]
+    },
+    {
+      "year_range": "1997-1998",
+      "make": "Volvo",
+      "model": "V90",
+      "url": "https://precisionled.com/volvo-v90-led-interior-package-1997-1998.html",
+      "price_usd": null,
+      "items": [
+        {
+          "location": "Map",
+          "quantity": 4,
+          "bulb_size": null
+        },
+        {
+          "location": "Dome",
+          "quantity": 4,
+          "bulb_size": null
+        },
+        {
+          "location": "Courtesy",
+          "quantity": 4,
+          "bulb_size": null
+        },
+        {
+          "location": "Trunk",
+          "quantity": 2,
+          "bulb_size": null
+        }
+      ]
+    },
+    {
+      "year_range": "1997-1998",
+      "make": "Volvo",
+      "model": "V90",
+      "url": "https://precisionled.com/volvo-v90-premium-led-interior-package-1997-1998.html",
+      "price_usd": null,
+      "items": [
+        {
+          "location": "Map",
+          "quantity": 4,
+          "bulb_size": null
+        },
+        {
+          "location": "Dome",
+          "quantity": 4,
+          "bulb_size": null
+        },
+        {
+          "location": "Courtesy",
+          "quantity": 4,
+          "bulb_size": null
+        },
+        {
+          "location": "Trunk",
+          "quantity": 2,
+          "bulb_size": null
+        }
+      ]
+    },
+    {
+      "year_range": "2008-present",
+      "make": "Volvo",
+      "model": "Xc70",
+      "url": "https://precisionled.com/volvo-xc70-led-interior-package-2008-present.html",
+      "price_usd": null,
+      "items": [
+        {
+          "location": "Map",
+          "quantity": 2,
+          "bulb_size": null
+        },
+        {
+          "location": "Dome",
+          "quantity": 2,
+          "bulb_size": null
+        },
+        {
+          "location": "Courtesy",
+          "quantity": 4,
+          "bulb_size": null
+        },
+        {
+          "location": "Trunk",
+          "quantity": 2,
+          "bulb_size": null
+        }
+      ]
+    },
+    {
+      "year_range": "1998-2001",
+      "make": "Volvo",
+      "model": "Xc70",
+      "url": "https://precisionled.com/volvo-xc70-premium-led-interior-package-1998-2001.html",
+      "price_usd": null,
+      "items": [
+        {
+          "location": "Map",
+          "quantity": 4,
+          "bulb_size": null
+        },
+        {
+          "location": "Dome",
+          "quantity": 4,
+          "bulb_size": null
+        },
+        {
+          "location": "Courtesy",
+          "quantity": 4,
+          "bulb_size": null
+        },
+        {
+          "location": "Trunk",
+          "quantity": 2,
+          "bulb_size": null
+        }
+      ]
+    }
+  ],
+  "failed": []
+}

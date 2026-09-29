@@ -1,0 +1,2459 @@
+{
+ "source": "precisionled.com",
+ "scraped_at": "2026-09-29T00:17:00.524785+00:00",
+ "kits": [
+  {
+   "make": "Audi",
+   "model": "A4 B7 Avant",
+   "year_range": "2006-2008",
+   "url": "https://precisionled.com/audi-a4-b7-avant-premium-led-interior-package-2006-2008.html",
+   "price_usd": null,
+   "items": [
+    {
+     "location": "Map",
+     "quantity": 4,
+     "bulb_size": null
+    },
+    {
+     "location": "Dome",
+     "quantity": 2,
+     "bulb_size": null
+    },
+    {
+     "location": "Courtesy",
+     "quantity": 8,
+     "bulb_size": null
+    },
+    {
+     "location": "Trunk",
+     "quantity": 3,
+     "bulb_size": null
+    }
+   ]
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Trunk",
+     "quantity": 3
+    }
+   ],
+   "make": "Audi",
+   "model": "A4 B8 Avant",
+   "price_usd": null,
+   "url": "https://precisionled.com/audi-a4-b8-avant-premium-led-interior-package-2009.html",
+   "year_range": "2009"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Door",
+     "quantity": 4
+    }
+   ],
+   "make": "Audi",
+   "model": "A7 4G",
+   "price_usd": null,
+   "url": "https://precisionled.com/audi-a7-4g-led-interior-package-2010.html",
+   "year_range": "2010"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 8
+    }
+   ],
+   "make": "Audi",
+   "model": "A8 D3",
+   "price_usd": null,
+   "url": "https://precisionled.com/audi-a8-d3-premium-led-interior-package-2003-2010.html",
+   "year_range": "2003-2010"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 8
+    },
+    {
+     "bulb_size": null,
+     "location": "Trunk",
+     "quantity": 3
+    }
+   ],
+   "make": "Audi",
+   "model": "S4 B7 Avant",
+   "price_usd": null,
+   "url": "https://precisionled.com/audi-s4-b7-avant-premium-led-interior-package-2006-2008.html",
+   "year_range": "2006-2008"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 8
+    }
+   ],
+   "make": "Audi",
+   "model": "S4 B7",
+   "price_usd": null,
+   "url": "https://precisionled.com/audi-s4-b7-premium-led-interior-package-2006-2008.html",
+   "year_range": "2006-2008"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 12
+    },
+    {
+     "bulb_size": null,
+     "location": "Trunk",
+     "quantity": 3
+    }
+   ],
+   "make": "Audi",
+   "model": "S4 B8 Avant",
+   "price_usd": null,
+   "url": "https://precisionled.com/audi-s4-b8-avant-premium-led-interior-package-2009.html",
+   "year_range": "2009"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 4
+    }
+   ],
+   "make": "Audi",
+   "model": "S4 B8",
+   "price_usd": null,
+   "url": "https://precisionled.com/audi-s4-b8-premium-led-interior-package-2009.html",
+   "year_range": "2009"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 4
+    }
+   ],
+   "make": "Audi",
+   "model": "S5 8T3 8F7",
+   "price_usd": null,
+   "url": "https://precisionled.com/audi-s5-8t3-8f7-led-interior-package-2007.html",
+   "year_range": "2007"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 4
+    }
+   ],
+   "make": "Audi",
+   "model": "S6 C4",
+   "price_usd": null,
+   "url": "https://precisionled.com/audi-s6-c4-led-interior-package-1994-1997.html",
+   "year_range": "1994-1997"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 12
+    }
+   ],
+   "make": "Audi",
+   "model": "S6 C5",
+   "price_usd": null,
+   "url": "https://precisionled.com/audi-s6-c5-premium-led-interior-package-1999-2003.html",
+   "year_range": "1999-2003"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 8
+    },
+    {
+     "bulb_size": null,
+     "location": "Trunk",
+     "quantity": 3
+    }
+   ],
+   "make": "Audi",
+   "model": "S6 C6 Avant",
+   "price_usd": null,
+   "url": "https://precisionled.com/audi-s6-c6-avant-led-interior-package-2006-2011.html",
+   "year_range": "2006-2011"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 6
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 4
+    }
+   ],
+   "make": "Audi",
+   "model": "S6 C6",
+   "price_usd": null,
+   "url": "https://precisionled.com/audi-s6-c6-premium-led-interior-package-2006-2011.html",
+   "year_range": "2006-2011"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Door",
+     "quantity": 4
+    }
+   ],
+   "make": "Audi",
+   "model": "S7",
+   "price_usd": null,
+   "url": "https://precisionled.com/audi-s7-premium-led-interior-package-2012-present.html",
+   "year_range": "2012-present"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 8
+    }
+   ],
+   "make": "Audi",
+   "model": "S8 D4",
+   "price_usd": null,
+   "url": "https://precisionled.com/audi-s8-d4-premium-led-interior-package-2009-present.html",
+   "year_range": "2009-present"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 3
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 1
+    },
+    {
+     "bulb_size": null,
+     "location": "Footwell",
+     "quantity": 2
+    }
+   ],
+   "make": "Bmw",
+   "model": "1 Series E88",
+   "price_usd": null,
+   "url": "https://precisionled.com/bmw-1-series-e88-premium-led-interior-package-2007-2011.html",
+   "year_range": "2007-2011"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 6
+    }
+   ],
+   "make": "Bmw",
+   "model": "2 Series Coupe",
+   "price_usd": null,
+   "url": "https://precisionled.com/bmw-2-series-coupe-premium-led-interior-package-2014-present.html",
+   "year_range": "2014-present"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 3
+    },
+    {
+     "bulb_size": null,
+     "location": "Footwell",
+     "quantity": 2
+    }
+   ],
+   "make": "Bmw",
+   "model": "3 Series E46",
+   "price_usd": null,
+   "url": "https://precisionled.com/bmw-3-series-e46-led-interior-package-1998-2004.html",
+   "year_range": "1998-2004"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Door",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Footwell",
+     "quantity": 2
+    }
+   ],
+   "make": "Bmw",
+   "model": "3 Series E90",
+   "price_usd": null,
+   "url": "https://precisionled.com/bmw-3-series-e90-premium-led-interior-package-2005-2011.html",
+   "year_range": "2005-2011"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 1
+    },
+    {
+     "bulb_size": null,
+     "location": "Front Footwell",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 2
+    }
+   ],
+   "make": "Bmw",
+   "model": "3 Series E93",
+   "price_usd": null,
+   "url": "https://precisionled.com/bmw-3-series-e93-led-interior-package-2007-2011.html",
+   "year_range": "2007-2011"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 6
+    }
+   ],
+   "make": "Bmw",
+   "model": "3 Series F30",
+   "price_usd": null,
+   "url": "https://precisionled.com/bmw-3-series-f30-premium-led-interior-package-2012-present.html",
+   "year_range": "2012-present"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 6
+    }
+   ],
+   "make": "Bmw",
+   "model": "5 Series E34",
+   "price_usd": null,
+   "url": "https://precisionled.com/bmw-5-series-e34-led-interior-package-1988-1996.html",
+   "year_range": "1988-1996"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 3
+    },
+    {
+     "bulb_size": null,
+     "location": "Door",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Footwell",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Trunk",
+     "quantity": 2
+    }
+   ],
+   "make": "Bmw",
+   "model": "5 Series E61",
+   "price_usd": null,
+   "url": "https://precisionled.com/bmw-5-series-e61-led-interior-package-2003-2010.html",
+   "year_range": "2003-2010"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 3
+    },
+    {
+     "bulb_size": null,
+     "location": "Door",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Footwell",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Trunk",
+     "quantity": 2
+    }
+   ],
+   "make": "Bmw",
+   "model": "5 Series E61",
+   "price_usd": null,
+   "url": "https://precisionled.com/bmw-5-series-e61-premium-led-interior-package-2003-2010.html",
+   "year_range": "2003-2010"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 3
+    }
+   ],
+   "make": "Buick",
+   "model": "Century",
+   "price_usd": null,
+   "url": "https://precisionled.com/buick-century-led-interior-package-1989-2005.html",
+   "year_range": "1989-2005"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 1
+    }
+   ],
+   "make": "Buick",
+   "model": "Century",
+   "price_usd": null,
+   "url": "https://precisionled.com/buick-century-premium-led-interior-package-1989-2005.html",
+   "year_range": "1989-2005"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 3
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 1
+    },
+    {
+     "bulb_size": null,
+     "location": "Trunk",
+     "quantity": 1
+    }
+   ],
+   "make": "Buick",
+   "model": "Encore",
+   "price_usd": null,
+   "url": "https://precisionled.com/buick-encore-premium-led-interior-package-2015-present.html",
+   "year_range": "2015-present"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 1
+    }
+   ],
+   "make": "Buick",
+   "model": "LeSabre",
+   "price_usd": null,
+   "url": "https://precisionled.com/buick-lesabre-premium-led-interior-package-2000-2005.html",
+   "year_range": "2000-2005"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 4
+    }
+   ],
+   "make": "Buick",
+   "model": "Lucerne",
+   "price_usd": null,
+   "url": "https://precisionled.com/buick-lucerne-led-interior-package-2006-present.html",
+   "year_range": "2006-present"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 12
+    }
+   ],
+   "make": "Buick",
+   "model": "Park Avenue",
+   "price_usd": null,
+   "url": "https://precisionled.com/buick-park-avenue-led-interior-package-1991-1996.html",
+   "year_range": "1991-1996"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 4
+    }
+   ],
+   "make": "Buick",
+   "model": "Park Avenue",
+   "price_usd": null,
+   "url": "https://precisionled.com/buick-park-avenue-premium-led-interior-package-1997-2005.html",
+   "year_range": "1997-2005"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Trunk",
+     "quantity": 2
+    }
+   ],
+   "make": "Buick",
+   "model": "Rendezvous",
+   "price_usd": null,
+   "url": "https://precisionled.com/buick-rendezvous-led-interior-package-2002-2007.html",
+   "year_range": "2002-2007"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Trunk",
+     "quantity": 2
+    }
+   ],
+   "make": "Buick",
+   "model": "Rendezvous",
+   "price_usd": null,
+   "url": "https://precisionled.com/buick-rendezvous-premium-led-interior-package-2002-2007.html",
+   "year_range": "2002-2007"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 4
+    }
+   ],
+   "make": "Cadillac",
+   "model": "CTS",
+   "price_usd": null,
+   "url": "https://precisionled.com/cadillac-cts-premium-led-interior-package-2014-present.html",
+   "year_range": "2014-present"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 4
+    }
+   ],
+   "make": "Cadillac",
+   "model": "CTS Wagon",
+   "price_usd": null,
+   "url": "https://precisionled.com/cadillac-cts-wagon-premium-led-interior-package-2008-present.html",
+   "year_range": "2008-present"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 8
+    }
+   ],
+   "make": "Cadillac",
+   "model": "DTS",
+   "price_usd": null,
+   "url": "https://precisionled.com/cadillac-dts-led-interior-package-2005-2011.html",
+   "year_range": "2005-2011"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 3
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Trunk",
+     "quantity": 1
+    }
+   ],
+   "make": "Cadillac",
+   "model": "Escalade",
+   "price_usd": null,
+   "url": "https://precisionled.com/cadillac-escalade-led-interior-package-2002-2006.html",
+   "year_range": "2002-2006"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Trunk",
+     "quantity": 1
+    }
+   ],
+   "make": "Cadillac",
+   "model": "Escalade",
+   "price_usd": null,
+   "url": "https://precisionled.com/cadillac-escalade-premium-led-interior-package-2007-present.html",
+   "year_range": "2007-present"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 3
+    }
+   ],
+   "make": "Cadillac",
+   "model": "SRX",
+   "price_usd": null,
+   "url": "https://precisionled.com/cadillac-srx-premium-led-interior-package-2004-2009.html",
+   "year_range": "2004-2009"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 4
+    }
+   ],
+   "make": "Cadillac",
+   "model": "XLR",
+   "price_usd": null,
+   "url": "https://precisionled.com/cadillac-xlr-led-interior-package-2004-2009.html",
+   "year_range": "2004-2009"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 2
+    }
+   ],
+   "make": "Mazda",
+   "model": "626",
+   "price_usd": null,
+   "url": "https://precisionled.com/mazda-626-premium-led-interior-package-1988-1992.html",
+   "year_range": "1988-1992"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Trunk",
+     "quantity": 1
+    }
+   ],
+   "make": "Mazda",
+   "model": "CX-9",
+   "price_usd": null,
+   "url": "https://precisionled.com/mazda-cx-9-led-interior-package-2007-present.html",
+   "year_range": "2007-present"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Trunk",
+     "quantity": 1
+    }
+   ],
+   "make": "Mazda",
+   "model": "CX-9",
+   "price_usd": null,
+   "url": "https://precisionled.com/mazda-cx-9-premium-led-interior-package-2007-present.html",
+   "year_range": "2007-present"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 2
+    }
+   ],
+   "make": "Mazda",
+   "model": "Miata MX-5",
+   "price_usd": null,
+   "url": "https://precisionled.com/mazda-miata-mx-5-led-interior-package-2006-present.html",
+   "year_range": "2006-present"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 2
+    }
+   ],
+   "make": "Mazda",
+   "model": "RX-7",
+   "price_usd": null,
+   "url": "https://precisionled.com/mazda-rx-7-premium-led-interior-package-1986-1992.html",
+   "year_range": "1986-1992"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 3
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Trunk",
+     "quantity": 1
+    }
+   ],
+   "make": "Mazda",
+   "model": "Tribute",
+   "price_usd": null,
+   "url": "https://precisionled.com/mazda-tribute-premium-led-interior-package-2008-present.html",
+   "year_range": "2008-present"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 1
+    },
+    {
+     "bulb_size": null,
+     "location": "Door",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Footwell",
+     "quantity": 2
+    }
+   ],
+   "make": "Mercedes",
+   "model": "C Class Coupe W204",
+   "price_usd": null,
+   "url": "https://precisionled.com/mercedes-c-class-coupe-w204-led-interior-package-2008-2013.html",
+   "year_range": "2008-2013"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 6
+    }
+   ],
+   "make": "Mercedes",
+   "model": "C Class W202",
+   "price_usd": null,
+   "url": "https://precisionled.com/mercedes-c-class-w202-premium-led-interior-package-1993-1999.html",
+   "year_range": "1993-1999"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 6
+    }
+   ],
+   "make": "Mercedes",
+   "model": "CL",
+   "price_usd": null,
+   "url": "https://precisionled.com/mercedes-cl-led-interior-package-1999-2005.html",
+   "year_range": "1999-2005"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 6
+    }
+   ],
+   "make": "Mercedes",
+   "model": "CL",
+   "price_usd": null,
+   "url": "https://precisionled.com/mercedes-cl-premium-led-interior-package-2006-present.html",
+   "year_range": "2006-present"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 6
+    }
+   ],
+   "make": "Mercedes",
+   "model": "CLA Class",
+   "price_usd": null,
+   "url": "https://precisionled.com/mercedes-cla-class-premium-led-interior-package-2014-present.html",
+   "year_range": "2014-present"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 4
+    }
+   ],
+   "make": "Mercedes",
+   "model": "CLK Coupe",
+   "price_usd": null,
+   "url": "https://precisionled.com/mercedes-clk-coupe-premium-led-interior-package-1996-2002.html",
+   "year_range": "1996-2002"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 4
+    }
+   ],
+   "make": "Mercedes",
+   "model": "CLS",
+   "price_usd": null,
+   "url": "https://precisionled.com/mercedes-cls-led-interior-package-2011-present.html",
+   "year_range": "2011-present"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 4
+    }
+   ],
+   "make": "Mercedes",
+   "model": "CLS",
+   "price_usd": null,
+   "url": "https://precisionled.com/mercedes-cls-premium-led-interior-package-2006-2010.html",
+   "year_range": "2006-2010"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 4
+    }
+   ],
+   "make": "Mercedes",
+   "model": "E Class",
+   "price_usd": null,
+   "url": "https://precisionled.com/mercedes-e-class-led-interior-package-1995-2001.html",
+   "year_range": "1995-2001"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Door",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Footwell",
+     "quantity": 4
+    }
+   ],
+   "make": "Mercedes",
+   "model": "E Class",
+   "price_usd": null,
+   "url": "https://precisionled.com/mercedes-e-class-led-interior-package-2002-2008.html",
+   "year_range": "2002-2008"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 1
+    },
+    {
+     "bulb_size": null,
+     "location": "Door",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Footwell",
+     "quantity": 4
+    }
+   ],
+   "make": "Mercedes",
+   "model": "E Class",
+   "price_usd": null,
+   "url": "https://precisionled.com/mercedes-e-class-premium-led-interior-package-2009-2016.html",
+   "year_range": "2009-2016"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Trunk",
+     "quantity": 2
+    }
+   ],
+   "make": "Mercedes",
+   "model": "G Class",
+   "price_usd": null,
+   "url": "https://precisionled.com/mercedes-g-class-premium-led-interior-package-2004-2009.html",
+   "year_range": "2004-2009"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 6
+    },
+    {
+     "bulb_size": null,
+     "location": "Trunk",
+     "quantity": 1
+    }
+   ],
+   "make": "Mercedes",
+   "model": "GL X164",
+   "price_usd": null,
+   "url": "https://precisionled.com/mercedes-gl-x164-led-interior-package-2006-2012.html",
+   "year_range": "2006-2012"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 3
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 8
+    },
+    {
+     "bulb_size": null,
+     "location": "Trunk",
+     "quantity": 2
+    }
+   ],
+   "make": "Mercedes",
+   "model": "GL X166",
+   "price_usd": null,
+   "url": "https://precisionled.com/mercedes-gl-x166-premium-led-interior-package-2012-present.html",
+   "year_range": "2012-present"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 6
+    },
+    {
+     "bulb_size": null,
+     "location": "Trunk",
+     "quantity": 2
+    }
+   ],
+   "make": "Mercedes",
+   "model": "M Class",
+   "price_usd": null,
+   "url": "https://precisionled.com/mercedes-m-class-led-interior-package-2012-present.html",
+   "year_range": "2012-present"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 6
+    },
+    {
+     "bulb_size": null,
+     "location": "Trunk",
+     "quantity": 2
+    }
+   ],
+   "make": "Mercedes",
+   "model": "M Class",
+   "price_usd": null,
+   "url": "https://precisionled.com/mercedes-m-class-premium-led-interior-package-2006-2011.html",
+   "year_range": "2006-2011"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Trunk",
+     "quantity": 2
+    }
+   ],
+   "make": "Mercedes",
+   "model": "R Class",
+   "price_usd": null,
+   "url": "https://precisionled.com/mercedes-r-class-premium-led-interior-package-2006-present.html",
+   "year_range": "2006-present"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 8
+    }
+   ],
+   "make": "Mercedes",
+   "model": "S Class",
+   "price_usd": null,
+   "url": "https://precisionled.com/mercedes-s-class-led-interior-package-1999-2005.html",
+   "year_range": "1999-2005"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 4
+    }
+   ],
+   "make": "Mercedes",
+   "model": "SL",
+   "price_usd": null,
+   "url": "https://precisionled.com/mercedes-sl-led-interior-package-2009-2011.html",
+   "year_range": "2009-2011"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 4
+    }
+   ],
+   "make": "Mercedes",
+   "model": "SLK",
+   "price_usd": null,
+   "url": "https://precisionled.com/mercedes-slk-premium-led-interior-package-2006-2010.html",
+   "year_range": "2006-2010"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 2
+    }
+   ],
+   "make": "Mercedes",
+   "model": "SLR",
+   "price_usd": null,
+   "url": "https://precisionled.com/mercedes-slr-premium-led-interior-package-2003-2010.html",
+   "year_range": "2003-2010"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 4
+    }
+   ],
+   "make": "Mercury",
+   "model": "Grand Marquis",
+   "price_usd": null,
+   "url": "https://precisionled.com/mercury-grand-marquis-premium-led-interior-package-1992-1997.html",
+   "year_range": "1992-1997"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 4
+    }
+   ],
+   "make": "Mercury",
+   "model": "Marauder",
+   "price_usd": null,
+   "url": "https://precisionled.com/mercury-marauder-led-interior-package-2003-2004.html",
+   "year_range": "2003-2004"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 4
+    }
+   ],
+   "make": "Mercury",
+   "model": "Milan",
+   "price_usd": null,
+   "url": "https://precisionled.com/mercury-milan-premium-led-interior-package-2006-2010.html",
+   "year_range": "2006-2010"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Trunk",
+     "quantity": 1
+    }
+   ],
+   "make": "Mercury",
+   "model": "Mountaineer",
+   "price_usd": null,
+   "url": "https://precisionled.com/mercury-mountaineer-led-interior-package-2002-2005.html",
+   "year_range": "2002-2005"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Trunk",
+     "quantity": 1
+    }
+   ],
+   "make": "Mini",
+   "model": "Cooper Cabrio",
+   "price_usd": null,
+   "url": "https://precisionled.com/mini-cooper-cabrio-premium-led-interior-package-2005-2008.html",
+   "year_range": "2005-2008"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Trunk",
+     "quantity": 1
+    }
+   ],
+   "make": "Mini",
+   "model": "Cooper Clubman S",
+   "price_usd": null,
+   "url": "https://precisionled.com/mini-cooper-clubman-s-led-interior-package-2008-present.html",
+   "year_range": "2008-present"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Trunk",
+     "quantity": 1
+    }
+   ],
+   "make": "Mini",
+   "model": "Cooper Clubman S",
+   "price_usd": null,
+   "url": "https://precisionled.com/mini-cooper-clubman-s-premium-led-interior-package-2008-present.html",
+   "year_range": "2008-present"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 1
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Trunk",
+     "quantity": 1
+    }
+   ],
+   "make": "Mini",
+   "model": "Cooper",
+   "price_usd": null,
+   "url": "https://precisionled.com/mini-cooper-led-interior-package-2014-present.html",
+   "year_range": "2014-present"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 1
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Trunk",
+     "quantity": 1
+    }
+   ],
+   "make": "Mini",
+   "model": "Cooper S",
+   "price_usd": null,
+   "url": "https://precisionled.com/mini-cooper-s-led-interior-package-2001-2006.html",
+   "year_range": "2001-2006"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 1
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Trunk",
+     "quantity": 1
+    }
+   ],
+   "make": "Mini",
+   "model": "Cooper S",
+   "price_usd": null,
+   "url": "https://precisionled.com/mini-cooper-s-premium-led-interior-package-2001-2006.html",
+   "year_range": "2001-2006"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 1
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Trunk",
+     "quantity": 1
+    }
+   ],
+   "make": "Mini",
+   "model": "Countryman",
+   "price_usd": null,
+   "url": "https://precisionled.com/mini-countryman-led-interior-package-2010-present.html",
+   "year_range": "2010-present"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 1
+    },
+    {
+     "bulb_size": null,
+     "location": "Trunk",
+     "quantity": 1
+    }
+   ],
+   "make": "Nissan",
+   "model": "Leaf",
+   "price_usd": null,
+   "url": "https://precisionled.com/nissan-leaf-led-interior-package-2011-present.html",
+   "year_range": "2011-present"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 1
+    },
+    {
+     "bulb_size": null,
+     "location": "Trunk",
+     "quantity": 1
+    }
+   ],
+   "make": "Nissan",
+   "model": "Leaf",
+   "price_usd": null,
+   "url": "https://precisionled.com/nissan-leaf-premium-led-interior-package-2011-present.html",
+   "year_range": "2011-present"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 1
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 4
+    }
+   ],
+   "make": "Nissan",
+   "model": "Maxima",
+   "price_usd": null,
+   "url": "https://precisionled.com/nissan-maxima-led-interior-package-1989-1994.html",
+   "year_range": "1989-1994"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 1
+    },
+    {
+     "bulb_size": null,
+     "location": "Door",
+     "quantity": 2
+    }
+   ],
+   "make": "Nissan",
+   "model": "Maxima",
+   "price_usd": null,
+   "url": "https://precisionled.com/nissan-maxima-led-interior-package-2000-2003.html",
+   "year_range": "2000-2003"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 4
+    }
+   ],
+   "make": "Nissan",
+   "model": "Maxima",
+   "price_usd": null,
+   "url": "https://precisionled.com/nissan-maxima-led-interior-package-2004-2008.html",
+   "year_range": "2004-2008"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 1
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 4
+    }
+   ],
+   "make": "Nissan",
+   "model": "Maxima",
+   "price_usd": null,
+   "url": "https://precisionled.com/nissan-maxima-premium-led-interior-package-1989-1994.html",
+   "year_range": "1989-1994"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 1
+    },
+    {
+     "bulb_size": null,
+     "location": "Door",
+     "quantity": 2
+    }
+   ],
+   "make": "Nissan",
+   "model": "Maxima",
+   "price_usd": null,
+   "url": "https://precisionled.com/nissan-maxima-premium-led-interior-package-2000-2003.html",
+   "year_range": "2000-2003"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 1
+    }
+   ],
+   "make": "Nissan",
+   "model": "NX",
+   "price_usd": null,
+   "url": "https://precisionled.com/nissan-nx-led-interior-package-1991-1993.html",
+   "year_range": "1991-1993"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 1
+    }
+   ],
+   "make": "Nissan",
+   "model": "NX",
+   "price_usd": null,
+   "url": "https://precisionled.com/nissan-nx-premium-led-interior-package-1991-1993.html",
+   "year_range": "1991-1993"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Trunk",
+     "quantity": 1
+    }
+   ],
+   "make": "Nissan",
+   "model": "Quest",
+   "price_usd": null,
+   "url": "https://precisionled.com/nissan-quest-led-interior-package-2004-2009.html",
+   "year_range": "2004-2009"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 1
+    }
+   ],
+   "make": "Subaru",
+   "model": "Impreza",
+   "price_usd": null,
+   "url": "https://precisionled.com/subaru-impreza-premium-led-interior-package-2000-2007.html",
+   "year_range": "2000-2007"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 4
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 1
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 2
+    }
+   ],
+   "make": "Subaru",
+   "model": "Justy",
+   "price_usd": null,
+   "url": "https://precisionled.com/subaru-justy-premium-led-interior-package-1989-1994.html",
+   "year_range": "1989-1994"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 1
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 2
+    }
+   ],
+   "make": "Subaru",
+   "model": "Legacy",
+   "price_usd": null,
+   "url": "https://precisionled.com/subaru-legacy-led-interior-package-2004-2009.html",
+   "year_range": "2004-2009"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 3
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 2
+    }
+   ],
+   "make": "Subaru",
+   "model": "Legacy",
+   "price_usd": null,
+   "url": "https://precisionled.com/subaru-legacy-premium-led-interior-package-1989-1994.html",
+   "year_range": "1989-1994"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 3
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 2
+    }
+   ],
+   "make": "Subaru",
+   "model": "Legacy Wagon",
+   "price_usd": null,
+   "url": "https://precisionled.com/subaru-legacy-wagon-led-interior-package-1995-1999.html",
+   "year_range": "1995-1999"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 1
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 4
+    }
+   ],
+   "make": "Subaru",
+   "model": "Legacy Wagon",
+   "price_usd": null,
+   "url": "https://precisionled.com/subaru-legacy-wagon-led-interior-package-2000-2003.html",
+   "year_range": "2000-2003"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 4
+    }
+   ],
+   "make": "Subaru",
+   "model": "Loyale",
+   "price_usd": null,
+   "url": "https://precisionled.com/subaru-loyale-led-interior-package-1990-1994.html",
+   "year_range": "1990-1994"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 1
+    },
+    {
+     "bulb_size": null,
+     "location": "Courtesy",
+     "quantity": 2
+    }
+   ],
+   "make": "Subaru",
+   "model": "Outback",
+   "price_usd": null,
+   "url": "https://precisionled.com/subaru-outback-premium-led-interior-package-2000-2004.html",
+   "year_range": "2000-2004"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 1
+    }
+   ],
+   "make": "Subaru",
+   "model": "WRX",
+   "price_usd": null,
+   "url": "https://precisionled.com/subaru-wrx-led-interior-package-2000-2007.html",
+   "year_range": "2000-2007"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 1
+    }
+   ],
+   "make": "Subaru",
+   "model": "WRX STI",
+   "price_usd": null,
+   "url": "https://precisionled.com/subaru-wrx-sti-led-interior-package-2008-2013.html",
+   "year_range": "2008-2013"
+  },
+  {
+   "items": [
+    {
+     "bulb_size": null,
+     "location": "Map",
+     "quantity": 2
+    },
+    {
+     "bulb_size": null,
+     "location": "Dome",
+     "quantity": 1
+    },
+    {
+     "bulb_size": null,
+     "location": "Trunk",
+     "quantity": 1
+    }
+   ],
+   "make": "Subaru",
+   "model": "XV Crosstrek",
+   "price_usd": null,
+   "url": "https://precisionled.com/subaru-xv-crosstrek-led-interior-package-2013-present.html",
+   "year_range": "2013-present"
+  },
+  {
+   "make": "Mini",
+   "model": "Cooper",
+   "year_range": "2001-2006",
+   "title_years": null,
+   "url": "https://precisionled.com/mini-cooper-premium-led-interior-package-2001-2006.html",
+   "price_usd": null,
+   "items": [
+    {
+     "location": "Map",
+     "quantity": 2,
+     "bulb_size": null
+    },
+    {
+     "location": "Dome",
+     "quantity": 1,
+     "bulb_size": null
+    },
+    {
+     "location": "Courtesy",
+     "quantity": 4,
+     "bulb_size": null
+    },
+    {
+     "location": "Trunk",
+     "quantity": 1,
+     "bulb_size": null
+    }
+   ],
+   "note": "Trunk x1 inferred: premium page HTML malformed (\"Trunk (12\" unclosed); both Cooper S sibling pages read Trunk (1)"
+  }
+ ],
+ "failed": []
+}

@@ -58,6 +58,27 @@ def get_cart():
     return session.get("cart", {})
 
 
+def cart_vehicle_label(data):
+    """Normalize a vehicle tag to a 'YEAR MAKE MODEL' label string.
+
+    Accepts a dict {year, make, model} (from the fitment pages' JSON) or a
+    preformatted string. Returns '' when no usable vehicle was given.
+    """
+    if isinstance(data, dict):
+        parts = [str(data.get("year", "")).strip(),
+                 str(data.get("make", "")).strip(),
+                 str(data.get("model", "")).strip()]
+        label = " ".join(p for p in parts if p)
+    else:
+        label = str(data or "").strip()
+    return label[:60]
+
+
+def cart_vehicle_slug(label):
+    slug = re.sub(r"[^a-z0-9]+", "-", label.lower()).strip("-")
+    return slug[:60]
+
+
 def unit_price_cents(product):
     """Price the customer actually pays: sale price when set, else regular."""
     return product.get("sale_price_cents") or product["price_cents"]
@@ -102,8 +123,28 @@ def cart_detailed():
             "unit_price_cents": unit,
             "line_total": line_total,
             "line_total_str": money(line_total),
+            "vehicle": item.get("vehicle", "") or "",
         })
     return lines, subtotal
+
+
+def group_cart_lines(lines):
+    """Group cart/order lines by their vehicle tag.
+
+    Returns a list of (vehicle_label, lines) tuples: vehicle groups in
+    first-seen order, then ungrouped lines (vehicle == '') last.
+    """
+    groups, order = {}, []
+    for l in lines:
+        v = l.get("vehicle") or ""
+        if v not in groups:
+            groups[v] = []
+            order.append(v)
+        groups[v].append(l)
+    # Ungrouped lines first (no heading), then vehicle groups in
+    # first-seen order, so a trailing group never looks ambiguous.
+    ordered = ([""] if "" in groups else []) + [v for v in order if v]
+    return [(v, groups[v]) for v in ordered]
 
 
 @app.context_processor
@@ -701,6 +742,7 @@ def cart_view():
     lines, subtotal = cart_detailed()
     promo, discount_cents = landing.active_cart_promo(subtotal)
     return render_template("cart.html", lines=lines, subtotal=subtotal,
+                           grouped_lines=group_cart_lines(lines),
                            subtotal_str=money(subtotal),
                            free_ship=money(FREE_SHIP_THRESHOLD_CENTS),
                            promo=promo, discount_cents=discount_cents,
@@ -742,21 +784,31 @@ def cart_add():
         qty = max(1, min(99, int(request.form.get("qty", 1))))
     except (TypeError, ValueError):
         qty = 1
+    vehicle = cart_vehicle_label(request.form.get("vehicle", ""))
     key = f"{pid}::v{var['id']}"
+    if vehicle:
+        key += f"::{cart_vehicle_slug(vehicle)}"
     cart = get_cart()
     if key in cart:
         cart[key]["qty"] = min(99, cart[key]["qty"] + qty)
+        if vehicle:
+            cart[key]["vehicle"] = vehicle
     else:
         cart[key] = {"product_id": pid, "variation_id": var["id"],
-                     "qty": qty}
+                     "qty": qty, "vehicle": vehicle}
     session["cart"] = cart
     return redirect(url_for("cart_view"))
 
 
-def _cart_add_item(pid, vid, qty=1):
+def _cart_add_item(pid, vid, qty=1, vehicle=""):
     """Validated single-line add, shared by /cart/add's variation path and
     the JSON fitment API. The variation must belong to the product; the
-    price is always re-derived server-side. Returns (ok, detail)."""
+    price is always re-derived server-side. Returns (ok, detail).
+
+    ``vehicle`` is a 'YEAR MAKE MODEL' label tag. The same product added
+    for different vehicles stays on separate lines so the cart can group
+    by vehicle.
+    """
     p = kits.kit_product_for_id(pid) or db.get_product(pid)
     if not p or p["status"] != "active":
         return False, "product not found"
@@ -768,13 +820,19 @@ def _cart_add_item(pid, vid, qty=1):
         qty = max(1, min(99, int(qty or 1)))
     except (TypeError, ValueError):
         qty = 1
+    vehicle = cart_vehicle_label(vehicle)
     key = f"{pid}::v{var['id']}"
+    if vehicle:
+        key += f"::{cart_vehicle_slug(vehicle)}"
     cart = get_cart()
     if key in cart:
         cart[key]["qty"] = min(99, cart[key]["qty"] + qty)
+        # Keep the newest vehicle tag if the same key is re-added.
+        if vehicle:
+            cart[key]["vehicle"] = vehicle
     else:
         cart[key] = {"product_id": pid, "variation_id": var["id"],
-                     "qty": qty}
+                     "qty": qty, "vehicle": vehicle}
     session["cart"] = cart
     return True, {"key": key, "qty": cart[key]["qty"],
                   "unit_cents": db.variation_sell_price(p, var),
@@ -792,7 +850,8 @@ def api_cart_add():
     data = request.get_json(force=True, silent=True) or {}
     ok, detail = _cart_add_item(data.get("product_id", ""),
                                 data.get("variation_id", ""),
-                                data.get("qty", 1))
+                                data.get("qty", 1),
+                                cart_vehicle_label(data.get("vehicle")))
     if not ok:
         return jsonify({"ok": False, "error": detail}), 400
     return jsonify({"ok": True, "cart_count": _cart_count(), **detail})
@@ -809,6 +868,7 @@ def api_cart_add_kit():
     data = request.get_json(force=True, silent=True) or {}
     items = data.get("items") or []
     vehicle = data.get("vehicle") or {}
+    vehicle_label = cart_vehicle_label(vehicle)
     if not items or len(items) > 25:
         return jsonify({"ok": False, "error": "bad items"}), 400
     added, total = 0, 0
@@ -820,7 +880,7 @@ def api_cart_add_kit():
             if not vk or vk.get("kit_id") != str(pid):
                 continue  # kit doesn't belong to this vehicle: skip it
         ok, detail = _cart_add_item(pid, it.get("variation_id", ""),
-                                    it.get("qty", 1))
+                                    it.get("qty", 1), vehicle_label)
         if ok:
             added += 1
             total += detail["unit_cents"] * detail["qty"]
@@ -877,6 +937,7 @@ def _checkout_ctx(lines, subtotal):
     promo, discount_cents = landing.active_cart_promo(subtotal)
     return {
         "lines": lines, "subtotal": subtotal,
+        "grouped_lines": group_cart_lines(lines),
         "subtotal_str": money(subtotal),
         "payments_ready": payments.stripe_configured(),
         "promo": promo, "discount_cents": discount_cents,
@@ -938,7 +999,9 @@ def checkout_create():
 def checkout_success():
     sid = request.args.get("session_id", "")
     order = db.get_order_by_session(sid) if sid else None
-    return render_template("checkout_success.html", order=order)
+    grouped = group_cart_lines(order["line_items"]) if order else []
+    return render_template("checkout_success.html", order=order,
+                           grouped_lines=grouped)
 
 
 @app.route("/checkout/cancel")
@@ -2079,6 +2142,7 @@ def admin_order_detail(oid):
                           else shiputil.detect_carrier(
                               order["tracking_number"]))
     return render_template("admin_order_detail.html", o=order, money=money,
+                           grouped_items=group_cart_lines(order["line_items"]),
                            events=db.list_order_events(oid),
                            carrier=carrier, track_url=track_url,
                            stripe_ready=payments.stripe_configured(),
@@ -2227,7 +2291,8 @@ def admin_packing_slip(oid):
     order = db.get_order(oid)
     if not order:
         abort(404)
-    return render_template("packing_slip.html", o=order, money=money)
+    return render_template("packing_slip.html", o=order, money=money,
+                           grouped_items=group_cart_lines(order["line_items"]))
 
 
 @app.route("/admin/orders/pick-list")
@@ -2608,7 +2673,9 @@ def track_order():
         else:
             error = ("We couldn't find an order with that number and email. "
                      "Double-check both and try again.")
-    return render_template("track_order.html", result=result, error=error)
+    grouped = group_cart_lines(result["line_items"]) if result else []
+    return render_template("track_order.html", result=result, error=error,
+                           grouped_lines=grouped)
 
 
 @app.errorhandler(404)

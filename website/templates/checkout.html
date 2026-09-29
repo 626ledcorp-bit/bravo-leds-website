@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block title %}Checkout — Bravo LEDs{% endblock %}
 {% block content %}
+<style>.veh-head.small{margin:10px 0 2px}</style>
 <div class="section-light">
 <div class="wrap">
   <h1>Checkout</h1>
@@ -60,12 +61,15 @@
     </div>
     <aside class="cart-summary">
       <h2>Order Summary</h2>
-      {% for l in lines %}
+      {% for vehicle, vlines in grouped_lines %}
+      {% if vehicle %}<div class="veh-head small">🚗 <strong>{{ vehicle }}</strong></div>{% endif %}
+      {% for l in vlines %}
       <div class="cart-line">
         <div><strong>{{ l.product.name }}</strong><br>
         <span class="hint">{% if l.variation_label %}{{ l.variation_label }} · {% endif %}× {{ l.qty }}</span></div>
         <div>{{ l.line_total_str }}</div>
       </div>
+      {% endfor %}
       {% endfor %}
       <div class="divider"></div>
       <div class="cart-line"><div>Subtotal</div><div>{{ subtotal_str }}</div></div>

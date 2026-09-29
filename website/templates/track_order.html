@@ -23,8 +23,11 @@
     <p class="muted">This order was cancelled. Contact us if you have questions.</p>
     {% endif %}
     <div style="margin-top:18px">
-      {% for l in result.line_items %}
-      <div class="track-line"><span>{{ l.qty }} × {{ l.product.name }}{% if l.variation_label %} <span class="muted small">({{ l.variation_label }})</span>{% endif %}</span></div>
+      {% for vehicle, vlines in grouped_lines %}
+      {% if vehicle %}<div style="margin:8px 0 2px"><strong>🚗 {{ vehicle }}</strong></div>{% endif %}
+      {% for l in vlines %}
+      <div class="track-line"><span>{{ l.qty }} × {{ l.name }}{% if l.variation_label %} <span class="muted small">({{ l.variation_label }})</span>{% endif %}</span></div>
+      {% endfor %}
       {% endfor %}
       <div class="track-line"><strong>Total</strong><strong>{{ result.total_str }}</strong></div>
     </div>

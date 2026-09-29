@@ -1,0 +1,31 @@
+[
+ {
+  "make": "Audi",
+  "model": "A4 B7 Avant",
+  "year_range": "2006-2008",
+  "url": "https://precisionled.com/audi-a4-b7-avant-premium-led-interior-package-2006-2008.html",
+  "price_usd": null,
+  "items": [
+   {
+    "location": "Map",
+    "quantity": 4,
+    "bulb_size": null
+   },
+   {
+    "location": "Dome",
+    "quantity": 2,
+    "bulb_size": null
+   },
+   {
+    "location": "Courtesy",
+    "quantity": 8,
+    "bulb_size": null
+   },
+   {
+    "location": "Trunk",
+    "quantity": 3,
+    "bulb_size": null
+   }
+  ]
+ }
+]

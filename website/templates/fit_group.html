@@ -29,6 +29,7 @@
       <button type="button" class="btn btn-sm" id="kitcard-add"
               data-pid="{{ interior_kit.product_id }}"
               data-vid="{{ interior_kit.variation_id }}"
+              data-vehicle="{{ vehicle_label }}"
               data-name="Complete Interior LED Kit">Add — {{ money(interior_kit.price_cents) }}</button>
     </div>
   </div>
@@ -44,7 +45,8 @@
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ product_id: btn.dataset.pid,
-                             variation_id: btn.dataset.vid, qty: 1 })
+                             variation_id: btn.dataset.vid, qty: 1,
+                             vehicle: btn.dataset.vehicle || "" })
     }).then(function (r) { return r.json(); }).then(function (j) {
       if (j.ok) {
         document.querySelectorAll('.cart-count').forEach(function (el) {

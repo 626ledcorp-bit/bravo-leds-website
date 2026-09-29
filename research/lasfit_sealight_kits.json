@@ -1,0 +1,768 @@
+{
+  "sources": [
+    "diode-dynamics",
+    "auxito",
+    "lasfit",
+    "sealight"
+  ],
+  "scraped_at": "2026-09-28",
+  "kits": [
+    {
+      "source": "diode-dynamics",
+      "year_range": "2002-2007",
+      "make": "Subaru",
+      "model": "WRX/STI",
+      "url": "https://www.fastwrx.com/products/diode-dynamics-led-interior-lamp-kit-2002-2007-wrx-sti",
+      "price_usd": 46.95,
+      "kit_type": "interior_only",
+      "items": [
+        {
+          "location": "Map Lights",
+          "quantity": 2,
+          "bulb_size": "31mm"
+        },
+        {
+          "location": "License Plate Lights",
+          "quantity": 2,
+          "bulb_size": "194"
+        },
+        {
+          "location": "Trunk Light",
+          "quantity": 1,
+          "bulb_size": "194"
+        },
+        {
+          "location": "Dome Light",
+          "quantity": 1,
+          "bulb_size": "31mm"
+        }
+      ],
+      "note": "Kit also includes 2x 28mm vanity bulbs that go unused on GD chassis (no illuminated vanity mirrors)."
+    },
+    {
+      "source": "diode-dynamics",
+      "year_range": "2008-2014",
+      "make": "Subaru",
+      "model": "WRX",
+      "url": "https://evergreenoffroad.com/products/diode-dynamics-subaru-wrx-2008-2014-interior-led-conversion-kit",
+      "price_usd": null,
+      "kit_type": "interior_only",
+      "items": [
+        {
+          "location": "License Plate Lights",
+          "quantity": 2,
+          "bulb_size": "194"
+        },
+        {
+          "location": "Front Map Lights",
+          "quantity": 2,
+          "bulb_size": "31mm"
+        },
+        {
+          "location": "Dome Light",
+          "quantity": 1,
+          "bulb_size": "31mm"
+        },
+        {
+          "location": "Trunk Light",
+          "quantity": 1,
+          "bulb_size": "194"
+        }
+      ]
+    },
+    {
+      "source": "diode-dynamics",
+      "year_range": "2015-2021",
+      "make": "Subaru",
+      "model": "WRX/STI",
+      "url": "https://www.fastwrx.com/products/diode-dynamics-led-interior-lamp-kit-2015-wrx-sti",
+      "price_usd": 46.95,
+      "kit_type": "interior_only",
+      "items": [
+        {
+          "location": "Vanity Lights",
+          "quantity": 2,
+          "bulb_size": "28mm"
+        },
+        {
+          "location": "Map Lights",
+          "quantity": 2,
+          "bulb_size": "31mm"
+        },
+        {
+          "location": "License Plate Lights",
+          "quantity": 2,
+          "bulb_size": "194"
+        },
+        {
+          "location": "Trunk Light",
+          "quantity": 1,
+          "bulb_size": "194"
+        },
+        {
+          "location": "Dome Light",
+          "quantity": 1,
+          "bulb_size": "31mm"
+        }
+      ]
+    },
+    {
+      "source": "diode-dynamics",
+      "year_range": "2003-2009",
+      "make": "Toyota",
+      "model": "4Runner",
+      "url": "https://evergreenoffroad.com/products/diode-dynamics-4runner-4th-gen-2003-2009-interior-led-conversion-kit",
+      "price_usd": null,
+      "kit_type": "interior_only",
+      "items": [
+        {
+          "location": "License Plate Lights",
+          "quantity": 2,
+          "bulb_size": "194"
+        },
+        {
+          "location": "Glove Box Light",
+          "quantity": 1,
+          "bulb_size": "74"
+        },
+        {
+          "location": "Front Map Lights",
+          "quantity": 2,
+          "bulb_size": "194"
+        },
+        {
+          "location": "Dome Light",
+          "quantity": 1,
+          "bulb_size": "31mm"
+        },
+        {
+          "location": "Trunk Lights",
+          "quantity": 2,
+          "bulb_size": "31mm"
+        },
+        {
+          "location": "Vanity Lights",
+          "quantity": 2,
+          "bulb_size": "28mm"
+        },
+        {
+          "location": "Door Lights",
+          "quantity": 4,
+          "bulb_size": "194"
+        },
+        {
+          "location": "Footwell Lights",
+          "quantity": 4,
+          "bulb_size": "194"
+        },
+        {
+          "location": "Step Lights",
+          "quantity": 4,
+          "bulb_size": "194"
+        },
+        {
+          "location": "Ashtray Light",
+          "quantity": 1,
+          "bulb_size": "74"
+        }
+      ]
+    },
+    {
+      "source": "diode-dynamics",
+      "year_range": "2016-2022",
+      "make": "Toyota",
+      "model": "Prius",
+      "url": "https://evergreenoffroad.com/products/diode-dynamics-toyota-prius-2016-2022-interior-led-conversion-kit",
+      "price_usd": null,
+      "kit_type": "interior_only",
+      "items": [
+        {
+          "location": "Front Map Lights",
+          "quantity": 2,
+          "bulb_size": "194"
+        },
+        {
+          "location": "Dome Light",
+          "quantity": 1,
+          "bulb_size": "31mm"
+        },
+        {
+          "location": "Trunk Light",
+          "quantity": 1,
+          "bulb_size": "194"
+        },
+        {
+          "location": "Vanity Lights",
+          "quantity": 2,
+          "bulb_size": "194"
+        },
+        {
+          "location": "Door Lights",
+          "quantity": 2,
+          "bulb_size": "194"
+        },
+        {
+          "location": "Footwell Lights",
+          "quantity": 2,
+          "bulb_size": "194"
+        }
+      ]
+    },
+    {
+      "source": "diode-dynamics",
+      "year_range": "2007-2011",
+      "make": "Toyota",
+      "model": "Camry",
+      "url": "https://evergreenoffroad.com/products/diode-dynamics-toyota-camry-2007-2011-interior-led-conversion-kit",
+      "price_usd": null,
+      "kit_type": "interior_only",
+      "items": [
+        {
+          "location": "License Plate Lights",
+          "quantity": 2,
+          "bulb_size": "194"
+        },
+        {
+          "location": "Front Map Lights",
+          "quantity": 2,
+          "bulb_size": "194"
+        },
+        {
+          "location": "Dome Light",
+          "quantity": 1,
+          "bulb_size": "31mm"
+        },
+        {
+          "location": "Trunk Light",
+          "quantity": 1,
+          "bulb_size": "194"
+        },
+        {
+          "location": "Door Lights",
+          "quantity": 2,
+          "bulb_size": "194"
+        }
+      ]
+    },
+    {
+      "source": "diode-dynamics",
+      "year_range": "2016-2023",
+      "make": "Toyota",
+      "model": "Tacoma",
+      "url": "http://www.diodedynamics.com/interior-led-conversion-kit-for-2016-2023-toyota-tacoma.html",
+      "price_usd": null,
+      "kit_type": "interior_only",
+      "items": [
+        {
+          "location": "License Plate Lights",
+          "quantity": 2,
+          "bulb_size": "194"
+        },
+        {
+          "location": "Front Map Lights",
+          "quantity": 2,
+          "bulb_size": "194"
+        },
+        {
+          "location": "Dome Light",
+          "quantity": 1,
+          "bulb_size": "29mm"
+        },
+        {
+          "location": "Vanity Lights",
+          "quantity": 4,
+          "bulb_size": "28mm"
+        }
+      ]
+    },
+    {
+      "source": "diode-dynamics",
+      "year_range": "2013-2018",
+      "make": "Toyota",
+      "model": "RAV4",
+      "url": "https://pattersonperformanceparts.com/products/diode-dynamics-13-18-toyota-rav4-interior-led-kit-cool-white-stage-1",
+      "price_usd": null,
+      "kit_type": "interior_only",
+      "items": [
+        {
+          "location": "License Plate Lights",
+          "quantity": 2,
+          "bulb_size": "194"
+        },
+        {
+          "location": "Front Map Lights",
+          "quantity": 2,
+          "bulb_size": "194"
+        },
+        {
+          "location": "Dome Light",
+          "quantity": 1,
+          "bulb_size": "31mm"
+        },
+        {
+          "location": "Trunk Light",
+          "quantity": 1,
+          "bulb_size": "31mm"
+        },
+        {
+          "location": "Vanity Lights",
+          "quantity": 2,
+          "bulb_size": "194"
+        }
+      ]
+    },
+    {
+      "source": "diode-dynamics",
+      "year_range": "2014-2022",
+      "make": "Toyota",
+      "model": "Corolla",
+      "url": "https://www.cspracing.com/products/diode-dynamics-dd0582-interior-led-kit-for-2014-2022-toyota-corolla-cool-white-stage-2",
+      "price_usd": null,
+      "kit_type": "interior_only",
+      "items": [
+        {
+          "location": "License Plate Lights",
+          "quantity": 2,
+          "bulb_size": "194"
+        },
+        {
+          "location": "Front Map Lights",
+          "quantity": 2,
+          "bulb_size": "194"
+        },
+        {
+          "location": "Dome Light",
+          "quantity": 1,
+          "bulb_size": "31mm"
+        },
+        {
+          "location": "Trunk Light",
+          "quantity": 1,
+          "bulb_size": "194"
+        }
+      ],
+      "note": "Includes 2 plastic trim removal tools."
+    },
+    {
+      "source": "diode-dynamics",
+      "year_range": "2015-2019",
+      "make": "Subaru",
+      "model": "Outback",
+      "url": "https://evergreenoffroad.com/products/diode-dynamics-subaru-outback-2015-2019-interior-led-conversion-kit",
+      "price_usd": null,
+      "kit_type": "interior_only",
+      "items": [
+        {
+          "location": "License Plate Lights",
+          "quantity": 2,
+          "bulb_size": "194"
+        },
+        {
+          "location": "Front Map Lights",
+          "quantity": 2,
+          "bulb_size": "31mm"
+        },
+        {
+          "location": "Dome Light",
+          "quantity": 1,
+          "bulb_size": "31mm"
+        },
+        {
+          "location": "Trunk Light",
+          "quantity": 1,
+          "bulb_size": "194"
+        },
+        {
+          "location": "Vanity Lights",
+          "quantity": 4,
+          "bulb_size": "28mm"
+        },
+        {
+          "location": "Door Lights",
+          "quantity": 2,
+          "bulb_size": "194"
+        },
+        {
+          "location": "Step Lights",
+          "quantity": 2,
+          "bulb_size": "194"
+        }
+      ]
+    },
+    {
+      "source": "diode-dynamics",
+      "year_range": "2012-2015",
+      "make": "Honda",
+      "model": "Civic",
+      "url": "https://evergreenoffroad.com/products/diode-dynamics-honda-civic-2012-2015-interior-led-conversion-kit",
+      "price_usd": null,
+      "kit_type": "interior_only",
+      "items": [
+        {
+          "location": "License Plate Lights",
+          "quantity": 2,
+          "bulb_size": "194"
+        },
+        {
+          "location": "Front Map Lights",
+          "quantity": 2,
+          "bulb_size": "194"
+        },
+        {
+          "location": "Dome Light",
+          "quantity": 1,
+          "bulb_size": "194"
+        },
+        {
+          "location": "Trunk Light",
+          "quantity": 1,
+          "bulb_size": "194"
+        }
+      ]
+    },
+    {
+      "source": "diode-dynamics",
+      "year_range": "2015-2023",
+      "make": "Dodge",
+      "model": "Challenger",
+      "url": "http://www.diodedynamics.com/interior-led-conversion-kit-for-2015-2023-dodge-challenger.html",
+      "price_usd": null,
+      "kit_type": "interior_only",
+      "items": [
+        {
+          "location": "Glove Box Light",
+          "quantity": 1,
+          "bulb_size": "194"
+        },
+        {
+          "location": "Map Lights",
+          "quantity": 2,
+          "bulb_size": "41mm"
+        },
+        {
+          "location": "Trunk Light",
+          "quantity": 1,
+          "bulb_size": "44mm"
+        },
+        {
+          "location": "Door Lights",
+          "quantity": 2,
+          "bulb_size": "194"
+        }
+      ]
+    },
+    {
+      "source": "diode-dynamics",
+      "year_range": "2007-2013",
+      "make": "Chevrolet",
+      "model": "Silverado",
+      "url": "https://www.diodedynamics.com/interior-led-conversion-kit-for-2007-2013-chevrolet-silverado.html",
+      "price_usd": null,
+      "kit_type": "interior_only",
+      "items": [
+        {
+          "location": "License Plate Lights",
+          "quantity": 2,
+          "bulb_size": "194"
+        },
+        {
+          "location": "Front Map Lights",
+          "quantity": 2,
+          "bulb_size": "41mm"
+        },
+        {
+          "location": "Dome Lights",
+          "quantity": 2,
+          "bulb_size": "41mm"
+        },
+        {
+          "location": "Vanity Lights",
+          "quantity": 4,
+          "bulb_size": "28mm"
+        }
+      ]
+    },
+    {
+      "source": "diode-dynamics",
+      "year_range": "2010-2015",
+      "make": "Chevrolet",
+      "model": "Camaro",
+      "url": "http://www.diodedynamics.com/interior-led-conversion-kit-for-2010-2015-chevrolet-camaro.html",
+      "price_usd": null,
+      "kit_type": "interior_only",
+      "items": [
+        {
+          "location": "License Plate Lights",
+          "quantity": 2,
+          "bulb_size": "194"
+        },
+        {
+          "location": "Front Map Lights",
+          "quantity": 2,
+          "bulb_size": "194"
+        },
+        {
+          "location": "Trunk Light",
+          "quantity": 1,
+          "bulb_size": "194"
+        }
+      ]
+    },
+    {
+      "source": "diode-dynamics",
+      "year_range": "2015-2020",
+      "make": "Ford",
+      "model": "F-150",
+      "url": "http://www.diodedynamics.com/interior-led-conversion-kit-for-2015-2020-ford-f-150.html",
+      "price_usd": null,
+      "kit_type": "interior_only",
+      "items": [
+        {
+          "location": "License Plate Lights",
+          "quantity": 2,
+          "bulb_size": "194"
+        },
+        {
+          "location": "Glove Box Light",
+          "quantity": 1,
+          "bulb_size": "194"
+        },
+        {
+          "location": "Vanity Lights",
+          "quantity": 4,
+          "bulb_size": "28mm"
+        }
+      ],
+      "note": "2015+ F-150 uses factory LED map/dome; kit covers remaining incandescent positions only."
+    },
+    {
+      "source": "diode-dynamics",
+      "year_range": "2005-2009",
+      "make": "Ford",
+      "model": "Mustang",
+      "url": "https://evergreenoffroad.com/products/diode-dynamics-ford-mustang-2005-2009-interior-led-conversion-kit",
+      "price_usd": null,
+      "kit_type": "interior_only",
+      "items": [
+        {
+          "location": "License Plate Lights",
+          "quantity": 2,
+          "bulb_size": "194"
+        },
+        {
+          "location": "Front Map Lights",
+          "quantity": 2,
+          "bulb_size": "194"
+        },
+        {
+          "location": "Trunk Light",
+          "quantity": 1,
+          "bulb_size": "41mm"
+        }
+      ]
+    },
+    {
+      "source": "diode-dynamics",
+      "year_range": "2007-2018",
+      "make": "Jeep",
+      "model": "Wrangler JK",
+      "url": "http://www.diodedynamics.com/interior-led-conversion-kit-for-2007-2018-jeep-jk-wrangler.html",
+      "price_usd": null,
+      "kit_type": "interior_only",
+      "items": [
+        {
+          "location": "Map / Dome / License Plate Lights",
+          "quantity": 3,
+          "bulb_size": "194"
+        },
+        {
+          "location": "Festoon (dome)",
+          "quantity": 1,
+          "bulb_size": "41mm"
+        }
+      ],
+      "note": "From DD dealer sales sheet: Stage 1 $28 / Stage 2 $40."
+    },
+    {
+      "source": "diode-dynamics",
+      "year_range": "2012-2017",
+      "make": "Hyundai",
+      "model": "Veloster",
+      "url": "http://www.diodedynamics.com/interior-led-conversion-kit-for-2012-2017-hyundai-veloster.html",
+      "price_usd": null,
+      "kit_type": "interior_only",
+      "items": [
+        {
+          "location": "License Plate Lights",
+          "quantity": 2,
+          "bulb_size": "194"
+        },
+        {
+          "location": "Front Map Lights",
+          "quantity": 2,
+          "bulb_size": "31mm"
+        },
+        {
+          "location": "Dome Light",
+          "quantity": 1,
+          "bulb_size": "31mm"
+        },
+        {
+          "location": "Trunk Light",
+          "quantity": 1,
+          "bulb_size": "31mm"
+        },
+        {
+          "location": "Vanity Lights",
+          "quantity": 2,
+          "bulb_size": "31mm"
+        }
+      ]
+    },
+    {
+      "source": "auxito",
+      "year_range": "2012-2017",
+      "make": "Toyota",
+      "model": "Camry",
+      "url": "https://auxito.com/collections/toyota-led-light-bulbs/products/12-17-toyota-camry-led-bulbs",
+      "price_usd": 296.98,
+      "kit_type": "full_vehicle_upgrade_package",
+      "items": [
+        {
+          "location": "Interior Door / License Plate / Map Lights",
+          "quantity": 6,
+          "bulb_size": "T10"
+        }
+      ],
+      "note": "AUXITO sells per-vehicle full LED upgrade pages (exterior+interior), not interior-only kits. Interior portion: 6x T10 white (3x 2pcs sets). Full package $296.98."
+    },
+    {
+      "source": "auxito",
+      "year_range": "2004-2013",
+      "make": "Honda",
+      "model": "Civic",
+      "url": "https://www.auxito.com/collections/for-vehicle/products/04-13-honda-civic-led-bulbs",
+      "price_usd": null,
+      "kit_type": "full_vehicle_upgrade_package",
+      "items": [
+        {
+          "location": "Map Lights",
+          "quantity": 2,
+          "bulb_size": "31mm"
+        }
+      ],
+      "note": "Per-vehicle upgrade page; interior section lists map lights 2x 31mm."
+    },
+    {
+      "source": "lasfit",
+      "year_range": "2012-2018",
+      "make": "Mercedes-Benz",
+      "model": "C-Class (C250/C300/C350)",
+      "url": "https://www.lasfit.com/products/2011-2017-mercedes-benz-c300-led-headlight-exterior-interior-light-bulbs-package?variant=30374120194132",
+      "price_usd": null,
+      "kit_type": "exterior_interior_combo_package",
+      "items": [
+        {
+          "location": "Trunk Light",
+          "quantity": null,
+          "bulb_size": null
+        },
+        {
+          "location": "Map Light",
+          "quantity": null,
+          "bulb_size": null
+        },
+        {
+          "location": "Vanity Mirror Light",
+          "quantity": null,
+          "bulb_size": null
+        },
+        {
+          "location": "Footwell Light",
+          "quantity": null,
+          "bulb_size": null
+        },
+        {
+          "location": "Interior Door Lights",
+          "quantity": 4,
+          "bulb_size": null
+        }
+      ],
+      "note": "LASFIT sells per-vehicle combo packages with per-location variants; 'Interior Door Light (4 Bulbs)' variant $19.99. Quantities for other locations not stated in listing."
+    },
+    {
+      "source": "lasfit",
+      "year_range": "2014-2019",
+      "make": "Mercedes-Benz",
+      "model": "CLA250",
+      "url": "https://www.lasfit.com/collections/gle-related/products/2014-2018-mercedes-benz-cla250-led-headlight-exterior-interior-light-bulbs-package",
+      "price_usd": 291.94,
+      "kit_type": "exterior_interior_combo_package",
+      "items": [
+        {
+          "location": "Map Light",
+          "quantity": null,
+          "bulb_size": null
+        },
+        {
+          "location": "Dome Light",
+          "quantity": null,
+          "bulb_size": null
+        },
+        {
+          "location": "Interior Door Lights",
+          "quantity": 4,
+          "bulb_size": null
+        },
+        {
+          "location": "Trunk Light",
+          "quantity": null,
+          "bulb_size": null
+        },
+        {
+          "location": "Vanity Mirror Light",
+          "quantity": null,
+          "bulb_size": null
+        }
+      ],
+      "note": "Model no. encodes SKUs+qty: Pro-MB2+Pro-H15+T-T15+T-T15R+L-T10*5+L-42MM. Interior door (4 bulbs) variant listed."
+    },
+    {
+      "source": "lasfit",
+      "year_range": "2012-2015",
+      "make": "Mercedes-Benz",
+      "model": "M-Class (ML350/ML550)",
+      "url": "https://www.lasfit.com/collections/led-whole-package-for-mb-ml350/products/2012-2015-mercedes-benz-ml350-led-headlight-exterior-interior-light-bulbs-package-2",
+      "price_usd": 250.96,
+      "kit_type": "exterior_interior_combo_package",
+      "items": [
+        {
+          "location": "Interior Door Lights",
+          "quantity": 4,
+          "bulb_size": "168"
+        },
+        {
+          "location": "Vanity Mirror Lights",
+          "quantity": 2,
+          "bulb_size": "168"
+        },
+        {
+          "location": "Backup Light",
+          "quantity": null,
+          "bulb_size": "921"
+        }
+      ],
+      "note": "Package Includes list: 4 interior door bulbs, 2 vanity mirror bulbs; variants priced per location."
+    }
+  ],
+  "no_vehicle_specific_kits": [
+    {
+      "source": "sealight",
+      "note": "SEALIGHT sells UNIVERSAL interior kits only, not vehicle-specific: 'Essential Interior Light Kit' (6x T10-194 + 4x 41mm festoon) and 'Advanced Interior Pro Kit' (4x XL02 T10-194 + 4x XL02 festoon). Also bulk packs (10/6/2 pcs) by bulb size."
+    },
+    {
+      "source": "alla-lighting",
+      "note": "Alla Lighting sells bulk packs by bulb size (T10/194, 41/42mm festoon) only; no vehicle-specific interior kits found."
+    }
+  ]
+}

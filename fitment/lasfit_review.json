@@ -1,0 +1,2596 @@
+{
+ "unmapped_or_unresolved": [
+  {
+   "kind": "unresolved_bulb",
+   "url": "https://www.lasfit.com/blogs/news/2017-2022-jeep-grand-cherokee-bulb-size-guide",
+   "position": "Fog Light",
+   "bulb": "-",
+   "note": "oepn='-'"
+  }
+ ],
+ "within_lasfit_conflicts": [
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2019-ram-bulb-size-guide",
+   "year": 2019,
+   "make": "ram",
+   "model": "1500",
+   "trim": null,
+   "position": "brake_light",
+   "prev": [
+    "7440",
+    "halogen"
+   ],
+   "new": [
+    "7443",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2019-ram-bulb-size-guide",
+   "year": 2020,
+   "make": "ram",
+   "model": "1500",
+   "trim": null,
+   "position": "brake_light",
+   "prev": [
+    "7440",
+    "halogen"
+   ],
+   "new": [
+    "7443",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2019-ram-bulb-size-guide",
+   "year": 2021,
+   "make": "ram",
+   "model": "1500",
+   "trim": null,
+   "position": "brake_light",
+   "prev": [
+    "7440",
+    "halogen"
+   ],
+   "new": [
+    "7443",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2019-ram-bulb-size-guide",
+   "year": 2022,
+   "make": "ram",
+   "model": "1500",
+   "trim": null,
+   "position": "brake_light",
+   "prev": [
+    "7440",
+    "halogen"
+   ],
+   "new": [
+    "7443",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2019-ram-bulb-size-guide",
+   "year": 2023,
+   "make": "ram",
+   "model": "1500",
+   "trim": null,
+   "position": "brake_light",
+   "prev": [
+    "7440",
+    "halogen"
+   ],
+   "new": [
+    "7443",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2019-ram-bulb-size-guide",
+   "year": 2024,
+   "make": "ram",
+   "model": "1500",
+   "trim": null,
+   "position": "brake_light",
+   "prev": [
+    "7440",
+    "halogen"
+   ],
+   "new": [
+    "7443",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2019-ram-bulb-size-guide",
+   "year": 2019,
+   "make": "ram",
+   "model": "1500",
+   "trim": null,
+   "position": "tail_light",
+   "prev": [
+    "7440",
+    "halogen"
+   ],
+   "new": [
+    "7443",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2019-ram-bulb-size-guide",
+   "year": 2020,
+   "make": "ram",
+   "model": "1500",
+   "trim": null,
+   "position": "tail_light",
+   "prev": [
+    "7440",
+    "halogen"
+   ],
+   "new": [
+    "7443",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2019-ram-bulb-size-guide",
+   "year": 2021,
+   "make": "ram",
+   "model": "1500",
+   "trim": null,
+   "position": "tail_light",
+   "prev": [
+    "7440",
+    "halogen"
+   ],
+   "new": [
+    "7443",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2019-ram-bulb-size-guide",
+   "year": 2022,
+   "make": "ram",
+   "model": "1500",
+   "trim": null,
+   "position": "tail_light",
+   "prev": [
+    "7440",
+    "halogen"
+   ],
+   "new": [
+    "7443",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2019-ram-bulb-size-guide",
+   "year": 2023,
+   "make": "ram",
+   "model": "1500",
+   "trim": null,
+   "position": "tail_light",
+   "prev": [
+    "7440",
+    "halogen"
+   ],
+   "new": [
+    "7443",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2019-ram-bulb-size-guide",
+   "year": 2024,
+   "make": "ram",
+   "model": "1500",
+   "trim": null,
+   "position": "tail_light",
+   "prev": [
+    "7440",
+    "halogen"
+   ],
+   "new": [
+    "7443",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2013,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "front_turn_signal",
+   "prev": [
+    "3457",
+    "halogen"
+   ],
+   "new": [
+    "1157",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2014,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "front_turn_signal",
+   "prev": [
+    "3457",
+    "halogen"
+   ],
+   "new": [
+    "1157",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2015,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "front_turn_signal",
+   "prev": [
+    "3457",
+    "halogen"
+   ],
+   "new": [
+    "1157",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2016,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "front_turn_signal",
+   "prev": [
+    "3457",
+    "halogen"
+   ],
+   "new": [
+    "1157",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2017,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "front_turn_signal",
+   "prev": [
+    "3457",
+    "halogen"
+   ],
+   "new": [
+    "1157",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2013,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "tail_light",
+   "prev": [
+    "7443",
+    "halogen"
+   ],
+   "new": [
+    "168",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2014,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "tail_light",
+   "prev": [
+    "7443",
+    "halogen"
+   ],
+   "new": [
+    "168",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2015,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "tail_light",
+   "prev": [
+    "7443",
+    "halogen"
+   ],
+   "new": [
+    "168",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2016,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "tail_light",
+   "prev": [
+    "7443",
+    "halogen"
+   ],
+   "new": [
+    "168",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2017,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "tail_light",
+   "prev": [
+    "7443",
+    "halogen"
+   ],
+   "new": [
+    "168",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2013,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "front_side_marker",
+   "prev": [
+    "3457",
+    "halogen"
+   ],
+   "new": [
+    "1157",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2014,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "front_side_marker",
+   "prev": [
+    "3457",
+    "halogen"
+   ],
+   "new": [
+    "1157",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2015,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "front_side_marker",
+   "prev": [
+    "3457",
+    "halogen"
+   ],
+   "new": [
+    "1157",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2016,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "front_side_marker",
+   "prev": [
+    "3457",
+    "halogen"
+   ],
+   "new": [
+    "1157",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2017,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "front_side_marker",
+   "prev": [
+    "3457",
+    "halogen"
+   ],
+   "new": [
+    "1157",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2013,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "rear_side_marker",
+   "prev": [
+    "168",
+    "halogen"
+   ],
+   "new": [
+    "7443",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2014,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "rear_side_marker",
+   "prev": [
+    "168",
+    "halogen"
+   ],
+   "new": [
+    "7443",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2015,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "rear_side_marker",
+   "prev": [
+    "168",
+    "halogen"
+   ],
+   "new": [
+    "7443",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2016,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "rear_side_marker",
+   "prev": [
+    "168",
+    "halogen"
+   ],
+   "new": [
+    "7443",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2017,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "rear_side_marker",
+   "prev": [
+    "168",
+    "halogen"
+   ],
+   "new": [
+    "7443",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2013,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "fog_light",
+   "prev": [
+    "H8",
+    "halogen"
+   ],
+   "new": [
+    "LED",
+    "factory_led"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2014,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "fog_light",
+   "prev": [
+    "H8",
+    "halogen"
+   ],
+   "new": [
+    "LED",
+    "factory_led"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2015,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "fog_light",
+   "prev": [
+    "H8",
+    "halogen"
+   ],
+   "new": [
+    "LED",
+    "factory_led"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2016,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "fog_light",
+   "prev": [
+    "H8",
+    "halogen"
+   ],
+   "new": [
+    "LED",
+    "factory_led"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2017,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "fog_light",
+   "prev": [
+    "H8",
+    "halogen"
+   ],
+   "new": [
+    "LED",
+    "factory_led"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2013,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "front_turn_signal",
+   "prev": [
+    "3457",
+    "halogen"
+   ],
+   "new": [
+    "7444",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2014,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "front_turn_signal",
+   "prev": [
+    "3457",
+    "halogen"
+   ],
+   "new": [
+    "7444",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2015,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "front_turn_signal",
+   "prev": [
+    "3457",
+    "halogen"
+   ],
+   "new": [
+    "7444",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2016,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "front_turn_signal",
+   "prev": [
+    "3457",
+    "halogen"
+   ],
+   "new": [
+    "7444",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2017,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "front_turn_signal",
+   "prev": [
+    "3457",
+    "halogen"
+   ],
+   "new": [
+    "7444",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2013,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "brake_light",
+   "prev": [
+    "7443",
+    "halogen"
+   ],
+   "new": [
+    "7440",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2014,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "brake_light",
+   "prev": [
+    "7443",
+    "halogen"
+   ],
+   "new": [
+    "7440",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2015,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "brake_light",
+   "prev": [
+    "7443",
+    "halogen"
+   ],
+   "new": [
+    "7440",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2016,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "brake_light",
+   "prev": [
+    "7443",
+    "halogen"
+   ],
+   "new": [
+    "7440",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2017,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "brake_light",
+   "prev": [
+    "7443",
+    "halogen"
+   ],
+   "new": [
+    "7440",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2013,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "tail_light",
+   "prev": [
+    "7443",
+    "halogen"
+   ],
+   "new": [
+    "LED",
+    "factory_led"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2014,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "tail_light",
+   "prev": [
+    "7443",
+    "halogen"
+   ],
+   "new": [
+    "LED",
+    "factory_led"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2015,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "tail_light",
+   "prev": [
+    "7443",
+    "halogen"
+   ],
+   "new": [
+    "LED",
+    "factory_led"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2016,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "tail_light",
+   "prev": [
+    "7443",
+    "halogen"
+   ],
+   "new": [
+    "LED",
+    "factory_led"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2017,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "tail_light",
+   "prev": [
+    "7443",
+    "halogen"
+   ],
+   "new": [
+    "LED",
+    "factory_led"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2013,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "front_side_marker",
+   "prev": [
+    "3457",
+    "halogen"
+   ],
+   "new": [
+    "7444",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2014,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "front_side_marker",
+   "prev": [
+    "3457",
+    "halogen"
+   ],
+   "new": [
+    "7444",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2015,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "front_side_marker",
+   "prev": [
+    "3457",
+    "halogen"
+   ],
+   "new": [
+    "7444",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2016,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "front_side_marker",
+   "prev": [
+    "3457",
+    "halogen"
+   ],
+   "new": [
+    "7444",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2017,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "front_side_marker",
+   "prev": [
+    "3457",
+    "halogen"
+   ],
+   "new": [
+    "7444",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2013,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "rear_side_marker",
+   "prev": [
+    "168",
+    "halogen"
+   ],
+   "new": [
+    "LED",
+    "factory_led"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2014,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "rear_side_marker",
+   "prev": [
+    "168",
+    "halogen"
+   ],
+   "new": [
+    "LED",
+    "factory_led"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2015,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "rear_side_marker",
+   "prev": [
+    "168",
+    "halogen"
+   ],
+   "new": [
+    "LED",
+    "factory_led"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2016,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "rear_side_marker",
+   "prev": [
+    "168",
+    "halogen"
+   ],
+   "new": [
+    "LED",
+    "factory_led"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2013-2017-honda-accord-light-bulb-sizes-upgrade-guide",
+   "year": 2017,
+   "make": "honda",
+   "model": "accord",
+   "trim": null,
+   "position": "rear_side_marker",
+   "prev": [
+    "168",
+    "halogen"
+   ],
+   "new": [
+    "LED",
+    "factory_led"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2009-2013-infiniti-g37-light-bulb-size-upgrade-guide",
+   "year": 2009,
+   "make": "infiniti",
+   "model": "g37",
+   "trim": null,
+   "position": "fog_light",
+   "prev": [
+    "H11",
+    "halogen"
+   ],
+   "new": [
+    "H1",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2009-2013-infiniti-g37-light-bulb-size-upgrade-guide",
+   "year": 2010,
+   "make": "infiniti",
+   "model": "g37",
+   "trim": null,
+   "position": "fog_light",
+   "prev": [
+    "H11",
+    "halogen"
+   ],
+   "new": [
+    "H1",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2009-2013-infiniti-g37-light-bulb-size-upgrade-guide",
+   "year": 2011,
+   "make": "infiniti",
+   "model": "g37",
+   "trim": null,
+   "position": "fog_light",
+   "prev": [
+    "H11",
+    "halogen"
+   ],
+   "new": [
+    "H1",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2009-2013-infiniti-g37-light-bulb-size-upgrade-guide",
+   "year": 2012,
+   "make": "infiniti",
+   "model": "g37",
+   "trim": null,
+   "position": "fog_light",
+   "prev": [
+    "H11",
+    "halogen"
+   ],
+   "new": [
+    "H1",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2009-2013-infiniti-g37-light-bulb-size-upgrade-guide",
+   "year": 2013,
+   "make": "infiniti",
+   "model": "g37",
+   "trim": null,
+   "position": "fog_light",
+   "prev": [
+    "H11",
+    "halogen"
+   ],
+   "new": [
+    "H1",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2009-2013-infiniti-g37-light-bulb-size-upgrade-guide",
+   "year": 2009,
+   "make": "infiniti",
+   "model": "g37",
+   "trim": null,
+   "position": "front_turn_signal",
+   "prev": [
+    "7440",
+    "halogen"
+   ],
+   "new": [
+    "7443/7444",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2009-2013-infiniti-g37-light-bulb-size-upgrade-guide",
+   "year": 2010,
+   "make": "infiniti",
+   "model": "g37",
+   "trim": null,
+   "position": "front_turn_signal",
+   "prev": [
+    "7440",
+    "halogen"
+   ],
+   "new": [
+    "7443/7444",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2009-2013-infiniti-g37-light-bulb-size-upgrade-guide",
+   "year": 2011,
+   "make": "infiniti",
+   "model": "g37",
+   "trim": null,
+   "position": "front_turn_signal",
+   "prev": [
+    "7440",
+    "halogen"
+   ],
+   "new": [
+    "7443/7444",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2009-2013-infiniti-g37-light-bulb-size-upgrade-guide",
+   "year": 2012,
+   "make": "infiniti",
+   "model": "g37",
+   "trim": null,
+   "position": "front_turn_signal",
+   "prev": [
+    "7440",
+    "halogen"
+   ],
+   "new": [
+    "7443/7444",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2009-2013-infiniti-g37-light-bulb-size-upgrade-guide",
+   "year": 2013,
+   "make": "infiniti",
+   "model": "g37",
+   "trim": null,
+   "position": "front_turn_signal",
+   "prev": [
+    "7440",
+    "halogen"
+   ],
+   "new": [
+    "7443/7444",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2017-2022-jeep-grand-cherokee-bulb-size-guide",
+   "year": 2017,
+   "make": "jeep",
+   "model": "grand cherokee",
+   "trim": "All Other",
+   "position": "reverse_light",
+   "prev": [
+    "921",
+    "halogen"
+   ],
+   "new": [
+    "7443",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2017-2022-jeep-grand-cherokee-bulb-size-guide",
+   "year": 2018,
+   "make": "jeep",
+   "model": "grand cherokee",
+   "trim": "All Other",
+   "position": "reverse_light",
+   "prev": [
+    "921",
+    "halogen"
+   ],
+   "new": [
+    "7443",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2017-2022-jeep-grand-cherokee-bulb-size-guide",
+   "year": 2019,
+   "make": "jeep",
+   "model": "grand cherokee",
+   "trim": "All Other",
+   "position": "reverse_light",
+   "prev": [
+    "921",
+    "halogen"
+   ],
+   "new": [
+    "7443",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2017-2022-jeep-grand-cherokee-bulb-size-guide",
+   "year": 2020,
+   "make": "jeep",
+   "model": "grand cherokee",
+   "trim": "All Other",
+   "position": "reverse_light",
+   "prev": [
+    "921",
+    "halogen"
+   ],
+   "new": [
+    "7443",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2017-2022-jeep-grand-cherokee-bulb-size-guide",
+   "year": 2021,
+   "make": "jeep",
+   "model": "grand cherokee",
+   "trim": "All Other",
+   "position": "reverse_light",
+   "prev": [
+    "921",
+    "halogen"
+   ],
+   "new": [
+    "7443",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2017-2022-jeep-grand-cherokee-bulb-size-guide",
+   "year": 2022,
+   "make": "jeep",
+   "model": "grand cherokee",
+   "trim": "All Other",
+   "position": "reverse_light",
+   "prev": [
+    "921",
+    "halogen"
+   ],
+   "new": [
+    "7443",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2017-2022-jeep-grand-cherokee-bulb-size-guide",
+   "year": 2017,
+   "make": "jeep",
+   "model": "grand cherokee",
+   "trim": "Laredo/Laredo X/Limited/Trailhawk/80th Anniversary",
+   "position": "fog_light",
+   "prev": [
+    "H11/H16",
+    "halogen"
+   ],
+   "new": [
+    "H11",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2017-2022-jeep-grand-cherokee-bulb-size-guide",
+   "year": 2018,
+   "make": "jeep",
+   "model": "grand cherokee",
+   "trim": "Laredo/Laredo X/Limited/Trailhawk/80th Anniversary",
+   "position": "fog_light",
+   "prev": [
+    "H11/H16",
+    "halogen"
+   ],
+   "new": [
+    "H11",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2017-2022-jeep-grand-cherokee-bulb-size-guide",
+   "year": 2019,
+   "make": "jeep",
+   "model": "grand cherokee",
+   "trim": "Laredo/Laredo X/Limited/Trailhawk/80th Anniversary",
+   "position": "fog_light",
+   "prev": [
+    "H11/H16",
+    "halogen"
+   ],
+   "new": [
+    "H11",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2017-2022-jeep-grand-cherokee-bulb-size-guide",
+   "year": 2020,
+   "make": "jeep",
+   "model": "grand cherokee",
+   "trim": "Laredo/Laredo X/Limited/Trailhawk/80th Anniversary",
+   "position": "fog_light",
+   "prev": [
+    "H11/H16",
+    "halogen"
+   ],
+   "new": [
+    "H11",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2017-2022-jeep-grand-cherokee-bulb-size-guide",
+   "year": 2021,
+   "make": "jeep",
+   "model": "grand cherokee",
+   "trim": "Laredo/Laredo X/Limited/Trailhawk/80th Anniversary",
+   "position": "fog_light",
+   "prev": [
+    "H11/H16",
+    "halogen"
+   ],
+   "new": [
+    "H11",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2017-2022-jeep-grand-cherokee-bulb-size-guide",
+   "year": 2022,
+   "make": "jeep",
+   "model": "grand cherokee",
+   "trim": "Laredo/Laredo X/Limited/Trailhawk/80th Anniversary",
+   "position": "fog_light",
+   "prev": [
+    "H11/H16",
+    "halogen"
+   ],
+   "new": [
+    "H11",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2017-2022-jeep-grand-cherokee-bulb-size-guide",
+   "year": 2017,
+   "make": "jeep",
+   "model": "grand cherokee",
+   "trim": "Laredo/Laredo X/Limited/Trailhawk/80th Anniversary",
+   "position": "reverse_light",
+   "prev": [
+    "921",
+    "halogen"
+   ],
+   "new": [
+    "7443",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2017-2022-jeep-grand-cherokee-bulb-size-guide",
+   "year": 2018,
+   "make": "jeep",
+   "model": "grand cherokee",
+   "trim": "Laredo/Laredo X/Limited/Trailhawk/80th Anniversary",
+   "position": "reverse_light",
+   "prev": [
+    "921",
+    "halogen"
+   ],
+   "new": [
+    "7443",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2017-2022-jeep-grand-cherokee-bulb-size-guide",
+   "year": 2019,
+   "make": "jeep",
+   "model": "grand cherokee",
+   "trim": "Laredo/Laredo X/Limited/Trailhawk/80th Anniversary",
+   "position": "reverse_light",
+   "prev": [
+    "921",
+    "halogen"
+   ],
+   "new": [
+    "7443",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2017-2022-jeep-grand-cherokee-bulb-size-guide",
+   "year": 2020,
+   "make": "jeep",
+   "model": "grand cherokee",
+   "trim": "Laredo/Laredo X/Limited/Trailhawk/80th Anniversary",
+   "position": "reverse_light",
+   "prev": [
+    "921",
+    "halogen"
+   ],
+   "new": [
+    "7443",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2017-2022-jeep-grand-cherokee-bulb-size-guide",
+   "year": 2021,
+   "make": "jeep",
+   "model": "grand cherokee",
+   "trim": "Laredo/Laredo X/Limited/Trailhawk/80th Anniversary",
+   "position": "reverse_light",
+   "prev": [
+    "921",
+    "halogen"
+   ],
+   "new": [
+    "7443",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2017-2022-jeep-grand-cherokee-bulb-size-guide",
+   "year": 2022,
+   "make": "jeep",
+   "model": "grand cherokee",
+   "trim": "Laredo/Laredo X/Limited/Trailhawk/80th Anniversary",
+   "position": "reverse_light",
+   "prev": [
+    "921",
+    "halogen"
+   ],
+   "new": [
+    "7443",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2017-2022-jeep-grand-cherokee-bulb-size-guide",
+   "year": 2017,
+   "make": "jeep",
+   "model": "grand cherokee",
+   "trim": "Trackhawk",
+   "position": "reverse_light",
+   "prev": [
+    "921",
+    "halogen"
+   ],
+   "new": [
+    "7443",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2017-2022-jeep-grand-cherokee-bulb-size-guide",
+   "year": 2018,
+   "make": "jeep",
+   "model": "grand cherokee",
+   "trim": "Trackhawk",
+   "position": "reverse_light",
+   "prev": [
+    "921",
+    "halogen"
+   ],
+   "new": [
+    "7443",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2017-2022-jeep-grand-cherokee-bulb-size-guide",
+   "year": 2019,
+   "make": "jeep",
+   "model": "grand cherokee",
+   "trim": "Trackhawk",
+   "position": "reverse_light",
+   "prev": [
+    "921",
+    "halogen"
+   ],
+   "new": [
+    "7443",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2017-2022-jeep-grand-cherokee-bulb-size-guide",
+   "year": 2020,
+   "make": "jeep",
+   "model": "grand cherokee",
+   "trim": "Trackhawk",
+   "position": "reverse_light",
+   "prev": [
+    "921",
+    "halogen"
+   ],
+   "new": [
+    "7443",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2017-2022-jeep-grand-cherokee-bulb-size-guide",
+   "year": 2021,
+   "make": "jeep",
+   "model": "grand cherokee",
+   "trim": "Trackhawk",
+   "position": "reverse_light",
+   "prev": [
+    "921",
+    "halogen"
+   ],
+   "new": [
+    "7443",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2017-2022-jeep-grand-cherokee-bulb-size-guide",
+   "year": 2022,
+   "make": "jeep",
+   "model": "grand cherokee",
+   "trim": "Trackhawk",
+   "position": "reverse_light",
+   "prev": [
+    "921",
+    "halogen"
+   ],
+   "new": [
+    "7443",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2018-2023-ford-f-150-bulb-size-guide",
+   "year": 2018,
+   "make": "ford",
+   "model": "f-150",
+   "trim": null,
+   "position": "front_turn_signal",
+   "prev": [
+    "7443",
+    "halogen"
+   ],
+   "new": [
+    "4257",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2018-2023-ford-f-150-bulb-size-guide",
+   "year": 2019,
+   "make": "ford",
+   "model": "f-150",
+   "trim": null,
+   "position": "front_turn_signal",
+   "prev": [
+    "7443",
+    "halogen"
+   ],
+   "new": [
+    "4257",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2018-2023-ford-f-150-bulb-size-guide",
+   "year": 2020,
+   "make": "ford",
+   "model": "f-150",
+   "trim": null,
+   "position": "front_turn_signal",
+   "prev": [
+    "7443",
+    "halogen"
+   ],
+   "new": [
+    "4257",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2018-2023-ford-f-150-bulb-size-guide",
+   "year": 2021,
+   "make": "ford",
+   "model": "f-150",
+   "trim": null,
+   "position": "front_turn_signal",
+   "prev": [
+    "7443",
+    "halogen"
+   ],
+   "new": [
+    "4257",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2018-2023-ford-f-150-bulb-size-guide",
+   "year": 2022,
+   "make": "ford",
+   "model": "f-150",
+   "trim": null,
+   "position": "front_turn_signal",
+   "prev": [
+    "7443",
+    "halogen"
+   ],
+   "new": [
+    "4257",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2018-2023-ford-f-150-bulb-size-guide",
+   "year": 2023,
+   "make": "ford",
+   "model": "f-150",
+   "trim": null,
+   "position": "front_turn_signal",
+   "prev": [
+    "7443",
+    "halogen"
+   ],
+   "new": [
+    "4257",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2018-2023-ford-f-150-bulb-size-guide",
+   "year": 2018,
+   "make": "ford",
+   "model": "f-150",
+   "trim": null,
+   "position": "front_turn_signal",
+   "prev": [
+    "7443",
+    "halogen"
+   ],
+   "new": [
+    "4257",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2018-2023-ford-f-150-bulb-size-guide",
+   "year": 2019,
+   "make": "ford",
+   "model": "f-150",
+   "trim": null,
+   "position": "front_turn_signal",
+   "prev": [
+    "7443",
+    "halogen"
+   ],
+   "new": [
+    "4257",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2018-2023-ford-f-150-bulb-size-guide",
+   "year": 2020,
+   "make": "ford",
+   "model": "f-150",
+   "trim": null,
+   "position": "front_turn_signal",
+   "prev": [
+    "7443",
+    "halogen"
+   ],
+   "new": [
+    "4257",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2018-2023-ford-f-150-bulb-size-guide",
+   "year": 2021,
+   "make": "ford",
+   "model": "f-150",
+   "trim": null,
+   "position": "front_turn_signal",
+   "prev": [
+    "7443",
+    "halogen"
+   ],
+   "new": [
+    "4257",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2018-2023-ford-f-150-bulb-size-guide",
+   "year": 2022,
+   "make": "ford",
+   "model": "f-150",
+   "trim": null,
+   "position": "front_turn_signal",
+   "prev": [
+    "7443",
+    "halogen"
+   ],
+   "new": [
+    "4257",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2018-2023-ford-f-150-bulb-size-guide",
+   "year": 2023,
+   "make": "ford",
+   "model": "f-150",
+   "trim": null,
+   "position": "front_turn_signal",
+   "prev": [
+    "7443",
+    "halogen"
+   ],
+   "new": [
+    "4257",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2018-2023-ford-f-150-bulb-size-guide",
+   "year": 2018,
+   "make": "ford",
+   "model": "f-150",
+   "trim": null,
+   "position": "rear_turn_signal",
+   "prev": [
+    "3157",
+    "halogen"
+   ],
+   "new": [
+    "4257",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2018-2023-ford-f-150-bulb-size-guide",
+   "year": 2019,
+   "make": "ford",
+   "model": "f-150",
+   "trim": null,
+   "position": "rear_turn_signal",
+   "prev": [
+    "3157",
+    "halogen"
+   ],
+   "new": [
+    "4257",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2018-2023-ford-f-150-bulb-size-guide",
+   "year": 2020,
+   "make": "ford",
+   "model": "f-150",
+   "trim": null,
+   "position": "rear_turn_signal",
+   "prev": [
+    "3157",
+    "halogen"
+   ],
+   "new": [
+    "4257",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2018-2023-ford-f-150-bulb-size-guide",
+   "year": 2021,
+   "make": "ford",
+   "model": "f-150",
+   "trim": null,
+   "position": "rear_turn_signal",
+   "prev": [
+    "3157",
+    "halogen"
+   ],
+   "new": [
+    "4257",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2018-2023-ford-f-150-bulb-size-guide",
+   "year": 2022,
+   "make": "ford",
+   "model": "f-150",
+   "trim": null,
+   "position": "rear_turn_signal",
+   "prev": [
+    "3157",
+    "halogen"
+   ],
+   "new": [
+    "4257",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2018-2023-ford-f-150-bulb-size-guide",
+   "year": 2023,
+   "make": "ford",
+   "model": "f-150",
+   "trim": null,
+   "position": "rear_turn_signal",
+   "prev": [
+    "3157",
+    "halogen"
+   ],
+   "new": [
+    "4257",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2022-nissan-frontier-bulb-size-guide",
+   "year": 2022,
+   "make": "nissan",
+   "model": "frontier",
+   "trim": "All Other",
+   "position": "trunk_cargo",
+   "prev": [
+    "921",
+    "halogen"
+   ],
+   "new": [
+    "DE3175",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2022-nissan-frontier-bulb-size-guide",
+   "year": 2023,
+   "make": "nissan",
+   "model": "frontier",
+   "trim": "All Other",
+   "position": "trunk_cargo",
+   "prev": [
+    "921",
+    "halogen"
+   ],
+   "new": [
+    "DE3175",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2022-nissan-frontier-bulb-size-guide",
+   "year": 2024,
+   "make": "nissan",
+   "model": "frontier",
+   "trim": "All Other",
+   "position": "trunk_cargo",
+   "prev": [
+    "921",
+    "halogen"
+   ],
+   "new": [
+    "DE3175",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2022-nissan-frontier-bulb-size-guide",
+   "year": 2025,
+   "make": "nissan",
+   "model": "frontier",
+   "trim": "All Other",
+   "position": "trunk_cargo",
+   "prev": [
+    "921",
+    "halogen"
+   ],
+   "new": [
+    "DE3175",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2022-nissan-frontier-bulb-size-guide",
+   "year": 2022,
+   "make": "nissan",
+   "model": "frontier",
+   "trim": null,
+   "position": "trunk_cargo",
+   "prev": [
+    "921",
+    "halogen"
+   ],
+   "new": [
+    "DE3175/31MM",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2022-nissan-frontier-bulb-size-guide",
+   "year": 2023,
+   "make": "nissan",
+   "model": "frontier",
+   "trim": null,
+   "position": "trunk_cargo",
+   "prev": [
+    "921",
+    "halogen"
+   ],
+   "new": [
+    "DE3175/31MM",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2022-nissan-frontier-bulb-size-guide",
+   "year": 2024,
+   "make": "nissan",
+   "model": "frontier",
+   "trim": null,
+   "position": "trunk_cargo",
+   "prev": [
+    "921",
+    "halogen"
+   ],
+   "new": [
+    "DE3175/31MM",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2022-nissan-frontier-bulb-size-guide",
+   "year": 2025,
+   "make": "nissan",
+   "model": "frontier",
+   "trim": null,
+   "position": "trunk_cargo",
+   "prev": [
+    "921",
+    "halogen"
+   ],
+   "new": [
+    "DE3175/31MM",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2022-nissan-frontier-bulb-size-guide",
+   "year": 2022,
+   "make": "nissan",
+   "model": "frontier",
+   "trim": "SV/Hardbody Edition",
+   "position": "trunk_cargo",
+   "prev": [
+    "921",
+    "halogen"
+   ],
+   "new": [
+    "DE3175/31MM",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2022-nissan-frontier-bulb-size-guide",
+   "year": 2023,
+   "make": "nissan",
+   "model": "frontier",
+   "trim": "SV/Hardbody Edition",
+   "position": "trunk_cargo",
+   "prev": [
+    "921",
+    "halogen"
+   ],
+   "new": [
+    "DE3175/31MM",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2022-nissan-frontier-bulb-size-guide",
+   "year": 2024,
+   "make": "nissan",
+   "model": "frontier",
+   "trim": "SV/Hardbody Edition",
+   "position": "trunk_cargo",
+   "prev": [
+    "921",
+    "halogen"
+   ],
+   "new": [
+    "DE3175/31MM",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2022-nissan-frontier-bulb-size-guide",
+   "year": 2025,
+   "make": "nissan",
+   "model": "frontier",
+   "trim": "SV/Hardbody Edition",
+   "position": "trunk_cargo",
+   "prev": [
+    "921",
+    "halogen"
+   ],
+   "new": [
+    "DE3175/31MM",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2016-2018-ram-1500-bulb-size-guide",
+   "year": 2016,
+   "make": "ram",
+   "model": "1500",
+   "trim": null,
+   "position": "fog_light",
+   "prev": [
+    "9006",
+    "halogen"
+   ],
+   "new": [
+    "H10",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2016-2018-ram-1500-bulb-size-guide",
+   "year": 2017,
+   "make": "ram",
+   "model": "1500",
+   "trim": null,
+   "position": "fog_light",
+   "prev": [
+    "9006",
+    "halogen"
+   ],
+   "new": [
+    "H10",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2016-2018-ram-1500-bulb-size-guide",
+   "year": 2018,
+   "make": "ram",
+   "model": "1500",
+   "trim": null,
+   "position": "fog_light",
+   "prev": [
+    "9006",
+    "halogen"
+   ],
+   "new": [
+    "H10",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2016-2018-ram-1500-bulb-size-guide",
+   "year": 2016,
+   "make": "ram",
+   "model": "1500",
+   "trim": null,
+   "position": "low_beam",
+   "prev": [
+    "9005",
+    "halogen"
+   ],
+   "new": [
+    "H11",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2016-2018-ram-1500-bulb-size-guide",
+   "year": 2017,
+   "make": "ram",
+   "model": "1500",
+   "trim": null,
+   "position": "low_beam",
+   "prev": [
+    "9005",
+    "halogen"
+   ],
+   "new": [
+    "H11",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2016-2018-ram-1500-bulb-size-guide",
+   "year": 2018,
+   "make": "ram",
+   "model": "1500",
+   "trim": null,
+   "position": "low_beam",
+   "prev": [
+    "9005",
+    "halogen"
+   ],
+   "new": [
+    "H11",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2016-2018-ram-1500-bulb-size-guide",
+   "year": 2016,
+   "make": "ram",
+   "model": "1500",
+   "trim": null,
+   "position": "reverse_light",
+   "prev": [
+    "7443",
+    "halogen"
+   ],
+   "new": [
+    "921",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2016-2018-ram-1500-bulb-size-guide",
+   "year": 2017,
+   "make": "ram",
+   "model": "1500",
+   "trim": null,
+   "position": "reverse_light",
+   "prev": [
+    "7443",
+    "halogen"
+   ],
+   "new": [
+    "921",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2016-2018-ram-1500-bulb-size-guide",
+   "year": 2018,
+   "make": "ram",
+   "model": "1500",
+   "trim": null,
+   "position": "reverse_light",
+   "prev": [
+    "7443",
+    "halogen"
+   ],
+   "new": [
+    "921",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2016-2018-ram-1500-bulb-size-guide",
+   "year": 2016,
+   "make": "ram",
+   "model": "1500",
+   "trim": null,
+   "position": "low_beam",
+   "prev": [
+    "9005",
+    "halogen"
+   ],
+   "new": [
+    "H11",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2016-2018-ram-1500-bulb-size-guide",
+   "year": 2017,
+   "make": "ram",
+   "model": "1500",
+   "trim": null,
+   "position": "low_beam",
+   "prev": [
+    "9005",
+    "halogen"
+   ],
+   "new": [
+    "H11",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2016-2018-ram-1500-bulb-size-guide",
+   "year": 2018,
+   "make": "ram",
+   "model": "1500",
+   "trim": null,
+   "position": "low_beam",
+   "prev": [
+    "9005",
+    "halogen"
+   ],
+   "new": [
+    "H11",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2016-2018-ram-1500-bulb-size-guide",
+   "year": 2016,
+   "make": "ram",
+   "model": "1500",
+   "trim": null,
+   "position": "fog_light",
+   "prev": [
+    "9006",
+    "halogen"
+   ],
+   "new": [
+    "H10",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2016-2018-ram-1500-bulb-size-guide",
+   "year": 2017,
+   "make": "ram",
+   "model": "1500",
+   "trim": null,
+   "position": "fog_light",
+   "prev": [
+    "9006",
+    "halogen"
+   ],
+   "new": [
+    "H10",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2016-2018-ram-1500-bulb-size-guide",
+   "year": 2018,
+   "make": "ram",
+   "model": "1500",
+   "trim": null,
+   "position": "fog_light",
+   "prev": [
+    "9006",
+    "halogen"
+   ],
+   "new": [
+    "H10",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2016-2018-ram-1500-bulb-size-guide",
+   "year": 2016,
+   "make": "ram",
+   "model": "1500",
+   "trim": null,
+   "position": "reverse_light",
+   "prev": [
+    "7443",
+    "halogen"
+   ],
+   "new": [
+    "921",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2016-2018-ram-1500-bulb-size-guide",
+   "year": 2017,
+   "make": "ram",
+   "model": "1500",
+   "trim": null,
+   "position": "reverse_light",
+   "prev": [
+    "7443",
+    "halogen"
+   ],
+   "new": [
+    "921",
+    "halogen"
+   ]
+  },
+  {
+   "kind": "within_lasfit_conflict",
+   "url": "https://www.lasfit.com/blogs/news/2016-2018-ram-1500-bulb-size-guide",
+   "year": 2018,
+   "make": "ram",
+   "model": "1500",
+   "trim": null,
+   "position": "reverse_light",
+   "prev": [
+    "7443",
+    "halogen"
+   ],
+   "new": [
+    "921",
+    "halogen"
+   ]
+  }
+ ],
+ "parse_issues": [
+  {
+   "kind": "no_years_pformat",
+   "url": "https://www.lasfit.com/blogs/news/volkswagen-tiguan-bulb-size",
+   "title": "Volkswagen Tiguan Bulb Size"
+  },
+  {
+   "kind": "no_years_pformat",
+   "url": "https://www.lasfit.com/blogs/news/ford-f150-led-bulb-size-guide-by-year",
+   "title": "Ford F-150 LED Bulb Size Guide by Year: Headlights, Fog Lights, Reverse, Cargo & Interior Lights"
+  },
+  {
+   "kind": "no_years_pformat",
+   "url": "https://www.lasfit.com/blogs/news/ford-f-150-3157-bulb-size-guide-3157-vs-3157a-3057-3457-4057-and-4157",
+   "title": "Ford F-150 3157 Bulb Size Guide: 3157 vs. 3157A, 3057, 3457, 4057 and 4157"
+  }
+ ],
+ "failed_pages": [],
+ "conflicts_vs_other_sources": [
+  {
+   "key": "2019|ram|1500",
+   "lasfit": "halogen",
+   "google": "mixed"
+  },
+  {
+   "key": "2021|ram|1500",
+   "lasfit": "halogen",
+   "google": "mixed"
+  },
+  {
+   "key": "2022|ram|1500",
+   "lasfit": "halogen",
+   "google": "mixed"
+  },
+  {
+   "key": "2023|ram|1500",
+   "lasfit": "halogen",
+   "google": "mixed"
+  },
+  {
+   "key": "2024|ram|1500",
+   "lasfit": "halogen",
+   "google": "mixed"
+  },
+  {
+   "key": "2019|jeep|wrangler",
+   "lasfit": "halogen",
+   "google": "mixed"
+  },
+  {
+   "key": "2023|jeep|wrangler",
+   "lasfit": "halogen",
+   "google": "mixed"
+  },
+  {
+   "key": "2024|jeep|wrangler",
+   "lasfit": "halogen",
+   "google": "mixed"
+  },
+  {
+   "key": "2022|toyota|tacoma",
+   "lasfit": "halogen",
+   "google": "mixed"
+  },
+  {
+   "key": "2023|toyota|tacoma",
+   "lasfit": "halogen",
+   "google": "mixed"
+  },
+  {
+   "key": "2019|ford|f-150",
+   "lasfit": "halogen",
+   "google": "mixed"
+  },
+  {
+   "key": "2020|ford|f-150",
+   "lasfit": "halogen",
+   "google": "mixed"
+  },
+  {
+   "key": "2021|ford|f-150",
+   "lasfit": "halogen",
+   "google": "mixed"
+  },
+  {
+   "key": "2022|ford|f-150",
+   "lasfit": "halogen",
+   "google": "mixed"
+  },
+  {
+   "key": "2023|ford|f-150",
+   "lasfit": "halogen",
+   "google": "mixed"
+  },
+  {
+   "key": "2022|nissan|frontier",
+   "lasfit": "halogen",
+   "google": "mixed"
+  },
+  {
+   "key": "2025|nissan|frontier",
+   "lasfit": "halogen",
+   "google": "mixed"
+  },
+  {
+   "key": "2019|dodge|durango",
+   "lasfit": "halogen",
+   "google": "mixed"
+  },
+  {
+   "key": "2020|dodge|durango",
+   "lasfit": "halogen",
+   "google": "mixed"
+  },
+  {
+   "key": "2020|dodge|charger",
+   "lasfit": "halogen",
+   "google": "xenon"
+  },
+  {
+   "key": "2022|dodge|charger",
+   "lasfit": "halogen",
+   "google": "mixed"
+  },
+  {
+   "key": "2019|gmc|yukon",
+   "lasfit": "halogen",
+   "google": "mixed"
+  },
+  {
+   "key": "2020|gmc|yukon",
+   "lasfit": "halogen",
+   "google": "mixed"
+  }
+ ]
+}

@@ -1,0 +1,1326 @@
+{
+ "inferred_factory_led": [
+  {
+   "key": "2019|acura|ilx",
+   "n_positions": 6,
+   "positions": [
+    "Backup / Reverse Lights",
+    "Brake / Tail Lights",
+    "Turn Signal Lights",
+    "License Plate Lights",
+    "DRL Lights",
+    "Interior Lights"
+   ]
+  },
+  {
+   "key": "2019|acura|mdx",
+   "n_positions": 6,
+   "positions": [
+    "Backup / Reverse Lights",
+    "Brake / Tail Lights",
+    "Turn Signal Lights",
+    "License Plate Lights",
+    "DRL Lights",
+    "Interior Lights"
+   ]
+  },
+  {
+   "key": "2019|acura|rdx",
+   "n_positions": 5,
+   "positions": [
+    "Brake / Tail Lights",
+    "Turn Signal Lights",
+    "License Plate Lights",
+    "DRL Lights",
+    "Interior Lights"
+   ]
+  },
+  {
+   "key": "2019|acura|tlx",
+   "n_positions": 6,
+   "positions": [
+    "Backup / Reverse Lights",
+    "Brake / Tail Lights",
+    "Turn Signal Lights",
+    "License Plate Lights",
+    "DRL Lights",
+    "Interior Lights"
+   ]
+  },
+  {
+   "key": "2019|cadillac|ct6",
+   "n_positions": 2,
+   "positions": [
+    "Backup / Reverse Lights",
+    "Interior Lights"
+   ]
+  },
+  {
+   "key": "2019|cadillac|escalade",
+   "n_positions": 6,
+   "positions": [
+    "Backup / Reverse Lights",
+    "Brake / Tail Lights",
+    "Turn Signal Lights",
+    "License Plate Lights",
+    "DRL Lights",
+    "Interior Lights"
+   ]
+  },
+  {
+   "key": "2019|cadillac|escalade esv",
+   "n_positions": 6,
+   "positions": [
+    "Backup / Reverse Lights",
+    "Brake / Tail Lights",
+    "Turn Signal Lights",
+    "License Plate Lights",
+    "DRL Lights",
+    "Interior Lights"
+   ]
+  },
+  {
+   "key": "2019|cadillac|xt4",
+   "n_positions": 4,
+   "positions": [
+    "Backup / Reverse Lights",
+    "Brake / Tail Lights",
+    "Turn Signal Lights",
+    "DRL Lights"
+   ]
+  },
+  {
+   "key": "2019|cadillac|xts",
+   "n_positions": 5,
+   "positions": [
+    "Backup / Reverse Lights",
+    "Turn Signal Lights",
+    "License Plate Lights",
+    "DRL Lights",
+    "Interior Lights"
+   ]
+  },
+  {
+   "key": "2019|genesis|g70",
+   "n_positions": 5,
+   "positions": [
+    "Backup / Reverse Lights",
+    "Brake / Tail Lights",
+    "Turn Signal Lights",
+    "DRL Lights",
+    "Interior Lights"
+   ]
+  },
+  {
+   "key": "2019|infiniti|q70",
+   "n_positions": 6,
+   "positions": [
+    "Backup / Reverse Lights",
+    "Brake / Tail Lights",
+    "Turn Signal Lights",
+    "License Plate Lights",
+    "DRL Lights",
+    "Interior Lights"
+   ]
+  },
+  {
+   "key": "2019|infiniti|q70l",
+   "n_positions": 6,
+   "positions": [
+    "Backup / Reverse Lights",
+    "Brake / Tail Lights",
+    "Turn Signal Lights",
+    "License Plate Lights",
+    "DRL Lights",
+    "Interior Lights"
+   ]
+  },
+  {
+   "key": "2019|infiniti|qx50",
+   "n_positions": 2,
+   "positions": [
+    "License Plate Lights",
+    "Interior Lights"
+   ]
+  },
+  {
+   "key": "2019|infiniti|qx80",
+   "n_positions": 5,
+   "positions": [
+    "Brake / Tail Lights",
+    "Turn Signal Lights",
+    "License Plate Lights",
+    "DRL Lights",
+    "Interior Lights"
+   ]
+  },
+  {
+   "key": "2019|jaguar|e-pace",
+   "n_positions": 1,
+   "positions": [
+    "Fog Light Bulbs"
+   ]
+  },
+  {
+   "key": "2019|jaguar|xj",
+   "n_positions": 2,
+   "positions": [
+    "License Plate Lights",
+    "Interior Lights"
+   ]
+  },
+  {
+   "key": "2019|jaguar|xjr575",
+   "n_positions": 2,
+   "positions": [
+    "License Plate Lights",
+    "Interior Lights"
+   ]
+  },
+  {
+   "key": "2020|acura|ilx",
+   "n_positions": 6,
+   "positions": [
+    "Backup / Reverse Lights",
+    "Brake / Tail Lights",
+    "Turn Signal Lights",
+    "License Plate Lights",
+    "DRL Lights",
+    "Interior Lights"
+   ]
+  },
+  {
+   "key": "2020|acura|mdx",
+   "n_positions": 4,
+   "positions": [
+    "Backup / Reverse Lights",
+    "Brake / Tail Lights",
+    "Turn Signal Lights",
+    "DRL Lights"
+   ]
+  },
+  {
+   "key": "2020|acura|tlx",
+   "n_positions": 4,
+   "positions": [
+    "Backup / Reverse Lights",
+    "Brake / Tail Lights",
+    "Turn Signal Lights",
+    "DRL Lights"
+   ]
+  },
+  {
+   "key": "2020|alfa romeo|giulia",
+   "n_positions": 1,
+   "positions": [
+    "Fog Light Bulbs"
+   ]
+  },
+  {
+   "key": "2020|cadillac|ct4",
+   "n_positions": 4,
+   "positions": [
+    "Backup / Reverse Lights",
+    "Brake / Tail Lights",
+    "Turn Signal Lights",
+    "DRL Lights"
+   ]
+  },
+  {
+   "key": "2020|cadillac|ct6",
+   "n_positions": 2,
+   "positions": [
+    "Backup / Reverse Lights",
+    "Interior Lights"
+   ]
+  },
+  {
+   "key": "2020|cadillac|escalade",
+   "n_positions": 6,
+   "positions": [
+    "Backup / Reverse Lights",
+    "Brake / Tail Lights",
+    "Turn Signal Lights",
+    "License Plate Lights",
+    "DRL Lights",
+    "Interior Lights"
+   ]
+  },
+  {
+   "key": "2020|cadillac|escalade esv",
+   "n_positions": 6,
+   "positions": [
+    "Backup / Reverse Lights",
+    "Brake / Tail Lights",
+    "Turn Signal Lights",
+    "License Plate Lights",
+    "DRL Lights",
+    "Interior Lights"
+   ]
+  },
+  {
+   "key": "2020|cadillac|xt4",
+   "n_positions": 4,
+   "positions": [
+    "Backup / Reverse Lights",
+    "Brake / Tail Lights",
+    "Turn Signal Lights",
+    "DRL Lights"
+   ]
+  },
+  {
+   "key": "2020|cadillac|xt5",
+   "n_positions": 6,
+   "positions": [
+    "Backup / Reverse Lights",
+    "Brake / Tail Lights",
+    "Turn Signal Lights",
+    "License Plate Lights",
+    "DRL Lights",
+    "Interior Lights"
+   ]
+  },
+  {
+   "key": "2020|genesis|g70",
+   "n_positions": 2,
+   "positions": [
+    "Backup / Reverse Lights",
+    "Interior Lights"
+   ]
+  },
+  {
+   "key": "2020|infiniti|qx60",
+   "n_positions": 6,
+   "positions": [
+    "Backup / Reverse Lights",
+    "Brake / Tail Lights",
+    "Turn Signal Lights",
+    "License Plate Lights",
+    "DRL Lights",
+    "Interior Lights"
+   ]
+  },
+  {
+   "key": "2020|infiniti|qx80",
+   "n_positions": 5,
+   "positions": [
+    "Brake / Tail Lights",
+    "Turn Signal Lights",
+    "License Plate Lights",
+    "DRL Lights",
+    "Interior Lights"
+   ]
+  },
+  {
+   "key": "2020|jaguar|xf",
+   "n_positions": 2,
+   "positions": [
+    "Backup / Reverse Lights",
+    "Interior Lights"
+   ]
+  },
+  {
+   "key": "2020|lincoln|nautilus",
+   "n_positions": 4,
+   "positions": [
+    "Backup / Reverse Lights",
+    "Brake / Tail Lights",
+    "Turn Signal Lights",
+    "DRL Lights"
+   ]
+  },
+  {
+   "key": "2021|acura|ilx",
+   "n_positions": 5,
+   "positions": [
+    "Backup / Reverse Lights",
+    "Brake / Tail Lights",
+    "Turn Signal Lights",
+    "DRL Lights",
+    "Interior Lights"
+   ]
+  },
+  {
+   "key": "2021|cadillac|ct4",
+   "n_positions": 4,
+   "positions": [
+    "Backup / Reverse Lights",
+    "Brake / Tail Lights",
+    "Turn Signal Lights",
+    "DRL Lights"
+   ]
+  },
+  {
+   "key": "2021|cadillac|xt4",
+   "n_positions": 4,
+   "positions": [
+    "Backup / Reverse Lights",
+    "Brake / Tail Lights",
+    "Turn Signal Lights",
+    "DRL Lights"
+   ]
+  },
+  {
+   "key": "2021|chrysler|pacifica",
+   "n_positions": 4,
+   "positions": [
+    "Backup / Reverse Lights",
+    "Brake / Tail Lights",
+    "Turn Signal Lights",
+    "DRL Lights"
+   ]
+  },
+  {
+   "key": "2021|chrysler|voyager",
+   "n_positions": 4,
+   "positions": [
+    "Backup / Reverse Lights",
+    "Brake / Tail Lights",
+    "Turn Signal Lights",
+    "DRL Lights"
+   ]
+  },
+  {
+   "key": "2021|genesis|g70",
+   "n_positions": 4,
+   "positions": [
+    "Backup / Reverse Lights",
+    "Brake / Tail Lights",
+    "DRL Lights",
+    "Interior Lights"
+   ]
+  },
+  {
+   "key": "2021|jaguar|xf",
+   "n_positions": 2,
+   "positions": [
+    "Backup / Reverse Lights",
+    "Interior Lights"
+   ]
+  },
+  {
+   "key": "2021|lincoln|nautilus",
+   "n_positions": 4,
+   "positions": [
+    "Backup / Reverse Lights",
+    "Brake / Tail Lights",
+    "Turn Signal Lights",
+    "DRL Lights"
+   ]
+  },
+  {
+   "key": "2022|acura|ilx",
+   "n_positions": 5,
+   "positions": [
+    "Backup / Reverse Lights",
+    "Brake / Tail Lights",
+    "Turn Signal Lights",
+    "DRL Lights",
+    "Interior Lights"
+   ]
+  },
+  {
+   "key": "2022|cadillac|xt4",
+   "n_positions": 4,
+   "positions": [
+    "Backup / Reverse Lights",
+    "Brake / Tail Lights",
+    "Turn Signal Lights",
+    "DRL Lights"
+   ]
+  },
+  {
+   "key": "2022|cadillac|xt5",
+   "n_positions": 3,
+   "positions": [
+    "Backup / Reverse Lights",
+    "Brake / Tail Lights",
+    "DRL Lights"
+   ]
+  },
+  {
+   "key": "2022|chrysler|pacifica",
+   "n_positions": 6,
+   "positions": [
+    "Backup / Reverse Lights",
+    "Brake / Tail Lights",
+    "Turn Signal Lights",
+    "License Plate Lights",
+    "DRL Lights",
+    "Interior Lights"
+   ]
+  },
+  {
+   "key": "2022|lincoln|nautilus",
+   "n_positions": 4,
+   "positions": [
+    "Backup / Reverse Lights",
+    "Brake / Tail Lights",
+    "Turn Signal Lights",
+    "DRL Lights"
+   ]
+  }
+ ],
+ "suspicious": [
+  {
+   "key": "2019|alfa romeo|giulia",
+   "setup": "xenon",
+   "evidence": "D3R,D3S",
+   "note": "xenon-only 2019+ is rare; eyeball"
+  },
+  {
+   "key": "2019|bentley|continental",
+   "setup": "xenon",
+   "evidence": "D3R,D3S",
+   "note": "xenon-only 2019+ is rare; eyeball"
+  },
+  {
+   "key": "2019|bentley|flying spur",
+   "setup": "xenon",
+   "evidence": "D3R,D3S",
+   "note": "xenon-only 2019+ is rare; eyeball"
+  },
+  {
+   "key": "2019|bentley|mulsanne",
+   "setup": "xenon",
+   "evidence": "D3R,D3S",
+   "note": "xenon-only 2019+ is rare; eyeball"
+  },
+  {
+   "key": "2019|cadillac|cts",
+   "setup": "xenon",
+   "evidence": "D3R,D3S",
+   "note": "xenon-only 2019+ is rare; eyeball"
+  },
+  {
+   "key": "2019|ferrari|488 gtb",
+   "setup": "xenon",
+   "evidence": "D3R,D3S",
+   "note": "xenon-only 2019+ is rare; eyeball"
+  },
+  {
+   "key": "2019|ferrari|488 pista",
+   "setup": "xenon",
+   "evidence": "D3R,D3S",
+   "note": "xenon-only 2019+ is rare; eyeball"
+  },
+  {
+   "key": "2019|ferrari|488 pista spider",
+   "setup": "xenon",
+   "evidence": "D3R,D3S",
+   "note": "xenon-only 2019+ is rare; eyeball"
+  },
+  {
+   "key": "2019|ferrari|488 spider",
+   "setup": "xenon",
+   "evidence": "D3R,D3S",
+   "note": "xenon-only 2019+ is rare; eyeball"
+  },
+  {
+   "key": "2019|ferrari|gtc4lusso",
+   "setup": "xenon",
+   "evidence": "D3R,D3S",
+   "note": "xenon-only 2019+ is rare; eyeball"
+  },
+  {
+   "key": "2019|ferrari|gtc4lusso t",
+   "setup": "xenon",
+   "evidence": "D3R,D3S",
+   "note": "xenon-only 2019+ is rare; eyeball"
+  },
+  {
+   "key": "2019|genesis|g80",
+   "setup": "xenon",
+   "evidence": "D1R,D1S",
+   "note": "xenon-only 2019+ is rare; eyeball"
+  },
+  {
+   "key": "2019|genesis|g90",
+   "setup": "xenon",
+   "evidence": "D1R,D1S",
+   "note": "xenon-only 2019+ is rare; eyeball"
+  },
+  {
+   "key": "2019|infiniti|qx60",
+   "setup": "xenon",
+   "evidence": "D2R,D2S,D3R,D3S",
+   "note": "xenon-only 2019+ is rare; eyeball"
+  },
+  {
+   "key": "2019|jaguar|xf",
+   "setup": "xenon",
+   "evidence": "D3R,D3S",
+   "note": "xenon-only 2019+ is rare; eyeball"
+  },
+  {
+   "key": "2019|lincoln|continental",
+   "setup": "xenon",
+   "evidence": "D3R,D3S",
+   "note": "xenon-only 2019+ is rare; eyeball"
+  },
+  {
+   "key": "2019|lincoln|mkc",
+   "setup": "xenon",
+   "evidence": "D3R,D3S",
+   "note": "xenon-only 2019+ is rare; eyeball"
+  },
+  {
+   "key": "2019|lincoln|mkt",
+   "setup": "xenon",
+   "evidence": "D3R,D3S",
+   "note": "xenon-only 2019+ is rare; eyeball"
+  },
+  {
+   "key": "2019|lincoln|mkz",
+   "setup": "xenon",
+   "evidence": "D3R,D3S",
+   "note": "xenon-only 2019+ is rare; eyeball"
+  },
+  {
+   "key": "2019|maserati|ghibli",
+   "setup": "xenon",
+   "evidence": "D3R,D3S",
+   "note": "xenon-only 2019+ is rare; eyeball"
+  },
+  {
+   "key": "2019|maserati|granturismo",
+   "setup": "xenon",
+   "evidence": "D1R,D1S",
+   "note": "xenon-only 2019+ is rare; eyeball"
+  },
+  {
+   "key": "2019|maserati|levante",
+   "setup": "xenon",
+   "evidence": "D3R,D3S",
+   "note": "xenon-only 2019+ is rare; eyeball"
+  },
+  {
+   "key": "2019|porsche|718 boxster",
+   "setup": "xenon",
+   "evidence": "D3R,D3S",
+   "note": "xenon-only 2019+ is rare; eyeball"
+  },
+  {
+   "key": "2019|porsche|718 cayman",
+   "setup": "xenon",
+   "evidence": "D3R,D3S",
+   "note": "xenon-only 2019+ is rare; eyeball"
+  },
+  {
+   "key": "2020|bentley|continental",
+   "setup": "xenon",
+   "evidence": "D3R,D3S",
+   "note": "xenon-only 2019+ is rare; eyeball"
+  },
+  {
+   "key": "2020|bentley|flying spur",
+   "setup": "xenon",
+   "evidence": "D3R,D3S",
+   "note": "xenon-only 2019+ is rare; eyeball"
+  },
+  {
+   "key": "2020|bentley|mulsanne",
+   "setup": "xenon",
+   "evidence": "D3R,D3S",
+   "note": "xenon-only 2019+ is rare; eyeball"
+  },
+  {
+   "key": "2020|ferrari|488 pista",
+   "setup": "xenon",
+   "evidence": "D3R,D3S",
+   "note": "xenon-only 2019+ is rare; eyeball"
+  },
+  {
+   "key": "2020|ferrari|488 pista spider",
+   "setup": "xenon",
+   "evidence": "D3R,D3S",
+   "note": "xenon-only 2019+ is rare; eyeball"
+  },
+  {
+   "key": "2020|ferrari|gtc4lusso",
+   "setup": "xenon",
+   "evidence": "D3R,D3S",
+   "note": "xenon-only 2019+ is rare; eyeball"
+  },
+  {
+   "key": "2020|ferrari|gtc4lusso t",
+   "setup": "xenon",
+   "evidence": "D3R,D3S",
+   "note": "xenon-only 2019+ is rare; eyeball"
+  },
+  {
+   "key": "2020|lincoln|continental",
+   "setup": "xenon",
+   "evidence": "D3R,D3S",
+   "note": "xenon-only 2019+ is rare; eyeball"
+  },
+  {
+   "key": "2020|lincoln|mkz",
+   "setup": "xenon",
+   "evidence": "D3R,D3S",
+   "note": "xenon-only 2019+ is rare; eyeball"
+  },
+  {
+   "key": "2020|maserati|ghibli",
+   "setup": "xenon",
+   "evidence": "D3R,D3S",
+   "note": "xenon-only 2019+ is rare; eyeball"
+  },
+  {
+   "key": "2020|maserati|levante",
+   "setup": "xenon",
+   "evidence": "D3R,D3S",
+   "note": "xenon-only 2019+ is rare; eyeball"
+  },
+  {
+   "key": "2021|chrysler|300",
+   "setup": "xenon",
+   "evidence": "D3R,D3S",
+   "note": "xenon-only 2019+ is rare; eyeball"
+  }
+ ],
+ "phase1": {
+  "years": [
+   2019,
+   2020,
+   2021,
+   2022,
+   2023,
+   2024,
+   2025
+  ],
+  "makes": [
+   "Acura",
+   "Alfa Romeo",
+   "Bentley",
+   "Cadillac",
+   "Chrysler",
+   "Ferrari",
+   "Genesis",
+   "INFINITI",
+   "Jaguar",
+   "Lincoln",
+   "Maserati",
+   "Porsche"
+  ],
+  "vehicles": 108,
+  "fitment_rows": 964,
+  "setup_counts": {
+   "factory_led": 45,
+   "halogen": 15,
+   "xenon": 36,
+   "mixed": 11,
+   "unknown": 4
+  }
+ },
+ "phase2": {
+  "lasfit_keys": 147,
+  "lasfit_keys_checked": 143,
+  "sealight_vehicles": 247,
+  "agreements": 219,
+  "conflicts": [
+   {
+    "lasfit_key": "2013|ford|f-150",
+    "lasfit_setup": "halogen",
+    "sealight_key": "2013|ford|f-150",
+    "sealight_setup": "mixed",
+    "sealight_evidence": "9008,D3R,D3S,H13"
+   },
+   {
+    "lasfit_key": "2014|ford|f-150",
+    "lasfit_setup": "halogen",
+    "sealight_key": "2014|ford|f-150",
+    "sealight_setup": "mixed",
+    "sealight_evidence": "9008,D3R,D3S,H13"
+   },
+   {
+    "lasfit_key": "2015|dodge|charger",
+    "lasfit_setup": "halogen",
+    "sealight_key": "2015|dodge|charger",
+    "sealight_setup": "mixed",
+    "sealight_evidence": "9012,D3R,D3S,HIR2"
+   },
+   {
+    "lasfit_key": "2015|ford|edge",
+    "lasfit_setup": "halogen",
+    "sealight_key": "2015|ford|edge",
+    "sealight_setup": "mixed",
+    "sealight_evidence": "9005,D3R,D3S,H11,H8,H9,HB3"
+   },
+   {
+    "lasfit_key": "2015|gmc|yukon",
+    "lasfit_setup": "halogen",
+    "sealight_key": "2015|gmc|yukon",
+    "sealight_setup": "mixed",
+    "sealight_evidence": "9005,D3R,D3S,H11,H8,H9,HB3"
+   },
+   {
+    "lasfit_key": "2016|chevrolet|silverado",
+    "lasfit_setup": "halogen",
+    "sealight_key": "2016|chevrolet|silverado 1500",
+    "sealight_setup": "factory_led",
+    "sealight_evidence": "inferred: positions listed, none for headlights"
+   },
+   {
+    "lasfit_key": "2016|chevrolet|silverado 2500 3500",
+    "lasfit_setup": "halogen",
+    "sealight_key": "2016|chevrolet|silverado 1500",
+    "sealight_setup": "factory_led",
+    "sealight_evidence": "inferred: positions listed, none for headlights"
+   },
+   {
+    "lasfit_key": "2016|dodge|durango",
+    "lasfit_setup": "halogen",
+    "sealight_key": "2016|dodge|durango",
+    "sealight_setup": "mixed",
+    "sealight_evidence": "9005,D3R,D3S,H11,H8,H9,HB3"
+   },
+   {
+    "lasfit_key": "2016|dodge|charger",
+    "lasfit_setup": "halogen",
+    "sealight_key": "2016|dodge|charger",
+    "sealight_setup": "mixed",
+    "sealight_evidence": "9005,D3R,D3S,H11,H8,H9,HB3"
+   },
+   {
+    "lasfit_key": "2016|ford|edge",
+    "lasfit_setup": "halogen",
+    "sealight_key": "2016|ford|edge",
+    "sealight_setup": "mixed",
+    "sealight_evidence": "9005,D3R,D3S,H11,H8,H9,HB3"
+   },
+   {
+    "lasfit_key": "2016|gmc|yukon",
+    "lasfit_setup": "halogen",
+    "sealight_key": "2016|gmc|yukon",
+    "sealight_setup": "mixed",
+    "sealight_evidence": "9005,D3R,D3S,H11,H8,H9,HB3"
+   },
+   {
+    "lasfit_key": "2017|chevrolet|silverado",
+    "lasfit_setup": "halogen",
+    "sealight_key": "2017|chevrolet|silverado 1500",
+    "sealight_setup": "factory_led",
+    "sealight_evidence": "inferred: positions listed, none for headlights"
+   },
+   {
+    "lasfit_key": "2017|chevrolet|silverado 2500 3500",
+    "lasfit_setup": "halogen",
+    "sealight_key": "2017|chevrolet|silverado 1500",
+    "sealight_setup": "factory_led",
+    "sealight_evidence": "inferred: positions listed, none for headlights"
+   },
+   {
+    "lasfit_key": "2017|dodge|durango",
+    "lasfit_setup": "halogen",
+    "sealight_key": "2017|dodge|durango",
+    "sealight_setup": "mixed",
+    "sealight_evidence": "9005,D3R,D3S,H11,H8,H9,HB3"
+   },
+   {
+    "lasfit_key": "2017|dodge|charger",
+    "lasfit_setup": "halogen",
+    "sealight_key": "2017|dodge|charger",
+    "sealight_setup": "mixed",
+    "sealight_evidence": "9005,D3R,D3S,H11,H8,H9,HB3"
+   },
+   {
+    "lasfit_key": "2017|ford|edge",
+    "lasfit_setup": "halogen",
+    "sealight_key": "2017|ford|edge",
+    "sealight_setup": "mixed",
+    "sealight_evidence": "9005,D3R,D3S,H11,H8,H9,HB3"
+   },
+   {
+    "lasfit_key": "2017|gmc|yukon",
+    "lasfit_setup": "halogen",
+    "sealight_key": "2017|gmc|yukon",
+    "sealight_setup": "mixed",
+    "sealight_evidence": "9005,D3R,D3S,H11,H8,H9,HB3"
+   },
+   {
+    "lasfit_key": "2018|chevrolet|silverado",
+    "lasfit_setup": "halogen",
+    "sealight_key": "2018|chevrolet|silverado 1500",
+    "sealight_setup": "factory_led",
+    "sealight_evidence": "inferred: positions listed, none for headlights"
+   },
+   {
+    "lasfit_key": "2018|chevrolet|silverado 2500 3500",
+    "lasfit_setup": "halogen",
+    "sealight_key": "2018|chevrolet|silverado 1500",
+    "sealight_setup": "factory_led",
+    "sealight_evidence": "inferred: positions listed, none for headlights"
+   },
+   {
+    "lasfit_key": "2018|dodge|durango",
+    "lasfit_setup": "halogen",
+    "sealight_key": "2018|dodge|durango",
+    "sealight_setup": "mixed",
+    "sealight_evidence": "9005,D3R,D3S,H11,H8,H9,HB3"
+   },
+   {
+    "lasfit_key": "2018|dodge|charger",
+    "lasfit_setup": "halogen",
+    "sealight_key": "2018|dodge|charger",
+    "sealight_setup": "mixed",
+    "sealight_evidence": "9005,D3R,D3S,H11,H8,H9,HB3"
+   },
+   {
+    "lasfit_key": "2018|ford|edge",
+    "lasfit_setup": "halogen",
+    "sealight_key": "2018|ford|edge",
+    "sealight_setup": "mixed",
+    "sealight_evidence": "9005,D3R,D3S,H11,H8,H9,HB3"
+   },
+   {
+    "lasfit_key": "2018|gmc|yukon",
+    "lasfit_setup": "halogen",
+    "sealight_key": "2018|gmc|yukon",
+    "sealight_setup": "mixed",
+    "sealight_evidence": "9005,D3R,D3S,H11,H8,H9,HB3"
+   },
+   {
+    "lasfit_key": "2019|dodge|durango",
+    "lasfit_setup": "halogen",
+    "sealight_key": "2019|dodge|durango",
+    "sealight_setup": "mixed",
+    "sealight_evidence": "9005,D3R,D3S,H11,H8,H9,HB3"
+   },
+   {
+    "lasfit_key": "2019|dodge|charger",
+    "lasfit_setup": "halogen",
+    "sealight_key": "2019|dodge|charger",
+    "sealight_setup": "mixed",
+    "sealight_evidence": "9005,D3R,D3S,H11,H8,H9,HB3"
+   },
+   {
+    "lasfit_key": "2019|ford|transit 150 250 350",
+    "lasfit_setup": "halogen",
+    "sealight_key": "2019|ford|transit connect",
+    "sealight_setup": "mixed",
+    "sealight_evidence": "D3R,D3S,H11,H8,H9"
+   },
+   {
+    "lasfit_key": "2019|gmc|yukon",
+    "lasfit_setup": "halogen",
+    "sealight_key": "2019|gmc|yukon",
+    "sealight_setup": "mixed",
+    "sealight_evidence": "9005,D3R,D3S,H11,H8,H9,HB3"
+   },
+   {
+    "lasfit_key": "2019|ram|2500 3500",
+    "lasfit_setup": "mixed",
+    "sealight_key": "2019|ram|2500",
+    "sealight_setup": "halogen",
+    "sealight_evidence": "9005,H11,H8,H9,HB3"
+   },
+   {
+    "lasfit_key": "2019|ram|2500 3500",
+    "lasfit_setup": "mixed",
+    "sealight_key": "2019|ram|3500",
+    "sealight_setup": "halogen",
+    "sealight_evidence": "9005,H11,H8,H9,HB3"
+   },
+   {
+    "lasfit_key": "2019|ram|2500 3500",
+    "lasfit_setup": "mixed",
+    "sealight_key": "2019|ram|promaster 2500",
+    "sealight_setup": "halogen",
+    "sealight_evidence": "H7"
+   },
+   {
+    "lasfit_key": "2019|ram|2500 3500",
+    "lasfit_setup": "mixed",
+    "sealight_key": "2019|ram|promaster 3500",
+    "sealight_setup": "halogen",
+    "sealight_evidence": "H7"
+   },
+   {
+    "lasfit_key": "2020|dodge|durango",
+    "lasfit_setup": "halogen",
+    "sealight_key": "2020|dodge|durango",
+    "sealight_setup": "mixed",
+    "sealight_evidence": "9005,D3R,D3S,H11,H8,H9,HB3"
+   },
+   {
+    "lasfit_key": "2020|dodge|charger",
+    "lasfit_setup": "halogen",
+    "sealight_key": "2020|dodge|charger",
+    "sealight_setup": "mixed",
+    "sealight_evidence": "9005,D3R,D3S,H11,H8,H9,HB3"
+   },
+   {
+    "lasfit_key": "2020|ford|transit 150 250 350",
+    "lasfit_setup": "halogen",
+    "sealight_key": "2020|ford|transit connect",
+    "sealight_setup": "mixed",
+    "sealight_evidence": "D3R,D3S,H11,H8,H9"
+   },
+   {
+    "lasfit_key": "2020|ford|f-250 f-350",
+    "lasfit_setup": "mixed",
+    "sealight_key": "2020|ford|f-250 super duty",
+    "sealight_setup": "halogen",
+    "sealight_evidence": "9008,H13"
+   },
+   {
+    "lasfit_key": "2020|ford|f-250 f-350",
+    "lasfit_setup": "mixed",
+    "sealight_key": "2020|ford|f-350 super duty",
+    "sealight_setup": "halogen",
+    "sealight_evidence": "9008,H13"
+   },
+   {
+    "lasfit_key": "2020|ford|f-250 f-350",
+    "lasfit_setup": "mixed",
+    "sealight_key": "2020|ford|transit-250",
+    "sealight_setup": "halogen",
+    "sealight_evidence": "9005,H11,H8,H9,HB3"
+   },
+   {
+    "lasfit_key": "2020|ford|f-250 f-350",
+    "lasfit_setup": "mixed",
+    "sealight_key": "2020|ford|transit-350",
+    "sealight_setup": "halogen",
+    "sealight_evidence": "9005,H11,H8,H9,HB3"
+   },
+   {
+    "lasfit_key": "2020|ford|f-250 f-350",
+    "lasfit_setup": "mixed",
+    "sealight_key": "2020|ford|transit-350 hd",
+    "sealight_setup": "halogen",
+    "sealight_evidence": "9005,H11,H8,H9,HB3"
+   },
+   {
+    "lasfit_key": "2020|gmc|yukon",
+    "lasfit_setup": "halogen",
+    "sealight_key": "2020|gmc|yukon",
+    "sealight_setup": "mixed",
+    "sealight_evidence": "9005,D3R,D3S,H11,H8,H9,HB3"
+   },
+   {
+    "lasfit_key": "2020|ram|2500 3500",
+    "lasfit_setup": "mixed",
+    "sealight_key": "2020|ram|2500",
+    "sealight_setup": "halogen",
+    "sealight_evidence": "9005,H11,H8,H9,HB3"
+   },
+   {
+    "lasfit_key": "2020|ram|2500 3500",
+    "lasfit_setup": "mixed",
+    "sealight_key": "2020|ram|3500",
+    "sealight_setup": "halogen",
+    "sealight_evidence": "9005,H11,H8,H9,HB3"
+   },
+   {
+    "lasfit_key": "2020|ram|2500 3500",
+    "lasfit_setup": "mixed",
+    "sealight_key": "2020|ram|promaster 2500",
+    "sealight_setup": "halogen",
+    "sealight_evidence": "H7"
+   },
+   {
+    "lasfit_key": "2020|ram|2500 3500",
+    "lasfit_setup": "mixed",
+    "sealight_key": "2020|ram|promaster 3500",
+    "sealight_setup": "halogen",
+    "sealight_evidence": "H7"
+   },
+   {
+    "lasfit_key": "2020|volkswagen|golf gti",
+    "lasfit_setup": "halogen",
+    "sealight_key": "2020|volkswagen|gti",
+    "sealight_setup": "factory_led",
+    "sealight_evidence": "inferred: positions listed, none for headlights"
+   },
+   {
+    "lasfit_key": "2020|volkswagen|golf gti",
+    "lasfit_setup": "halogen",
+    "sealight_key": "2020|volkswagen|golf",
+    "sealight_setup": "factory_led",
+    "sealight_evidence": "inferred: positions listed, none for headlights"
+   },
+   {
+    "lasfit_key": "2021|dodge|charger",
+    "lasfit_setup": "halogen",
+    "sealight_key": "2021|dodge|charger",
+    "sealight_setup": "xenon",
+    "sealight_evidence": "D3R,D3S"
+   },
+   {
+    "lasfit_key": "2021|ford|f-150",
+    "lasfit_setup": "halogen",
+    "sealight_key": "2021|ford|f-150",
+    "sealight_setup": "factory_led",
+    "sealight_evidence": "inferred: positions listed, none for headlights"
+   },
+   {
+    "lasfit_key": "2021|ford|transit 150 250 350",
+    "lasfit_setup": "halogen",
+    "sealight_key": "2021|ford|f-150",
+    "sealight_setup": "factory_led",
+    "sealight_evidence": "inferred: positions listed, none for headlights"
+   },
+   {
+    "lasfit_key": "2021|ford|f-250 f-350",
+    "lasfit_setup": "mixed",
+    "sealight_key": "2021|ford|e-350 super duty",
+    "sealight_setup": "halogen",
+    "sealight_evidence": "9008,H13"
+   },
+   {
+    "lasfit_key": "2021|ford|f-250 f-350",
+    "lasfit_setup": "mixed",
+    "sealight_key": "2021|ford|f-250 super duty",
+    "sealight_setup": "halogen",
+    "sealight_evidence": "9008,H13"
+   },
+   {
+    "lasfit_key": "2021|ford|f-250 f-350",
+    "lasfit_setup": "mixed",
+    "sealight_key": "2021|ford|f-350 super duty",
+    "sealight_setup": "halogen",
+    "sealight_evidence": "9008,H13"
+   },
+   {
+    "lasfit_key": "2021|ford|f-250 f-350",
+    "lasfit_setup": "mixed",
+    "sealight_key": "2021|ford|transit-250",
+    "sealight_setup": "halogen",
+    "sealight_evidence": "9005,H11,H8,H9,HB3"
+   },
+   {
+    "lasfit_key": "2021|ford|f-250 f-350",
+    "lasfit_setup": "mixed",
+    "sealight_key": "2021|ford|transit-350",
+    "sealight_setup": "halogen",
+    "sealight_evidence": "9005,H11,H8,H9,HB3"
+   },
+   {
+    "lasfit_key": "2021|ford|f-250 f-350",
+    "lasfit_setup": "mixed",
+    "sealight_key": "2021|ford|transit-350 hd",
+    "sealight_setup": "halogen",
+    "sealight_evidence": "9005,H11,H8,H9,HB3"
+   },
+   {
+    "lasfit_key": "2021|jeep|grand cherokee",
+    "lasfit_setup": "mixed",
+    "sealight_key": "2021|jeep|grand cherokee",
+    "sealight_setup": "xenon",
+    "sealight_evidence": "D3R,D3S"
+   },
+   {
+    "lasfit_key": "2021|ram|2500 3500",
+    "lasfit_setup": "mixed",
+    "sealight_key": "2021|ram|2500",
+    "sealight_setup": "halogen",
+    "sealight_evidence": "9005,H11,H8,H9,HB3"
+   },
+   {
+    "lasfit_key": "2021|ram|2500 3500",
+    "lasfit_setup": "mixed",
+    "sealight_key": "2021|ram|3500",
+    "sealight_setup": "halogen",
+    "sealight_evidence": "9005,H11,H8,H9,HB3"
+   },
+   {
+    "lasfit_key": "2021|ram|2500 3500",
+    "lasfit_setup": "mixed",
+    "sealight_key": "2021|ram|promaster 2500",
+    "sealight_setup": "factory_led",
+    "sealight_evidence": "inferred: positions listed, none for headlights"
+   },
+   {
+    "lasfit_key": "2021|ram|2500 3500",
+    "lasfit_setup": "mixed",
+    "sealight_key": "2021|ram|promaster 3500",
+    "sealight_setup": "factory_led",
+    "sealight_evidence": "inferred: positions listed, none for headlights"
+   },
+   {
+    "lasfit_key": "2022|ford|transit 150 250 350",
+    "lasfit_setup": "halogen",
+    "sealight_key": "2022|ford|e-transit",
+    "sealight_setup": "factory_led",
+    "sealight_evidence": "inferred: positions listed, none for headlights"
+   },
+   {
+    "lasfit_key": "2022|ford|transit 150 250 350",
+    "lasfit_setup": "halogen",
+    "sealight_key": "2022|ford|transit connect",
+    "sealight_setup": "factory_led",
+    "sealight_evidence": "inferred: positions listed, none for headlights"
+   },
+   {
+    "lasfit_key": "2022|ford|f-250 f-350",
+    "lasfit_setup": "mixed",
+    "sealight_key": "2022|ford|e-350 super duty",
+    "sealight_setup": "halogen",
+    "sealight_evidence": "9008,H13"
+   },
+   {
+    "lasfit_key": "2022|ford|f-250 f-350",
+    "lasfit_setup": "mixed",
+    "sealight_key": "2022|ford|f-250 super duty",
+    "sealight_setup": "halogen",
+    "sealight_evidence": "9008,H13"
+   },
+   {
+    "lasfit_key": "2022|ford|f-250 f-350",
+    "lasfit_setup": "mixed",
+    "sealight_key": "2022|ford|f-350 super duty",
+    "sealight_setup": "halogen",
+    "sealight_evidence": "9008,H13"
+   },
+   {
+    "lasfit_key": "2022|ford|f-250 f-350",
+    "lasfit_setup": "mixed",
+    "sealight_key": "2022|ford|transit-250",
+    "sealight_setup": "halogen",
+    "sealight_evidence": "9005,H11,H8,H9,HB3"
+   },
+   {
+    "lasfit_key": "2022|ford|f-250 f-350",
+    "lasfit_setup": "mixed",
+    "sealight_key": "2022|ford|transit-350",
+    "sealight_setup": "halogen",
+    "sealight_evidence": "9005,H11,H8,H9,HB3"
+   },
+   {
+    "lasfit_key": "2022|ford|f-250 f-350",
+    "lasfit_setup": "mixed",
+    "sealight_key": "2022|ford|transit-350 hd",
+    "sealight_setup": "halogen",
+    "sealight_evidence": "9005,H11,H8,H9,HB3"
+   },
+   {
+    "lasfit_key": "2022|jeep|grand cherokee",
+    "lasfit_setup": "mixed",
+    "sealight_key": "2022|jeep|grand cherokee",
+    "sealight_setup": "factory_led",
+    "sealight_evidence": "inferred: positions listed, none for headlights"
+   },
+   {
+    "lasfit_key": "2022|ram|2500 3500",
+    "lasfit_setup": "mixed",
+    "sealight_key": "2022|ram|2500",
+    "sealight_setup": "halogen",
+    "sealight_evidence": "9005,H11,H8,H9,HB3"
+   },
+   {
+    "lasfit_key": "2022|ram|2500 3500",
+    "lasfit_setup": "mixed",
+    "sealight_key": "2022|ram|3500",
+    "sealight_setup": "halogen",
+    "sealight_evidence": "9005,H11,H8,H9,HB3"
+   },
+   {
+    "lasfit_key": "2022|ram|2500 3500",
+    "lasfit_setup": "mixed",
+    "sealight_key": "2022|ram|promaster 2500",
+    "sealight_setup": "halogen",
+    "sealight_evidence": "H7"
+   },
+   {
+    "lasfit_key": "2022|ram|2500 3500",
+    "lasfit_setup": "mixed",
+    "sealight_key": "2022|ram|promaster 3500",
+    "sealight_setup": "halogen",
+    "sealight_evidence": "H7"
+   },
+   {
+    "lasfit_key": "2023|ford|transit 150 250 350",
+    "lasfit_setup": "halogen",
+    "sealight_key": "2023|ford|transit connect",
+    "sealight_setup": "factory_led",
+    "sealight_evidence": "inferred: positions listed, none for headlights"
+   },
+   {
+    "lasfit_key": "2023|ram|2500 3500",
+    "lasfit_setup": "mixed",
+    "sealight_key": "2023|ram|2500",
+    "sealight_setup": "halogen",
+    "sealight_evidence": "9005,H11,H8,H9,HB3"
+   },
+   {
+    "lasfit_key": "2023|ram|2500 3500",
+    "lasfit_setup": "mixed",
+    "sealight_key": "2023|ram|3500",
+    "sealight_setup": "halogen",
+    "sealight_evidence": "9005,H11,H8,H9,HB3"
+   },
+   {
+    "lasfit_key": "2023|ram|2500 3500",
+    "lasfit_setup": "mixed",
+    "sealight_key": "2023|ram|promaster 2500",
+    "sealight_setup": "halogen",
+    "sealight_evidence": "9005,H11,H8,H9,HB3"
+   },
+   {
+    "lasfit_key": "2023|ram|2500 3500",
+    "lasfit_setup": "mixed",
+    "sealight_key": "2023|ram|promaster 3500",
+    "sealight_setup": "halogen",
+    "sealight_evidence": "9005,H11,H8,H9,HB3"
+   },
+   {
+    "lasfit_key": "2024|ford|transit 150 250 350",
+    "lasfit_setup": "halogen",
+    "sealight_key": "2024|ford|e-transit",
+    "sealight_setup": "factory_led",
+    "sealight_evidence": "inferred: positions listed, none for headlights"
+   },
+   {
+    "lasfit_key": "2024|ram|2500 3500",
+    "lasfit_setup": "mixed",
+    "sealight_key": "2024|ram|2500",
+    "sealight_setup": "halogen",
+    "sealight_evidence": "9005,H11,H8,H9,HB3"
+   },
+   {
+    "lasfit_key": "2024|ram|2500 3500",
+    "lasfit_setup": "mixed",
+    "sealight_key": "2024|ram|3500",
+    "sealight_setup": "halogen",
+    "sealight_evidence": "9005,H11,H8,H9,HB3"
+   }
+  ],
+  "unmapped": [
+   {
+    "lasfit_key": "2024|ford|f-250 f-350 xl xlt",
+    "reason": "no SEALIGHT model match",
+    "sealight_models": [
+     "E-Transit",
+     "Escape"
+    ]
+   },
+   {
+    "lasfit_key": "2024|nissan|frontier",
+    "reason": "no SEALIGHT model match",
+    "sealight_models": [
+     "Altima",
+     "LEAF"
+    ]
+   },
+   {
+    "year": 2025,
+    "make": "ford",
+    "reason": "make not in SEALIGHT"
+   },
+   {
+    "lasfit_key": "2025|jeep|wrangler",
+    "reason": "no SEALIGHT model match",
+    "sealight_models": [
+     "Compass"
+    ]
+   },
+   {
+    "year": 2025,
+    "make": "nissan",
+    "reason": "make not in SEALIGHT"
+   }
+  ]
+ }
+}

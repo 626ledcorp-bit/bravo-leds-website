@@ -20,16 +20,19 @@
   <div class="contact-card" style="margin-bottom:16px">
     <h2>Items</h2>
     <table class="admin-table">
-      <tr><th>Qty</th><th>Product</th><th>Variation</th><th>SKU</th><th>MSKU</th><th>Line total</th></tr>
-      {% for i in o.line_items %}
+      <tr><th>Qty</th><th>Product</th><th>Vehicle</th><th>Variation</th><th>SKU</th><th>MSKU</th><th>Line total</th></tr>
+      {% for vehicle, vitems in grouped_items %}
+      {% for i in vitems %}
       <tr>
         <td>{{ i.qty }}</td>
         <td>{{ i.name }}</td>
+        <td>{{ i.vehicle or "—" }}</td>
         <td>{{ i.variation_label or (i.size ~ (" / " ~ i.color_temp if i.color_temp else "") if i.size else "—") }}</td>
         <td>{{ i.sku or "—" }}</td>
         <td>{{ i.msku or "—" }}</td>
         <td class="nowrap">{{ money(i.line_total_cents) }}</td>
       </tr>
+      {% endfor %}
       {% endfor %}
     </table>
     <p style="margin-top:10px">

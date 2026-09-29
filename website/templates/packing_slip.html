@@ -19,13 +19,18 @@
     <p><strong>PACKING SLIP</strong> — {{ o.created_at[:10] }} · Status: {{ o.status|upper }}</p>
     <table class="admin-table">
       <tr><th>Qty</th><th>Item</th><th>SKU</th><th>✓</th></tr>
-      {% for i in o.line_items %}
+      {% for vehicle, vitems in grouped_items %}
+      {% if vehicle %}
+      <tr><td colspan="4" style="background:#f0f0f0"><strong>🚗 {{ vehicle }}</strong></td></tr>
+      {% endif %}
+      {% for i in vitems %}
       <tr>
         <td style="font-size:20px"><strong>{{ i.qty }}</strong></td>
         <td>{{ i.name }}{% if i.variation_label %}<br><span class="hint">{{ i.variation_label }}</span>{% elif i.size %}<br><span class="hint">{{ i.size }}{% if i.color_temp %}, {{ i.color_temp }}{% endif %}</span>{% endif %}</td>
         <td><code>{{ i.sku or "—" }}</code></td>
         <td style="width:60px;border:1px solid #999"></td>
       </tr>
+      {% endfor %}
       {% endfor %}
     </table>
     <p style="margin-top:16px"><strong>Ship to:</strong><br>

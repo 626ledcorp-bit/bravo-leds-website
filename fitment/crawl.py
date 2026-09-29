@@ -31,6 +31,7 @@ EXCLUDE_MAKES = {
 SUZUKI_AUTO_MAX_YEAR = 2013
 
 _last_req = [0.0]
+REQUEST_DELAY = [1.0]
 
 def log(msg):
     ts = time.strftime("%Y-%m-%d %H:%M:%S")
@@ -41,7 +42,7 @@ def log(msg):
 
 def polite_wait():
     dt = time.monotonic() - _last_req[0]
-    wait = 1.0 + random.uniform(0.0, 0.4) - dt
+    wait = REQUEST_DELAY[0] + random.uniform(0.0, 0.4) - dt
     if wait > 0:
         time.sleep(wait)
 
@@ -100,7 +101,10 @@ def main():
     ap.add_argument("--end-year", type=int, default=2005)
     ap.add_argument("--makes", default="", help="comma-separated make names to limit to")
     ap.add_argument("--max-cars", type=int, default=0, help="0 = no limit (smoke test)")
+    ap.add_argument("--delay", type=float, default=1.0,
+                    help="min seconds between requests (politeness)")
     args = ap.parse_args()
+    REQUEST_DELAY[0] = args.delay
     only_makes = {m.strip() for m in args.makes.split(",") if m.strip()}
 
     os.makedirs(RAW_DIR, exist_ok=True)
@@ -116,7 +120,10 @@ def main():
             continue
         log(f"=== YEAR {year}: fetching makes ===")
         data, _ = api_get({"lookupType": "makes", "constructionYear": year})
-        makes = data.get("response", [])
+        makes = data.get("response") or []
+        if not makes:
+            log(f"year {year}: no makes data, skipping")
+            continue
         save_raw(f"makes_{year}.json", {"year": year, "response": makes})
         auto_makes = []
         for m in makes:
@@ -140,7 +147,7 @@ def main():
                 state["failed"].append({"stage": "models", "year": year, "make": mname})
                 save_state(state)
                 continue
-            models = data.get("response", [])
+            models = data.get("response") or []
             save_raw(f"models_{year}_{mid}.json",
                      {"year": year, "make": mname, "make_id": mid, "response": models})
             for mo in models:
@@ -152,13 +159,13 @@ def main():
                                            "manufacturerId": mid, "modelId": mo["id"]})
                     car_id = car_data["response"][0]["id"]
                     pos_data, _ = api_get({"lookupType": "positions", "carId": car_id})
-                    positions = pos_data.get("response", [])
+                    positions = pos_data.get("response") or []
                     notes = {}
                     for p in positions:
                         uid = p["use_id"]
                         n_data, _ = api_get({"lookupType": "notes", "carId": car_id,
                                              "useId": uid})
-                        notes[uid] = n_data.get("response", [])
+                        notes[uid] = n_data.get("response") or []
                     save_raw(f"car_{car_id}.json", {
                         "year": year, "make": mname, "make_id": mid,
                         "model": mo["name"], "model_id": mo["id"], "car_id": car_id,

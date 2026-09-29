@@ -105,14 +105,24 @@ def _fmt_money(cents):
 
 def _items_text(order):
     lines = []
+    groups, order_seen = {}, []
     for i in order["line_items"]:
-        variant = i.get("variation_label") or (
-            f"{i.get('size', '')}"
-            f"{', ' + i['color_temp'] if i.get('color_temp') else ''}"
-        ).strip()
-        lines.append(f"- {i['qty']}x {i['name']}"
-                     f"{' (' + variant + ')' if variant else ''}"
-                     f" — {_fmt_money(i['line_total_cents'])}")
+        v = i.get("vehicle") or ""
+        if v not in groups:
+            groups[v] = []
+            order_seen.append(v)
+        groups[v].append(i)
+    for v in ([""] if "" in groups else []) + [x for x in order_seen if x]:
+        if v:
+            lines.append(f"{v}:")
+        for i in groups[v]:
+            variant = i.get("variation_label") or (
+                f"{i.get('size', '')}"
+                f"{', ' + i['color_temp'] if i.get('color_temp') else ''}"
+            ).strip()
+            lines.append(f"- {i['qty']}x {i['name']}"
+                         f"{' (' + variant + ')' if variant else ''}"
+                         f" — {_fmt_money(i['line_total_cents'])}")
     return "\n".join(lines)
 
 

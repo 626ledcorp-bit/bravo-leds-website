@@ -199,7 +199,9 @@
     postJSON('/api/cart/add', {
       product_id: row.dataset.pid,
       variation_id: row.dataset.vid,
-      qty: 1
+      qty: 1,
+      vehicle: { year: bar.dataset.year, make: bar.dataset.make,
+                 model: bar.dataset.model }
     }, btn, 'Adding…').then(function (res) {
       var j = res.json;
       if (j.ok) {

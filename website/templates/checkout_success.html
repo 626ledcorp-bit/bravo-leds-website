@@ -15,6 +15,20 @@
     {% endif %}
     <p class="small">Ships in 1-2 business days via USPS/UPS. 1-year warranty on
     all products, 30-day returns on unused items.</p>
+    {% if grouped_lines %}
+    <div style="text-align:left;max-width:520px;margin:22px auto 0">
+      <h3 style="margin-bottom:8px">Your items</h3>
+      {% for vehicle, vlines in grouped_lines %}
+      {% if vehicle %}<p style="margin:10px 0 4px"><strong>🚗 {{ vehicle }}</strong></p>{% endif %}
+      {% for l in vlines %}
+      <div class="sum-row">
+        <span>{{ l.qty }}× {{ l.name }}{% if l.variation_label %} ({{ l.variation_label }}){% endif %}</span>
+        <span>{{ money(l.line_total_cents) }}</span>
+      </div>
+      {% endfor %}
+      {% endfor %}
+    </div>
+    {% endif %}
     <p style="margin-top:22px">
       <a class="btn" href="/shop">Keep Shopping</a>
     </p>
