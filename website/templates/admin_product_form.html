@@ -39,7 +39,7 @@
     </div>
     <div class="frow frow-3">
       <label>Tier / series<input name="tier" value="{{ f.tier }}" placeholder="e.g. Premium"></label>
-      <label>Badge<input name="badge" value="{{ f.badge }}" placeholder="e.g. Best Seller"></label>
+      <label>Badge<input name="badge" value="{{ f.badge or '' }}" placeholder="e.g. Best Seller"></label>
       <label>Warranty<input name="warranty" value="{{ f.warranty }}"></label>
     </div>
     <div class="frow">

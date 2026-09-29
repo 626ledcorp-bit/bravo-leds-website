@@ -127,7 +127,15 @@ check("GET /pay/<token> -> 200", r.status_code == 200,
       f"got {r.status_code}")
 check("invoice shows total", b"$35.00" in r.data)
 check("invoice shows customer name", b"Phone Customer" in r.data)
-check("invoice shows pay button", b"/pay/" in r.data and b"checkout" in r.data)
+# No Stripe keys in this test env: the invoice must degrade gracefully
+# instead of showing a pay button.
+check("invoice w/o Stripe shows graceful message, no pay button",
+      b"isn't available" in r.data and b"/checkout" not in r.data)
+os.environ["STRIPE_SECRET_KEY"] = "sk_test_fake"
+r = client.get(f"/pay/{token}")
+check("invoice with Stripe shows pay button",
+      f"/pay/{token}/checkout".encode() in r.data and b"Pay $35.00" in r.data)
+del os.environ["STRIPE_SECRET_KEY"]
 check("invoice pickup note", b"pickup" in r.data.lower())
 
 r = client.get("/pay/does-not-exist")

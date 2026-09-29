@@ -212,7 +212,12 @@ def home():
     featured = [db.public_product(p) for p in db.list_products()
                 if p.get("badge") in ("Best Seller", "Most Popular",
                                       "Flagship")]
+    # Homepage stays lighting-focused: dash cams and jump starters remain
+    # in the shop menu and /shop, but not in the homepage category tiles.
+    home_categories = {k: v for k, v in CATEGORIES.items()
+                       if k not in ("dash-cams", "jump-starters")}
     return render_template("index.html", featured=featured,
+                           home_categories=home_categories,
                            years=fitment_db.get_years())
 
 

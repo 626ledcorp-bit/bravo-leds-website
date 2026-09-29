@@ -529,8 +529,16 @@ def primary_image_src(p):
     return f"/static/img/ph-{icon}.svg"
 
 
+def _clean_badge(v):
+    """Normalize a badge value. Blank, or the literal string "None" left
+    behind by the admin form rendering a NULL badge, both mean no badge."""
+    v = (v or "").strip()
+    return v if v and v.lower() != "none" else None
+
+
 def _row_to_product(r, with_variations=True):
     d = dict(r)
+    d["badge"] = _clean_badge(d.get("badge"))
     d["sizes"] = json.loads(d["sizes"]) if d.get("sizes") else []
     d["color_temps"] = (json.loads(d["color_temps"])
                         if d.get("color_temps") else [])
@@ -1131,7 +1139,7 @@ def create_product(data):
         data.get("warranty", "1-year warranty"),
         json.dumps(_group_values(groups, "size")),
         json.dumps(_group_values(groups, "color temp", "color_temp", "color")),
-        data.get("badge") or None, data.get("blurb", ""),
+        _clean_badge(data.get("badge")), data.get("blurb", ""),
         json.dumps(data.get("features") or []),
         0 if status == "active" else 1,
         json.dumps(groups),
@@ -1190,7 +1198,7 @@ def update_product(pid, data):
         data.get("warranty", "1-year warranty"),
         json.dumps(_group_values(groups, "size")),
         json.dumps(_group_values(groups, "color temp", "color_temp", "color")),
-        data.get("badge") or None, data.get("blurb", ""),
+        _clean_badge(data.get("badge")), data.get("blurb", ""),
         json.dumps(data.get("features") or []),
         0 if status == "active" else 1,
         json.dumps(groups),

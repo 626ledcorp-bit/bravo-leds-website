@@ -51,7 +51,7 @@
     </div>
     <div class="cat-grid">
       {% set icons = {"led-bulbs":"💡","fog":"🌫️","turn":"↔️","brake":"🛑","reverse":"🔙","interior":"✨","pods":"🔦","strips":"🌈","accessories":"🔌"} %}
-      {% for cid, c in categories.items() %}
+      {% for cid, c in home_categories.items() %}
       <a class="cat-card" href="/shop/{{ cid }}">
         <div class="icon">{{ icons.get(cid, "💡") }}</div>
         <h3>{{ c.name }}</h3>

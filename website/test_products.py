@@ -411,6 +411,46 @@ def test_no_internal_leaks(p):
     db.set_status(p["id"], "active")
 
 
+def test_badge_none_string(p):
+    print("14 — literal 'None' badge never renders publicly")
+    check("_clean_badge(None) is None", db._clean_badge(None) is None)
+    check("_clean_badge('') is None", db._clean_badge("") is None)
+    check("_clean_badge('None') is None", db._clean_badge("None") is None)
+    check("_clean_badge(' none ') is None", db._clean_badge(" none ") is None)
+    check("_clean_badge keeps real badges",
+          db._clean_badge("Best Seller") == "Best Seller")
+    # Simulate the legacy bad row: the string "None" stored in the DB.
+    con = db._connect()
+    con.execute("UPDATE products SET badge = 'None' WHERE id = ?",
+                (p["id"],))
+    con.commit()
+    con.close()
+    prod = db.get_product(p["id"])
+    check("get_product normalizes 'None' badge to None",
+          prod["badge"] is None)
+    check("public_product keeps badge None",
+          db.public_product(prod)["badge"] is None)
+    c = appmod.app.test_client()
+    shop = c.get("/shop").get_data(as_text=True)
+    check("no 'None' badge text in shop listing",
+          ">None<" not in shop)
+    # Saving through the product update path also normalizes.
+    prod = db.get_product(p["id"])
+
+    def _pdata(badge):
+        return {"name": prod["name"], "category": prod["category"],
+                "price_cents": prod["price_cents"], "status": "active",
+                "variant_groups": prod["variant_groups"], "badge": badge}
+
+    db.update_product(p["id"], _pdata("None"))
+    check("update_product stores NULL for 'None' badge",
+          db.get_product(p["id"])["badge"] is None)
+    db.update_product(p["id"], _pdata("Best Seller"))
+    check("real badge still saves",
+          db.get_product(p["id"])["badge"] == "Best Seller")
+    db.update_product(p["id"], _pdata(""))
+
+
 def main():
     p = test_create()
     p = test_edit(p)
@@ -421,6 +461,7 @@ def main():
     test_cart_pricing(p)
     test_variation_inventory_and_snapshot(p)
     test_no_internal_leaks(p)
+    test_badge_none_string(p)
     print(f"\n{len(PASS)} passed, {len(FAIL)} failed")
     if FAIL:
         print("FAILURES:", FAIL)
