@@ -259,6 +259,14 @@ def init_db():
     if "fulfillment" not in ocols:
         con.execute("ALTER TABLE orders ADD COLUMN fulfillment TEXT "
                     "NOT NULL DEFAULT 'ship'")
+    # Payment-link token for manually created (phone) orders: the customer
+    # pays at /pay/<token>. Unguessable random value; only manual orders
+    # carry one. (UNIQUE can't be added via ALTER COLUMN in SQLite, so the
+    # uniqueness is enforced with an index — NULLs never conflict.)
+    if "pay_token" not in ocols:
+        con.execute("ALTER TABLE orders ADD COLUMN pay_token TEXT")
+        con.execute("CREATE UNIQUE INDEX IF NOT EXISTS idx_orders_pay_token"
+                    " ON orders (pay_token)")
     init_settings(con)
     init_order_events(con)
     init_square_sync_log(con)
@@ -1356,12 +1364,15 @@ def _row_to_order(r):
 
 
 def create_order(customer, lines, subtotal_cents, shipping_cents=0,
-                 promo_code=None, discount_cents=0, fulfillment="ship"):
+                 promo_code=None, discount_cents=0, fulfillment="ship",
+                 pay_token=None):
     """Persist a checkout snapshot with status 'new'. lines = cart_detailed().
 
     promo_code/discount_cents record the Track 3 promo applied at checkout;
     the order total is subtotal - discount + shipping.
     fulfillment: 'ship' (default) or 'pickup' (local store pickup).
+    pay_token: unguessable token for manually created (phone) orders —
+    the customer pays at /pay/<token>. None for normal web orders.
     """
     discount_cents = max(0, min(subtotal_cents, int(discount_cents or 0)))
     total = subtotal_cents - discount_cents + shipping_cents
@@ -1389,15 +1400,15 @@ def create_order(customer, lines, subtotal_cents, shipping_cents=0,
           (created_at, updated_at, status, customer_name, customer_email,
            addr_line1, addr_line2, addr_city, addr_state, addr_zip,
            line_items, subtotal_cents, shipping_cents, total_cents,
-           promo_code, discount_cents, fulfillment)
-        VALUES (?, ?, 'new', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+           promo_code, discount_cents, fulfillment, pay_token)
+        VALUES (?, ?, 'new', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     """, (now, now,
           customer.get("name", ""), customer.get("email", ""),
           customer.get("line1", ""), customer.get("line2", ""),
           customer.get("city", ""), customer.get("state", ""),
           customer.get("zip", ""),
           json.dumps(snapshot), subtotal_cents, shipping_cents, total,
-          promo_code, discount_cents, fulfillment))
+          promo_code, discount_cents, fulfillment, pay_token))
     con.commit()
     oid = cur.lastrowid
     con.close()
@@ -1419,6 +1430,17 @@ def get_order_by_session(stripe_session_id):
     con = _connect()
     r = con.execute("SELECT * FROM orders WHERE stripe_session_id = ?",
                     (stripe_session_id,)).fetchone()
+    con.close()
+    return _row_to_order(r) if r else None
+
+
+def get_order_by_pay_token(token):
+    """Manual (phone) order lookup for /pay/<token>. None for bad tokens."""
+    if not token:
+        return None
+    con = _connect()
+    r = con.execute("SELECT * FROM orders WHERE pay_token = ?",
+                    (token,)).fetchone()
     con.close()
     return _row_to_order(r) if r else None
 

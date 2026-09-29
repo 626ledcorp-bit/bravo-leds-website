@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+{% block title %}New manual order — Admin — BRAVO LEDS{% endblock %}
+{% block content %}
+<div class="wrap">
+  <h1>New manual order</h1>
+  <p style="margin-bottom:16px"><a href="/admin/orders">← All orders</a></p>
+  <p class="hint" style="margin-bottom:16px">For phone orders: build the order here, then send the customer the payment link. They pay online with Stripe — the order then flows through the normal paid → shipped pipeline.</p>
+
+  {% if errors %}
+  <div class="contact-card" style="margin-bottom:16px;border:2px solid #b00">
+    <h2>Please fix the following</h2>
+    <ul>{% for e in errors %}<li>{{ e }}</li>{% endfor %}</ul>
+  </div>
+  {% endif %}
+
+  <form method="post" action="/admin/orders/new" id="manual-order-form">
+    <div class="contact-card" style="margin-bottom:16px">
+      <h2>Customer</h2>
+      <div class="finder-grid" style="grid-template-columns:1fr 1fr;align-items:end">
+        <label class="field">Name
+          <input type="text" name="name" value="{{ form.get('name','') if form else '' }}" required>
+        </label>
+        <label class="field">Email
+          <input type="email" name="email" value="{{ form.get('email','') if form else '' }}" required>
+        </label>
+      </div>
+      <div class="finder-grid" style="grid-template-columns:1fr 1fr;margin-top:10px">
+        <label class="field">Fulfillment
+          <select name="fulfillment">
+            <option value="ship"{% if not form or form.get('fulfillment') != 'pickup' %} selected{% endif %}>Ship</option>
+            <option value="pickup"{% if form and form.get('fulfillment') == 'pickup' %} selected{% endif %}>Store pickup (626 LEDs, Rosemead)</option>
+          </select>
+        </label>
+        <label class="field">Internal notes (staff only)
+          <input type="text" name="notes" value="{{ form.get('notes','') if form else '' }}" placeholder="e.g. phone order, customer asked about…">
+        </label>
+      </div>
+    </div>
+
+    <div class="contact-card" style="margin-bottom:16px">
+      <h2>Items</h2>
+      <div id="rows"></div>
+      <p style="margin-top:10px">
+        <button class="btn btn-ghost" type="button" id="add-row">+ Add catalog item</button>
+        <button class="btn btn-ghost" type="button" id="add-custom">+ Add custom item</button>
+      </p>
+      <div class="finder-grid" style="grid-template-columns:1fr 1fr;margin-top:10px">
+        <label class="field">Shipping ($)
+          <input type="text" name="shipping" inputmode="decimal" placeholder="0.00" value="{{ form.get('shipping','') if form else '' }}">
+        </label>
+        <label class="field">Discount ($)
+          <input type="text" name="discount" inputmode="decimal" placeholder="0.00" value="{{ form.get('discount','') if form else '' }}">
+        </label>
+      </div>
+      <p style="margin-top:12px;font-size:1.2em"><strong>Order total: <span id="order-total">$0.00</span></strong></p>
+    </div>
+
+    <p><button class="btn" type="submit">Create order + get payment link</button></p>
+  </form>
+</div>
+
+<script>
+const PRODUCTS = {{ products|tojson }};
+const BY_ID = {};
+PRODUCTS.forEach(p => { BY_ID[String(p.id)] = p; });
+const rowsEl = document.getElementById("rows");
+const moneyFmt = c => "$" + (c / 100).toFixed(2);
+
+function varOptions(p) {
+  return (p.variations || []).map(v =>
+    `<option value="${v.id}">${v.label} — ${moneyFmt(v.price_cents)}</option>`).join("");
+}
+
+function refreshRow(row) {
+  const psel = row.querySelector(".p-sel"), vsel = row.querySelector(".v-sel");
+  const p = BY_ID[psel.value];
+  if (!p) { vsel.innerHTML = ""; row.querySelector(".line-total").textContent = "$0.00"; recalc(); return; }
+  const prev = vsel.value;
+  vsel.innerHTML = varOptions(p);
+  if ([...vsel.options].some(o => o.value === prev)) vsel.value = prev;
+  refreshLine(row);
+}
+
+function lineCents(row) {
+  const p = BY_ID[row.querySelector(".p-sel").value];
+  if (!p) return 0;
+  const vid = row.querySelector(".v-sel").value;
+  const v = (p.variations || []).find(x => String(x.id) === String(vid));
+  const unit = v ? v.price_cents : p.base_price_cents;
+  const qty = Math.max(1, Math.min(99, parseInt(row.querySelector(".q-in").value, 10) || 1));
+  return unit * qty;
+}
+
+function refreshLine(row) {
+  row.querySelector(".line-total").textContent = moneyFmt(lineCents(row));
+  recalc();
+}
+
+function recalc() {
+  let items = 0;
+  document.querySelectorAll("#rows .item-row").forEach(r => { items += lineCents(r); });
+  let custom = 0;
+  document.querySelectorAll("#rows .custom-row").forEach(r => {
+    const price = Math.round((parseFloat(r.querySelector(".c-price").value.replace(/[$,]/g, "")) || 0) * 100);
+    const qty = Math.max(1, Math.min(99, parseInt(r.querySelector(".c-qty").value, 10) || 1));
+    custom += Math.max(0, price) * qty;
+  });
+  const ship = Math.round((parseFloat(document.querySelector('input[name="shipping"]').value.replace(/[$,]/g, "")) || 0) * 100);
+  const disc = Math.round((parseFloat(document.querySelector('input[name="discount"]').value.replace(/[$,]/g, "")) || 0) * 100);
+  const total = Math.max(0, items + custom + Math.max(0, ship) - Math.min(Math.max(0, disc), items + custom));
+  document.getElementById("order-total").textContent = moneyFmt(total);
+}
+
+function addRow(saved) {
+  const row = document.createElement("div");
+  row.className = "item-row finder-grid";
+  row.style.cssText = "grid-template-columns:2fr 2fr 1fr 1fr auto;align-items:end;margin-bottom:8px";
+  const opts = PRODUCTS.map(p => `<option value="${p.id}">${p.name}</option>`).join("");
+  row.innerHTML = `
+    <label class="field">Product <select class="p-sel" name="pid">${opts}</select></label>
+    <label class="field">Variation <select class="v-sel" name="vid"></select></label>
+    <label class="field">Qty <input type="number" class="q-in" name="qty" value="1" min="1" max="99"></label>
+    <div><span class="hint">Line total</span><br><strong class="line-total">$0.00</strong></div>
+    <div><button class="btn btn-ghost" type="button" title="Remove">✕</button></div>`;
+  rowsEl.appendChild(row);
+  const psel = row.querySelector(".p-sel");
+  if (saved && saved.pid && BY_ID[String(saved.pid)]) psel.value = saved.pid;
+  psel.addEventListener("change", () => refreshRow(row));
+  row.querySelector(".v-sel").addEventListener("change", () => refreshLine(row));
+  row.querySelector(".q-in").addEventListener("input", () => refreshLine(row));
+  row.querySelector("button").addEventListener("click", () => { row.remove(); recalc(); });
+  if (saved && saved.vid) row.querySelector(".v-sel").dataset.want = saved.vid;
+  if (saved && saved.qty) row.querySelector(".q-in").value = saved.qty;
+  refreshRow(row);
+  const want = row.querySelector(".v-sel").dataset.want;
+  if (want && [...row.querySelector(".v-sel").options].some(o => o.value === want)) {
+    row.querySelector(".v-sel").value = want;
+    refreshLine(row);
+  }
+}
+
+function addCustom(saved) {
+  const row = document.createElement("div");
+  row.className = "custom-row finder-grid";
+  row.style.cssText = "grid-template-columns:2fr 1fr 1fr auto;align-items:end;margin-bottom:8px";
+  row.innerHTML = `
+    <label class="field">Custom item name <input type="text" class="c-name" name="cname" placeholder="e.g. Install labor"></label>
+    <label class="field">Price ($) <input type="text" class="c-price" name="cprice" inputmode="decimal" placeholder="0.00"></label>
+    <label class="field">Qty <input type="number" class="c-qty" name="cqty" value="1" min="1" max="99"></label>
+    <div><button class="btn btn-ghost" type="button" title="Remove">✕</button></div>`;
+  rowsEl.appendChild(row);
+  if (saved) {
+    if (saved.cname) row.querySelector(".c-name").value = saved.cname;
+    if (saved.cprice) row.querySelector(".c-price").value = saved.cprice;
+    if (saved.cqty) row.querySelector(".c-qty").value = saved.cqty;
+  }
+  row.querySelectorAll("input").forEach(i => i.addEventListener("input", recalc));
+  row.querySelector("button").addEventListener("click", () => { row.remove(); recalc(); });
+  recalc();
+}
+
+document.getElementById("add-row").addEventListener("click", () => addRow());
+document.getElementById("add-custom").addEventListener("click", () => addCustom());
+document.querySelectorAll('input[name="shipping"],input[name="discount"]').forEach(i => i.addEventListener("input", recalc));
+
+const SAVED_ROWS = {{ (saved_rows or [])|tojson }};
+const SAVED_CUSTOM = {{ (saved_custom or [])|tojson }};
+if (SAVED_ROWS.length || SAVED_CUSTOM.length) {
+  SAVED_ROWS.forEach(addRow);
+  SAVED_CUSTOM.forEach(addCustom);
+} else {
+  addRow();
+}
+</script>
+{% endblock %}

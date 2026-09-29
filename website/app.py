@@ -1286,6 +1286,82 @@ def stripe_webhook():
     return "ok", 200
 
 
+# ---------------------------------------------------------------------------
+# Manual orders (phone invoices)
+#
+# Staff create an order in /admin/orders/new; the customer gets an unguessable
+# payment link /pay/<token> showing the invoice with a Pay button. Paying
+# goes through the same Stripe Checkout Session + webhook pipeline as web
+# orders, so inventory, emails, and status flow work identically.
+# ---------------------------------------------------------------------------
+def _new_pay_token():
+    """Mint a unique pay token (retries on the astronomically unlikely
+    collision with an existing order's token)."""
+    for _ in range(5):
+        token = secrets.token_urlsafe(32)
+        if db.get_order_by_pay_token(token) is None:
+            return token
+    raise RuntimeError("could not mint a unique pay token")
+
+
+@app.route("/pay/<token>")
+def invoice_pay(token):
+    """Public invoice page for a manually created order."""
+    order = db.get_order_by_pay_token(token)
+    if not order:
+        abort(404)
+    return render_template("invoice.html", o=order, money=money,
+                           grouped_items=group_cart_lines(order["line_items"]),
+                           stripe_ready=payments.stripe_configured())
+
+
+@app.route("/pay/<token>/checkout", methods=["POST"])
+def invoice_pay_checkout(token):
+    """Create the Stripe Checkout Session for a manual order and redirect
+    the customer to Stripe's hosted payment page."""
+    order = db.get_order_by_pay_token(token)
+    if not order:
+        abort(404)
+    if order["status"] != "new":
+        return redirect(url_for("invoice_pay", token=token))
+    if not payments.stripe_configured():
+        return render_template(
+            "invoice.html", o=order, money=money,
+            grouped_items=group_cart_lines(order["line_items"]),
+            stripe_ready=False,
+            error="Online payment isn't available right now — please call "
+                  "us to complete your order."), 200
+    # Adapt the stored line-item snapshot to the shape
+    # payments.create_checkout_session expects.
+    pay_lines = [{
+        "product": {"id": li.get("product_id", ""),
+                    "name": li.get("name", ""),
+                    "price_cents": li.get("price_cents", 0)},
+        "size": li.get("size", "") or "",
+        "color_temp": li.get("color_temp", "") or "",
+        "qty": li.get("qty", 1),
+        "unit_price_cents": li.get("price_cents", 0),
+    } for li in order["line_items"]]
+    try:
+        success_url = (url_for("checkout_success", _external=True)
+                       + "?session_id={CHECKOUT_SESSION_ID}")
+        cancel_url = url_for("invoice_pay", token=token, _external=True)
+        stripe_session = payments.create_checkout_session(
+            order["id"], pay_lines, order.get("customer_email") or "",
+            success_url, cancel_url,
+            fulfillment=order.get("fulfillment") or "ship")
+    except Exception as exc:  # Stripe API/network failure: keep order open
+        app.logger.warning("invoice stripe session failed for order %s: %s",
+                           order["id"], exc)
+        return render_template(
+            "invoice.html", o=order, money=money,
+            grouped_items=group_cart_lines(order["line_items"]),
+            stripe_ready=True,
+            error="Payment setup failed — please try again or call us."), 502
+    db.set_stripe_session(order["id"], stripe_session.id)
+    return redirect(stripe_session.url, code=303)
+
+
 # ---------------------------------------------------------------- admin
 # ------------------------------------------------- login brute-force guard
 # Simple in-memory throttle: 6 failures from one IP inside 10 minutes locks
@@ -2388,6 +2464,167 @@ def admin_orders():
                            date_to=date_to,
                            statuses=db.ORDER_STATUSES,
                            unfulfilled=db.unfulfilled_orders())
+
+
+# ------------------------------------------------- manual orders (phone invoices)
+@app.route("/admin/orders/new", methods=["GET"])
+@admin_required
+def admin_order_new():
+    """Form for creating a manual (phone) order. Staff pick catalog items
+    and/or add custom off-catalog lines; the customer gets a /pay/<token>
+    link to complete payment online."""
+    products = db.list_products(include_drafts=True)
+    picker = []
+    for p in products:
+        picker.append({
+            "id": p["id"],
+            "name": p["name"],
+            "base_price_cents": (p.get("sale_price_cents")
+                                 or p["price_cents"]),
+            "variations": [
+                {"id": v["id"], "label": v["label"],
+                 "price_cents": v["effective_price_cents"]}
+                for v in (p.get("variations") or [])
+            ],
+        })
+    return render_template("admin_order_new.html", products=picker,
+                           money=money)
+
+
+@app.route("/admin/orders/new", methods=["POST"])
+@admin_required
+def admin_order_new_create():
+    """Validate the manual-order form server-side (prices always re-looked
+    up from the DB — the client can never set its own price), create the
+    order with a pay token, and send staff to the detail page with the
+    payment link."""
+    name = request.form.get("name", "").strip()
+    email = request.form.get("email", "").strip()
+    fulfillment = ("pickup"
+                   if request.form.get("fulfillment") == "pickup" else "ship")
+    errors = []
+    if not name or not email or "@" not in email:
+        errors.append("Customer name and a valid email are required.")
+
+    lines = []
+    # Catalog lines: pid[] / vid[] / qty[] (parallel arrays, one per row).
+    for pid, vid, qty_raw in zip(request.form.getlist("pid"),
+                                 request.form.getlist("vid"),
+                                 request.form.getlist("qty")):
+        p = db.get_product(pid.strip(), with_variations=False) if pid.strip() \
+            else None
+        if not p:
+            continue
+        try:
+            qty = max(1, min(99, int(qty_raw)))
+        except (TypeError, ValueError):
+            qty = 1
+        var = None
+        if vid and str(vid).strip():
+            v = db.get_variation(vid)
+            if v and str(v.get("product_id")) == str(p["id"]):
+                var = v
+        if var is None:
+            all_vars = db.list_variations(p["id"])
+            var = all_vars[0] if all_vars else None
+        if var is None:
+            errors.append(f"{p['name']}: product has no variations.")
+            continue
+        unit = db.variation_sell_price(p, var)
+        ov = var.get("option_values") or {}
+        lines.append({
+            "product": {"id": p["id"], "name": p["name"],
+                        "price_cents": unit},
+            "variation": var,
+            "variation_label": var.get("label") or "",
+            "size": ov.get("Size", ""),
+            "color_temp": ov.get("Color temp", ""),
+            "qty": qty,
+            "unit_price_cents": unit,
+            "line_total": unit * qty,
+            "vehicle": "",
+        })
+    # Custom off-catalog lines: cname[] / cprice[] / cqty[].
+    for cname, cprice, cqty_raw in zip(request.form.getlist("cname"),
+                                       request.form.getlist("cprice"),
+                                       request.form.getlist("cqty")):
+        cname = (cname or "").strip()
+        if not cname:
+            continue
+        unit = _parse_dollars(cprice, f"Price for {cname!r}", errors)
+        if unit is None or unit <= 0:
+            if unit == 0:
+                errors.append(f"Price for {cname!r} must be above $0.")
+            continue
+        try:
+            qty = max(1, min(99, int(cqty_raw)))
+        except (TypeError, ValueError):
+            qty = 1
+        lines.append({
+            "product": {"id": "custom", "name": cname,
+                        "price_cents": unit},
+            "variation": None,
+            "variation_label": "",
+            "size": "",
+            "color_temp": "",
+            "qty": qty,
+            "unit_price_cents": unit,
+            "line_total": unit * qty,
+            "vehicle": "",
+        })
+    if not lines and not errors:
+        errors.append("Add at least one item to the order.")
+
+    shipping_cents = (_parse_dollars(request.form.get("shipping", ""),
+                                     "Shipping", errors, required=False)
+                      or 0)
+    discount_cents = (_parse_dollars(request.form.get("discount", ""),
+                                     "Discount", errors, required=False)
+                      or 0)
+    notes = request.form.get("notes", "").strip()
+
+    if errors:
+        products = db.list_products(include_drafts=True)
+        picker = [{
+            "id": p["id"], "name": p["name"],
+            "base_price_cents": (p.get("sale_price_cents")
+                                 or p["price_cents"]),
+            "variations": [
+                {"id": v["id"], "label": v["label"],
+                 "price_cents": v["effective_price_cents"]}
+                for v in (p.get("variations") or [])],
+        } for p in products]
+        saved_rows = [{"pid": pid, "vid": vid, "qty": qty_raw}
+                      for pid, vid, qty_raw
+                      in zip(request.form.getlist("pid"),
+                             request.form.getlist("vid"),
+                             request.form.getlist("qty"))]
+        saved_custom = [{"cname": cname, "cprice": cprice, "cqty": cqty_raw}
+                        for cname, cprice, cqty_raw
+                        in zip(request.form.getlist("cname"),
+                               request.form.getlist("cprice"),
+                               request.form.getlist("cqty"))
+                        if (cname or "").strip()]
+        return render_template("admin_order_new.html", products=picker,
+                               money=money, errors=errors,
+                               form=request.form, saved_rows=saved_rows,
+                               saved_custom=saved_custom), 400
+
+    subtotal = sum(l["line_total"] for l in lines)
+    customer = {"name": name, "email": email, "line1": "", "line2": "",
+                "city": "", "state": "", "zip": ""}
+    token = _new_pay_token()
+    oid = db.create_order(customer, lines, subtotal,
+                          shipping_cents=shipping_cents,
+                          discount_cents=discount_cents,
+                          fulfillment=fulfillment, pay_token=token)
+    note_lines = ["Manual order created by staff (phone/invoice)."]
+    if notes:
+        note_lines.append(notes)
+    db.update_order_notes(oid, "\n".join(note_lines))
+    pay_url = url_for("invoice_pay", token=token, _external=True)
+    flash(f"Order #{oid} created — payment link: {pay_url}")
+    return redirect(url_for("admin_order_detail", oid=oid))
 
 
 @app.route("/admin/order/<int:oid>")

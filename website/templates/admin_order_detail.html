@@ -21,9 +21,29 @@
     {% endif %}
   </div>
 
+  {% if o.pay_token and o.status == "new" %}
   <div class="contact-card" style="margin-bottom:16px">
-    <h2>Items</h2>
-    <table class="admin-table">
+    <h2>Payment link</h2>
+    <p class="hint">Manual order — send this link to the customer so they can pay online. The link stops working once the order is paid or cancelled.</p>
+    <p><input type="text" readonly id="paylink"
+              value="{{ request.host_url.rstrip('/') }}/pay/{{ o.pay_token }}"
+              style="width:100%" onclick="this.select()"></p>
+    <p><button class="btn" type="button" id="copy-paylink">Copy link</button>
+    <span class="hint" id="copy-paylink-done" style="display:none">Copied ✓</span></p>
+    <script>
+      document.getElementById("copy-paylink").addEventListener("click", function(){
+        const el = document.getElementById("paylink");
+        el.select();
+        (navigator.clipboard ? navigator.clipboard.writeText(el.value) : Promise.reject())
+          .then(() => { document.getElementById("copy-paylink-done").style.display = "inline"; })
+          .catch(() => { document.execCommand("copy"); document.getElementById("copy-paylink-done").style.display = "inline"; });
+      });
+    </script>
+  </div>
+  {% endif %}
+
+  <div class="contact-card" style="margin-bottom:16px">
+    <h2>Items</h2>    <table class="admin-table">
       <tr><th>Qty</th><th>Product</th><th>Vehicle</th><th>Variation</th><th>SKU</th><th>MSKU</th><th>Line total</th></tr>
       {% for vehicle, vitems in grouped_items %}
       {% for i in vitems %}

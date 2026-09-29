@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}Invoice #{{ o.id }} — BRAVO LEDS{% endblock %}
+{% block content %}
+<div class="wrap" style="max-width:720px">
+  <h1>Invoice #{{ o.id }}</h1>
+  <p class="hint">From BRAVO LEDS · 626 LEDs, 7951 Garvey Ave, Rosemead, CA</p>
+
+  {% if error %}
+  <div class="contact-card" style="margin-bottom:16px;border:2px solid #b00">
+    <p><strong>{{ error }}</strong></p>
+  </div>
+  {% endif %}
+
+  {% if o.status == "cancelled" %}
+  <div class="contact-card">
+    <h2>This invoice was cancelled</h2>
+    <p>Please contact us if you believe this is a mistake.</p>
+  </div>
+  {% elif o.status != "new" %}
+  <div class="contact-card">
+    <h2>Thank you — this invoice has been paid.</h2>
+    <p>Hi {{ o.customer_name }}, we've received your payment of {{ money(o.total_cents) }} for order #{{ o.id }}.
+    {% if (o.fulfillment or "ship") == "pickup" %}
+    We'll email you when it's ready for pickup at 626 LEDs, 7951 Garvey Ave, Rosemead, CA.
+    {% else %}
+    We'll email you tracking information once it ships.
+    {% endif %}</p>
+  </div>
+  {% else %}
+  <div class="contact-card" style="margin-bottom:16px">
+    <h2>Order summary</h2>
+    <p>Hi {{ o.customer_name }}, here is your invoice. Review it, then pay securely online.</p>
+    <table class="admin-table">
+      <tr><th>Qty</th><th>Item</th><th>Variation</th><th style="text-align:right">Line total</th></tr>
+      {% for vehicle, vitems in grouped_items %}
+      {% for i in vitems %}
+      <tr>
+        <td>{{ i.qty }}</td>
+        <td>{{ i.name }}</td>
+        <td>{{ i.variation_label or "—" }}</td>
+        <td style="text-align:right" class="nowrap">{{ money(i.line_total_cents) }}</td>
+      </tr>
+      {% endfor %}
+      {% endfor %}
+    </table>
+    <p style="margin-top:10px">
+      Subtotal: {{ money(o.subtotal_cents) }}<br>
+      {% if o.shipping_cents %}Shipping: {{ money(o.shipping_cents) }}<br>{% endif %}
+      {% if o.discount_cents %}Discount: −{{ money(o.discount_cents) }}<br>{% endif %}
+      <strong style="font-size:1.25em">Total due: {{ money(o.total_cents) }}</strong>
+    </p>
+    {% if (o.fulfillment or "ship") == "pickup" %}
+    <p class="hint">🏪 Store pickup — no shipping charge. We'll email you when your order is ready at 626 LEDs, 7951 Garvey Ave, Rosemead, CA.</p>
+    {% endif %}
+  </div>
+
+  <div class="contact-card">
+    {% if stripe_ready %}
+    <form method="post" action="/pay/{{ o.pay_token }}/checkout">
+      <button class="btn" type="submit" style="font-size:1.15em;padding:12px 28px">Pay {{ money(o.total_cents) }} securely</button>
+    </form>
+    <p class="hint" style="margin-top:8px">You'll be taken to Stripe's secure payment page. We never see or store your card details.</p>
+    {% else %}
+    <p><strong>Online payment isn't available for this invoice right now.</strong><br>
+    Please call us to complete your order and we'll take payment over the phone.</p>
+    {% endif %}
+  </div>
+  {% endif %}
+</div>
+{% endblock %}
