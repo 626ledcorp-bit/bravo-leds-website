@@ -517,6 +517,16 @@ class FitmentDB:
         """
         key = (int(year), make, model, trim or "")
         srcs = (self._veh_sources or {}).get(key)
+        if not srcs and not (trim or ""):
+            # No trim picked and no trimless records: merge every trim's
+            # rows (deduped) so the page works instead of 404ing. The
+            # finder labels trim "optional", so trimless URLs must resolve.
+            srcs = []
+            for k, v in (self._veh_sources or {}).items():
+                if k[:3] == (int(year), make, model):
+                    srcs.extend(v)
+            if srcs:
+                return self._merged_all_trims(srcs)
         if not srcs:
             return []
         per_source = []  # [(positions, rows)] in priority order
@@ -549,6 +559,43 @@ class FitmentDB:
             higher = set().union(*(p for p, _ in per_source[:i])) if i else set()
             merged.extend(r for r in rows if r["position"] not in higher)
         return merged
+
+    def _merged_all_trims(self, srcs):
+        """Union rows across all trims, deduplicated.
+
+        Used for trimless lookups when every record carries a trim.
+        Priority: the first (highest-priority) source wins per
+        (position, bulb_size); distinct sizes for one position are kept.
+        """
+        seen = set()
+        rows = []
+        for idx, vid in srcs:
+            con = sqlite3.connect(f"file:{self._db_paths[idx]}?mode=ro",
+                                  uri=True)
+            try:
+                con.row_factory = sqlite3.Row
+                for f in con.execute(
+                        "SELECT position, bulb_size_raw, bulb_size, note "
+                        "FROM fitment WHERE vehicle_id = ?", (vid,)):
+                    row = {
+                        "position": str(f["position"]).strip().lower(),
+                        "bulb_size_raw": str(f["bulb_size_raw"]
+                                            or f["bulb_size"] or "").strip(),
+                        "bulb_size": norm_size(f["bulb_size"]
+                                              or f["bulb_size_raw"] or ""),
+                        "note": str(f["note"] or "").strip(),
+                    }
+                    if not row["bulb_size"]:
+                        continue
+                    sig = (row["position"], row["bulb_size"],
+                           row["bulb_size_raw"])
+                    if sig in seen:
+                        continue
+                    seen.add(sig)
+                    rows.append(row)
+            finally:
+                con.close()
+        return rows
 
     # -- public interface -------------------------------------------------
     def get_years(self):
@@ -619,7 +666,16 @@ class FitmentDB:
             key = (int(year), make, model, trim or "")
         except (TypeError, ValueError):
             return None
-        return self._setup_by_key.get(key)
+        setup = self._setup_by_key.get(key)
+        if setup is None and not (trim or ""):
+            # Trimless lookup: most common setup across trims.
+            counts = {}
+            for k, s in self._setup_by_key.items():
+                if k[:3] == key[:3] and s:
+                    counts[s] = counts.get(s, 0) + 1
+            if counts:
+                setup = max(counts, key=counts.get)
+        return setup
 
     def source_info(self):
         self._ensure()
