@@ -5,6 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}Bravo LEDs — Automotive LED Lighting{% endblock %}</title>
   <meta name="description" content="{% block meta %}Plug-and-play LED off-road, fog, turn, brake and interior bulbs. Find bulbs for your exact vehicle. Rosemead, CA.{% endblock %}">
+  {% block og_tags %}
+  <meta property="og:site_name" content="BRAVO LEDS">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ self.title()|striptags }}">
+  <meta property="og:description" content="{{ self.meta()|striptags }}">
+  <meta property="og:image" content="{{ request.url_root.rstrip('/') }}/static/img/logo-bravo-led.png">
+  <meta property="og:url" content="{{ request.url }}">
+  <meta name="twitter:card" content="summary_large_image">
+  {% endblock %}
+  {% block head_extra %}{% endblock %}
   <link rel="stylesheet" href="/static/css/style.css">
   <link rel="icon" href="/static/img/favicon-chevron.png">
   {% if request.path.startswith("/admin") %}

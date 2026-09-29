@@ -1,5 +1,41 @@
 {% extends "base.html" %}
 {% block title %}{{ p.name }} — Bravo LEDs{% endblock %}
+{% block og_tags %}
+<meta property="og:site_name" content="BRAVO LEDS">
+<meta property="og:type" content="product">
+<meta property="og:title" content="{{ p.name }} — BRAVO LEDS">
+<meta property="og:description" content="{{ p.blurb }}">
+<meta property="og:image" content="{{ request.url_root.rstrip('/') }}{{ primary_image(p) }}">
+<meta property="og:url" content="{{ request.url }}">
+<meta name="twitter:card" content="summary_large_image">
+{% endblock %}
+{% block head_extra %}
+{% if p.variations %}{% set _ld = p.variations[0] %}
+{% elif p.get("sale_price_cents") %}{% set _ld = {"price_cents": p.sale_price_cents, "available": true} %}
+{% else %}{% set _ld = {"price_cents": p.price_cents, "available": true} %}{% endif %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": {{ p.name|tojson }},
+  "image": [{{ (request.url_root.rstrip('/') + primary_image(p))|tojson }}],
+  "description": {{ p.blurb|tojson }},
+  "brand": {"@type": "Brand", "name": "BRAVO LEDS"},
+  "offers": {
+    "@type": "Offer",
+    "url": {{ request.url|tojson }},
+    "priceCurrency": "USD",
+    "price": "{{ '%.2f'|format(_ld.price_cents / 100) }}",
+    "availability": {{ ("https://schema.org/InStock" if _ld.available else "https://schema.org/OutOfStock")|tojson }}
+  }{% if review_ctx and review_ctx.count %},
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "{{ review_ctx.avg }}",
+    "reviewCount": "{{ review_ctx.count }}"
+  }{% endif %}
+}
+</script>
+{% endblock %}
 {% block content %}
 <div class="section-light">
 <div class="wrap">
