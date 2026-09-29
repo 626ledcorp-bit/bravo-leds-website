@@ -97,14 +97,63 @@ def remap_make_model(make, model):
     if mk == "dodge" and mo.startswith("ram"):
         # "Ram 1500" -> make Ram, model 1500
         return "ram", norm(mo[3:] or mo)
+    if mk == "mercedes":
+        # PrecisionLED "Mercedes" vs our DB "Mercedes-Benz"
+        return "mercedesbenz", mo
     return mk, mo
+
+
+# Euro line -> trim prefix: competitor "3 Series E90" vs our DB "328i".
+EURO_LINES = {
+    "bmw": {"1series": "1", "2series": "2", "3series": "3",
+            "5series": "5", "6series": "6", "7series": "7"},
+    "mercedesbenz": {"aclass": "a", "bclass": "b", "cclass": "c",
+                     "eclass": "e", "sclass": "s", "claclass": "cla",
+                     "cl": "cl", "clk": "clk", "cls": "cls", "slk": "slk",
+                     "sl": "sl", "ml": "ml", "gl": "gl", "glk": "glk",
+                     "g": "g", "r": "r"},
+}
+BODY_WORDS = ("coupe", "avant", "wagon", "sedan", "convertible",
+              "hatchback", "roadster", "cabrio", "cabriolet")
+
+
+def euro_trims(make_norm, model_norm, our_models):
+    """Expand a Euro line+chassis name to our DB trims.
+
+    ('bmw', '3seriese90') -> ['323i','325i','328i',...] (whatever exists
+    that year). Returns [] when not applicable."""
+    lines = EURO_LINES.get(make_norm)
+    if not lines:
+        return []
+    m = model_norm
+    for w in BODY_WORDS:
+        if m.endswith(w) and len(m) > len(w):
+            m = m[: -len(w)]
+    if make_norm == "bmw":
+        m = re.sub(r"(e|f|g)\d{2,3}$", "", m)
+    elif make_norm == "mercedesbenz":
+        m = re.sub(r"(w|c|x|r|v)\d{3}$", "", m)
+    prefix = lines.get(m)
+    if not prefix:
+        return []
+    out = []
+    for cand in sorted(our_models):
+        if not cand.startswith(prefix):
+            continue
+        if prefix in ("c", "cl") and cand.startswith("clk"):
+            continue  # CLK is its own line, not C-Class / CL
+        if cand.startswith("m") and prefix[0].isdigit():
+            continue  # skip M/Alpina models on line expansion
+        out.append(cand)
+    return out
 
 
 def load_competitor_kits():
     """-> list of dicts: make, model, years[], items[(pos, qty)], source,
     sizes{q} for diode-dynamics (pos -> size)."""
     kits = []
-    for fname in ("precisionled_kits.json", "precisionled_toyota.json"):
+    for fname in ("precisionled_kits.json", "precisionled_toyota.json",
+                  "precisionled_missing_captured.json"):
         p = os.path.join(RESEARCH, fname)
         if not os.path.exists(p):
             continue
@@ -185,14 +234,17 @@ def load_our_vehicles():
     return out
 
 
-def match_models(our_models, target):
+def match_models(make_norm, our_models, target):
     """our_models: set of norm model names for the make/year.
-    Returns a list. Exact match wins; otherwise every trim whose name
-    starts with the competitor's line name (e.g. 'is' -> is250, is350).
-    Sorted for deterministic builds."""
+    Returns a list. Exact match wins; Euro line+chassis expands to trims;
+    otherwise every trim whose name starts with the competitor's line name
+    (e.g. 'is' -> is250, is350). Sorted for deterministic builds."""
     t = norm(target)
     if t in our_models:
         return [t]
+    euro = euro_trims(make_norm, t, our_models)
+    if euro:
+        return euro
     out = set()
     for part in re.split(r"/", target):
         if norm(part) in our_models:
@@ -223,7 +275,7 @@ def comp_qty_for(make_d, model_d, year, comp_kits):
     for ck in comp_kits:
         if ck["_mk"] != mk or year not in ck["years"]:
             continue
-        if not match_models({mo}, ck["model"]) and mo != ck["_mo"]:
+        if not match_models(mk, {mo}, ck["model"]) and mo != ck["_mo"]:
             continue
         for pos, qty in ck["items"]:
             if pos not in out or qty > out[pos][0]:
@@ -254,7 +306,7 @@ def main():
             models = idx.get((year, mk))
             if not models:
                 continue
-            mos = match_models(models, ck["model"])
+            mos = match_models(mk, models, ck["model"])
             if not mos and ck["_mo"] in models:
                 mos = [ck["_mo"]]
             if not mos:
@@ -303,32 +355,9 @@ def main():
                 }
     print(f"built kits: {len(built)}")
 
-    # merge: update estimated quantities on ALL existing kits from
-    # competitor data (direct match, independent of our size data)
+    # merge with on-disk kits (existing win on ID collision)
     existing = {k["kit_id"]: k for k in
                 json.load(open(os.path.join(BASE, "kit_data", "interior_kits.json")))["kits"]}
-    updated = 0
-    for kid, old in existing.items():
-        qmap = comp_qty_for(old["make"], old["model"], old["year"], comp_kits)
-        if not qmap:
-            continue
-        changed = False
-        for i in old["items"]:
-            if i["position"] in qmap and i.get("estimated"):
-                qty, src = qmap[i["position"]]
-                i["quantity"] = qty
-                i["estimated"] = False
-                i["source"] = src
-                changed = True
-        if changed:
-            old["total_bulbs"] = sum(i["quantity"] for i in old["items"])
-            old["estimated"] = any(i.get("estimated") for i in old["items"])
-            old["sources"] = sorted(
-                set(old.get("sources", [])) | {s for _, s in qmap.values()})
-            updated += 1
-    print(f"kits updated with real quantities: {updated}")
-
-    # final: new kits + existing (existing win on ID collision already handled)
     final = dict(existing)
     added = 0
     for kid, new in built.items():
@@ -336,6 +365,30 @@ def main():
             final[kid] = new
             added += 1
     print(f"new kits added: {added}, total: {len(final)}")
+
+    # refresh: replace estimated quantities on ALL final kits (new and old)
+    # from competitor data (direct match, independent of our size data).
+    # Runs after the merge so fresh builds and incremental builds converge.
+    updated = 0
+    for kid, k in final.items():
+        qmap = comp_qty_for(k["make"], k["model"], k["year"], comp_kits)
+        if not qmap:
+            continue
+        changed = False
+        for i in k["items"]:
+            if i["position"] in qmap and i.get("estimated"):
+                qty, src = qmap[i["position"]]
+                i["quantity"] = qty
+                i["estimated"] = False
+                i["source"] = src
+                changed = True
+        if changed:
+            k["total_bulbs"] = sum(i["quantity"] for i in k["items"])
+            k["estimated"] = any(i.get("estimated") for i in k["items"])
+            k["sources"] = sorted(
+                set(k.get("sources", [])) | {s for _, s in qmap.values()})
+            updated += 1
+    print(f"kits updated with real quantities: {updated}")
 
     kits = sorted(final.values(),
                   key=lambda k: (k["make"].lower(), k["model"].lower(), k["year"]))
