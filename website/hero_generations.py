@@ -166,6 +166,27 @@ def hero_generation(make, model, year):
     return None
 
 
+# Trailing model-name tokens that are trim/series qualifiers, not part of the
+# base model name. Lets "Silverado 1500 HD" fall back to the "Silverado"
+# generation map while "Civic del Sol" (not a qualifier) stays unmatched
+# instead of showing the wrong car's banner.
+_TRIM_SUFFIX_TOKENS = frozenset({
+    "100", "150", "200", "250", "300", "350", "1500", "2500", "3500",
+    "4500", "5500", "6500", "7500",
+    "hd", "classic", "heritage", "limited", "ld", "custom", "lt", "ls",
+    "wt", "xl", "xlt",
+})
+
+
+def _base_model(model):
+    """Strip trailing trim/series qualifiers: 'Silverado 1500 HD Classic'
+    -> 'Silverado'. Returns the model unchanged if nothing strips."""
+    words = model.split()
+    while len(words) > 1 and words[-1].lower() in _TRIM_SUFFIX_TOKENS:
+        words.pop()
+    return " ".join(words)
+
+
 def hero_slug(make, model, year):
     """File stem for the generation hero image, or None.
 
@@ -173,12 +194,18 @@ def hero_slug(make, model, year):
     so every year in the generation shares the same image.
     """
     gens = HERO_GENERATIONS.get((make, model))
+    slug_model = model
+    if not gens:
+        base = _base_model(model)
+        if base != model:
+            gens = HERO_GENERATIONS.get((make, base))
+            slug_model = base
     if not gens:
         return None
     for start, end, _ in gens:
         if start <= int(year) <= (end or CURRENT_YEAR):
             mk = make.lower().replace(" ", "-")
-            mo = model.lower().replace(" ", "-")
+            mo = slug_model.lower().replace(" ", "-")
             return f"hero-{mk}-{mo}-{start}"
     return None
 
