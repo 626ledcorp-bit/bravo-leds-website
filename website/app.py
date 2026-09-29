@@ -637,6 +637,42 @@ def interior_kits():
                            kit_count=len(cards))
 
 
+@app.route("/sitemap.xml")
+def sitemap():
+    """Dynamic sitemap — regenerates from current data on every request."""
+    base = request.url_root.rstrip("/")
+    urls = [
+        ("", "1.0", "daily"),
+        ("shop", "0.9", "daily"),
+        ("fitment", "0.8", "weekly"),
+        ("interior-kits", "0.9", "daily"),
+        ("dot-compliance", "0.3", "monthly"),
+        ("contact", "0.3", "monthly"),
+    ]
+    for cat in CATEGORIES:
+        urls.append((f"shop/{cat}", "0.8", "weekly"))
+    for p in db.list_products():
+        urls.append((f"product/{p['id']}", "0.7", "weekly"))
+    for k in kits.all_kits():
+        urls.append((kits.kit_url(k).lstrip("/"), "0.8", "monthly"))
+    xml = ['<?xml version="1.0" encoding="UTF-8"?>',
+           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    for path, prio, freq in urls:
+        xml.append(
+            f"<url><loc>{base}/{path}</loc>"
+            f"<changefreq>{freq}</changefreq>"
+            f"<priority>{prio}</priority></url>")
+    xml.append("</urlset>")
+    return Response("\n".join(xml), mimetype="application/xml")
+
+
+@app.route("/robots.txt")
+def robots():
+    base = request.url_root.rstrip("/")
+    return Response(f"User-agent: *\nAllow: /\nSitemap: {base}/sitemap.xml\n",
+                    mimetype="text/plain")
+
+
 # ---------------------------------------------------------------- cart
 @app.route("/cart")
 def cart_view():

@@ -115,8 +115,12 @@ def load_competitor_kits():
                 if pos and i.get("quantity"):
                     items.append((pos, int(i["quantity"])))
             if items:
+                # Prefer the page title's year range when it disagrees with the
+                # URL slug (e.g. Prius slug says 2010-present, title says
+                # 2010-2015 — the title is the tighter, trustworthy bound).
+                yr = k.get("title_years") or k.get("year_range")
                 kits.append({"make": k["make"], "model": k["model"],
-                             "years": expand_years(k.get("year_range")),
+                             "years": expand_years(yr),
                              "items": items, "source": "precisionled",
                              "sizes": {}})
     p = os.path.join(RESEARCH, "lasfit_sealight_kits.json")
@@ -181,19 +185,31 @@ def load_our_vehicles():
     return out
 
 
-def match_model(our_models, target):
-    """our_models: set of norm model names for the make/year. Returns best."""
+def match_models(our_models, target):
+    """our_models: set of norm model names for the make/year.
+    Returns a list. Exact match wins; otherwise every trim whose name
+    starts with the competitor's line name (e.g. 'is' -> is250, is350).
+    Sorted for deterministic builds."""
     t = norm(target)
     if t in our_models:
-        return t
+        return [t]
+    out = set()
     for part in re.split(r"/", target):
         if norm(part) in our_models:
-            return norm(part)
-    # prefix: "transit" vs "transit150250350"
-    for m in our_models:
-        if m.startswith(t) or t.startswith(m):
-            return m
-    return None
+            out.add(norm(part))
+    if out:
+        return sorted(out)
+    # trim expansion: 'is' -> is250, is350, isf ...
+    for m in sorted(our_models):
+        if m.startswith(t) and m != t:
+            out.add(m)
+    if out:
+        return sorted(out)
+    # last resort: competitor name starts with our model ('civic si' -> civic)
+    for m in sorted(our_models):
+        if t.startswith(m):
+            return [m]
+    return []
 
 
 def slug(s):
@@ -207,7 +223,7 @@ def comp_qty_for(make_d, model_d, year, comp_kits):
     for ck in comp_kits:
         if ck["_mk"] != mk or year not in ck["years"]:
             continue
-        if not match_model({mo}, ck["model"]) and mo != ck["_mo"]:
+        if not match_models({mo}, ck["model"]) and mo != ck["_mo"]:
             continue
         for pos, qty in ck["items"]:
             if pos not in out or qty > out[pos][0]:
@@ -238,52 +254,53 @@ def main():
             models = idx.get((year, mk))
             if not models:
                 continue
-            mo = match_model(models, ck["model"])
-            if not mo and ck["_mo"] in models:
-                mo = ck["_mo"]
-            if not mo:
+            mos = match_models(models, ck["model"])
+            if not mos and ck["_mo"] in models:
+                mos = [ck["_mo"]]
+            if not mos:
                 continue
-            make_d, model_d = disp[(year, mk, mo)]
-            items, total, srcs = [], 0, set()
-            any_est = False
-            comp_pos = {}
-            for pos, qty in ck["items"]:
-                # merge duplicates -> max qty (base vs premium variants)
-                comp_pos[pos] = max(comp_pos.get(pos, 0), qty)
-            for pos in POS_ORDER:
-                if pos in comp_pos:
-                    qty = comp_pos[pos]
-                    size = ck["sizes"].get(pos) or our.get((year, mk, mo, pos))
-                    if not size:
-                        continue
-                    items.append({
-                        "position": pos, "position_label": POS_LABEL[pos],
-                        "bulb_size": size, "quantity": qty,
-                        "location_desc": LOC_DESC[pos],
-                        "estimated": False, "source": ck["source"]})
-                    srcs.add(ck["source"])
-                    total += qty
-                elif (year, mk, mo, pos) in our:
-                    qty = QTY_DEFAULT[pos]
-                    items.append({
-                        "position": pos, "position_label": POS_LABEL[pos],
-                        "bulb_size": our[(year, mk, mo, pos)], "quantity": qty,
-                        "location_desc": LOC_DESC[pos],
-                        "estimated": True, "source": "fitment-db"})
-                    total += qty
-                    any_est = True
-            if len(items) < 2:
-                continue
-            kit_id = f"kit-{year}-{slug(make_d)}-{slug(model_d)}"
-            if kit_id in built and built[kit_id]["total_bulbs"] >= total:
-                continue  # keep the fuller base/premium variant
-            note = ck.get("note")
-            built[kit_id] = {
-                "kit_id": kit_id, "year": year, "make": make_d,
-                "model": model_d, "sources": sorted(srcs),
-                "estimated": any_est, "total_bulbs": total,
-                "items": items, **({"note": note} if note else {}),
-            }
+            for mo in mos:
+                make_d, model_d = disp[(year, mk, mo)]
+                items, total, srcs = [], 0, set()
+                any_est = False
+                comp_pos = {}
+                for pos, qty in ck["items"]:
+                    # merge duplicates -> max qty (base vs premium variants)
+                    comp_pos[pos] = max(comp_pos.get(pos, 0), qty)
+                for pos in POS_ORDER:
+                    if pos in comp_pos:
+                        qty = comp_pos[pos]
+                        size = ck["sizes"].get(pos) or our.get((year, mk, mo, pos))
+                        if not size:
+                            continue
+                        items.append({
+                            "position": pos, "position_label": POS_LABEL[pos],
+                            "bulb_size": size, "quantity": qty,
+                            "location_desc": LOC_DESC[pos],
+                            "estimated": False, "source": ck["source"]})
+                        srcs.add(ck["source"])
+                        total += qty
+                    elif (year, mk, mo, pos) in our:
+                        qty = QTY_DEFAULT[pos]
+                        items.append({
+                            "position": pos, "position_label": POS_LABEL[pos],
+                            "bulb_size": our[(year, mk, mo, pos)], "quantity": qty,
+                            "location_desc": LOC_DESC[pos],
+                            "estimated": True, "source": "fitment-db"})
+                        total += qty
+                        any_est = True
+                if len(items) < 2:
+                    continue
+                kit_id = f"kit-{year}-{slug(make_d)}-{slug(model_d)}"
+                if kit_id in built and built[kit_id]["total_bulbs"] >= total:
+                    continue  # keep the fuller base/premium variant
+                note = ck.get("note")
+                built[kit_id] = {
+                    "kit_id": kit_id, "year": year, "make": make_d,
+                    "model": model_d, "sources": sorted(srcs),
+                    "estimated": any_est, "total_bulbs": total,
+                    "items": items, **({"note": note} if note else {}),
+                }
     print(f"built kits: {len(built)}")
 
     # merge: update estimated quantities on ALL existing kits from

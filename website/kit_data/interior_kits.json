@@ -2121,6 +2121,73 @@
    ]
   },
   {
+   "kit_id": "kit-2007-chevrolet-silverado-1500",
+   "year": 2007,
+   "make": "Chevrolet",
+   "model": "Silverado 1500",
+   "sources": [
+    "diode-dynamics"
+   ],
+   "estimated": true,
+   "total_bulbs": 12,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "41MM",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "diode-dynamics"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "41MM",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "diode-dynamics"
+    },
+    {
+     "position": "vanity_mirror",
+     "position_label": "Vanity Mirror",
+     "bulb_size": "28MM",
+     "quantity": 4,
+     "location_desc": "Sun visor vanity mirror lights",
+     "estimated": false,
+     "source": "diode-dynamics"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": false,
+     "source": "diode-dynamics"
+    }
+   ]
+  },
+  {
    "kit_id": "kit-2008-chevrolet-silverado-1500",
    "year": 2008,
    "make": "Chevrolet",
@@ -2621,6 +2688,564 @@
    ]
   },
   {
+   "kit_id": "kit-2007-chevrolet-silverado-2500-hd",
+   "year": 2007,
+   "make": "Chevrolet",
+   "model": "Silverado 2500 HD",
+   "sources": [
+    "diode-dynamics"
+   ],
+   "estimated": true,
+   "total_bulbs": 12,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "41MM",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "diode-dynamics"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "41MM",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "diode-dynamics"
+    },
+    {
+     "position": "vanity_mirror",
+     "position_label": "Vanity Mirror",
+     "bulb_size": "28MM",
+     "quantity": 4,
+     "location_desc": "Sun visor vanity mirror lights",
+     "estimated": false,
+     "source": "diode-dynamics"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": false,
+     "source": "diode-dynamics"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2008-chevrolet-silverado-2500-hd",
+   "year": 2008,
+   "make": "Chevrolet",
+   "model": "Silverado 2500 HD",
+   "sources": [
+    "diode-dynamics"
+   ],
+   "estimated": true,
+   "total_bulbs": 11,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "41MM",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "diode-dynamics"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "41MM",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "diode-dynamics"
+    },
+    {
+     "position": "vanity_mirror",
+     "position_label": "Vanity Mirror",
+     "bulb_size": "28MM",
+     "quantity": 4,
+     "location_desc": "Sun visor vanity mirror lights",
+     "estimated": false,
+     "source": "diode-dynamics"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": false,
+     "source": "diode-dynamics"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2009-chevrolet-silverado-2500-hd",
+   "year": 2009,
+   "make": "Chevrolet",
+   "model": "Silverado 2500 HD",
+   "sources": [
+    "diode-dynamics"
+   ],
+   "estimated": true,
+   "total_bulbs": 11,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "41MM",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "diode-dynamics"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "41MM",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "diode-dynamics"
+    },
+    {
+     "position": "vanity_mirror",
+     "position_label": "Vanity Mirror",
+     "bulb_size": "28MM",
+     "quantity": 4,
+     "location_desc": "Sun visor vanity mirror lights",
+     "estimated": false,
+     "source": "diode-dynamics"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": false,
+     "source": "diode-dynamics"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2010-chevrolet-silverado-2500-hd",
+   "year": 2010,
+   "make": "Chevrolet",
+   "model": "Silverado 2500 HD",
+   "sources": [
+    "diode-dynamics"
+   ],
+   "estimated": true,
+   "total_bulbs": 11,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "41MM",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "diode-dynamics"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "41MM",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "diode-dynamics"
+    },
+    {
+     "position": "vanity_mirror",
+     "position_label": "Vanity Mirror",
+     "bulb_size": "28MM",
+     "quantity": 4,
+     "location_desc": "Sun visor vanity mirror lights",
+     "estimated": false,
+     "source": "diode-dynamics"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": false,
+     "source": "diode-dynamics"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2011-chevrolet-silverado-2500-hd",
+   "year": 2011,
+   "make": "Chevrolet",
+   "model": "Silverado 2500 HD",
+   "sources": [
+    "diode-dynamics"
+   ],
+   "estimated": true,
+   "total_bulbs": 11,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "41MM",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "diode-dynamics"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "41MM",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "diode-dynamics"
+    },
+    {
+     "position": "vanity_mirror",
+     "position_label": "Vanity Mirror",
+     "bulb_size": "28MM",
+     "quantity": 4,
+     "location_desc": "Sun visor vanity mirror lights",
+     "estimated": false,
+     "source": "diode-dynamics"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": false,
+     "source": "diode-dynamics"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2012-chevrolet-silverado-2500-hd",
+   "year": 2012,
+   "make": "Chevrolet",
+   "model": "Silverado 2500 HD",
+   "sources": [
+    "diode-dynamics"
+   ],
+   "estimated": true,
+   "total_bulbs": 11,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "41MM",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "diode-dynamics"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "41MM",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "diode-dynamics"
+    },
+    {
+     "position": "vanity_mirror",
+     "position_label": "Vanity Mirror",
+     "bulb_size": "28MM",
+     "quantity": 4,
+     "location_desc": "Sun visor vanity mirror lights",
+     "estimated": false,
+     "source": "diode-dynamics"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": false,
+     "source": "diode-dynamics"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2013-chevrolet-silverado-2500-hd",
+   "year": 2013,
+   "make": "Chevrolet",
+   "model": "Silverado 2500 HD",
+   "sources": [
+    "diode-dynamics"
+   ],
+   "estimated": true,
+   "total_bulbs": 11,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "41MM",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "diode-dynamics"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "41MM",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "diode-dynamics"
+    },
+    {
+     "position": "vanity_mirror",
+     "position_label": "Vanity Mirror",
+     "bulb_size": "28MM",
+     "quantity": 4,
+     "location_desc": "Sun visor vanity mirror lights",
+     "estimated": false,
+     "source": "diode-dynamics"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": false,
+     "source": "diode-dynamics"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2007-chevrolet-silverado-2500-hd-classic",
+   "year": 2007,
+   "make": "Chevrolet",
+   "model": "Silverado 2500 HD Classic",
+   "sources": [
+    "diode-dynamics"
+   ],
+   "estimated": true,
+   "total_bulbs": 14,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "41MM",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "diode-dynamics"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "41MM",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "diode-dynamics"
+    },
+    {
+     "position": "vanity_mirror",
+     "position_label": "Vanity Mirror",
+     "bulb_size": "28MM",
+     "quantity": 4,
+     "location_desc": "Sun visor vanity mirror lights",
+     "estimated": false,
+     "source": "diode-dynamics"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": false,
+     "source": "diode-dynamics"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2007-chevrolet-silverado-3500",
+   "year": 2007,
+   "make": "Chevrolet",
+   "model": "Silverado 3500",
+   "sources": [
+    "diode-dynamics"
+   ],
+   "estimated": true,
+   "total_bulbs": 12,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "41MM",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "diode-dynamics"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "41MM",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "diode-dynamics"
+    },
+    {
+     "position": "vanity_mirror",
+     "position_label": "Vanity Mirror",
+     "bulb_size": "28MM",
+     "quantity": 4,
+     "location_desc": "Sun visor vanity mirror lights",
+     "estimated": false,
+     "source": "diode-dynamics"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": false,
+     "source": "diode-dynamics"
+    }
+   ]
+  },
+  {
    "kit_id": "kit-2007-chevrolet-silverado-3500-classic",
    "year": 2007,
    "make": "Chevrolet",
@@ -2666,6 +3291,73 @@
      "location_desc": "Courtesy / step lights",
      "estimated": true,
      "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": false,
+     "source": "diode-dynamics"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2007-chevrolet-silverado-3500-hd",
+   "year": 2007,
+   "make": "Chevrolet",
+   "model": "Silverado 3500 HD",
+   "sources": [
+    "diode-dynamics"
+   ],
+   "estimated": true,
+   "total_bulbs": 12,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "41MM",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "diode-dynamics"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "41MM",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "diode-dynamics"
+    },
+    {
+     "position": "vanity_mirror",
+     "position_label": "Vanity Mirror",
+     "bulb_size": "28MM",
+     "quantity": 4,
+     "location_desc": "Sun visor vanity mirror lights",
+     "estimated": false,
+     "source": "diode-dynamics"
     },
     {
      "position": "glove_box",
@@ -16361,6 +17053,963 @@
    ]
   },
   {
+   "kit_id": "kit-2001-gmc-sierra-1500",
+   "year": 2001,
+   "make": "GMC",
+   "model": "Sierra 1500",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 10,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "578",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "74",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2002-gmc-sierra-1500",
+   "year": 2002,
+   "make": "GMC",
+   "model": "Sierra 1500",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 10,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "578",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "74",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2003-gmc-sierra-1500",
+   "year": 2003,
+   "make": "GMC",
+   "model": "Sierra 1500",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 10,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "578",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2004-gmc-sierra-1500",
+   "year": 2004,
+   "make": "GMC",
+   "model": "Sierra 1500",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 10,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "578",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "578",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2005-gmc-sierra-1500",
+   "year": 2005,
+   "make": "GMC",
+   "model": "Sierra 1500",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 10,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "578",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "578",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "74",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2006-gmc-sierra-1500",
+   "year": 2006,
+   "make": "GMC",
+   "model": "Sierra 1500",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 10,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "578",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "2112",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2007-gmc-sierra-1500",
+   "year": 2007,
+   "make": "GMC",
+   "model": "Sierra 1500",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 7,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "578",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "2122",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2008-gmc-sierra-1500",
+   "year": 2008,
+   "make": "GMC",
+   "model": "Sierra 1500",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 7,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "578",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "2122",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2009-gmc-sierra-1500",
+   "year": 2009,
+   "make": "GMC",
+   "model": "Sierra 1500",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 7,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "578",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "2122",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2010-gmc-sierra-1500",
+   "year": 2010,
+   "make": "GMC",
+   "model": "Sierra 1500",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 7,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "578",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "2122",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2011-gmc-sierra-1500",
+   "year": 2011,
+   "make": "GMC",
+   "model": "Sierra 1500",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 7,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "2122",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "2122",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2012-gmc-sierra-1500",
+   "year": 2012,
+   "make": "GMC",
+   "model": "Sierra 1500",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 7,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "2122",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "2122",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2013-gmc-sierra-1500",
+   "year": 2013,
+   "make": "GMC",
+   "model": "Sierra 1500",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 7,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "578",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "2122",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2014-gmc-sierra-1500",
+   "year": 2014,
+   "make": "GMC",
+   "model": "Sierra 1500",
+   "sources": [],
+   "estimated": true,
+   "total_bulbs": 3,
+   "items": [
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2015-gmc-sierra-1500",
+   "year": 2015,
+   "make": "GMC",
+   "model": "Sierra 1500",
+   "sources": [],
+   "estimated": true,
+   "total_bulbs": 3,
+   "items": [
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2016-gmc-sierra-1500",
+   "year": 2016,
+   "make": "GMC",
+   "model": "Sierra 1500",
+   "sources": [],
+   "estimated": true,
+   "total_bulbs": 3,
+   "items": [
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2017-gmc-sierra-1500",
+   "year": 2017,
+   "make": "GMC",
+   "model": "Sierra 1500",
+   "sources": [],
+   "estimated": true,
+   "total_bulbs": 3,
+   "items": [
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2018-gmc-sierra-1500",
+   "year": 2018,
+   "make": "GMC",
+   "model": "Sierra 1500",
+   "sources": [],
+   "estimated": true,
+   "total_bulbs": 3,
+   "items": [
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2007-gmc-sierra-1500-classic",
+   "year": 2007,
+   "make": "GMC",
+   "model": "Sierra 1500 Classic",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 10,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "578",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "2112",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
    "kit_id": "kit-2001-gmc-sierra-1500-hd",
    "year": 2001,
    "make": "GMC",
@@ -16652,6 +18301,73 @@
      "position": "dome_light",
      "position_label": "Dome Light",
      "bulb_size": "578",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2007-gmc-sierra-1500-hd-classic",
+   "year": 2007,
+   "make": "GMC",
+   "model": "Sierra 1500 HD Classic",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 10,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "578",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "2112",
      "quantity": 2,
      "location_desc": "Dome light",
      "estimated": false,
@@ -17069,6 +18785,274 @@
    ]
   },
   {
+   "kit_id": "kit-2001-gmc-sierra-2500-hd",
+   "year": 2001,
+   "make": "GMC",
+   "model": "Sierra 2500 HD",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 10,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "2112",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2002-gmc-sierra-2500-hd",
+   "year": 2002,
+   "make": "GMC",
+   "model": "Sierra 2500 HD",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 10,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "578",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2003-gmc-sierra-2500-hd",
+   "year": 2003,
+   "make": "GMC",
+   "model": "Sierra 2500 HD",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 10,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "578",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "74",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2004-gmc-sierra-2500-hd",
+   "year": 2004,
+   "make": "GMC",
+   "model": "Sierra 2500 HD",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 10,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "578",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "2112",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
    "kit_id": "kit-2005-gmc-sierra-2500-hd",
    "year": 2005,
    "make": "GMC",
@@ -17181,6 +19165,55 @@
      "location_desc": "Glove box light",
      "estimated": true,
      "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2007-gmc-sierra-2500-hd",
+   "year": 2007,
+   "make": "GMC",
+   "model": "Sierra 2500 HD",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 7,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "2122",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "578",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
     },
     {
      "position": "trunk_cargo",
@@ -17641,6 +19674,73 @@
    "estimated": true,
    "total_bulbs": 3,
    "items": [
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "921",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2007-gmc-sierra-2500-hd-classic",
+   "year": 2007,
+   "make": "GMC",
+   "model": "Sierra 2500 HD Classic",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 10,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "578",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "578",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
     {
      "position": "trunk_cargo",
      "position_label": "Trunk / Cargo",
@@ -23839,6 +25939,274 @@
    ]
   },
   {
+   "kit_id": "kit-1995-jaguar-xj12",
+   "year": 1995,
+   "make": "Jaguar",
+   "model": "XJ12",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 24,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 8,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "578",
+     "quantity": 4,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "6418",
+     "quantity": 8,
+     "location_desc": "Courtesy / step lights",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "12844",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "6418",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "6418",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1996-jaguar-xj12",
+   "year": 1996,
+   "make": "Jaguar",
+   "model": "XJ12",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 24,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 8,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "578",
+     "quantity": 4,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "12844",
+     "quantity": 8,
+     "location_desc": "Courtesy / step lights",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "6418",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "6418",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "6418",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1995-jaguar-xj6",
+   "year": 1995,
+   "make": "Jaguar",
+   "model": "XJ6",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 24,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 8,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "6411",
+     "quantity": 4,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "12961",
+     "quantity": 8,
+     "location_desc": "Courtesy / step lights",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "6418",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "12844",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "6418",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1996-jaguar-xj6",
+   "year": 1996,
+   "make": "Jaguar",
+   "model": "XJ6",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 24,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 8,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "578",
+     "quantity": 4,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 8,
+     "location_desc": "Courtesy / step lights",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "6418",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "12844",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "6418",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
    "kit_id": "kit-1997-jaguar-xj6",
    "year": 1997,
    "make": "Jaguar",
@@ -24402,6 +26770,73 @@
      "position": "trunk_cargo",
      "position_label": "Trunk / Cargo",
      "bulb_size": "6418",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "6418",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-1997-jaguar-xjr",
+   "year": 1997,
+   "make": "Jaguar",
+   "model": "XJR",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 24,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 8,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "6411",
+     "quantity": 4,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "12961",
+     "quantity": 8,
+     "location_desc": "Courtesy / step lights",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "6418",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "12844",
      "quantity": 1,
      "location_desc": "Trunk / cargo area light",
      "estimated": true,
@@ -28434,6 +30869,296 @@
      "bulb_size": "6418",
      "quantity": 2,
      "location_desc": "Sun visor vanity mirror lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2014-kia-forte",
+   "year": 2014,
+   "make": "Kia",
+   "model": "Forte",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 7,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "DE3175",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "12844",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "6418",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2015-kia-forte",
+   "year": 2015,
+   "make": "Kia",
+   "model": "Forte",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 7,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "DE3175",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "12844",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "6418",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2016-kia-forte",
+   "year": 2016,
+   "make": "Kia",
+   "model": "Forte",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 7,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "DE3175",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "6418",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "6418",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2017-kia-forte",
+   "year": 2017,
+   "make": "Kia",
+   "model": "Forte",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 8,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "DE3175",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "vanity_mirror",
+     "position_label": "Vanity Mirror",
+     "bulb_size": "12844",
+     "quantity": 2,
+     "location_desc": "Sun visor vanity mirror lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "6418",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2018-kia-forte",
+   "year": 2018,
+   "make": "Kia",
+   "model": "Forte",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 8,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "DE3175",
+     "quantity": 2,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "vanity_mirror",
+     "position_label": "Vanity Mirror",
+     "bulb_size": "DE3423",
+     "quantity": 2,
+     "location_desc": "Sun visor vanity mirror lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "12844",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
      "estimated": true,
      "source": "fitment-db"
     },
@@ -34865,6 +37590,640 @@
    ]
   },
   {
+   "kit_id": "kit-2006-lexus-is250",
+   "year": 2006,
+   "make": "Lexus",
+   "model": "IS250",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 13,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 3,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "37",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3022",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2007-lexus-is250",
+   "year": 2007,
+   "make": "Lexus",
+   "model": "IS250",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 13,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 3,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "12818",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "37",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3022",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2008-lexus-is250",
+   "year": 2008,
+   "make": "Lexus",
+   "model": "IS250",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 13,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 3,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3021",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "37",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "license_plate",
+     "position_label": "License Plate",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2009-lexus-is250",
+   "year": 2009,
+   "make": "Lexus",
+   "model": "IS250",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 11,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 3,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3021",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "37",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3022",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2010-lexus-is250",
+   "year": 2010,
+   "make": "Lexus",
+   "model": "IS250",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 11,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 3,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "12818",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "glove_box",
+     "position_label": "Glove Box",
+     "bulb_size": "37",
+     "quantity": 1,
+     "location_desc": "Glove box light",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3022",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2011-lexus-is250",
+   "year": 2011,
+   "make": "Lexus",
+   "model": "IS250",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 10,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 3,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3021",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3022",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2012-lexus-is250",
+   "year": 2012,
+   "make": "Lexus",
+   "model": "IS250",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 10,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 3,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3021",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3175",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2013-lexus-is250",
+   "year": 2013,
+   "make": "Lexus",
+   "model": "IS250",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 10,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 3,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 2,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "DE3022",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2014-lexus-is250",
+   "year": 2014,
+   "make": "Lexus",
+   "model": "IS250",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 8,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 3,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2015-lexus-is250",
+   "year": 2015,
+   "make": "Lexus",
+   "model": "IS250",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 8,
+   "items": [
+    {
+     "position": "map_light",
+     "position_label": "Map Light",
+     "bulb_size": "194",
+     "quantity": 3,
+     "location_desc": "Front map lights (overhead console)",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
    "kit_id": "kit-2001-lexus-is300",
    "year": 2001,
    "make": "Lexus",
@@ -35194,6 +38553,82 @@
      "bulb_size": "194",
      "quantity": 2,
      "location_desc": "License plate lights",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2016-lexus-is300",
+   "year": 2016,
+   "make": "Lexus",
+   "model": "IS300",
+   "sources": [],
+   "estimated": true,
+   "total_bulbs": 5,
+   "items": [
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2017-lexus-is300",
+   "year": 2017,
+   "make": "Lexus",
+   "model": "IS300",
+   "sources": [],
+   "estimated": true,
+   "total_bulbs": 5,
+   "items": [
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Courtesy / step lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
      "estimated": true,
      "source": "fitment-db"
     }
@@ -36384,6 +39819,251 @@
      "position": "courtesy_step",
      "position_label": "Courtesy / Step",
      "bulb_size": "DE3175",
+     "quantity": 8,
+     "location_desc": "Courtesy / step lights",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2008-lexus-ls460",
+   "year": 2008,
+   "make": "Lexus",
+   "model": "LS460",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 19,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 8,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "12818",
+     "quantity": 8,
+     "location_desc": "Courtesy / step lights",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2009-lexus-ls460",
+   "year": 2009,
+   "make": "Lexus",
+   "model": "LS460",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 19,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 8,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "DE3175",
+     "quantity": 8,
+     "location_desc": "Courtesy / step lights",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2010-lexus-ls460",
+   "year": 2010,
+   "make": "Lexus",
+   "model": "LS460",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 19,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 8,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "DE3175",
+     "quantity": 8,
+     "location_desc": "Courtesy / step lights",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2011-lexus-ls460",
+   "year": 2011,
+   "make": "Lexus",
+   "model": "LS460",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 19,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 8,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "12818",
+     "quantity": 8,
+     "location_desc": "Courtesy / step lights",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "door_light",
+     "position_label": "Door Light",
+     "bulb_size": "194",
+     "quantity": 2,
+     "location_desc": "Door lights",
+     "estimated": true,
+     "source": "fitment-db"
+    },
+    {
+     "position": "trunk_cargo",
+     "position_label": "Trunk / Cargo",
+     "bulb_size": "194",
+     "quantity": 1,
+     "location_desc": "Trunk / cargo area light",
+     "estimated": true,
+     "source": "fitment-db"
+    }
+   ]
+  },
+  {
+   "kit_id": "kit-2012-lexus-ls460",
+   "year": 2012,
+   "make": "Lexus",
+   "model": "LS460",
+   "sources": [
+    "precisionled"
+   ],
+   "estimated": true,
+   "total_bulbs": 19,
+   "items": [
+    {
+     "position": "dome_light",
+     "position_label": "Dome Light",
+     "bulb_size": "DE3175",
+     "quantity": 8,
+     "location_desc": "Dome light",
+     "estimated": false,
+     "source": "precisionled"
+    },
+    {
+     "position": "courtesy_step",
+     "position_label": "Courtesy / Step",
+     "bulb_size": "DE3021",
      "quantity": 8,
      "location_desc": "Courtesy / step lights",
      "estimated": false,
