@@ -1,7 +1,15 @@
 {% extends "base.html" %}
 {% block title %}Checkout — Bravo LEDs{% endblock %}
 {% block content %}
-<style>.veh-head.small{margin:10px 0 2px}</style>
+<style>.veh-head.small{margin:10px 0 2px}
+.compat-line{align-items:flex-start}
+.compat-status{font-weight:700;margin-right:6px}
+.compat-line[data-status="fits"] .compat-status{color:#1a7f37}
+.compat-line[data-status="does_not_fit"] .compat-status{color:#c0392b}
+.compat-line[data-status="universal"] .compat-status{color:#1a7f37}
+.compat-line[data-status="unknown"] .compat-status{color:#b7791f}
+.compat-detail{text-align:right;max-width:55%}
+#compat-results.checking{opacity:.55}</style>
 <div class="section-light">
 <div class="wrap">
   <h1>Checkout</h1>
@@ -12,6 +20,44 @@
 
   <div class="cart-layout">
     <div>
+      {% if compat_lines %}
+      <div class="contact-card" id="compat-checker-wrap" style="margin-bottom:24px">
+        <h2>Check Compatibility</h2>
+        <p class="hint">These items were added from the catalog, not through the vehicle lookup. Pick your vehicle to see which ones fit.</p>
+        <form id="compat-checker">
+          <div class="finder-grid">
+            <label class="field">Year
+              <select id="compat-year" name="year">
+                <option value="">Year</option>
+                {% for y in years %}<option value="{{ y }}">{{ y }}</option>{% endfor %}
+              </select>
+            </label>
+            <label class="field">Make
+              <select id="compat-make" name="make" disabled><option value="">Make</option></select>
+            </label>
+            <label class="field">Model
+              <select id="compat-model" name="model" disabled><option value="">Model</option></select>
+            </label>
+            <label class="field">Trim (optional)
+              <select id="compat-trim" name="trim" disabled><option value="">Trim (optional)</option></select>
+            </label>
+          </div>
+          <p style="margin-top:12px">
+            <button class="btn btn-block" id="compat-go" type="submit" disabled>Check compatibility</button>
+          </p>
+        </form>
+        <p class="hint" id="compat-vehicle" style="display:none"></p>
+        <div id="compat-results">
+          {% for l in compat_lines %}
+          <div class="cart-line compat-line" data-key="{{ l.key }}">
+            <div><span class="compat-status"></span><strong>{{ l.product.name }}</strong><br>
+            <span class="hint">{% if l.variation_label %}{{ l.variation_label }} · {% endif %}× {{ l.qty }}</span></div>
+            <div class="compat-detail hint">Not checked yet</div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
       <h2>Your Details</h2>
       {% if payments_ready %}
       <form method="post" action="/checkout/create" class="contact-card">
@@ -62,7 +108,8 @@
     <aside class="cart-summary">
       <h2>Order Summary</h2>
       {% for vehicle, vlines in grouped_lines %}
-      {% if vehicle %}<div class="veh-head small">🚗 <strong>{{ vehicle }}</strong></div>{% endif %}
+      {% if vehicle %}<div class="veh-head small">🚗 <strong>{{ vehicle }}</strong></div>
+      {% elif grouped_lines|length > 1 %}<div class="veh-head small"><strong>Other items</strong></div>{% endif %}
       {% for l in vlines %}
       <div class="cart-line">
         <div><strong>{{ l.product.name }}</strong><br>
@@ -84,4 +131,47 @@
   </div>
 </div>
 </div>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var wrap = document.getElementById("compat-checker-wrap");
+  if (!wrap || !window.BravoFit) return;
+  var box = document.getElementById("compat-results");
+  var vehicleP = document.getElementById("compat-vehicle");
+  var marks = { fits: "✓", does_not_fit: "✕", universal: "✓", unknown: "?" };
+  window.BravoFit.initFitmentFinder("compat-checker",
+    { year: "compat-year", make: "compat-make", model: "compat-model",
+      trim: "compat-trim", go: "compat-go" },
+    function (sel) {
+      box.classList.add("checking");
+      fetch("/api/checkout/fitment-check", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(sel)
+      }).then(function (r) {
+        return r.json().then(function (j) { return { status: r.status, body: j }; });
+      }).then(function (res) {
+        box.classList.remove("checking");
+        if (res.status !== 200 || !res.body.ok) {
+          vehicleP.style.display = "";
+          vehicleP.textContent = (res.body && res.body.error) ||
+            "Couldn't check compatibility — please try again.";
+          return;
+        }
+        vehicleP.style.display = "";
+        vehicleP.textContent = "Checked against " + res.body.vehicle.label + ".";
+        res.body.results.forEach(function (it) {
+          var el = box.querySelector('[data-key="' + it.key + '"]');
+          if (!el) return;
+          el.setAttribute("data-status", it.status);
+          el.querySelector(".compat-status").textContent = marks[it.status] || "?";
+          el.querySelector(".compat-detail").textContent = it.detail;
+        });
+      }).catch(function () {
+        box.classList.remove("checking");
+        vehicleP.style.display = "";
+        vehicleP.textContent = "Couldn't check compatibility — please try again.";
+      });
+    });
+});
+</script>
 {% endblock %}

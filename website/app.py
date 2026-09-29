@@ -933,14 +933,7 @@ def checkout():
     lines, subtotal = cart_detailed()
     if not lines:
         return redirect(url_for("cart_view"))
-    promo, discount_cents = landing.active_cart_promo(subtotal)
-    return render_template("checkout.html", lines=lines, subtotal=subtotal,
-                           subtotal_str=money(subtotal),
-                           payments_ready=payments.stripe_configured(),
-                           promo=promo, discount_cents=discount_cents,
-                           discount_str=money(discount_cents),
-                           total_cents=subtotal - discount_cents,
-                           total_str=money(subtotal - discount_cents))
+    return render_template("checkout.html", **_checkout_ctx(lines, subtotal))
 
 
 def _checkout_ctx(lines, subtotal):
@@ -949,6 +942,8 @@ def _checkout_ctx(lines, subtotal):
     return {
         "lines": lines, "subtotal": subtotal,
         "grouped_lines": group_cart_lines(lines),
+        "compat_lines": [l for l in lines if not (l.get("vehicle") or "")],
+        "years": fitment_db.get_years(),
         "subtotal_str": money(subtotal),
         "payments_ready": payments.stripe_configured(),
         "promo": promo, "discount_cents": discount_cents,
@@ -989,6 +984,16 @@ def checkout_create():
     oid = db.create_order(customer, lines, subtotal,
                           promo_code=promo["code"] if promo else None,
                           discount_cents=discount_cents)
+    # Staff note: the buyer ran the checkout compatibility checker against
+    # this vehicle for their catalog (ungrouped) items.
+    fc = session.pop("fitment_check", None)
+    if fc and fc.get("label"):
+        order = db.get_order(oid)
+        existing = ((order.get("notes") or "").strip() + "\n"
+                    if order and order.get("notes") else "")
+        db.update_order_notes(
+            oid, existing + "Customer checked catalog-item fitment against "
+                           f"{fc['label']} at checkout.")
     try:
         success_url = url_for("checkout_success", _external=True) + \
             "?session_id={CHECKOUT_SESSION_ID}"
@@ -1004,6 +1009,134 @@ def checkout_create():
     db.set_stripe_session(oid, stripe_session.id)
     session.pop("cart", None)  # cart snapshot lives in the order now
     return redirect(stripe_session.url, code=303)
+
+
+# ---------------------------------------------------------------------------
+# Checkout compatibility checker
+#
+# Items added through the vehicle fitment finder already carry a vehicle tag.
+# Catalog / By-Bulb-Size purchases don't, so checkout offers a Year/Make/Model
+# lookup that scores each ungrouped line against the vehicle's fitment rows.
+# ---------------------------------------------------------------------------
+_FITMENT_CATEGORIES = {c for cats in fitment_loader.POSITION_CATEGORIES.values()
+                       for c in cats}
+# Categories that never appear in any fitment row (dash cams, jump starters,
+# accessories): universal products that fit any vehicle.
+_UNIVERSAL_CATEGORIES = set(CATEGORIES) - _FITMENT_CATEGORIES
+
+# Front-bulb positions affected by xenon / sealed factory-LED setups —
+# same adjustment the /fit pages apply.
+_CHECK_FRONT_POSITIONS = {"low_beam", "high_beam", "high_low_beam",
+                          "fog_light", "fog_light_rear", "drl"}
+
+
+def _vehicle_label(year, make, model, trim):
+    label = f"{year} {make} {model}"
+    return f"{label} — {trim}" if trim else label
+
+
+def _fitment_check_line(line, rows, setup, year, make, model):
+    """Score one ungrouped cart line against a vehicle's fitment rows.
+
+    Returns a dict with status in {fits, does_not_fit, universal, unknown}.
+    """
+    prod = line.get("product") or {}
+    name = prod.get("name", "")
+    cat = prod.get("category", "")
+    pid = prod.get("id", "")
+    base = {"key": line.get("key"), "name": name,
+            "variation_label": line.get("variation_label", ""),
+            "size": line.get("size", "")}
+    if cat in _UNIVERSAL_CATEGORIES:
+        return {**base, "status": "universal",
+                "detail": "Universal product — fits any vehicle."}
+    # Interior kits are vehicle-specific bundles, not single bulbs: compare
+    # the kit's own vehicle against the checked one.
+    kit = kits.parse_kit_id(pid)
+    if kit:
+        same = (str(kit.get("year")) == str(year)
+                and kits.slugify(kit.get("make")) == kits.slugify(make)
+                and kits.slugify(kit.get("model")) == kits.slugify(model))
+        if same:
+            return {**base, "status": "fits",
+                    "positions": ["Complete Interior LED Kit"],
+                    "detail": "Fits — Complete Interior LED Kit for this vehicle."}
+        return {**base, "status": "does_not_fit",
+                "detail": "Does not fit — this kit is built for the "
+                          f"{kit.get('year')} {kit.get('make')} "
+                          f"{kit.get('model')}."}
+    if not rows:
+        # No fitment data for this vehicle: say so, never claim it fits
+        # or doesn't.
+        return {**base, "status": "unknown",
+                "detail": "Couldn't verify — no fitment data for this vehicle."}
+    size = norm_size(line.get("size", ""))
+    if not size:
+        return {**base, "status": "unknown",
+                "detail": "Couldn't verify — this item has no bulb size."}
+    positions = []
+    for r in rows:
+        cats = r["categories"]
+        if r["position"] in _CHECK_FRONT_POSITIONS:
+            if setup == "xenon":
+                cats = [c for c in cats if "hid" in c]
+            elif setup == "factory_led":
+                cats = []
+        if cat not in cats:
+            continue
+        if norm_size(r.get("bulb_size", "")) != size:
+            continue
+        label = r.get("label") or r["position"]
+        if label not in positions:
+            positions.append(label)
+    if positions:
+        return {**base, "status": "fits", "positions": positions,
+                "detail": "Fits — " + ", ".join(positions)}
+    return {**base, "status": "does_not_fit",
+            "detail": "Does not fit this vehicle."}
+
+
+@app.route("/api/checkout/fitment-check", methods=["POST"])
+def api_checkout_fitment_check():
+    """Score ungrouped cart lines against a Year/Make/Model(/Trim).
+
+    Body: {year, make, model, trim?}. The tuple is validated against the
+    fitment DB. The checked vehicle is saved in the session so checkout
+    can note it on the order for staff.
+    """
+    data = request.get_json(force=True, silent=True) or {}
+    year = str(data.get("year", "")).strip()
+    make = str(data.get("make", "")).strip()
+    model = str(data.get("model", "")).strip()
+    trim = str(data.get("trim", "") or "").strip() or None
+    try:
+        year = int(year)
+    except (TypeError, ValueError):
+        return jsonify({"ok": False, "error": "Pick a valid year."}), 400
+    if year not in fitment_db.get_years():
+        return jsonify({"ok": False, "error": "Unknown year."}), 400
+    if make not in fitment_db.get_makes(year):
+        return jsonify({"ok": False,
+                        "error": "Unknown make for that year."}), 400
+    if model not in fitment_db.get_models(year, make):
+        return jsonify({"ok": False, "error": "Unknown model."}), 400
+    if trim and trim not in fitment_db.get_trims(year, make, model):
+        return jsonify({"ok": False, "error": "Unknown trim."}), 400
+
+    lines, _ = cart_detailed()
+    ungrouped = [l for l in lines if not (l.get("vehicle") or "")]
+    rows = fitment_db.get_fitment(year, make, model, trim)
+    setup = fitment_db.get_vehicle_setup(year, make, model, trim)
+    results = [_fitment_check_line(l, rows, setup, year, make, model)
+               for l in ungrouped]
+
+    label = _vehicle_label(year, make, model, trim)
+    session["fitment_check"] = {"year": year, "make": make, "model": model,
+                                "trim": trim, "label": label}
+    return jsonify({"ok": True,
+                    "vehicle": {"year": year, "make": make, "model": model,
+                                "trim": trim, "label": label},
+                    "results": results})
 
 
 @app.route("/checkout/success")
