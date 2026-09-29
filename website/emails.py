@@ -1,4 +1,4 @@
-"""Transactional email for Bravo LEDs orders.
+"""Transactional email for BRAVO LEDS orders.
 
 Config via env vars:
     SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, SMTP_FROM
@@ -140,17 +140,17 @@ def notify_customer_order_paid(order):
                      "via USPS/UPS).\n\n")
     body = (
         f"Hi {order['customer_name'] or 'there'},\n\n"
-        f"Thanks for your order from Bravo LEDs! Your payment was received.\n\n"
+        f"Thanks for your order from BRAVO LEDS! Your payment was received.\n\n"
         f"Order #{order['id']}\n{_items_text(order)}\n"
         f"Total: {_fmt_money(order['total_cents'])}\n\n"
         f"{next_line}"
         f"1-year warranty on all products. 30-day returns on unused items.\n"
         f"For off-road and fog light use only. Not DOT/SAE approved for "
         f"on-road use. Check your local laws.\n\n"
-        f"— Bravo LEDs, Rosemead, CA"
+        f"— BRAVO LEDS, Rosemead, CA"
     )
     return send_email_channel(order.get("customer_email"),
-                              f"Bravo LEDs order #{order['id']} confirmed",
+                              f"BRAVO LEDS order #{order['id']} confirmed",
                               body)
 
 
@@ -161,16 +161,16 @@ def notify_customer_ready_for_pickup(order):
         return False
     body = (
         f"Hi {order['customer_name'] or 'there'},\n\n"
-        f"Your Bravo LEDs order #{order['id']} is ready for pickup!\n\n"
+        f"Your BRAVO LEDS order #{order['id']} is ready for pickup!\n\n"
         f"626 LEDs\n7951 Garvey Ave\nRosemead, CA\n\n"
         f"{_items_text(order)}\n"
         f"Total: {_fmt_money(order['total_cents'])}\n\n"
         f"Bring your order confirmation (or just your name). "
         f"Questions? Reply to this email.\n\n"
-        f"— Bravo LEDs, Rosemead, CA"
+        f"— BRAVO LEDS, Rosemead, CA"
     )
     return send_email_channel(order.get("customer_email"),
-                              f"Bravo LEDs order #{order['id']} ready for pickup",
+                              f"BRAVO LEDS order #{order['id']} ready for pickup",
                               body)
 
 
@@ -181,14 +181,14 @@ def notify_customer_payment_failed(order):
         return False
     body = (
         f"Hi {order['customer_name'] or 'there'},\n\n"
-        f"We couldn't complete payment for your Bravo LEDs order "
+        f"We couldn't complete payment for your BRAVO LEDS order "
         f"#{order['id']} ({_fmt_money(order['total_cents'])}).\n\n"
         f"No charge was made. You can try again from your cart, or reply "
         f"to this email and we'll help you complete the order.\n\n"
-        f"— Bravo LEDs, Rosemead, CA"
+        f"— BRAVO LEDS, Rosemead, CA"
     )
     return send_email_channel(order.get("customer_email"),
-                              f"Bravo LEDs order #{order['id']}: "
+                              f"BRAVO LEDS order #{order['id']}: "
                               f"payment didn't go through",
                               body)
 
@@ -206,15 +206,15 @@ def notify_customer_shipped(order, carrier=None, tracking_url=None):
         track_line += f"Track your package: {tracking_url}\n"
     body = (
         f"Hi {order['customer_name'] or 'there'},\n\n"
-        f"Your Bravo LEDs order #{order['id']} has shipped!\n\n"
+        f"Your BRAVO LEDS order #{order['id']} has shipped!\n\n"
         f"{track_line}"
         f"{_items_text(order)}\n"
         f"Total: {_fmt_money(order['total_cents'])}\n\n"
         f"Questions? Reply to this email.\n\n"
-        f"— Bravo LEDs, Rosemead, CA"
+        f"— BRAVO LEDS, Rosemead, CA"
     )
     return send_email_channel(order.get("customer_email"),
-                              f"Bravo LEDs order #{order['id']} shipped",
+                              f"BRAVO LEDS order #{order['id']} shipped",
                               body)
 
 
@@ -233,7 +233,7 @@ def notify_owner_new_order(order):
         f"{_items_text(order)}\n"
     )
     return send_email_channel(to_addr,
-                              f"[Bravo LEDs] New order #{order['id']} "
+                              f"[BRAVO LEDS] New order #{order['id']} "
                               f"({_fmt_money(order['total_cents'])})",
                               body)
 
@@ -253,10 +253,10 @@ def notify_owner_low_stock(items):
         f"The following items are at or below their low-stock threshold:\n\n"
         f"{lines}\n\n"
         f"Restock in /admin -> Inventory.\n\n"
-        f"— Bravo LEDs store"
+        f"— BRAVO LEDS store"
     )
     return send_email_channel(owner_alerts_email(),
-                              f"[Bravo LEDs] Low stock: {len(items)} item(s)",
+                              f"[BRAVO LEDS] Low stock: {len(items)} item(s)",
                               body)
 
 
@@ -266,11 +266,11 @@ def notify_owner_contact_message(name, email, message):
         log.info("suppressed by toggle: owner contact message")
         return False
     body = (
-        f"New message from the Bravo LEDs contact form:\n\n"
+        f"New message from the BRAVO LEDS contact form:\n\n"
         f"From: {name} <{email}>\n\n{message}\n"
     )
     return send_email_channel(owner_alerts_email(),
-                              f"[Bravo LEDs] Contact form: {name}",
+                              f"[BRAVO LEDS] Contact form: {name}",
                               body)
 
 
@@ -284,10 +284,10 @@ def notify_owner_return_request(rid, order_id, customer_email, reason):
         f"Customer: {customer_email}\n"
         f"Reason: {reason}\n\n"
         f"Review it in the admin: /admin/returns\n\n"
-        f"— Bravo LEDs store"
+        f"— BRAVO LEDS store"
     )
     return send_email_channel(owner_alerts_email(),
-                              f"Bravo LEDs return request #{rid} "
+                              f"BRAVO LEDS return request #{rid} "
                               f"(order #{order_id})",
                               body)
 
@@ -303,11 +303,11 @@ def notify_owner_review_submitted(product_name, reviewer, rating, body_text):
         f"Reviewer: {reviewer} — {rating}/5 stars\n\n"
         f"{body_text}\n\n"
         f"Approve it in /admin -> Reviews.\n\n"
-        f"— Bravo LEDs store"
+        f"— BRAVO LEDS store"
     )
     return send_email_channel(
         owner_alerts_email(),
-        f"[Bravo LEDs] New review for {product_name}",
+        f"[BRAVO LEDS] New review for {product_name}",
         body)
 
 

@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Order #{{ o.id }} — Admin — Bravo LEDs{% endblock %}
+{% block title %}Order #{{ o.id }} — Admin — BRAVO LEDS{% endblock %}
 {% block content %}
 <div class="wrap">
   <h1>Order #{{ o.id }} <span class="badge">{{ o.status }}</span>{% if (o.fulfillment or "ship") == "pickup" %} <span class="badge">🏪 store pickup</span>{% endif %}</h1>
