@@ -26,9 +26,13 @@
   <div class="fit-cat-grid">
     {% for g in groups %}
     <a class="fit-cat-card" href="{{ g.url }}">
+      {% if g.image %}
+      <img class="fit-cat-photo" src="{{ g.image }}" alt="" loading="lazy">
+      {% else %}
       <span class="fit-cat-icon" aria-hidden="true">
         {% if g.slug == "forward" %}💡{% elif g.slug == "rear" %}🔴{% else %}✨{% endif %}
       </span>
+      {% endif %}
       <span class="fit-cat-main">
         <strong>{{ g.label }}</strong>
         <span class="small muted">{{ g.desc }}</span>

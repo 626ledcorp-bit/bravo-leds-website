@@ -23,6 +23,7 @@ import pyotp
 import db
 import emails
 import kits
+from kit_images import body_style as kit_images_body_style
 import landing
 import payments
 import shipping as shiputil
@@ -529,6 +530,12 @@ def fit_vehicle(year, make_slug, model_slug):
     vehicle_label = f"{year} {make} {model}"
     base = f"/fit/{int(year)}/{kits.slugify(make)}/{kits.slugify(model)}"
     trim_qs = f"?trim={quote(str(trim), safe='')}" if trim else ""
+    bs = kit_images_body_style(make, model)
+    group_images = {
+        "forward": f"/static/img/kits/fwd-{bs}.jpg",
+        "rear": "/static/img/kits/rear-generic.jpg",
+        "interior": "/static/img/kits/int-car.jpg",
+    }
     groups = []
     for g in fitment_loader.FIT_GROUPS:
         g_rows = [r for r in enriched if r.get("group") == g]
@@ -541,6 +548,7 @@ def fit_vehicle(year, make_slug, model_slug):
             "count": len(g_rows),
             "url": f"{base}/{g}{trim_qs}",
             "has_kit": bool(interior_kit) and g == "interior",
+            "image": group_images.get(g),
         })
     return render_template("fit_vehicle.html", vehicle_label=vehicle_label,
                            year=year, make=make, model=model, trim=trim,
