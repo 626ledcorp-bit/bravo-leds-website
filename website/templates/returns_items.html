@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Select Return Items — Bravo LEDs{% endblock %}
+{% block content %}
+<div class="section-light">
+<div class="wrap"><div class="page-narrow">
+  <p class="small" style="margin:22px 0 0"><a href="/returns">Returns</a> / Order #{{ order.id }}</p>
+  <h1>What are you returning?</h1>
+  {% if error %}<div class="flash-errors">{{ error }}</div>{% endif %}
+  <form method="post" action="/returns/submit" class="contact-card">
+    <input type="hidden" name="order_id" value="{{ order.id }}">
+    <input type="hidden" name="email" value="{{ order.customer_email }}">
+    {% for i in order.line_items %}
+    <label style="display:block;margin-bottom:10px">
+      <input type="checkbox" name="item_idx" value="{{ loop.index0 }}">
+      <strong>{{ i.qty }} × {{ i.name }}</strong>
+      {% if i.variation_label %}<span class="muted">({{ i.variation_label }})</span>{% endif %}
+    </label>
+    {% endfor %}
+    <div class="field" style="margin-top:14px">
+      <label for="rt-reason">Reason</label>
+      <select id="rt-reason" name="reason" required>
+        <option value="">Select a reason…</option>
+        {% for r in reasons %}<option value="{{ r }}">{{ r }}</option>{% endfor %}
+      </select>
+    </div>
+    <div class="field">
+      <label for="rt-comments">Comments <span class="muted">(optional — tell us what happened)</span></label>
+      <textarea id="rt-comments" name="comments" rows="4" maxlength="2000" style="width:100%"></textarea>
+    </div>
+    <button class="btn" type="submit">Submit return request</button>
+  </form>
+  <p class="hint">We'll review your request and reply by email with return instructions.</p>
+</div></div>
+</div>
+{% endblock %}

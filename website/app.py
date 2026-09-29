@@ -5,6 +5,7 @@ yet: /checkout is a "coming soon" page wired for Stripe Checkout in Phase 2.
 """
 
 import os
+import threading
 import json
 import re
 import hmac
@@ -34,6 +35,7 @@ import square_import
 import spinpromo
 from catalog import CATEGORIES, LEDBULB_SIZES
 from content import register_content_routes
+import content as content_mod
 from fitment_loader import fitment_db, norm_size
 import fitment_loader
 
@@ -43,6 +45,18 @@ TIER_ORDER = ["Basic", "Plus", "Premium", "Platinum", "Pro", "Ultra"]
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY", "626leds-dev-secret")
 db.init_db()
+
+# Warm the reverse fitment index in the background so the first product
+# page view doesn't pay the ~2s build cost. Daemon thread: never blocks
+# startup or shutdown.
+def _warm_fitment_reverse_index():
+    try:
+        fitment_db.vehicles_for_sizes(set(), set())
+    except Exception:  # noqa: BLE001 - lazy build on first use instead
+        pass
+
+threading.Thread(target=_warm_fitment_reverse_index,
+                 daemon=True).start()
 register_content_routes(app)
 landing.register_landing_routes(app)
 spinpromo.register_spin_routes(app)
@@ -294,14 +308,63 @@ def product_detail(pid):
     # inventory internals ever reach the browser).
     variation_json = json.dumps(
         [db.public_variation(v) for v in p.get("variations", [])])
+    # "Fits these vehicles": reverse fitment lookup over the product's
+    # bulb sizes x its category, grouped as Make Model (year range).
+    fitment_summary = _product_fitment_summary(p)
     # Track 2: the DOT disclaimer renders only on flagged categories.
     return render_template("product.html", p=db.public_product(p),
                            related=related,
                            cat_name=cat["name"],
                            variation_json=variation_json,
                            preselect_size=request.args.get("size"),
+                           fitment_summary=fitment_summary,
                            disclaimer_required=cat.get(
                                "requires_dot_disclaimer", True))
+
+
+def _product_fitment_summary(p, max_models=15):
+    """{'total': N, 'models': [{'make', 'model', 'years', 'count'}]} for the
+    product page's 'Fits these vehicles' section. Empty when the product
+    has no bulb sizes (universal products) or no fitment rows match."""
+    sizes = set()
+    for v in p.get("variations", []) or []:
+        ov = v.get("option_values") or {}
+        if isinstance(ov, str):
+            try:
+                ov = json.loads(ov)
+            except (TypeError, ValueError):
+                ov = {}
+        s = norm_size(str((ov or {}).get("Size") or ""))
+        if s:
+            sizes.add(s)
+    if not sizes:
+        return None
+    vehicles = fitment_db.vehicles_for_sizes(sizes, {p["category"]})
+    if not vehicles:
+        return None
+    by_model = {}
+    for year, make, model in vehicles:
+        by_model.setdefault((make, model), []).append(year)
+    models = []
+    for (make, model), years in by_model.items():
+        # Compact year groups (2016–2019, 2022–2024) rather than a bare
+        # min–max span, which would falsely imply every year in between.
+        yrs = sorted(set(years))
+        spans, start, prev = [], yrs[0], yrs[0]
+        for y in yrs[1:]:
+            if y == prev + 1:
+                prev = y
+            else:
+                spans.append((start, prev))
+                start = prev = y
+        spans.append((start, prev))
+        years_str = ", ".join(
+            str(a) if a == b else f"{a}–{b}" for a, b in spans)
+        models.append({"make": make, "model": model, "years": years_str,
+                       "count": len(yrs)})
+    models.sort(key=lambda m: (-m["count"], m["make"], m["model"]))
+    return {"total": len(vehicles), "models": models[:max_models],
+            "more_models": max(0, len(models) - max_models)}
 
 
 # ---------------------------------------------------------------- fitment
@@ -967,6 +1030,8 @@ def checkout_create():
                                      " Please contact us to order by phone."), 200
     name = request.form.get("name", "").strip()
     email = request.form.get("email", "").strip()
+    fulfillment = request.form.get("fulfillment", "ship")
+    fulfillment = "pickup" if fulfillment == "pickup" else "ship"
     customer = {
         "name": name,
         "email": email,
@@ -979,11 +1044,17 @@ def checkout_create():
     if not name or not email or "@" not in email:
         return render_template("checkout.html", **_checkout_ctx(lines, subtotal),
                                error="Please enter your name and a valid email."), 200
+    if fulfillment == "ship" and not (
+            customer["line1"] and customer["city"]
+            and customer["state"] and customer["zip"]):
+        return render_template("checkout.html", **_checkout_ctx(lines, subtotal),
+                               error="Please enter your full shipping address."), 200
     # Snapshot the order first (status 'new'); the webhook marks it 'paid'.
     # The promo code + discount are snapshotted so they survive expiry.
     oid = db.create_order(customer, lines, subtotal,
                           promo_code=promo["code"] if promo else None,
-                          discount_cents=discount_cents)
+                          discount_cents=discount_cents,
+                          fulfillment=fulfillment)
     # Staff note: the buyer ran the checkout compatibility checker against
     # this vehicle for their catalog (ungrouped) items.
     fc = session.pop("fitment_check", None)
@@ -999,7 +1070,8 @@ def checkout_create():
             "?session_id={CHECKOUT_SESSION_ID}"
         cancel_url = url_for("checkout_cancel", _external=True)
         stripe_session = payments.create_checkout_session(
-            oid, lines, email, success_url, cancel_url, promo=promo)
+            oid, lines, email, success_url, cancel_url, promo=promo,
+            fulfillment=fulfillment)
     except Exception as exc:  # Stripe API/network failure: don't strand buyer
         app.logger.warning("stripe session creation failed: %s", exc)
         db.transition_order(oid, "cancelled")
@@ -2352,6 +2424,10 @@ def admin_order_status(oid):
                 order.get("tracking_number"))
             emails.notify_customer_shipped(order, carrier=carrier,
                                            tracking_url=url)
+    if ok and action == "ready":
+        order = db.get_order(oid)
+        if order:
+            emails.notify_customer_ready_for_pickup(order)
     flash(msg)
     return redirect(request.form.get("next")
                     or (url_for("admin_dashboard") + f"#order-{oid}"))
@@ -2418,10 +2494,11 @@ def admin_orders_export():
             o = db.get_order(int(raw))
         except (TypeError, ValueError):
             continue
-        if o and o["status"] == "paid":
+        if o and o["status"] == "paid" \
+                and (o.get("fulfillment") or "ship") == "ship":
             orders.append(o)
     if not orders:
-        flash("No paid, unshipped orders selected.")
+        flash("No paid, shippable orders selected (pickup orders excluded).")
         return redirect(url_for("admin_orders"))
     try:
         tare_oz = float(db.get_setting("shipping_tare_oz", "3") or 3)
@@ -2824,6 +2901,83 @@ def dot_compliance():
 @app.route("/returns")
 def returns():
     return render_template("returns.html")
+
+
+@app.route("/returns/lookup", methods=["POST"])
+def returns_lookup():
+    """Step 1: find the order by number + email, then show its items."""
+    try:
+        oid = int((request.form.get("order_id") or "").strip())
+    except (TypeError, ValueError):
+        oid = 0
+    email = (request.form.get("email") or "").strip().lower()
+    order = db.get_order(oid) if oid else None
+    if not order or (order.get("customer_email") or "").strip().lower() != email:
+        return render_template("returns.html",
+                               error="We couldn't find that order. Check the "
+                                     "order number and the email you ordered "
+                                     "with."), 200
+    return render_template("returns_items.html", order=order,
+                           reasons=content_mod.RETURN_REASONS)
+
+
+@app.route("/returns/submit", methods=["POST"])
+def returns_submit():
+    """Step 2: save the return request."""
+    try:
+        oid = int((request.form.get("order_id") or "").strip())
+    except (TypeError, ValueError):
+        oid = 0
+    email = (request.form.get("email") or "").strip()
+    order = db.get_order(oid) if oid else None
+    if not order or (order.get("customer_email") or "").strip().lower() != \
+            email.strip().lower():
+        return redirect(url_for("returns"))
+    picked = request.form.getlist("item_idx")
+    items = []
+    for raw in picked:
+        try:
+            i = int(raw)
+            li = order["line_items"][i]
+        except (TypeError, ValueError, IndexError):
+            continue
+        items.append({"name": li.get("name", ""),
+                      "variation": li.get("variation_label", "") or "",
+                      "qty": li.get("qty", 1)})
+    rid = content_mod.create_return_request(
+        oid, order.get("customer_name", ""), email, items,
+        request.form.get("reason", ""),
+        request.form.get("comments", ""))
+    if not rid:
+        return render_template("returns_items.html", order=order,
+                               reasons=content_mod.RETURN_REASONS,
+                               error="Select at least one item and a reason."), 200
+    try:
+        emails.notify_owner_return_request(rid, oid, email,
+                                           request.form.get("reason", ""))
+    except Exception:  # noqa: BLE001 - request saved regardless
+        pass
+    return render_template("returns_done.html", rid=rid)
+
+
+@app.route("/admin/returns")
+@admin_required
+def admin_returns():
+    status = request.args.get("status", "")
+    return render_template("admin_returns.html",
+                           requests=content_mod.list_return_requests(
+                               status or None),
+                           status=status,
+                           statuses=content_mod.RETURN_STATUSES)
+
+
+@app.route("/admin/returns/<int:rid>/status", methods=["POST"])
+@admin_required
+def admin_return_status(rid):
+    action = request.form.get("action", "")
+    ok = content_mod.set_return_status(rid, action)
+    flash("Return request updated." if ok else "Invalid status change.")
+    return redirect(url_for("admin_returns"))
 
 
 @app.route("/contact", methods=["GET", "POST"])

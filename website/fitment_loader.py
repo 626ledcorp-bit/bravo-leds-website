@@ -101,6 +101,12 @@ POSITION_LABELS = {
 # low/high beam and fog also surface HID options. Dash cams and jump
 # starters are universal-fit and deliberately appear in NO position mapping,
 # so the finder can never suggest them.
+# Front-bulb positions affected by xenon / sealed factory-LED setups.
+# The reverse index applies the same adjustment the /fit pages do.
+_REVERSE_FRONT_POSITIONS = {"low_beam", "high_beam", "high_low_beam",
+                            "fog_light", "fog_light_rear", "drl"}
+
+
 POSITION_CATEGORIES = {
     "low_beam": ["led-bulbs", "hid-conversion-kits", "factory-hid-bulbs"],
     "high_beam": ["led-bulbs", "hid-conversion-kits", "factory-hid-bulbs"],
@@ -414,6 +420,7 @@ class FitmentDB:
         self._detail = ""
         self._row_count = 0
         self._bulb_sizes = None     # cached all_bulb_sizes()
+        self._reverse_index = None   # lazy {(norm_size, category): {(year, make, model)}}
 
     def _ensure(self):
         if self._vehicles is not None:
@@ -676,6 +683,138 @@ class FitmentDB:
             if counts:
                 setup = max(counts, key=counts.get)
         return setup
+
+    def vehicles_for_sizes(self, sizes, categories):
+        """Reverse fitment lookup: distinct (year, make, model) vehicles where
+        any fitment row matches one of `sizes` (already normalized) AND one
+        of `categories` (e.g. {"led-bulbs"}).
+
+        Built lazily on first call by merging the fitment DBs once (a few
+        seconds for ~440k rows) into a {(size, category): set-of-vehicles}
+        index, then cached for the process. Indicative only — the vehicle
+        finder and checkout checker remain the authority on exact
+        fitment, since factory xenon/LED setups can override a raw size
+        match.
+        """
+        self._ensure()
+        if self._reverse_index is None:
+            self._reverse_index = self._build_reverse_index()
+        idx = self._reverse_index
+        out = set()
+        for s in sizes:
+            for c in categories:
+                out.update(idx.get((s, c), ()))
+        return out
+
+    def _build_reverse_index(self):
+        """{(norm_size, category): {(year, make, model)}}.
+
+        Mirrors the merge rules the vehicle pages use, so the product
+        page list agrees with the finder:
+          - per vehicle, the highest-priority source wins (per
+            position/size), trims unioned like trimless /fit pages;
+          - front-bulb rows are adjusted for xenon / sealed factory-LED
+            setups exactly like _fitment_context (xenon: HID categories
+            only; factory LED: no front-bulb rows at all).
+        """
+        self._ensure()
+        index = {}
+        # Most-common setup per (year, make, model) across trims — the
+        # same rule get_vehicle_setup() uses for trimless lookups.
+        setup_by_ymd = {}
+        if self._setup_by_key:
+            counts = {}
+            for (y, mk, md, _t), s in self._setup_by_key.items():
+                if not s:
+                    continue
+                c = counts.setdefault((y, mk, md), {})
+                c[s] = c.get(s, 0) + 1
+            setup_by_ymd = {k: max(v, key=v.get)
+                            for k, v in counts.items()}
+
+        def _index_vehicle(ymd, rows):
+            setup = setup_by_ymd.get(ymd)
+            for r in rows:
+                size = r.get("bulb_size")
+                if not size:
+                    continue
+                cats = list(r.get("categories") or ())
+                if r.get("position") in _REVERSE_FRONT_POSITIONS:
+                    if setup == "xenon":
+                        cats = [c for c in cats if "hid" in c]
+                    elif setup == "factory_led":
+                        cats = []
+                for c in cats:
+                    index.setdefault((size, c), set()).add(ymd)
+
+        if self._by_key is not None:
+            # In-memory path (SEMA import / demo seed): rows are already
+            # merged per vehicle; union trims at (year, make, model).
+            seen = {}
+            for (y, mk, md, _t), rows in self._by_key.items():
+                bucket = seen.setdefault((y, mk, md), {})
+                for r in rows:
+                    pos = str(r.get("position", "")).strip().lower()
+                    size = norm_size(r.get("bulb_size", ""))
+                    if not size:
+                        continue
+                    sig = (pos, size)
+                    if sig in bucket:
+                        continue
+                    bucket[sig] = {
+                        "position": pos, "bulb_size": size,
+                        "categories": POSITION_CATEGORIES.get(pos, ()),
+                    }
+            for ymd, bucket in seen.items():
+                _index_vehicle(ymd, bucket.values())
+        else:
+            # SQLite path: load each source once, then merge per
+            # vehicle with the same priority rules as _merged_all_trims
+            # (first/highest-priority source wins per position/size).
+            per_source = []
+            for path in self._db_paths or []:
+                con = sqlite3.connect(f"file:{path}?mode=ro", uri=True)
+                try:
+                    con.row_factory = sqlite3.Row
+                    buckets = {}
+                    for f in con.execute(
+                            "SELECT vehicle_id, position, bulb_size_raw,"
+                            " bulb_size FROM fitment"):
+                        pos = str(f["position"] or "").strip().lower()
+                        size = norm_size(
+                            f["bulb_size"] or f["bulb_size_raw"] or "")
+                        if not size:
+                            continue
+                        buckets.setdefault(str(f["vehicle_id"]), []).append({
+                            "position": pos,
+                            "bulb_size": size,
+                            "bulb_size_raw": str(
+                                f["bulb_size_raw"] or "").strip(),
+                            "categories": POSITION_CATEGORIES.get(pos, ()),
+                        })
+                except sqlite3.Error:
+                    buckets = {}
+                finally:
+                    con.close()
+                per_source.append(buckets)
+            by_ymd = {}
+            for key, srcs in (self._veh_sources or {}).items():
+                by_ymd.setdefault(key[:3], []).extend(srcs)
+            for ymd, srcs in by_ymd.items():
+                seen_sig = set()
+                merged = []
+                for idx, vid in srcs:
+                    if idx >= len(per_source):
+                        continue
+                    for r in per_source[idx].get(vid, ()):
+                        sig = (r["position"], r["bulb_size"],
+                               r["bulb_size_raw"])
+                        if sig in seen_sig:
+                            continue
+                        seen_sig.add(sig)
+                        merged.append(r)
+                _index_vehicle(ymd, merged)
+        return index
 
     def source_info(self):
         self._ensure()

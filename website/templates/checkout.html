@@ -60,7 +60,7 @@
       {% endif %}
       <h2>Your Details</h2>
       {% if payments_ready %}
-      <form method="post" action="/checkout/create" class="contact-card">
+      <form method="post" action="/checkout/create" class="contact-card" id="checkout-form">
         <div class="finder-grid">
           <label class="field">Full name
             <input type="text" name="name" required autocomplete="name">
@@ -69,6 +69,12 @@
             <input type="email" name="email" required autocomplete="email">
           </label>
         </div>
+        <div class="field" style="margin-bottom:14px"><span style="font-weight:600">How do you want your order?</span>
+          <label style="display:block;margin-top:8px"><input type="radio" name="fulfillment" value="ship" checked> Ship to me</label>
+          <label style="display:block;margin-top:6px"><input type="radio" name="fulfillment" value="pickup"> Pick up in store — free<br>
+          <span class="hint" style="margin-left:22px">626 LEDs · 7951 Garvey Ave, Rosemead, CA</span></label>
+        </div>
+        <div id="ship-address">
         <label class="field">Street address
           <input type="text" name="line1" required autocomplete="street-address">
         </label>
@@ -86,11 +92,27 @@
             <input type="text" name="zip" required inputmode="numeric" autocomplete="postal-code">
           </label>
         </div>
+        </div>
         <p style="margin-top:18px">
           <button class="btn btn-block" type="submit">Pay {{ total_str }} Securely →</button>
         </p>
         <p class="hint">You'll be taken to Stripe's secure payment page. We never see your card number.</p>
       </form>
+      <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var form = document.getElementById("checkout-form");
+        if (!form) return;
+        var addr = document.getElementById("ship-address");
+        var req = addr.querySelectorAll("[required]");
+        form.querySelectorAll('input[name="fulfillment"]').forEach(function (r) {
+          r.addEventListener("change", function () {
+            var pickup = form.querySelector('input[name="fulfillment"]:checked').value === "pickup";
+            addr.style.display = pickup ? "none" : "";
+            req.forEach(function (el) { el.required = !pickup; });
+          });
+        });
+      });
+      </script>
       {% else %}
       <div class="contact-card">
         <p><strong>Online payments aren't turned on yet.</strong></p>

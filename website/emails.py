@@ -131,12 +131,19 @@ def notify_customer_order_paid(order):
     if not notifications_on("notify_customer_order_confirmation"):
         log.info("suppressed by toggle: customer order confirmation")
         return False
+    pickup = (order.get("fulfillment") or "ship") == "pickup"
+    if pickup:
+        next_line = ("We'll email you as soon as it's ready for pickup at "
+                     "626 LEDs, 7951 Garvey Ave, Rosemead, CA.\n\n")
+    else:
+        next_line = ("We'll email you again when it ships (1-2 business days "
+                     "via USPS/UPS).\n\n")
     body = (
         f"Hi {order['customer_name'] or 'there'},\n\n"
         f"Thanks for your order from Bravo LEDs! Your payment was received.\n\n"
         f"Order #{order['id']}\n{_items_text(order)}\n"
         f"Total: {_fmt_money(order['total_cents'])}\n\n"
-        f"We'll email you again when it ships (1-2 business days via USPS/UPS).\n\n"
+        f"{next_line}"
         f"1-year warranty on all products. 30-day returns on unused items.\n"
         f"For off-road and fog light use only. Not DOT/SAE approved for "
         f"on-road use. Check your local laws.\n\n"
@@ -144,6 +151,26 @@ def notify_customer_order_paid(order):
     )
     return send_email_channel(order.get("customer_email"),
                               f"Bravo LEDs order #{order['id']} confirmed",
+                              body)
+
+
+def notify_customer_ready_for_pickup(order):
+    """'Ready for pickup' email for local-pickup orders."""
+    if not notifications_on("notify_customer_shipped"):
+        log.info("suppressed by toggle: customer pickup ready")
+        return False
+    body = (
+        f"Hi {order['customer_name'] or 'there'},\n\n"
+        f"Your Bravo LEDs order #{order['id']} is ready for pickup!\n\n"
+        f"626 LEDs\n7951 Garvey Ave\nRosemead, CA\n\n"
+        f"{_items_text(order)}\n"
+        f"Total: {_fmt_money(order['total_cents'])}\n\n"
+        f"Bring your order confirmation (or just your name). "
+        f"Questions? Reply to this email.\n\n"
+        f"— Bravo LEDs, Rosemead, CA"
+    )
+    return send_email_channel(order.get("customer_email"),
+                              f"Bravo LEDs order #{order['id']} ready for pickup",
                               body)
 
 
@@ -244,6 +271,24 @@ def notify_owner_contact_message(name, email, message):
     )
     return send_email_channel(owner_alerts_email(),
                               f"[Bravo LEDs] Contact form: {name}",
+                              body)
+
+
+def notify_owner_return_request(rid, order_id, customer_email, reason):
+    """Owner ping when a customer submits a return request."""
+    if not notifications_on("notify_owner_return_request"):
+        log.info("suppressed by toggle: owner return request")
+        return False
+    body = (
+        f"New return request #{rid} for order #{order_id}.\n\n"
+        f"Customer: {customer_email}\n"
+        f"Reason: {reason}\n\n"
+        f"Review it in the admin: /admin/returns\n\n"
+        f"— Bravo LEDs store"
+    )
+    return send_email_channel(owner_alerts_email(),
+                              f"Bravo LEDs return request #{rid} "
+                              f"(order #{order_id})",
                               body)
 
 

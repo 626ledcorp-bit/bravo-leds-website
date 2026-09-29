@@ -2,7 +2,7 @@
 {% block title %}Order #{{ o.id }} — Admin — Bravo LEDs{% endblock %}
 {% block content %}
 <div class="wrap">
-  <h1>Order #{{ o.id }} <span class="badge">{{ o.status }}</span></h1>
+  <h1>Order #{{ o.id }} <span class="badge">{{ o.status }}</span>{% if (o.fulfillment or "ship") == "pickup" %} <span class="badge">🏪 store pickup</span>{% endif %}</h1>
   <p style="margin-bottom:16px">
     <a href="/admin/orders">← All orders</a> ·
     <a href="/admin/order/{{ o.id }}/packing-slip">Packing slip</a>
@@ -12,9 +12,13 @@
     <h2>Customer</h2>
     <p><strong>{{ o.customer_name }}</strong> &lt;{{ o.customer_email }}&gt;<br>
     <span class="hint">Placed {{ o.created_at[:16] }}</span></p>
+    {% if (o.fulfillment or "ship") == "pickup" %}
+    <p class="hint">Store pickup — no shipping address collected.</p>
+    {% else %}
     <h3 style="margin-top:12px">Shipping address</h3>
     <p>{{ o.addr_line1 }}{% if o.addr_line2 %}<br>{{ o.addr_line2 }}{% endif %}<br>
     {{ o.addr_city }}, {{ o.addr_state }} {{ o.addr_zip }}</p>
+    {% endif %}
   </div>
 
   <div class="contact-card" style="margin-bottom:16px">
@@ -47,6 +51,9 @@
 
   <div class="contact-card" style="margin-bottom:16px">
     <h2>Fulfillment</h2>
+    {% if (o.fulfillment or "ship") == "pickup" %}
+    <p><strong>🏪 Store pickup</strong> — customer picks up at 626 LEDs, 7951 Garvey Ave, Rosemead, CA.</p>
+    {% endif %}
     {% if o.tracking_number %}
     <p>Tracking: <strong>{{ o.tracking_number }}</strong>
       {% if carrier and carrier != "Unknown" %} <span class="hint">({{ carrier }})</span>{% endif %}<br>
@@ -54,23 +61,31 @@
     {% endif %}
     <form method="post" action="/admin/order/{{ o.id }}/status" class="finder-grid" style="grid-template-columns:2fr 2fr auto;align-items:end">
       <input type="hidden" name="next" value="/admin/order/{{ o.id }}">
+      {% if (o.fulfillment or "ship") != "pickup" %}
       <label class="field">Tracking # (for "shipped")
         <input type="text" name="tracking" value="{{ o.tracking_number or '' }}" placeholder="e.g. 1Z...">
       </label>
+      {% endif %}
       <label class="field">Action
         <select name="action">
           {% if o.status == "new" %}
           <option value="paid">Mark paid</option>
           <option value="cancelled">Cancel order</option>
           {% elif o.status == "paid" %}
-          <option value="shipped">Mark shipped</option>
+          {% if (o.fulfillment or "ship") == "pickup" %}
+          <option value="ready">Mark ready for pickup</option>
+          {% endif %}
+          <option value="shipped">{{ "Mark picked up" if (o.fulfillment or "ship") == "pickup" else "Mark shipped" }}</option>
+          <option value="cancelled">Cancel order</option>
+          {% elif o.status == "ready" %}
+          <option value="shipped">Mark picked up</option>
           <option value="cancelled">Cancel order</option>
           {% else %}
           <option value="{{ o.status }}">{{ o.status|capitalize }} (no change)</option>
           {% endif %}
         </select>
       </label>
-      <div><button class="btn" type="submit"{% if o.status not in ["new","paid"] %} disabled{% endif %}>Apply</button></div>
+      <div><button class="btn" type="submit"{% if o.status not in ["new","paid","ready"] %} disabled{% endif %}>Apply</button></div>
     </form>
   </div>
 

@@ -227,13 +227,25 @@
   </div>
 
   <hr class="divider">
+  {% if fitment_summary %}
+  <div class="section-head"><h2>Fits these vehicles</h2></div>
+  <p class="muted">Matches <strong>{{ "{:,}".format(fitment_summary.total) }}</strong> vehicle configurations by bulb size, including:</p>
+  <ul class="feat-list" style="columns:2;column-gap:32px">
+    {% for m in fitment_summary.models %}
+    <li>{{ m.make }} {{ m.model }} <span class="muted">({{ m.years }})</span></li>
+    {% endfor %}
+  </ul>
+  {% if fitment_summary.more_models %}<p class="muted small">…and {{ "{:,}".format(fitment_summary.more_models) }} more models.</p>{% endif %}
+  <p class="hint">Based on bulb size from our fitment data. Use the vehicle selector in the header to confirm your exact year, trim, and factory lighting setup before ordering.</p>
+  <hr class="divider">
+  {% endif %}
   <div class="section-head"><h2>Customer Reviews</h2></div>
   {% if review_ctx %}
     {% if review_ctx.count %}
     <p class="muted"><strong>{{ review_ctx.avg }}</strong> out of 5 · {{ review_ctx.count }} review{{ "s" if review_ctx.count != 1 else "" }}</p>
     {% for r in review_ctx.reviews %}
     <div class="contact-card" style="margin-bottom:12px">
-      <div><strong>{{ r.name }}</strong> <span style="color:#ffa21a">{{ "★" * r.rating }}{{ "☆" * (5 - r.rating) }}</span></div>
+      <div><strong>{{ r.name }}</strong> <span style="color:#ffa21a">{{ "★" * r.rating }}{{ "☆" * (5 - r.rating) }}</span>{% if r.vehicle %} <span class="small muted">· Installed on {{ r.vehicle }}</span>{% endif %}</div>
       <p class="small muted">{{ r.created_at[:10] }}</p>
       <p>{{ r.body }}</p>
     </div>
@@ -265,6 +277,10 @@
       <div class="field">
         <label for="rv-body">Review</label>
         <textarea id="rv-body" name="body" rows="4" required maxlength="2000" style="width:100%"></textarea>
+      </div>
+      <div class="field">
+        <label for="rv-vehicle">Vehicle installed on <span class="muted">(optional — helps other shoppers)</span></label>
+        <input id="rv-vehicle" name="vehicle" maxlength="80" placeholder="e.g. 2016 Toyota Tacoma" autocomplete="off">
       </div>
       <button class="btn" type="submit">Submit Review</button>
     </form>

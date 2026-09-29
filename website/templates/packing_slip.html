@@ -33,10 +33,12 @@
       {% endfor %}
       {% endfor %}
     </table>
-    <p style="margin-top:16px"><strong>Ship to:</strong><br>
+    <p style="margin-top:16px">{% if (o.fulfillment or "ship") == "pickup" %}<strong>🏪 Store pickup:</strong><br>
+    {{ o.customer_name }}<br>
+    626 LEDs, 7951 Garvey Ave, Rosemead, CA{% else %}<strong>Ship to:</strong><br>
     {{ o.customer_name }}<br>
     {{ o.addr_line1 }}{% if o.addr_line2 %}<br>{{ o.addr_line2 }}{% endif %}<br>
-    {{ o.addr_city }}, {{ o.addr_state }} {{ o.addr_zip }}</p>
+    {{ o.addr_city }}, {{ o.addr_state }} {{ o.addr_zip }}{% endif %}</p>
     <p class="hint">For off-road and fog light use only. Not DOT/SAE approved for on-road use. 1-year warranty · 30-day returns on unused items.</p>
   </div>
 </div>

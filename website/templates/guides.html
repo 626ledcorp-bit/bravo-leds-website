@@ -1,14 +1,15 @@
 {% extends "base.html" %}
-{% block title %}Install Guides — Bravo LEDs{% endblock %}
+{% block title %}Guides — Bravo LEDs{% endblock %}
 {% block content %}
 <div class="section-light">
 <div class="wrap"><div class="page-narrow">
-  <h1>Install Guides</h1>
-  <p class="muted">Real-world, step-by-step instructions written from the installs we do at our Rosemead counter. Most LED bulb swaps are plug-and-play and take 15–30 minutes per side with basic hand tools.</p>
+  <h1>Guides</h1>
   <p class="disclaimer">⚠️ {{ disclaimer_html|safe }}</p>
 
-  <div class="cat-grid" style="margin-top:22px">
-    {% for slug, g in guides %}
+  <h2 style="margin-top:26px">Install Guides</h2>
+  <p class="muted">Real-world, step-by-step instructions written from the installs we do at our Rosemead counter. Most LED bulb swaps are plug-and-play and take 15–30 minutes per side with basic hand tools.</p>
+  <div class="cat-grid" style="margin-top:18px">
+    {% for slug, g in install %}
     <a class="cat-card" href="/guides/{{ slug }}">
       <div class="icon">🔧</div>
       <h3>{{ g.title }}</h3>
@@ -17,6 +18,21 @@
     </a>
     {% endfor %}
   </div>
+
+  {% if buying %}
+  <h2 style="margin-top:30px">Buying Guides</h2>
+  <p class="muted">Reference articles to help you pick the right bulb the first time — no tools required.</p>
+  <div class="cat-grid" style="margin-top:18px">
+    {% for slug, g in buying %}
+    <a class="cat-card" href="/guides/{{ slug }}">
+      <div class="icon">📖</div>
+      <h3>{{ g.title }}</h3>
+      <p>{{ g.blurb }}</p>
+      <p class="small muted">{{ g.time }}</p>
+    </a>
+    {% endfor %}
+  </div>
+  {% endif %}
 
   <h3 style="margin-top:28px">Before you start any install</h3>
   <ul>

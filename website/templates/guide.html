@@ -1,19 +1,20 @@
 {% extends "base.html" %}
-{% block title %}{{ guide.title }} — Install Guides — Bravo LEDs{% endblock %}
+{% set is_ref = guide.difficulty == "Reference" %}
+{% block title %}{{ guide.title }} — {% if is_ref %}Buying Guides{% else %}Install Guides{% endif %} — Bravo LEDs{% endblock %}
 {% block content %}
 <div class="section-light">
 <div class="wrap"><div class="page-narrow">
-  <p class="small" style="margin:22px 0 0"><a href="/guides">Install Guides</a> / {{ guide.title }}</p>
+  <p class="small" style="margin:22px 0 0"><a href="/guides">{% if is_ref %}Buying Guides{% else %}Install Guides{% endif %}</a> / {{ guide.title }}</p>
   <h1>{{ guide.title }}</h1>
   <p class="muted"><strong>Difficulty:</strong> {{ guide.difficulty }} &nbsp;·&nbsp; <strong>Time:</strong> {{ guide.time }}</p>
   <p class="disclaimer">⚠️ {{ disclaimer_html|safe }}</p>
 
-  <h3>What you'll need</h3>
+  <h3>{% if is_ref %}In this guide{% else %}What you'll need{% endif %}</h3>
   <ul>
     {% for t in guide.tools %}<li>{{ t }}</li>{% endfor %}
   </ul>
 
-  <h3>Steps</h3>
+  <h3>{% if is_ref %}The details{% else %}Steps{% endif %}</h3>
   <ol class="guide-steps">
     {% for s in guide.steps %}
     <li style="margin-bottom:10px">{{ s }}

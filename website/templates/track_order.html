@@ -14,9 +14,19 @@
     <p><strong>Tracking number:</strong> {{ result.tracking_number }}</p>
     <p class="muted small">Track it on the carrier's site (USPS / UPS).</p>
     {% elif result.status == "shipped" %}
+    {% if (result.fulfillment or "ship") == "pickup" %}
+    <p class="muted">Picked up — thanks for shopping with BRAVO LEDS!</p>
+    {% else %}
     <p class="muted">Your order shipped — tracking info will appear here shortly.</p>
+    {% endif %}
+    {% elif result.status == "ready" %}
+    <p class="muted">Your order is <strong>ready for pickup</strong> at 626 LEDs, 7951 Garvey Ave, Rosemead, CA.</p>
     {% elif result.status == "paid" %}
+    {% if (result.fulfillment or "ship") == "pickup" %}
+    <p class="muted">Payment confirmed. We'll email you as soon as your order is ready for pickup.</p>
+    {% else %}
     <p class="muted">Payment confirmed. We're preparing your order — it ships in 1–2 business days.</p>
+    {% endif %}
     {% elif result.status == "new" %}
     <p class="muted">Order received. You'll get a confirmation once payment clears.</p>
     {% elif result.status == "cancelled" %}

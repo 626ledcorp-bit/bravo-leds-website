@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Return Requests — Bravo LEDs{% endblock %}
+{% block content %}
+<div class="wrap"><div class="page-narrow">
+  <h1>Return Requests</h1>
+  <p class="muted">
+    {% for s in statuses %}
+    {% if s == status %}<strong>{{ s }}</strong>{% else %}<a href="/admin/returns?status={{ s }}">{{ s }}</a>{% endif %}{% if not loop.last %} · {% endif %}
+    {% endfor %}
+    {% if status %} · <a href="/admin/returns">all</a>{% endif %}
+  </p>
+  {% if requests %}
+  {% for r in requests %}
+  <div class="contact-card" style="margin-bottom:14px">
+    <div><strong>#{{ r.id }}</strong> <span class="badge">{{ r.status }}</span>
+      <span class="muted small">· {{ r.created_at[:16] }}</span></div>
+    <p style="margin:8px 0">Order <a href="/admin/order/{{ r.order_id }}">#{{ r.order_id }}</a> · {{ r.name }} &lt;{{ r.email }}&gt;<br>
+    <strong>Reason:</strong> {{ r.reason }}</p>
+    <ul class="small">
+      {% for i in r["items"] %}<li>{{ i.qty }} × {{ i.name }}{% if i.variation %} <span class="muted">({{ i.variation }})</span>{% endif %}</li>{% endfor %}
+    </ul>
+    {% if r.comments %}<p class="small"><strong>Comments:</strong> {{ r.comments }}</p>{% endif %}
+    {% if r.status != "resolved" %}
+    <form method="post" action="/admin/returns/{{ r.id }}/status" style="margin-top:8px">
+      {% if r.status == "pending" %}
+      <button class="btn" type="submit" name="action" value="approved" style="padding:6px 12px">Approve</button>
+      <button class="btn btn-ghost" type="submit" name="action" value="denied" style="padding:6px 12px">Deny</button>
+      {% elif r.status == "approved" %}
+      <button class="btn" type="submit" name="action" value="resolved" style="padding:6px 12px">Mark resolved</button>
+      {% elif r.status == "denied" %}
+      <button class="btn btn-ghost" type="submit" name="action" value="resolved" style="padding:6px 12px">Mark resolved</button>
+      {% endif %}
+    </form>
+    {% endif %}
+  </div>
+  {% endfor %}
+  {% else %}
+  <p class="muted">No return requests{% if status %} with status "{{ status }}"{% endif %}.</p>
+  {% endif %}
+</div></div>
+{% endblock %}

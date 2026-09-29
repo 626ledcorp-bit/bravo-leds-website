@@ -9,7 +9,7 @@
     <tr class="muted small" style="text-align:left">
       <th style="padding:8px">Status</th><th style="padding:8px">Product</th>
       <th style="padding:8px">Rating</th><th style="padding:8px">Name</th>
-      <th style="padding:8px">Review</th><th style="padding:8px"></th>
+      <th style="padding:8px">Vehicle</th><th style="padding:8px">Review</th><th style="padding:8px"></th>
     </tr>
     {% for r in reviews %}
     <tr style="border-top:1px solid #2a2e35; vertical-align:top">
@@ -17,6 +17,7 @@
       <td style="padding:8px"><a href="/product/{{ r.product_id }}">{{ r.product_id }}</a></td>
       <td style="padding:8px">{{ "★" * r.rating }}{{ "☆" * (5 - r.rating) }}</td>
       <td style="padding:8px">{{ r.name }}</td>
+      <td style="padding:8px">{{ r.vehicle or "—" }}</td>
       <td style="padding:8px">{{ r.body }}</td>
       <td style="padding:8px; white-space:nowrap">
         {% if r.status == "pending" %}

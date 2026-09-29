@@ -84,7 +84,7 @@ def _coupon_for_promo(promo):
 
 
 def create_checkout_session(order_id, lines, customer_email, success_url,
-                            cancel_url, promo=None):
+                            cancel_url, promo=None, fulfillment="ship"):
     """Create a Stripe Checkout Session from the server-validated cart.
 
     lines: cart_detailed() output — prices re-looked-up server-side.
@@ -93,6 +93,8 @@ def create_checkout_session(order_id, lines, customer_email, success_url,
     as a real Stripe Coupon discount on the session. When Stripe is NOT
     configured, the coupon mapping is skipped silently and the local
     order snapshot still records the discount.
+    fulfillment: 'ship' (default) collects a US shipping address at Stripe;
+    'pickup' (local store pickup) skips address collection.
     Returns the Stripe Session object (has .id and .url).
     """
     s = _api()
@@ -123,9 +125,14 @@ def create_checkout_session(order_id, lines, customer_email, success_url,
         "success_url": success_url,
         "cancel_url": cancel_url,
         "metadata": {"order_id": str(order_id), "store": "bravoleds"},
-        "shipping_address_collection": {"allowed_countries": ["US"]},
         "billing_address_collection": "required",
     }
+    if fulfillment == "pickup":
+        # Local pickup: no shipping address needed at Stripe. The pickup
+        # choice is recorded on the order itself (metadata + local DB).
+        kwargs["metadata"]["fulfillment"] = "pickup"
+    else:
+        kwargs["shipping_address_collection"] = {"allowed_countries": ["US"]}
     if customer_email:
         kwargs["customer_email"] = customer_email
     coupon_id = _coupon_for_promo(promo)

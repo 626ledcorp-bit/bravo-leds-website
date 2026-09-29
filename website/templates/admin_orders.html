@@ -40,12 +40,13 @@
       <tr><th><input type="checkbox" id="sel-all" title="Select all"></th>
           <th>#</th><th>Date</th><th>Customer</th><th>Ship to</th><th>Items</th><th>Total</th><th></th></tr>
       {% for o in unfulfilled %}
+      {% set pickup = (o.fulfillment or "ship") == "pickup" %}
       <tr>
-        <td><input type="checkbox" name="order_ids" value="{{ o.id }}" class="order-sel"></td>
-        <td><strong>{{ o.id }}</strong></td>
+        <td>{% if not pickup %}<input type="checkbox" name="order_ids" value="{{ o.id }}" class="order-sel">{% else %}—{% endif %}</td>
+        <td><strong>{{ o.id }}</strong>{% if pickup %} <span class="badge">pickup</span>{% endif %}</td>
         <td class="nowrap">{{ o.created_at[:16] }}</td>
         <td>{{ o.customer_name }}<br><span class="hint">{{ o.customer_email }}</span></td>
-        <td><span class="hint">{{ o.addr_line1 }}, {{ o.addr_city }}, {{ o.addr_state }} {{ o.addr_zip }}</span></td>
+        <td>{% if pickup %}<span class="hint">Store pickup</span>{% else %}<span class="hint">{{ o.addr_line1 }}, {{ o.addr_city }}, {{ o.addr_state }} {{ o.addr_zip }}</span>{% endif %}</td>
         <td>{{ o.line_items|sum(attribute="qty") }}</td>
         <td class="nowrap">{{ money(o.total_cents) }}</td>
         <td class="nowrap"><a class="btn btn-ghost" href="/admin/order/{{ o.id }}">Detail</a>

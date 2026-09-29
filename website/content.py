@@ -66,6 +66,26 @@ def ensure_content_schema():
             created_at TEXT NOT NULL
         )
     """)
+    rcols = [r[1] for r in
+             con.execute("PRAGMA table_info(reviews)").fetchall()]
+    if "vehicle" not in rcols:
+        # "Vehicle used" — reviewer-installed fitment proof (e.g. "2016
+        # Toyota Tacoma"). Optional; shown with approved reviews.
+        con.execute("ALTER TABLE reviews ADD COLUMN vehicle TEXT "
+                    "NOT NULL DEFAULT ''")
+    con.execute("""
+        CREATE TABLE IF NOT EXISTS return_requests (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            order_id INTEGER NOT NULL,
+            name TEXT NOT NULL,
+            email TEXT NOT NULL,
+            items TEXT NOT NULL,        -- JSON: [{name, variation, qty}]
+            reason TEXT NOT NULL,
+            comments TEXT NOT NULL DEFAULT '',
+            status TEXT NOT NULL DEFAULT 'pending',  -- pending/approved/denied/resolved
+            created_at TEXT NOT NULL
+        )
+    """)
     con.execute("""
         CREATE TABLE IF NOT EXISTS bundles (
             id TEXT PRIMARY KEY,
@@ -191,9 +211,10 @@ def list_bundles():
 
 
 # ---- reviews ------------------------------------------------------------
-def submit_review(product_id, name, rating, body):
+def submit_review(product_id, name, rating, body, vehicle=""):
     name = (name or "").strip()[:80]
     body = (body or "").strip()[:2000]
+    vehicle = (vehicle or "").strip()[:80]
     try:
         rating = int(rating)
     except (TypeError, ValueError):
@@ -204,9 +225,9 @@ def submit_review(product_id, name, rating, body):
     ensure_content_schema()
     con = _connect()
     cur = con.execute(
-        "INSERT INTO reviews (product_id, name, rating, body, status,"
-        " created_at) VALUES (?, ?, ?, ?, 'pending', ?)",
-        (product_id, name, rating, body, _now()))
+        "INSERT INTO reviews (product_id, name, rating, body, vehicle, status,"
+        " created_at) VALUES (?, ?, ?, ?, ?, 'pending', ?)",
+        (product_id, name, rating, body, vehicle, _now()))
     rid = cur.lastrowid
     con.commit()
     con.close()
@@ -240,6 +261,94 @@ def set_review_status(rid, status):
                 (status, rid))
     con.commit()
     con.close()
+
+
+# ---------------------------------------------------------------- returns
+RETURN_REASONS = [
+    "Doesn't fit my vehicle",
+    "Wrong item ordered",
+    "Defective / doesn't work",
+    "Damaged in shipping",
+    "Missing parts",
+    "Changed my mind",
+    "Other",
+]
+
+RETURN_STATUSES = ("pending", "approved", "denied", "resolved")
+
+
+def create_return_request(order_id, name, email, items, reason, comments=""):
+    """Save a customer return request. items = [{name, variation, qty}]."""
+    name = (name or "").strip()[:80]
+    email = (email or "").strip()[:120]
+    comments = (comments or "").strip()[:2000]
+    reason = (reason or "").strip()[:80]
+    if not (order_id and name and email and "@" in email and items
+            and reason in RETURN_REASONS):
+        return None
+    ensure_content_schema()
+    con = _connect()
+    cur = con.execute(
+        "INSERT INTO return_requests (order_id, name, email, items, reason,"
+        " comments, status, created_at)"
+        " VALUES (?, ?, ?, ?, ?, ?, 'pending', ?)",
+        (int(order_id), name, email, json.dumps(items), reason, comments,
+         _now()))
+    rid = cur.lastrowid
+    con.commit()
+    con.close()
+    return rid
+
+
+def list_return_requests(status=None):
+    ensure_content_schema()
+    con = _connect()
+    if status in RETURN_STATUSES:
+        rows = con.execute(
+            "SELECT * FROM return_requests WHERE status = ?"
+            " ORDER BY id DESC", (status,)).fetchall()
+    else:
+        rows = con.execute(
+            "SELECT * FROM return_requests ORDER BY id DESC").fetchall()
+    con.close()
+    out = []
+    for r in rows:
+        d = dict(r)
+        try:
+            d["items"] = json.loads(d["items"])
+        except (TypeError, ValueError):
+            d["items"] = []
+        out.append(d)
+    return out
+
+
+def get_return_request(rid):
+    ensure_content_schema()
+    con = _connect()
+    r = con.execute("SELECT * FROM return_requests WHERE id = ?",
+                    (rid,)).fetchone()
+    con.close()
+    if not r:
+        return None
+    d = dict(r)
+    try:
+        d["items"] = json.loads(d["items"])
+    except (TypeError, ValueError):
+        d["items"] = []
+    return d
+
+
+def set_return_status(rid, status):
+    if status not in RETURN_STATUSES:
+        return False
+    ensure_content_schema()
+    con = _connect()
+    cur = con.execute("UPDATE return_requests SET status = ? WHERE id = ?",
+                      (status, rid))
+    con.commit()
+    ok = cur.rowcount > 0
+    con.close()
+    return ok
 
 
 def delete_review(rid):
@@ -548,6 +657,132 @@ GUIDES = {
             "usually cures it.",
         ],
     },
+    "halogen-vs-led": {
+        "title": "Halogen vs LED Bulbs: What's the Difference?",
+        "difficulty": "Reference", "time": "5 min read",
+        "tools": ["How each bulb makes light",
+                  "Brightness, color, and lifespan compared",
+                  "What actually changes when you swap",
+                  "Which one is right for your vehicle"],
+        "blurb": "The straight comparison: what halogen and LED bulbs do "
+                 "differently, and what to expect when you upgrade.",
+        "steps": [
+            "How they make light. A halogen bulb is a tiny incandescent: "
+            "electricity heats a tungsten filament inside halogen gas until "
+            "it glows. An LED bulb runs current through light-emitting "
+            "diodes — no filament to burn out, and far less energy wasted "
+            "as heat.",
+            "Brightness. LEDs produce noticeably more usable light per "
+            "watt than halogen, with a whiter beam that's closer to "
+            "daylight. How much brighter depends on the bulb and the "
+            "housing — a quality LED in a clean reflector or projector "
+            "is a big step up from a worn halogen.",
+            "Color. Halogens burn yellowish (around 3200K). LEDs come in "
+            "crisp white (6000K) or warm white (4300K), closer to daylight. "
+            "Whiter light makes road markings and signs easier to read at "
+            "night.",
+            "Lifespan. A halogen bulb lasts roughly 500–1,000 hours. A "
+            "quality LED bulb is typically rated for many times that — "
+            "exact lifespan varies by brand, cooling design, and how hot "
+            "the housing runs.",
+            "Power draw. LEDs draw much less power than the halogens they "
+            "replace, which means less strain on your wiring and "
+            "alternator.",
+            "What the swap involves. On most vehicles it's plug-and-play: "
+            "unplug the old bulb, twist in the LED, reconnect. No cutting, "
+            "no ballasts, no rewiring. Some newer cars with bulb-out "
+            "sensors need a CANbus decoder so the car doesn't throw a "
+            "warning.",
+            "The honest trade-off. Halogens are cheap and every parts "
+            "counter stocks them. LEDs cost more up front but win on "
+            "brightness, color, lifespan, and power draw — which is why "
+            "most of our customers never go back.",
+        ],
+        "safety": [
+            "Match the bulb size exactly — an H11 LED only fits an H11 "
+            "socket. Use our vehicle lookup to confirm your size.",
+            "LEDs are polarity-sensitive: if one doesn't light, flip the "
+            "plug 180 degrees.",
+            "For off-road and fog light use only. Not DOT/SAE approved "
+            "for on-road use. Check your local laws.",
+        ],
+    },
+    "factory-hid-or-halogen": {
+        "title": "How to Tell Whether Your Vehicle Has Factory HID or Halogen",
+        "difficulty": "Reference", "time": "4 min read",
+        "tools": ["Why this matters before you buy",
+                  "Three ways to check your setup",
+                  "What to buy for each setup"],
+        "blurb": "Ordering the wrong bulb for a factory HID or LED setup "
+                 "is the most common mistake we see. Here's how to check "
+                 "in two minutes.",
+        "steps": [
+            "Why it matters. LED bulbs are designed to replace halogen "
+            "bulbs. If your car came with factory HID (xenon) or factory "
+            "LED, the sockets, wiring, and ballasts are completely "
+            "different — a standard LED bulb won't fit or won't work.",
+            "Check the bulb itself. Pop the hood and look at the back of "
+            "the low beam housing. A halogen bulb has a simple two-wire "
+            "plug going straight into the bulb. HID has a thicker cable "
+            "running to a metal box (the ballast) mounted nearby, and the "
+            "bulb has a glass capsule with no filament.",
+            "Check how they light up. Turn the low beams on from off. "
+            "Halogens reach full brightness instantly. HIDs flicker, "
+            "glow blue-white, and take a few seconds to warm up to full "
+            "brightness.",
+            "Check the window sticker or trim package. Factory HID/xenon "
+            "is usually tied to higher trims or a lighting package "
+            "(words like 'xenon', 'HID', 'adaptive', or 'premium lighting' "
+            "on the original sticker). Base and mid trims of the same "
+            "model year are usually halogen.",
+            "What to buy. Halogen setup: any LED bulb in your size is a "
+            "direct swap. Factory HID setup: you need HID-specific "
+            "replacements, not LED bulbs — contact us and we'll point you "
+            "to the right part. Factory LED setup: the LEDs are built "
+            "into a sealed assembly and aren't bulb-swappable.",
+            "Still unsure? Send us your year, make, model, and trim — or "
+            "a photo of the back of the housing — and we'll identify your "
+            "setup before you order.",
+        ],
+        "safety": [
+            "Never open a HID ballast or cut its wiring while powered — "
+            "ballasts produce high voltage.",
+            "When in doubt, check before buying. Wrong-setup returns cost "
+            "everyone time and shipping.",
+        ],
+    },
+    "driver-vs-passenger-side": {
+        "title": "Driver Side vs Passenger Side: Which Bulb Do You Need?",
+        "difficulty": "Reference", "time": "3 min read",
+        "tools": ["Driver vs passenger explained",
+                  "What 'pair' means",
+                  "When sides actually differ"],
+        "blurb": "Left, right, driver, passenger — what the listings mean "
+                 "and when it actually matters for bulbs.",
+        "steps": [
+            "The short version. For bulbs, driver and passenger side "
+            "almost never matters — a 9005 is a 9005 on either side. "
+            "Sides matter for assemblies (housings, mirrors), not for "
+            "the bulb that twists into them.",
+            "Driver side = left side (in the US). Passenger side = right "
+            "side. Listings may also say LH/RH or L/R — same thing.",
+            "What 'pair' means. A pair is two bulbs: one for each side. "
+            "If both of your low beams are out (or both are dim and "
+            "yellowed with age), buy the pair. If only one burned out, "
+            "a single is fine — but the other is probably close behind.",
+            "When sides DO differ. Some vehicles use different bulb sizes "
+            "per side from the factory (rare, but it happens on certain "
+            "fog lights). Our vehicle lookup shows each position "
+            "separately, so you'll see it if your car is one of them.",
+            "Pro tip. Replace bulbs in pairs when you can. A fresh bulb "
+            "next to a 3-year-old halogen looks mismatched, and you'll be "
+            "back under the hood in a month doing the other side anyway.",
+        ],
+        "safety": [
+            "Always confirm the bulb SIZE per position — sides rarely "
+            "differ, but sizes always matter.",
+        ],
+    },
 }
 
 GUIDE_ORDER = [
@@ -557,6 +792,9 @@ GUIDE_ORDER = [
     "turn-signal-bulbs",
     "brake-backup-bulbs",
     "interior-dome-bulbs",
+    "halogen-vs-led",
+    "factory-hid-or-halogen",
+    "driver-vs-passenger-side",
 ]
 
 
@@ -569,7 +807,11 @@ def faq():
 @bp.route("/guides")
 def guides_index():
     guides = [(slug, GUIDES[slug]) for slug in GUIDE_ORDER]
-    return render_template("guides.html", guides=guides)
+    install = [(s, g) for s, g in guides
+               if g.get("difficulty") != "Reference"]
+    buying = [(s, g) for s, g in guides
+              if g.get("difficulty") == "Reference"]
+    return render_template("guides.html", install=install, buying=buying)
 
 
 @bp.route("/guides/<slug>")
@@ -608,7 +850,8 @@ def review_submit(pid):
     rid = submit_review(pid,
                         request.form.get("name", ""),
                         request.form.get("rating", ""),
-                        request.form.get("body", ""))
+                        request.form.get("body", ""),
+                        request.form.get("vehicle", ""))
     target = f"/product/{pid}"
     if rid:
         # Owner alert — new review awaiting moderation. Email send never

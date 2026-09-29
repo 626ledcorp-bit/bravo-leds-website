@@ -11,6 +11,22 @@
   <p>Warranty covers manufacturer defects under normal use — flicker, dead LEDs, driver failure. It does not cover damage from incorrect installation, modified housings, or moisture intrusion from cracked lenses.</p>
   <h3>Fitment guarantee</h3>
   <p>Ordered using our vehicle finder and the bulb doesn't fit? We'll exchange it or refund you — just reach out with your order number and vehicle.</p>
+
+  <hr class="divider">
+  <h2>Start a return</h2>
+  {% if error %}<div class="flash-errors">{{ error }}</div>{% endif %}
+  <p class="muted">Enter your order number and the email you ordered with. We'll pull up your items next.</p>
+  <form method="post" action="/returns/lookup" class="contact-card" style="max-width:480px">
+    <div class="field">
+      <label for="rt-order">Order number</label>
+      <input id="rt-order" name="order_id" required inputmode="numeric" placeholder="e.g. 1042">
+    </div>
+    <div class="field">
+      <label for="rt-email">Email</label>
+      <input id="rt-email" type="email" name="email" required autocomplete="email">
+    </div>
+    <button class="btn" type="submit">Find my order →</button>
+  </form>
 </div></div>
 </div>
 {% endblock %}

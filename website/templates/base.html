@@ -99,6 +99,7 @@
     <nav class="nav admin-nav">
       <a href="/admin"{% if request.path == "/admin" %} class="active"{% endif %}>Dashboard</a>
       <a href="/admin/orders"{% if request.path.startswith("/admin/orders") %} class="active"{% endif %}>Orders</a>
+      <a href="/admin/returns"{% if request.path.startswith("/admin/returns") %} class="active"{% endif %}>Returns</a>
       <a href="/admin#products">Products</a>
       <a href="/admin#inventory">Inventory</a>
       <a href="/admin/square"{% if request.path.startswith("/admin/square") %} class="active"{% endif %}>Square POS</a>

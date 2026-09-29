@@ -255,6 +255,10 @@ def init_db():
     if "refunded_cents" not in ocols:
         con.execute("ALTER TABLE orders ADD COLUMN refunded_cents "
                     "INTEGER NOT NULL DEFAULT 0")
+    # Fulfillment method: 'ship' (default) or 'pickup' (local store pickup).
+    if "fulfillment" not in ocols:
+        con.execute("ALTER TABLE orders ADD COLUMN fulfillment TEXT "
+                    "NOT NULL DEFAULT 'ship'")
     init_settings(con)
     init_order_events(con)
     init_square_sync_log(con)
@@ -1331,12 +1335,15 @@ def products_matching_size(bulb_size, categories):
 
 
 # ---------------------------------------------------------------- orders
-ORDER_STATUSES = ("new", "paid", "shipped", "cancelled")
+ORDER_STATUSES = ("new", "paid", "ready", "shipped", "cancelled")
 
 # Allowed status transitions. Anything not listed is rejected.
+# 'ready' is used for local-pickup orders: paid -> ready (customer notified)
+# -> shipped (picked up). Ship orders go paid -> shipped directly.
 ORDER_TRANSITIONS = {
     "new": ("paid", "cancelled"),
-    "paid": ("shipped", "cancelled"),
+    "paid": ("ready", "shipped", "cancelled"),
+    "ready": ("shipped", "cancelled"),
     "shipped": (),
     "cancelled": (),
 }
@@ -1349,14 +1356,16 @@ def _row_to_order(r):
 
 
 def create_order(customer, lines, subtotal_cents, shipping_cents=0,
-                 promo_code=None, discount_cents=0):
+                 promo_code=None, discount_cents=0, fulfillment="ship"):
     """Persist a checkout snapshot with status 'new'. lines = cart_detailed().
 
     promo_code/discount_cents record the Track 3 promo applied at checkout;
     the order total is subtotal - discount + shipping.
+    fulfillment: 'ship' (default) or 'pickup' (local store pickup).
     """
     discount_cents = max(0, min(subtotal_cents, int(discount_cents or 0)))
     total = subtotal_cents - discount_cents + shipping_cents
+    fulfillment = "pickup" if fulfillment == "pickup" else "ship"
     snapshot = []
     for l in lines:
         var = l.get("variation") or {}
@@ -1380,15 +1389,15 @@ def create_order(customer, lines, subtotal_cents, shipping_cents=0,
           (created_at, updated_at, status, customer_name, customer_email,
            addr_line1, addr_line2, addr_city, addr_state, addr_zip,
            line_items, subtotal_cents, shipping_cents, total_cents,
-           promo_code, discount_cents)
-        VALUES (?, ?, 'new', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+           promo_code, discount_cents, fulfillment)
+        VALUES (?, ?, 'new', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     """, (now, now,
           customer.get("name", ""), customer.get("email", ""),
           customer.get("line1", ""), customer.get("line2", ""),
           customer.get("city", ""), customer.get("state", ""),
           customer.get("zip", ""),
           json.dumps(snapshot), subtotal_cents, shipping_cents, total,
-          promo_code, discount_cents))
+          promo_code, discount_cents, fulfillment))
     con.commit()
     oid = cur.lastrowid
     con.close()
@@ -1480,7 +1489,7 @@ def transition_order(oid, new_status, tracking_number=None):
 
 
 def order_stats():
-    """Sales summary: revenue (paid+shipped), counts by status, by date."""
+    """Sales summary: revenue (paid+ready+shipped), counts by status, by date."""
     con = _connect()
     by_status = {}
     for status, n, rev in con.execute(
@@ -1489,13 +1498,13 @@ def order_stats():
         by_status[status] = {"count": n, "revenue_cents": rev or 0}
     revenue_cents = con.execute(
         "SELECT COALESCE(SUM(total_cents), 0) FROM orders"
-        " WHERE status IN ('paid', 'shipped')").fetchone()[0]
+        " WHERE status IN ('paid', 'ready', 'shipped')").fetchone()[0]
     by_date = [
         {"day": day, "count": n, "revenue_cents": rev or 0}
         for day, n, rev in con.execute(
             "SELECT substr(created_at, 1, 10), COUNT(*),"
             " COALESCE(SUM(total_cents), 0)"
-            " FROM orders WHERE status IN ('paid', 'shipped')"
+            " FROM orders WHERE status IN ('paid', 'ready', 'shipped')"
             " GROUP BY substr(created_at, 1, 10)"
             " ORDER BY substr(created_at, 1, 10) DESC LIMIT 30")
     ]
@@ -1663,6 +1672,8 @@ NOTIFY_TOGGLES = (
      "Owner: contact-form message alert", "owner"),
     ("notify_owner_review_submitted",
      "Owner: new product review alert", "owner"),
+    ("notify_owner_return_request",
+     "Owner: new return request alert", "owner"),
 )
 
 
@@ -1814,9 +1825,10 @@ def search_orders(q=None, status=None, date_from=None, date_to=None,
 
 
 def unfulfilled_orders(limit=500):
-    """Paid but not yet shipped — the Pirate Ship export / pick list set."""
+    """Paid (or pickup-ready) but not yet shipped/picked up — the Pirate Ship
+    export / pick list set. Pickup orders are flagged in the template."""
     con = _connect()
-    rows = con.execute("SELECT * FROM orders WHERE status = 'paid'"
+    rows = con.execute("SELECT * FROM orders WHERE status IN ('paid', 'ready')"
                        " ORDER BY id LIMIT ?", (limit,)).fetchall()
     con.close()
     return [_row_to_order(r) for r in rows]
