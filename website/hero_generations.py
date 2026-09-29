@@ -106,7 +106,7 @@ HERO_GENERATIONS = {
     # ---------------- Chevrolet ----------------
     ("Chevrolet", "Silverado"): [(1999, 2002, "1st gen"), (2003, 2006, "1st gen facelift"),
                                  (2007, 2013, "2nd gen"), (2014, 2015, "3rd gen"),
-                                 (2016, 2019, "3rd gen facelift"),
+                                 (2016, 2018, "3rd gen facelift"),
                                  (2019, 2021, "4th gen"), (2022, None, "4th gen facelift")],
     # GMT400 C/K trucks (1988-1998): same body, one banner reused per make.
     ("Chevrolet", "C1500"): [(1988, 1999, "GMT400")],
@@ -136,7 +136,7 @@ HERO_GENERATIONS = {
     # ---------------- GMC ----------------
     ("GMC", "Sierra"): [(1999, 2002, "1st gen"), (2003, 2006, "1st gen facelift"),
                         (2007, 2013, "2nd gen"), (2014, 2015, "3rd gen"),
-                        (2016, 2019, "3rd gen facelift"),
+                        (2016, 2018, "3rd gen facelift"),
                         (2019, 2021, "4th gen"), (2022, None, "4th gen facelift")],
     # GMT400 C/K trucks (1988-1998): same body, one banner reused per make.
     ("GMC", "C1500"): [(1988, 1999, "GMT400")],
