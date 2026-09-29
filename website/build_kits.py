@@ -22,6 +22,7 @@ CURRENT_YEAR = 2026
 
 sys.path.insert(0, BASE)
 from fitment_loader import norm_size
+from kit_images import kit_images as _kit_image_paths
 
 # competitor location -> our position key
 LOC2POS = {
@@ -389,6 +390,13 @@ def main():
                 set(k.get("sources", [])) | {s for _, s in qmap.values()})
             updated += 1
     print(f"kits updated with real quantities: {updated}")
+
+    # vehicle-type aware images (exterior by body style / popular model,
+    # interior bright reference shot)
+    for k in final.values():
+        ext, interior = _kit_image_paths(k["make"], k["model"])
+        k["image_src"] = ext
+        k["interior_image_src"] = interior
 
     kits = sorted(final.values(),
                   key=lambda k: (k["make"].lower(), k["model"].lower(), k["year"]))

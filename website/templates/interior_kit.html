@@ -5,10 +5,31 @@
 <div class="wrap">
   <p class="small" style="margin:22px 0 0"><a href="/shop">Shop</a> / <a href="/shop/interior">Interior &amp; License LEDs</a> / Complete Interior Kits</p>
   <div class="prod-detail">
-    <div class="prod-gallery">
+    <div class="prod-gallery kit-gallery">
       <span class="badge">{{ p.badge }}</span>
-      <img id="gallery-main" src="/static/img/ph-dome.svg" alt="{{ p.name }}">
+      <img id="gallery-main" src="{{ p.image_src }}" alt="{{ p.name }}">
     </div>
+    <div class="thumbs">
+      <button type="button" class="thumb selected" data-src="{{ p.image_src }}"><img src="{{ p.image_src }}" alt="Exterior lighting"></button>
+      <button type="button" class="thumb" data-src="{{ p.interior_image_src }}"><img src="{{ p.interior_image_src }}" alt="Interior lighting reference"></button>
+    </div>
+    <script>
+    (function(){
+      var main = document.getElementById("gallery-main");
+      document.querySelectorAll(".thumb").forEach(function(t){
+        t.onclick = function(){
+          main.src = t.getAttribute("data-src");
+          document.querySelectorAll(".thumb").forEach(function(x){x.classList.remove("selected")});
+          t.classList.add("selected");
+        };
+      });
+    })();
+    </script>
+    <style>
+    .prod-gallery.kit-gallery { padding: 0; overflow: hidden; }
+    .prod-gallery.kit-gallery img { width: 100%; height: 100%; object-fit: cover; filter: none; }
+    .prod-gallery.kit-gallery .badge { z-index: 2; }
+    </style>
     <div class="prod-info">
       <div class="tier">{{ p.tier }}</div>
       <h1>{{ p.name }}</h1>

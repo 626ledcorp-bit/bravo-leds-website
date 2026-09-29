@@ -116,6 +116,8 @@ def kit_product(kit):
         "price_cents": KIT_PRICE_CENTS,
         "sale_price_cents": None,
         "warranty": "1-year warranty",
+        "image_src": kit.get("image_src", "/static/img/ph-dome.svg"),
+        "interior_image_src": kit.get("interior_image_src", "/static/img/ph-dome.svg"),
         "badge": "Complete Kit",
         "blurb": (f"Every interior bulb for your {kit['year']} "
                   f"{kit['make']} {kit['model']} in one kit — map, dome, "
