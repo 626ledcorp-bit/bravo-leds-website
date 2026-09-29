@@ -15,7 +15,8 @@ import uuid
 from urllib.parse import quote
 from functools import wraps
 from flask import (Flask, abort, flash, jsonify, redirect, render_template,
-                   request, Response, session, url_for)
+                   request, Response, send_file, session, url_for,
+                   after_this_request)
 from werkzeug.utils import secure_filename
 
 import pyotp
@@ -1233,6 +1234,48 @@ def admin_login_2fa():
 def admin_logout():
     session.pop("admin_authed", None)
     return redirect(url_for("home"))
+
+
+@app.route("/admin/backup-db")
+def admin_backup_db():
+    """Token-authenticated full SQLite backup for the daily off-site cron.
+
+    Auth is a shared secret (BACKUP_TOKEN env var), not the admin session,
+    so an unattended job can pull it. Wrong/missing token -> 404 so the
+    endpoint doesn't advertise itself. The copy is made with sqlite3's
+    online backup API, so a write mid-download can't corrupt it.
+    """
+    token = os.environ.get("BACKUP_TOKEN", "")
+    given = request.headers.get("X-Backup-Token", "") or \
+        request.args.get("token", "")
+    if not token or not hmac.compare_digest(given, token):
+        abort(404)
+    import sqlite3
+    import tempfile
+    from datetime import datetime, timezone
+    tmp = tempfile.NamedTemporaryFile(delete=False, suffix=".db")
+    tmp.close()
+    src = sqlite3.connect(str(db.DB_PATH))
+    try:
+        dst = sqlite3.connect(tmp.name)
+        try:
+            src.backup(dst)
+        finally:
+            dst.close()
+    finally:
+        src.close()
+
+    @after_this_request
+    def _cleanup(response):
+        try:
+            os.unlink(tmp.name)
+        except OSError:
+            pass
+        return response
+
+    stamp = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    return send_file(tmp.name, as_attachment=True,
+                     download_name=f"bravo-leds-store-{stamp}.db")
 
 
 @app.route("/admin")
