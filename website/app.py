@@ -766,7 +766,7 @@ def interior_kits():
         "total_bulbs": k.get("total_bulbs"),
         "positions": len(k.get("items", [])),
         "price_cents": kits.KIT_PRICE_CENTS,
-        "image_src": k.get("image_src", "/static/img/ph-dome.svg"),
+        "image_src": k.get("interior_image_src", "/static/img/ph-dome.svg"),
     } for k in allk]
     # Year -> make -> [models] index for the kit finder (only kit vehicles)
     ymm = {}
