@@ -53,7 +53,7 @@
              title="{{ o.product.name }} — opens with size {{ o.size }} preselected">{{ o.product.name }}</a>
           <div class="sr-spec">{{ o.spec }}</div>
         </div>
-        <div class="sr-price">{{ money(o.price_cents) }}{% if o.upcharge_cents and o.upcharge_cents > 0 %}<span class="upcharge">+{{ money(o.upcharge_cents) }}</span>{% endif %}</div>
+        <div class="sr-price">{{ money(o.price_cents) }}</div>
         <button type="button" class="btn btn-sm add-one">Add</button>
       </div>
       {% endfor %}
