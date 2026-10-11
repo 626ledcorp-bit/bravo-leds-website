@@ -3,6 +3,7 @@
    interior_kit. Optional flags (default to the legacy all-positions
    behavior): show_kit_banner, show_setup, show_ik_optin.
    Included by fitment.html, fit_vehicle.html and fit_group.html. #}
+{% set TIER_STRENGTH = {"Basic": (40, "Standard"), "Plus": (55, "Strong"), "Pro": (65, "Strong"), "Premium": (80, "Very strong"), "Ultra": (90, "Very strong"), "Platinum": (100, "Maximum")} %}
   {% if show_kit_banner is not defined %}{% set show_kit_banner = True %}{% endif %}
   {% if show_setup is not defined %}{% set show_setup = True %}{% endif %}
   {% if show_ik_optin is not defined %}{% set show_ik_optin = True %}{% endif %}
@@ -52,6 +53,13 @@
           <a class="sr-name" href="/product/{{ o.product.id }}?size={{ o.size|urlencode }}"
              title="{{ o.product.name }} — opens with size {{ o.size }} preselected">{{ o.product.name }}</a>
           <div class="sr-spec">{{ o.spec }}</div>
+          {% set _st = TIER_STRENGTH.get(o.product.tier) %}
+          {% if _st %}
+          <div class="sr-meter" role="img" aria-label="Light strength: {{ _st[1] }}">
+            <span class="sr-meter-head"><span>Light strength</span><span>{{ _st[1] }}</span></span>
+            <span class="sr-meter-bar"><span class="sr-meter-fill" style="width:{{ _st[0] }}%"></span></span>
+          </div>
+          {% endif %}
         </div>
         <div class="sr-price">{{ money(o.price_cents) }}</div>
         <button type="button" class="btn btn-sm add-one">Add</button>
