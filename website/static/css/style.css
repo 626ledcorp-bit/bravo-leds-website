@@ -696,8 +696,8 @@ label.check input{display:inline;width:auto;margin-right:6px}
 .track-line { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14.5px; }
 
 /* ---- Fitment page: per-position series rows + bundle builder ---- */
-.series-list { display: grid; gap: 8px; padding: 14px 16px; }
-.series-row { display: flex; align-items: center; gap: 10px; padding: 10px 12px;
+.series-list { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; padding: 14px 16px; }
+.series-row { display: flex; align-items: center; gap: 10px; padding: 10px 12px; min-width: 0;
   background: var(--bg); border: 1px solid var(--border); border-radius: 10px;
   transition: border-color .12s ease, background .12s ease; }
 .series-row.sel { border-color: var(--accent); background: var(--accent-soft); }
@@ -715,6 +715,16 @@ label.check input{display:inline;width:auto;margin-right:6px}
   overflow: hidden; text-overflow: ellipsis; }
 .sr-price { font-size: 14.5px; font-weight: 800; color: var(--accent-ink); white-space: nowrap; }
 .btn-sm { padding: 8px 16px; font-size: 13.5px; border-radius: 9px; }
+
+/* Fitment rows on phones: full-width rows, readable type, names wrap
+   instead of truncating */
+@media (max-width: 560px) {
+  .series-list { padding: 12px; }
+  .series-row { padding: 12px; gap: 8px; }
+  .sr-name { font-size: 15px; white-space: normal; overflow: visible; text-overflow: clip; }
+  .sr-price { font-size: 16px; }
+  .sr-meter { max-width: none; }
+}
 
 /* Interior kit opt-in row on the fitment page */
 .ik-optin { display: flex; align-items: center; gap: 10px; padding: 10px 12px;
