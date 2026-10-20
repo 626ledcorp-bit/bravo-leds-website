@@ -318,9 +318,10 @@ img { max-width: 100%; display: block; }
 
 /* ---------- cart ---------- */
 .cart-layout { display: grid; gap: 22px; padding: 28px 0 40px; }
+.cart-layout > * { min-width: 0; }
 @media (min-width: 900px) { .cart-layout { grid-template-columns: 1fr 340px; align-items: start; } }
 .cart-line {
-  display: grid; grid-template-columns: 84px 1fr; gap: 14px;
+  display: grid; grid-template-columns: 84px 1fr; gap: 14px; min-width: 0;
   background: var(--panel); border: 1px solid var(--border); border-radius: 12px;
   padding: 14px; margin-bottom: 12px;
 }
@@ -798,8 +799,8 @@ label.check input{display:inline;width:auto;margin-right:6px}
 
 /* Vehicle hub: three lighting category cards */
 .fit-cat-grid { display: grid; gap: 14px; margin: 20px 0 30px; }
-@media (min-width: 760px) { .fit-cat-grid { grid-template-columns: repeat(3, 1fr); } }
-.fit-cat-card { position: relative; display: flex; gap: 14px; align-items: flex-start; background: var(--panel); border: 2px solid var(--border); border-radius: 14px; padding: 20px 18px; color: var(--text); text-decoration: none; transition: border-color .15s, transform .15s; }
+@media (min-width: 760px) { .fit-cat-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.fit-cat-card { position: relative; display: flex; gap: 14px; align-items: flex-start; min-width: 0; background: var(--panel); border: 2px solid var(--border); border-radius: 14px; padding: 20px 18px; color: var(--text); text-decoration: none; transition: border-color .15s, transform .15s; }
 .fit-cat-card:hover { border-color: #ffa21a; transform: translateY(-2px); }
 .fit-cat-icon { font-size: 34px; line-height: 1; }
 .fit-cat-photo { width: 92px; height: 92px; object-fit: cover; border-radius: 10px; flex-shrink: 0; }
@@ -807,7 +808,7 @@ label.check input{display:inline;width:auto;margin-right:6px}
 /* Generation hero banner on fit landing pages */
 .fit-hero { margin: 14px 0 6px; }
 .fit-hero img { display: block; width: 100%; max-height: 340px; object-fit: contain; background: #0b0d10; border-radius: 14px; border: 1px solid var(--border); }
-.fit-cat-main { display: flex; flex-direction: column; gap: 6px; }
+.fit-cat-main { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
 .fit-cat-main strong { font-size: 17px; }
 .fit-cat-arrow { margin-left: auto; font-size: 22px; color: var(--accent-ink); align-self: center; }
 .fit-cat-badge { position: absolute; top: -12px; right: 14px; background: #ffa21a; color: #1a1a1a; font-size: 12px; font-weight: 800; border-radius: 20px; padding: 3px 12px; }
