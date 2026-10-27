@@ -53,7 +53,8 @@
           el.textContent = j.cart_count;
         });
         btn.textContent = 'Added ✓';
-        setTimeout(function () { btn.disabled = false; btn.textContent = orig; }, 2000);
+        btn.classList.add('added');
+        setTimeout(function () { btn.disabled = false; btn.textContent = orig; btn.classList.remove('added'); }, 2000);
       } else { btn.disabled = false; btn.textContent = orig; }
     }).catch(function () { btn.disabled = false; btn.textContent = orig; });
   });

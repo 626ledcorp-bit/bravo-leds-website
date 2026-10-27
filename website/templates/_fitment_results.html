@@ -214,6 +214,8 @@
       var j = res.json;
       if (j.ok) {
         bumpBadge(j.cart_count);
+        btn.textContent = 'Added ✓';
+        btn.classList.add('added');
         toast('Added ' + row.dataset.name + ' (' + j.size + ') to cart');
       } else {
         toast('Could not add — please try again');
@@ -240,6 +242,8 @@
         var j = res.json;
         if (j.ok) {
           bumpBadge(j.cart_count);
+          btn.textContent = 'Added ✓';
+          btn.classList.add('added');
           toast('Added ' + j.added + ' items (' + money(j.total_cents) +
                 ') to your cart');
         } else {

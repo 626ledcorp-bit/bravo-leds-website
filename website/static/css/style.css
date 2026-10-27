@@ -187,6 +187,8 @@ img { max-width: 100%; display: block; }
 }
 .btn-ghost:hover { border-color: var(--accent); box-shadow: none; }
 .btn[disabled] { opacity: .45; cursor: not-allowed; box-shadow: none; }
+.btn.added { background: #14171c; color: #fff; box-shadow: none; }
+.btn.added:hover { box-shadow: none; }
 .finder .btn { margin-top: 12px; }
 
 /* ---------- sections ---------- */
