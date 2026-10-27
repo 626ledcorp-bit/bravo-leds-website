@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Email Offer (10% Off Popup) — Admin{% endblock %}
+{% block content %}
+<div class="wrap">
+  <h1>Email Offer — 10% Off Popup</h1>
+  <p><a href="/admin">← Admin Dashboard</a> · <a href="/admin/promos">Promo Codes →</a> · <a href="/admin/abandoned-carts">Abandoned Carts →</a></p>
+  <p class="hint">The popup offers visitors 10% off their first purchase for an
+  email address. Each signup gets a unique single-use code (prefix
+  <code>WELCOME10</code>, 30-day expiry) that is emailed to them and works
+  through the normal promo-code box in the cart.</p>
+
+  <div class="contact-card" style="margin-bottom:16px">
+    <p style="margin:0 0 8px"><strong>Popup is {% if enabled %}ON{% else %}OFF{% endif %}</strong>
+    — {{ counts.total }} signup{{ "s" if counts.total != 1 }},
+    {{ counts.emailed }} emailed, {{ counts.redeemed }} code{{ "s" if counts.redeemed != 1 }} redeemed,
+    {{ counts.unsubscribed }} unsubscribed.</p>
+    <form method="post" action="/admin/email-offer/toggle" style="display:inline">
+      <button class="btn btn-ghost" type="submit">Turn popup {% if enabled %}off{% else %}on{% endif %}</button>
+    </form>
+  </div>
+
+  {% if signups %}
+  <table class="admin-table">
+    <tr><th>Email</th><th>Code</th><th>Signed up</th><th>Emailed</th>
+        <th>Code used</th><th>Unsubscribed</th><th>Source</th><th>Vehicle</th></tr>
+    {% for s in signups %}
+    <tr>
+      <td>{{ s.email }}</td>
+      <td><code>{{ s.code }}</code><br><span class="hint">expires {{ (s.code_expires or "")[:10] }}</span></td>
+      <td>{{ s.created_at[:10] }}</td>
+      <td>{{ "yes" if s.emailed_at else "no" }}</td>
+      <td>{{ "yes" if s.code_used else "no" }}</td>
+      <td>{{ "yes" if s.unsubscribed else "no" }}</td>
+      <td>{{ s.source or "—" }}</td>
+      <td>{{ s.vehicle or "—" }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+  <p class="muted">No signups yet.</p>
+  {% endif %}
+</div>
+{% endblock %}

@@ -42,6 +42,19 @@
     </div>
 
     <div class="contact-card" style="margin-bottom:16px">
+      <h2>Ad pixels (retargeting)</h2>
+      <div class="finder-grid" style="grid-template-columns:1fr 1fr">
+        <label class="field">Meta Pixel ID
+          <input type="text" name="meta_pixel_id" value="{{ settings.get('meta_pixel_id','') }}" placeholder="e.g. 123456789012345">
+        </label>
+        <label class="field">Google Analytics measurement ID
+          <input type="text" name="ga_measurement_id" value="{{ settings.get('ga_measurement_id','') }}" placeholder="e.g. G-XXXXXXXXXX">
+        </label>
+      </div>
+      <p class="hint">Leave blank to keep the tags off. When an ID is saved, the tag loads on storefront pages (never in admin) so ad platforms can build a retargeting audience.</p>
+    </div>
+
+    <div class="contact-card" style="margin-bottom:16px">
       <h2>Announcement bar</h2>
       <p class="hint">The promo strip at the very top of the storefront. Messages rotate with ‹ › arrows; a COPY button appears when a message has a code. The code must exist under promo codes to work at checkout.</p>
       <p><label><input type="checkbox" name="announce_enabled"{% if settings.get('announce_enabled','1') == '1' %} checked{% endif %}> Show the announcement bar</label></p>

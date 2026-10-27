@@ -44,14 +44,14 @@
       <div class="series-row{% if loop.index0 == r.default_idx %} sel{% endif %}"
            data-pid="{{ o.product.id }}" data-vid="{{ o.variation_id }}"
            data-price="{{ o.price_cents }}" data-size="{{ o.size }}"
-           data-name="{{ o.product.name }}" data-pos="{{ r.label }}">
+           data-name="{{ o.product.name|shortname }}" data-pos="{{ r.label }}">
         <button type="button" class="kit-pick" role="radio"
                 aria-checked="{{ 'true' if loop.index0 == r.default_idx else 'false' }}"
-                aria-label="Choose {{ o.product.name }} for {{ r.label }} in your kit"
+                aria-label="Choose {{ o.product.name|shortname }} for {{ r.label }} in your kit"
                 title="Include in your lighting kit"><span></span></button>
         <div class="sr-main">
           <a class="sr-name" href="/product/{{ o.product.id }}?size={{ o.size|urlencode }}"
-             title="{{ o.product.name }} — opens with size {{ o.size }} preselected">{{ o.product.name }}</a>
+             title="{{ o.product.name|shortname }} — opens with size {{ o.size }} preselected">{{ o.product.name|shortname }}</a>
           <div class="sr-spec">{{ o.spec }}</div>
           {% set _st = TIER_STRENGTH.get(o.product.tier) %}
           {% if _st %}
@@ -216,6 +216,7 @@
         bumpBadge(j.cart_count);
         btn.textContent = 'Added ✓';
         btn.classList.add('added');
+        if (typeof fbq === 'function') { fbq('track', 'AddToCart'); }
         toast('Added ' + row.dataset.name + ' (' + j.size + ') to cart');
       } else {
         toast('Could not add — please try again');

@@ -32,7 +32,7 @@
           <h3 class="prod-name">{{ b.name }}</h3>
           <p class="muted small">{{ b.blurb }}</p>
           <ul class="small muted" style="margin:0 0 6px 18px">
-            {% for bp in b.products %}<li>{{ bp.name }}</li>{% endfor %}
+            {% for bp in b.products %}<li>{{ bp.name|shortname }}</li>{% endfor %}
           </ul>
           <div class="prod-foot">
             <span>

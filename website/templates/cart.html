@@ -62,6 +62,47 @@
       <p class="small muted">Promo code removed.</p>
       {% endif %}
       {% endif %}
+      <div style="margin-top:14px">
+        <p class="small" style="margin:0 0 2px"><strong>Email me my cart</strong></p>
+        <p class="small muted" style="margin:0 0 6px">We'll email you a link that restores this exact cart on any device.</p>
+        <form id="email-cart-form" class="promo-form">
+          <input type="email" id="email-cart-input" placeholder="you@email.com"
+                 autocomplete="email" aria-label="Email address">
+          <button class="btn btn-ghost" type="submit">Send</button>
+        </form>
+        <p class="small" id="email-cart-msg" hidden></p>
+      </div>
+      <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var form = document.getElementById("email-cart-form");
+        if (!form) return;
+        var input = document.getElementById("email-cart-input");
+        var msg = document.getElementById("email-cart-msg");
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          var v = input.value.trim();
+          if (!v) return;
+          fetch("/api/carttrack/email", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email: v, source: "cart" })
+          }).then(function (r) { return r.json(); }).then(function (j) {
+            msg.hidden = false;
+            if (j.ok) {
+              msg.style.color = "#46c46a";
+              msg.textContent = "Saved — we'll email your cart link to " + v + ".";
+            } else {
+              msg.style.color = "#e5484d";
+              msg.textContent = j.error || "Couldn't save that email.";
+            }
+          }).catch(function () {
+            msg.hidden = false;
+            msg.style.color = "#e5484d";
+            msg.textContent = "Couldn't save that email — please try again.";
+          });
+        });
+      });
+      </script>
       <div class="sum-row"><span>Shipping</span><span>Calculated at checkout</span></div>
       <div class="sum-row total"><span>Total</span><span>{{ total_str }}</span></div>
       <a class="btn btn-block" href="/checkout" style="margin-top:14px">Proceed to Checkout →</a>

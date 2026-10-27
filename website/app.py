@@ -33,6 +33,8 @@ import shipping as shiputil
 import square_sync
 import square_import
 import spinpromo
+import emailoffer
+import carttrack
 from catalog import CATEGORIES, LEDBULB_SIZES
 from content import register_content_routes
 import content as content_mod
@@ -60,6 +62,21 @@ threading.Thread(target=_warm_fitment_reverse_index,
 register_content_routes(app)
 landing.register_landing_routes(app)
 spinpromo.register_spin_routes(app)
+emailoffer.register_emailoffer_routes(app)
+# carttrack needs two app-level cart helpers; lambdas keep the lookup lazy
+# (both are defined further down this module, resolved at request time).
+carttrack.register_carttrack_routes(app, hooks={
+    "cart_detailed": lambda: cart_detailed(),
+    "add_item": lambda *a, **k: _cart_add_item(*a, **k),
+})
+
+
+@app.before_request
+def _carttrack_recovery_tick():
+    # Opportunistic abandoned-cart recovery pass. Throttled inside
+    # carttrack to one pass per 10 min per process, and the sender is
+    # gated by the cart_recovery_enabled admin toggle (default OFF).
+    carttrack.maybe_send_recoveries()
 
 FREE_SHIP_THRESHOLD_CENTS = 9900  # free shipping over $99
 
@@ -101,6 +118,18 @@ def unit_price_cents(product):
 
 app.jinja_env.globals["primary_image"] = db.primary_image_src
 app.jinja_env.globals["variation_price_range"] = db.variation_price_range
+
+
+def display_name(name):
+    """Listing-surface product name: drop the redundant leading 'Bravo '
+    brand prefix (every product on the site is BRAVO LEDS for now, so
+    cards and fitment rows just repeat it). DISPLAY ONLY — the full name
+    stays in the DB, on the product page, in the cart, and in emails."""
+    n = str(name or "")
+    return n[len("Bravo "):] if n.startswith("Bravo ") else n
+
+
+app.jinja_env.filters["shortname"] = display_name
 
 
 def cart_detailed():
@@ -180,6 +209,11 @@ def inject_globals():
         "fitment_source": fitment_db.source_info(),
         "announce": _announce_bar(),
         "money": money,
+        # Retargeting tags (base.html emits them only when set; the IDs
+        # are entered under /admin/settings, blank = tags off).
+        "meta_pixel_id": db.get_setting("meta_pixel_id", "").strip(),
+        "ga_measurement_id": db.get_setting("ga_measurement_id",
+                                            "").strip(),
     }
 
 
@@ -816,6 +850,16 @@ def robots():
 
 
 # ---------------------------------------------------------------- cart
+def _snapshot_cart():
+    """Mirror the cart into carttrack for abandoned-cart admin/recovery.
+    Best-effort: tracking must never break shopping."""
+    try:
+        lines, subtotal = cart_detailed()
+        carttrack.save_cart_snapshot(lines, subtotal)
+    except Exception:  # noqa: BLE001
+        app.logger.warning("cart snapshot failed", exc_info=True)
+
+
 @app.route("/cart")
 def cart_view():
     lines, subtotal = cart_detailed()
@@ -876,6 +920,7 @@ def cart_add():
         cart[key] = {"product_id": pid, "variation_id": var["id"],
                      "qty": qty, "vehicle": vehicle}
     session["cart"] = cart
+    _snapshot_cart()
     return redirect(url_for("cart_view"))
 
 
@@ -913,6 +958,7 @@ def _cart_add_item(pid, vid, qty=1, vehicle=""):
         cart[key] = {"product_id": pid, "variation_id": var["id"],
                      "qty": qty, "vehicle": vehicle}
     session["cart"] = cart
+    _snapshot_cart()
     return True, {"key": key, "qty": cart[key]["qty"],
                   "unit_cents": db.variation_sell_price(p, var),
                   "size": (var.get("option_values") or {}).get("Size", "")}
@@ -983,6 +1029,7 @@ def cart_update():
         else:
             cart[key]["qty"] = min(99, qty)
         session["cart"] = cart
+        _snapshot_cart()
     return redirect(url_for("cart_view"))
 
 
@@ -992,6 +1039,7 @@ def cart_remove():
     cart = get_cart()
     cart.pop(key, None)
     session["cart"] = cart
+    _snapshot_cart()
     return redirect(url_for("cart_view"))
 
 
@@ -1060,6 +1108,9 @@ def checkout_create():
                           promo_code=promo["code"] if promo else None,
                           discount_cents=discount_cents,
                           fulfillment=fulfillment)
+    # The cart became an order: close out its abandoned-cart snapshot.
+    carttrack.mark_ordered(order_id=oid, email=email,
+                           visitor=request.cookies.get("bc_vid"))
     # Staff note: the buyer ran the checkout compatibility checker against
     # this vehicle for their catalog (ungrouped) items.
     fc = session.pop("fitment_check", None)
@@ -2877,6 +2928,11 @@ def admin_settings():
         except (TypeError, ValueError):
             tare = 3.0
         db.set_setting("shipping_tare_oz", str(tare))
+        # --- Ad pixels (retargeting tags; blank = tags off) ---
+        db.set_setting("meta_pixel_id",
+                       request.form.get("meta_pixel_id", "").strip())
+        db.set_setting("ga_measurement_id",
+                       request.form.get("ga_measurement_id", "").strip())
         # --- Announcement bar ---
         db.set_setting("announce_enabled",
                        "1" if request.form.get("announce_enabled") == "on"

@@ -99,6 +99,27 @@
         <p class="hint">You'll be taken to Stripe's secure payment page. We never see your card number.</p>
       </form>
       <script>
+      // Abandoned-cart tracking: capture the email as soon as it's typed
+      // (on change/blur), so a shopper who never submits still leaves us
+      // a way to send their cart back. Fire-and-forget; never blocks.
+      document.addEventListener("DOMContentLoaded", function () {
+        var email = document.querySelector(
+          '#checkout-form input[name="email"]');
+        if (!email) return;
+        function send() {
+          var v = email.value.trim();
+          if (!v || v.indexOf("@") < 0) return;
+          fetch("/api/carttrack/email", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email: v, source: "checkout" })
+          }).catch(function () {});
+        }
+        email.addEventListener("change", send);
+        email.addEventListener("blur", send);
+      });
+      </script>
+      <script>
       document.addEventListener("DOMContentLoaded", function () {
         var form = document.getElementById("checkout-form");
         if (!form) return;

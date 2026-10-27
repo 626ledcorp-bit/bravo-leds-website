@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Unsubscribe — BRAVO LEDS{% endblock %}
+{% block content %}
+<div class="section-light">
+<div class="wrap">
+  <div class="contact-card" style="max-width:520px;margin:32px auto;text-align:center">
+    {% if ok %}
+    <h1>You're unsubscribed</h1>
+    <p class="muted">You won't get offer or cart-reminder emails from BRAVO LEDS anymore. Order confirmations and shipping emails still come through — those are about your orders, not marketing.</p>
+    {% else %}
+    <h1>That link didn't check out</h1>
+    <p class="muted">This unsubscribe link is invalid or incomplete. If you keep getting emails you don't want, <a href="/contact">contact us</a> and we'll take you off the list.</p>
+    {% endif %}
+    <p style="margin-top:18px"><a class="btn" href="/shop">Back to the shop</a></p>
+  </div>
+</div>
+</div>
+{% endblock %}

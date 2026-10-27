@@ -17,6 +17,36 @@
   {% block head_extra %}{% endblock %}
   <link rel="stylesheet" href="/static/css/style.css">
   <link rel="icon" href="/static/img/favicon-chevron.png">
+  {% if meta_pixel_id and not request.path.startswith("/admin") %}
+  <!-- Meta Pixel (retargeting; ID set under /admin/settings) -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '{{ meta_pixel_id }}');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id={{ meta_pixel_id }}&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel -->
+  {% endif %}
+  {% if ga_measurement_id and not request.path.startswith("/admin") %}
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ ga_measurement_id }}"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '{{ ga_measurement_id }}');
+  </script>
+  <!-- End Google tag -->
+  {% endif %}
   {% if request.path.startswith("/admin") %}
   <style>
     /* Admin light theme: white background, dark text, light inputs. */
@@ -327,5 +357,6 @@
 <script src="/static/js/main.js"></script>
 <script src="/static/js/garage.js" defer></script>
 <script src="/static/js/spinwheel.js" defer></script>
+<script src="/static/js/emailoffer.js" defer></script>
 </body>
 </html>

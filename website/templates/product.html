@@ -295,11 +295,11 @@
       <div class="prod-img">
         {% if r.badge %}<span class="badge">{{ r.badge }}</span>{% endif %}
         {% if r.get("sale_price_cents") %}<span class="badge" style="{% if r.badge %}top:44px;{% endif %}background:#e5484d;color:#fff;">Sale</span>{% endif %}
-        <img src="/static/img/ph-{{ categories[r.category].icon }}.svg" alt="{{ r.name }}" loading="lazy">
+        <img src="/static/img/ph-{{ categories[r.category].icon }}.svg" alt="{{ r.name|shortname }}" loading="lazy">
       </div>
       <div class="prod-body">
         <div class="prod-tier">{{ r.tier }}</div>
-        <h3 class="prod-name">{{ r.name }}</h3>
+        <h3 class="prod-name">{{ r.name|shortname }}</h3>
         <div class="prod-foot">{% with p=r %}{% include "_card_price.html" %}{% endwith %}</div>
       </div>
     </a>

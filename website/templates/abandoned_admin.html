@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Abandoned Carts — Admin{% endblock %}
+{% block content %}
+<div class="wrap">
+  <h1>Abandoned Carts</h1>
+  <p><a href="/admin">← Admin Dashboard</a> · <a href="/admin/email-offer">Email Offer →</a></p>
+  <p class="hint">Every cart is mirrored here as shoppers build it, with the
+  vehicle the items were picked for. When a cart sits untouched for 3+ hours
+  and we have the shopper's email (typed at checkout, or from the cart
+  page's "Email me my cart" box), one recovery email can go out with a link
+  that restores the exact cart.</p>
+
+  <div class="contact-card" style="margin-bottom:16px">
+    <p style="margin:0 0 8px"><strong>Recovery emails are {% if recovery_enabled %}ON{% else %}OFF{% endif %}</strong>.
+    {% if not recovery_enabled %}They stay off until you turn them on — nothing sends while this is off.{% endif %}</p>
+    <form method="post" action="/admin/abandoned-carts/toggle" style="display:inline"
+          onsubmit="return confirm('{% if recovery_enabled %}Turn recovery emails OFF?{% else %}Turn recovery emails ON? Due carts will start receiving the recovery email.{% endif %}')">
+      <button class="btn btn-ghost" type="submit">Turn recovery emails {% if recovery_enabled %}off{% else %}on{% endif %}</button>
+    </form>
+  </div>
+
+  {% if snapshots %}
+  <table class="admin-table">
+    <tr><th>Last active</th><th>Vehicle</th><th>Items</th><th>Subtotal</th>
+        <th>Email</th><th>Status</th><th>Recovery sent</th></tr>
+    {% for s in snapshots %}
+    <tr>
+      <td>{{ s.updated_at[:16].replace("T", " ") }}</td>
+      <td>{{ s.vehicle_label or "—" }}</td>
+      <td>{{ s.items_summary }}</td>
+      <td>{{ s.subtotal_str }}</td>
+      <td>{{ s.email or "—" }}</td>
+      <td>{{ s.status }}</td>
+      <td>{{ (s.recovery_sent_at or "")[:16].replace("T", " ") or "—" }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+  <p class="muted">No carts tracked yet.</p>
+  {% endif %}
+</div>
+{% endblock %}
